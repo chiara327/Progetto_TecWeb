@@ -1,0 +1,184 @@
+/* Stile del contenitore della barra */
+header {
+    background-color: #333; /* Colore di sfondo scuro */
+    padding: 10px 20px;
+}
+
+body {
+    margin: 0;
+    /* Sfondo "Asfalto Notturno" */
+    background-color: #15151e; 
+    
+    /* Testo "Bianco Fumo" - leggibile ma non accecante */
+    color: #f1f1f1; 
+    
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6; /* Importante per la leggibilità */
+}
+
+/* Titoli */
+h1, h2, h3 {
+    color: #ffffff; /* I titoli possono essere bianco puro per risaltare */
+    text-transform: uppercase; /* Lo stile F1 usa molto il maiuscolo */
+    letter-spacing: 1px; /* Spazia leggermente le lettere */
+}
+
+/* Link */
+a {
+    color: #e10600; /* Rosso F1 */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    color: #ff4d4d; /* Rosso più chiaro quando passi col mouse */
+    text-decoration: underline;
+}
+
+
+
+
+/* Barra di navigazione*/
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;        
+    gap: 20px;             
+}
+.navbar a { /* Stile dei link */
+    text-decoration: none; 
+    color: white;         
+    font-weight: bold;
+    padding: 5px 10px;    
+    transition: color 0.3s; 
+}
+.navbar a:hover { /* Effetto quando passi sopra col mouse */
+    color: hsl(0, 100%, 50%);       
+    background-color: rgba(255,255,255,0.1); 
+    border-radius: 5px;
+}
+
+/* Stile del footer */
+/* Stile generale del Footer */
+.f1-footer {
+    background-color: #15151e; /* Colore scuro 'asfalto' */
+    color: #ffffff;
+    padding-top: 40px;
+    font-family: 'Arial', sans-serif; /* Meglio se usi un font più 'sportivo' come Titillium Web */
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap; /* Fondamentale: su mobile manda le colonne a capo */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Stile delle Colonne */
+.footer-col {
+    flex: 1;
+    min-width: 250px; /* Non diventano mai più piccole di così */
+    margin-bottom: 20px;
+}
+
+.footer-col h3 {
+    color: #e10600; /* IL ROSSO F1 UFFICIALE */
+    font-size: 18px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    border-bottom: 2px solid #e10600;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+/* Link liste */
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+}
+.footer-col ul li {
+    margin-bottom: 10px;
+}
+.footer-col ul li a {
+    color: #cccccc;
+    text-decoration: none;
+    transition: 0.3s;
+}
+.footer-col ul li a:hover {
+    color: #fff;
+    padding-left: 5px; /* Effetto spostamento quando passi sopra */
+}
+/* Icone Social */
+.social-links a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background-color: #333;
+    color: white;
+    border-radius: 50%; /* Cerchi */
+    margin-right: 10px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+.social-links a:hover {
+    background-color: #e10600; /* Diventano rossi al passaggio */
+    transform: translateY(-3px); /* Saltello verso l'alto */
+}
+/* Barra Copyright in basso */
+.footer-bottom {
+    background-color: #0b0b10; /* Ancora più scuro */
+    text-align: center;
+    padding: 20px;
+    font-size: 12px;
+    color: #777;
+    margin-top: 20px;
+    border-top: 1px solid #333;
+}
+.disclaimer {
+    font-style: italic;
+    font-size: 10px;
+    margin-top: 5px;
+}
+
+
+
+
+
+
+
+/* 2. Il gruppo Logo + Titolo */
+.branding {
+    display: flex;         /* Mette img e h1 sulla stessa riga */
+    align-items: center;   /* Li allinea al centro verticalmente */
+    gap: 15px;             /* Spazio tra logo e testo */
+    text-decoration: none; /* Toglie la sottolineatura dal link */
+}
+
+/* Stile dell'immagine Logo */
+.logo-img {
+    height: 25px; /* Decidi tu l'altezza, la larghezza si adatta */
+    width: auto;  /* Mantiene le proporzioni */
+}
+
+/* Stile del Titolo H1 */
+.branding h1 {
+    font-size: 24px;
+    color: #ffffff;
+    margin: 0; /* Importante: toglie i margini default che spostano il testo */
+    font-family: 'Arial Black', sans-serif; /* Font più "ciccione" e solido */
+    font-style: italic; /* Dà senso di velocità */
+    text-transform: uppercase;
+}
+
+/* Per il menu riusiamo quello di prima, ma assicurati che sia così: */
+.navbar ul {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
