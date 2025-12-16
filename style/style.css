@@ -144,9 +144,42 @@ a:hover {
     margin-top: 5px;
 }
 
+/*Css di prova per scuderie*/
 
+.team {
+  border: 1px solid #ddd;
+  padding: 1.5rem;
+  border-radius: 12px;
+  background: #fff;
+}
 
+.team-logo {
+  width: 120px;
+  height: auto;
+  margin-bottom: 1rem;
+}
 
+.visually-hidden {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+main {
+  display: grid;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+@media (min-width: 700px) {
+  main {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+}
+
+/*Css di prova per scuderie*/
 
 
 

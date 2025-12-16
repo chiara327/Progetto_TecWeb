@@ -1,25 +1,197 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 
 <html lang="it">
 
-    <head>
-        <title>Formula1</title>
+<head>
+    <title>Formula1</title>
 
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="keywords" content="formula 1, gare, circuiti, classifica, mondiali, qualifiche, piloti, team">
-        <meta name="description" content="Pagina dedicata alla home page di formula 1">
-        <!-- DA METTERE NEL CONTENT : Pagina dedicata alla formula 1 con informazioni riguardanti le qualifiche e la classifica dei piloti e dei team alle varie gare nei circuiti dei mondiali-->
-        <!-- Consigliato partire a riempire le keyword (riga sotto) e poi mettere nel content della description (riga sopra) -->
-        <link rel="stylesheet" href="style/style.css">
-        <link rel="stylesheet" href="mini.css" media="screen and (max-width:800px)"><!--per mobile-->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="preconnect" href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="formula 1, gare, circuiti, classifica, mondiali, qualifiche, piloti, team">
+    <meta name="description" content="Pagina dedicata alla home page di formula 1">
+    <!-- DA METTERE NEL CONTENT : Pagina dedicata alla formula 1 con informazioni riguardanti le qualifiche e la classifica dei piloti e dei team alle varie gare nei circuiti dei mondiali-->
+    <!-- Consigliato partire a riempire le keyword (riga sotto) e poi mettere nel content della description (riga sopra) -->
+    <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="mini.css" media="screen and (max-width:800px)"><!--per mobile-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap"
+        rel="stylesheet">
 
-    </head>
-    <body>
-        <nav id="breadcrumb">
-            <p>Ti trovi in: <a href="../index.html"><span lang="en">Home</span></a>->Scuderie</p>
-        </nav>
-    </body>
+</head>
+
+<body>
+    <nav id="breadcrumb">
+        <p>Ti trovi in: <a href="../index.html"><span lang="en">Home</span></a>->Scuderie</p>
+    </nav>
+
+    <!--TODO: SISTEMARE I CSS RELATIVI, SISTEMARE GLI SPAN, CONTROLLARE CLASSI E DESCS-->
+    <main>
+        <h1>Costruttori di Formula 1</h1>
+
+        <!-- McLaren -->
+        <section aria-labelledby="mclaren-heading" class="team">
+            <h2 id="mclaren-heading"><span lang="en">McLaren</span> F1 Team</h2>
+
+            <img src="images/mclaren-logo.png" alt="" aria-labelledby="mclaren-desc" class="team-logo">
+            <p id="mclaren-desc" class="visually-hidden">
+                Logo della scuderia <span lang="en">McLaren</span> F1 Team.
+            </p>
+
+            <h3>Piloti</h3>
+            <ul>
+                <li>Lando Norris</li>
+                <li>Oscar Piastri</li>
+            </ul>
+        </section>
+
+        <!-- Scuderia Ferrari -->
+        <section aria-labelledby="ferrari-heading" class="team">
+            <h2 id="ferrari-heading">Scuderia Ferrari HP</h2>
+
+            <img src="images/ferrari-logo.png" alt="" aria-labelledby="ferrari-desc" class="team-logo">
+            <p id="ferrari-desc" class="visually-hidden">
+                Logo della Scuderia Ferrari.
+            </p>
+
+            <h3>Piloti</h3>
+            <ul>
+                <li>Charles Leclerc</li>
+                <li>Lewis Hamilton</li>
+            </ul>
+        </section>
+
+        <!-- Oracle Red Bull Racing -->
+        <section aria-labelledby="redbull-heading" class="team">
+            <h2 id="redbull-heading"><span lang="en">Oracle Red Bull Racing</span></h2>
+
+            <img src="images/redbull-logo.png" alt="" aria-labelledby="redbull-desc" class="team-logo">
+            <p id="redbull-desc" class="visually-hidden">
+                Logo della scuderia <span lang="en">Oracle Red Bull Racing</span>.
+            </p>
+
+            <h3>Piloti</h3>
+            <ul>
+                <li>Max Verstappen</li>
+                <li>Yuki Tsunoda</li>
+            </ul>
+        </section>
+
+        <!-- Mercedes AMG Petronas -->
+        <section aria-labelledby="mercedes-heading" class="team">
+            <h2 id="mercedes-heading"><span lang="en">Mercedes AMG Petronas Formula One Team</span></h2>
+
+            <img src="images/mercedes-logo.png" alt="" aria-labelledby="mercedes-desc" class="team-logo">
+            <p id="mercedes-desc" class="visually-hidden">
+                Logo della scuderia <span lang="en">Mercedes AMG Petronas Formula One Team</span>.
+            </p>
+
+            <h3>Piloti</h3>
+            <ul>
+                <li>George Russell</li>
+                <li>Kimi Antonelli</li>
+            </ul>
+        </section>
+
+        <!-- Atlassian Williams Racing -->
+        <section aria-labelledby="williams-heading" class="team">
+            <h2 id="williams-heading"><span lang="en">Atlassian Williams Racing</span></h2>
+
+            <img src="images/williams-logo.png" alt="" aria-labelledby="williams-desc" class="team-logo">
+            <p id="williams-desc" class="visually-hidden">
+                Logo della scuderia <span lang="en">Atlassian Williams Racing</span>.
+            </p>
+
+            <h3>Piloti</h3>
+            <ul>
+                <li>Carlos Sainz</li>
+                <li>Alexander Albon</li>
+            </ul>
+        </section>
+
+        <!-- Visa Cash App RB F1 Team -->
+        <section aria-labelledby="racingbulls-heading" class="team">
+            <h2 id="racingbulls-heading"><span lang="en">Visa Cash App RB F1 Team</span></h2>
+
+            <img src="images/racingbulls-logo.png" alt="" aria-labelledby="racingbulls-desc" class="team-logo">
+            <p id="racingbulls-desc" class="visually-hidden">
+                Logo della scuderia <span lang="en">Visa Cash App RB F1 Team</span>.
+            </p>
+
+            <h3>Piloti</h3>
+            <ul>
+                <li>Liam Lawson</li>
+                <li>Isack Hadjar</li>
+            </ul>
+        </section>
+
+        <!-- Aston Martin Aramco -->
+        <section aria-labelledby="aston-heading" class="team">
+            <h2 id="aston-heading"><span lang="en">Aston Martin Aramco Formula One Team</span></h2>
+
+            <img src="images/astonmartin-logo.png" alt="" aria-labelledby="aston-desc" class="team-logo">
+            <p id="aston-desc" class="visually-hidden">
+                Logo della scuderia <span lang="en">Aston Martin Aramco Formula One Team</span>.
+            </p>
+
+            <h3>Piloti</h3>
+            <ul>
+                <li>Fernando Alonso</li>
+                <li>Lance Stroll</li>
+            </ul>
+        </section>
+
+        <!-- MoneyGram Haas F1 Team -->
+        <section aria-labelledby="haas-heading" class="team">
+            <h2 id="haas-heading"><span lang="en">MoneyGram Haas F1 Team</span></h2>
+
+            <img src="images/haas-logo.png" alt="" aria-labelledby="haas-desc" class="team-logo">
+            <p id="haas-desc" class="visually-hidden">
+                Logo della scuderia <span lang="en">MoneyGram Haas F1 Team</span>.
+            </p>
+
+            <h3>Piloti</h3>
+            <ul>
+                <li>Esteban Ocon</li>
+                <li>Oliver Bearman</li>
+            </ul>
+        </section>
+
+        <!-- Stake F1 Team Kick Sauber -->
+        <section aria-labelledby="sauber-heading" class="team">
+            <h2 id="sauber-heading"><span lang="en">Stake F1 Team Kick Sauber</span></h2>
+
+            <img src="images/sauber-logo.png" alt="" aria-labelledby="sauber-desc" class="team-logo">
+            <p id="sauber-desc" class="visually-hidden">
+                Logo della scuderia <span lang="en">Stake F1 Team Kick Sauber</span>.
+            </p>
+
+            <h3>Piloti</h3>
+            <ul>
+                <li>Nico Hülkenberg</li>
+                <li>Gabriel Bortoleto</li>
+            </ul>
+        </section>
+
+        <!-- Alpine F1 Team -->
+        <section aria-labelledby="alpine-heading" class="team">
+            <h2 id="alpine-heading"><span lang="en">Alpine F1 Team</span></h2>
+
+            <img src="images/alpine-logo.png" alt="" aria-labelledby="alpine-desc" class="team-logo">
+            <p id="alpine-desc" class="visually-hidden">
+                Logo della scuderia <span lang="en">Alpine F1 Team</span>.
+            </p>
+
+            <h3>Piloti</h3>
+            <ul>
+                <li>Pierre Gasly</li>
+                <li>Franco Colapinto</li>
+            </ul>
+        </section>
+
+    </main>
+
+
+
+
+</body>
