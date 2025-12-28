@@ -25,7 +25,7 @@ h1, h2, h3 {
 
 /* Link */
 a {
-    color: #e10600; /* Rosso F1 */
+    color: #ff1e1e; /* Rosso F1 */
     text-decoration: none;
     font-weight: bold;
 }
@@ -151,6 +151,7 @@ a:hover {
   padding: 1.5rem;
   border-radius: 12px;
   background: #fff;
+  color: #15151e;
 }
 
 .team-logo {
