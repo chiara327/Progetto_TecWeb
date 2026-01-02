@@ -101,8 +101,8 @@ a:hover {
     gap: 16px;
 }
 .sponsor_logo{
-    max-width: 100%;
-  height: auto;
+    max-width: 30em;
+    height: auto;
 }
 /* Stile del footer */
 /* Stile generale del Footer */
