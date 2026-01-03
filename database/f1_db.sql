@@ -1,0 +1,237 @@
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+CREATE TABLE IF NOT EXISTS Piloti (
+    id INT NOT NULL,
+    nome VARCHAR(50) NOT NULL,
+    cognome VARCHAR(50) NOT NULL,
+    numero INT DEFAULT NULL,
+    vittorie INT DEFAULT 0,
+    n_pole INT DEFAULT 0,
+    gran_premi INT DEFAULT 0,
+    titoli_mondiali INT DEFAULT 0,
+    punti INT DEFAULT 0,
+    eta INT DEFAULT NULL,
+    PRIMARY KEY (id),
+    CONSTRAINT fk_team FOREIGN KEY (team_id) 
+        REFERENCES Scuderie(id) 
+        ON DELETE SET NULL 
+        ON UPDATE CASCADE
+) ENGINE=InnoDB;
+
+INSERT INTO Piloti (id, nome, cognome, numero, vittorie, n_pole, gran_premi, titoli_mondiali, punti, eta) VALUES
+(1, 'Max', 'Verstappen', 1, 58, 36, 215, 3, 620, 27),
+(2, 'Yuki', 'Tsunoda', 22, 1, 0, 85, 0, 145, 24),
+(3, 'Lewis', 'Hamilton', 44, 105, 69, 310, 7, 1300, 40),
+(4, 'Charles', 'Leclerc', 16, 9, 26, 150, 0, 980, 27),
+(5, 'Lando', 'Norris', 4, 6, 7, 140, 0, 510, 25),
+(6, 'Oscar', 'Piastri', 81, 4, 3, 90, 0, 320, 24),
+(7, 'Fernando', 'Alonso', 14, 32, 22, 385, 2, 2200, 43),
+(8, 'Lance', 'Stroll', 18, 1, 1, 150, 0, 310, 27),
+(9, 'George', 'Russell', 63, 5, 4, 120, 0, 410, 27),
+(10, 'Andrea Kimi', 'Antonelli', 12, 0, 0, 22, 0, 18, 18),
+(11, 'Carlos', 'Sainz', 55, 6, 4, 190, 0, 720, 30),
+(12, 'Alex', 'Albon', 23, 2, 2, 115, 0, 280, 29),
+(13, 'Esteban', 'Ocon', 31, 2, 0, 145, 0, 360, 28),
+(14, 'Oliver', 'Bearman', 10, 3, 2, 155, 0, 395, 29),
+(15, 'Liam', 'Lawson', 77, 10, 20, 240, 0, 1800, 35),
+(16, 'Isack', 'Hadjar', 24, 0, 0, 65, 0, 38, 26),
+(17, 'Pierre', 'Gasly', 10, 3, 2, 155, 0, 395, 29),
+(18, 'Franco', 'Colapinto', 3, 8, 3, 240, 0, 1320, 35),
+(19, 'Nico', 'Hulkenberg', 27, 0, 1, 210, 0, 530, 37),
+(20, 'Gabriel', 'Bortoleto', 27, 0, 1, 210, 0, 530, 37);
+
+CREATE TABLE IF NOT EXISTS Scuderie (
+    nome VARCHAR(100) NOT NULL,
+    presenze INT DEFAULT 0,
+    pilota_attuale1_id INT DEFAULT NULL,
+    pilota_attuale2_id INT DEFAULT NULL,
+    punti_campionato INT DEFAULT 0,
+    titoli INT DEFAULT 0,
+    PRIMARY KEY (nome)
+) ENGINE=InnoDB;
+
+INSERT INTO Scuderie (nome, presenze, pilota_attuale1_id, pilota_attuale2_id, punti_campionato, titoli) VALUES
+('McLaren', 950, 5, 6, 640, 8),
+('Mercedes', 520, 9, 10, 680, 8),
+('Red Bull Racing', 380, 1, 2, 860, 6),
+('Ferrari', 1050, 3, 4, 720, 16),
+('Williams', 800, 11, 12, 190, 9),
+('RB', 90, 15, 16, 260, 0),
+('Aston Martin', 150, 7, 8, 420, 0),
+('Haas', 180, 13, 14, 140, 0),
+('Sauber', 520, 19, 20, 120, 0),
+('Alpine', 420, 17, 18, 310, 2);
+
+CREATE TABLE IF NOT EXISTS Circuiti (
+    id INT NOT NULL,
+    nome VARCHAR(100) NOT NULL,
+    citta VARCHAR(100),
+    nazione VARCHAR(100),
+    lunghezza DOUBLE, 
+    numero_curve INT,
+    PRIMARY KEY (id),
+    UNIQUE INDEX idx_nome_circuito (nome)
+) ENGINE=InnoDB;
+
+INSERT INTO Circuiti
+(id, nome, citta, nazione, lunghezza, numero_curve)
+VALUES
+(1, 'Autodromo Nazionale di Monza', 'Monza', 'Italia', 5.793, 11),
+(2, 'Circuit de Monaco', 'Monte Carlo', 'Monaco', 3.337, 19),
+(3, 'Silverstone Circuit', 'Silverstone', 'Regno Unito', 5.891, 18),
+(4, 'Suzuka International Racing Course', 'Suzuka', 'Giappone', 5.807, 18),
+(5, 'Circuit of the Americas', 'Austin', 'Stati Uniti', 5.513, 20);
+
+CREATE TABLE IF NOT EXISTS ClassificaPiloti (
+    id INT NOT NULL,
+    anno INT NOT NULL,
+    pilota_id INT NOT NULL,
+    posizione INT,
+    punti INT DEFAULT 0,
+    PRIMARY KEY (id),
+    UNIQUE INDEX idx_anno_pilota (anno, pilota_id),
+    CONSTRAINT fk_pilota_stand FOREIGN KEY (pilota_id) 
+        REFERENCES Piloti(id) 
+        ON DELETE CASCADE 
+        ON UPDATE CASCADE
+) ENGINE=InnoDB;
+
+INSERT INTO ClassificaPiloti
+(id, anno, pilota_id, posizione, punti)
+VALUES
+(1, 2025, 1, 1, 423),   
+(2, 2025, 4, 2, 421),   
+(3, 2025, 3, 3, 410),  
+(4, 2025, 5, 4, 319),  
+(5, 2025, 11, 5, 242),  
+(6, 2025, 9, 6, 156),    
+(7, 2025, 7, 7, 150),   
+(8, 2025, 6, 8, 125),   
+(9, 2025, 2, 9, 83),    
+(10, 2025, 14, 10, 67), 
+(11, 2025, 13, 11, 42), 
+(12, 2025, 17, 12, 36), 
+(13, 2025, 18, 13, 31), 
+(14, 2025, 12, 14, 29), 
+(15, 2025, 19, 15, 18), 
+(16, 2025, 20, 16, 16), 
+(17, 2025, 15, 17, 12), 
+(18, 2025, 16, 18, 7), 
+(19, 2025, 8, 19, 2),  
+(20, 2025, 10, 20, 1); 
+
+
+CREATE TABLE IF NOT EXISTS ClassificaCostruttori (
+    anno INT NOT NULL,
+    scuderia_nome VARCHAR(100) NOT NULL,
+    posizione INT,
+    punti INT DEFAULT 0,
+    PRIMARY KEY (anno),
+    UNIQUE INDEX idx_anno_scuderia (anno, scuderia_nome),
+    CONSTRAINT fk_scuderia_stand FOREIGN KEY (scuderia_nome) 
+        REFERENCES Scuderie(nome) 
+        ON DELETE CASCADE 
+        ON UPDATE CASCADE
+) ENGINE=InnoDB;
+
+INSERT INTO ClassificaCostruttori
+(anno, scuderia_nome, posizione, punti)
+VALUES
+(2025, 'Red Bull Racing', 1, 860),
+(2025, 'Ferrari', 2, 720),
+(2025, 'Mercedes', 3, 680),
+(2025, 'McLaren', 4, 640),
+(2025, 'Aston Martin', 5, 420),
+(2025, 'Alpine', 6, 310),
+(2025, 'RB', 7, 260),
+(2025, 'Williams', 8, 190),
+(2025, 'Haas', 9, 140),
+(2025, 'Sauber', 10, 120);
+
+
+CREATE TABLE IF NOT EXISTS Gare (
+    id INT NOT NULL,
+    circuito_id INT NOT NULL,
+    data DATE,
+    PRIMARY KEY (id),
+    CONSTRAINT fk_circuito_gara FOREIGN KEY (circuito_id) 
+        REFERENCES Circuiti(id) 
+        ON DELETE CASCADE 
+        ON UPDATE CASCADE
+) ENGINE=InnoDB;
+
+INSERT INTO Gare (id, circuito_id, data) VALUES
+(1, 1, '2025-09-07');
+
+CREATE TABLE IF NOT EXISTS RisultatiGara (
+    id INT NOT NULL,
+    gara_id INT NOT NULL,
+    pilota_id INT NOT NULL,
+    posizione INT,
+    PRIMARY KEY (id),
+    UNIQUE INDEX idx_gara_pilota (gara_id, pilota_id),
+    CONSTRAINT fk_gara_res FOREIGN KEY (gara_id) 
+        REFERENCES Gare(id) 
+        ON DELETE CASCADE 
+        ON UPDATE CASCADE,
+    CONSTRAINT fk_pilota_res FOREIGN KEY (pilota_id) 
+        REFERENCES Piloti(id) 
+        ON DELETE CASCADE 
+        ON UPDATE CASCADE
+) ENGINE=InnoDB;
+
+INSERT INTO RisultatiGara
+(id, gara_id, pilota_id, posizione)
+VALUES
+(1, 1, 1, 1),   
+(2, 1, 4, 2),   
+(3, 1, 3, 3),   
+(4, 1, 5, 4),   
+(5, 1, 11, 5),  
+(6, 1, 9, 6),   
+(7, 1, 7, 7),   
+(8, 1, 6, 8),   
+(9, 1, 2, 9),   
+(10, 1, 14, 10),
+(11, 1, 13, 11),
+(12, 1, 17, 12),
+(13, 1, 18, 13),
+(14, 1, 12, 14),
+(15, 1, 19, 15),
+(16, 1, 20, 16),
+(17, 1, 15, 17),
+(18, 1, 16, 18),
+(19, 1, 8, 19), 
+(20, 1, 10, 20);
+
+CREATE TABLE IF NOT EXISTS Utente (
+    username VARCHAR(30) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    nome VARCHAR(30) NOT NULL,
+    cognome VARCHAR(30) NOT NULL,
+    dataNascita DATE NOT NULL,
+    PRIMARY KEY (username)
+) ENGINE=InnoDB;
+
+INSERT INTO Utente (username, password, nome, cognome, dataNascita) VALUES
+('luigi', '0000', 'Luigi', 'Verdi', '2025-01-01'),
+('pippo99', '1234', 'Filippo', 'Pippino', '2025-01-01');
+
+
+CREATE TABLE IF NOT EXISTS Commento (
+    id INT NOT NULL AUTO_INCREMENT,
+    username VARCHAR(30) NOT NULL,
+    gara_id INT NOT NULL,
+    testo TEXT NOT NULL,
+    data DATE NOT NULL,
+    PRIMARY KEY (id),
+    CONSTRAINT fk_utente_commento FOREIGN KEY (username) 
+        REFERENCES Utente(username) 
+        ON DELETE CASCADE 
+        ON UPDATE CASCADE
+) ENGINE=InnoDB;
+
+INSERT INTO Commento (username, gara_id, testo, data) VALUES
+('luigi', 1, 'Grande gara di Verstappen, ha dominato dall''inizio alla fine!', '2025-09-08'),
+('pippo99', 1, 'Leclerc ha fatto un ottimo lavoro per la Ferrari, ma non è bastato.', '2025-09-08');
