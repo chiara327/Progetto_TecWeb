@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<html lang="it">
+
+<head>
+    <title>[Scuderia] - Fan Club F1</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="formula 1, gare, circuiti, classifica, mondiali, qualifiche, piloti, team">
+    <meta name="description" content="Pagina dedicata alla home page di formula 1">
+    <!-- DA METTERE NEL CONTENT : Pagina dedicata alla formula 1 con informazioni riguardanti le qualifiche e la classifica dei piloti e dei team alle varie gare nei circuiti dei mondiali-->
+    <!-- Consigliato partire a riempire le keyword (riga sotto) e poi mettere nel content della description (riga sopra) -->
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="mini.css" media="screen and (max-width:800px)"><!--per mobile-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<!-- TODO: RIVEDERE IL FILE .SQL PER MODIFICARE I VALORI DELLE TABELLE DI PILOTI E SCUDERIE-->
+<main>
+
+    <!-- Sezione informazioni generali -->
+    <section aria-labelledby="team-info-heading">
+        <h2 id="team-info-heading">Informazioni generali</h2>
+
+        <dl>
+            <dt>Paese</dt>
+            <dd>{{PAESE}}</dd>
+
+            <dt>Sede</dt>
+            <dd>{{SEDE}}</dd>
+
+            <dt>Team Principal</dt>
+            <dd>{{TEAM_PRINCIPAL}}</dd>
+
+            <dt>Motorizzazione</dt>
+            <dd>{{MOTORE}}</dd>
+
+            <dt>Anno di debutto</dt>
+            <dd>{{ANNO_DEBUTTO}}</dd>
+        </dl>
+    </section>
+
+    <!-- Sezione statistiche -->
+    <section aria-labelledby="team-stats-heading">
+        <h2 id="team-stats-heading">Statistiche</h2>
+
+        <dl>
+            <dt>Titoli costruttori</dt>
+            <dd>{{TITOLI_COSTRUTTORI}}</dd>
+
+            <dt>Vittorie totali</dt>
+            <dd>{{VITTORIE}}</dd>
+
+            <dt>Pole position</dt>
+            <dd>{{POLE}}</dd>
+
+            <dt>Punti totali</dt>
+            <dd>{{PUNTI}}</dd>
+        </dl>
+    </section>
+
+    <!-- Sezione piloti -->
+    <section aria-labelledby="drivers-heading">
+        <h2 id="drivers-heading">Piloti della stagione</h2>
+
+        <ul>
+            <li>
+                <a href="information_driver.php?id={{DRIVER1_ID}}">
+                    {{DRIVER1_NOME}}
+                </a>
+            </li>
+
+            <li>
+                <a href="information_driver.php?id={{DRIVER2_ID}}">
+                    {{DRIVER2_NOME}}
+                </a>
+            </li>
+        </ul>
+    </section>
+
+</main>
