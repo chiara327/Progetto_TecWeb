@@ -12,11 +12,7 @@ CREATE TABLE IF NOT EXISTS Piloti (
     titoli_mondiali INT DEFAULT 0,
     punti INT DEFAULT 0,
     eta INT DEFAULT NULL,
-    PRIMARY KEY (id),
-    CONSTRAINT fk_team FOREIGN KEY (team_id) 
-        REFERENCES Scuderie(id) 
-        ON DELETE SET NULL 
-        ON UPDATE CASCADE
+    PRIMARY KEY (id)
 ) ENGINE=InnoDB;
 
 INSERT INTO Piloti (id, nome, cognome, numero, vittorie, n_pole, gran_premi, titoli_mondiali, punti, eta) VALUES
@@ -68,7 +64,7 @@ CREATE TABLE IF NOT EXISTS Circuiti (
     nome VARCHAR(100) NOT NULL,
     citta VARCHAR(100),
     nazione VARCHAR(100),
-    lunghezza DOUBLE, 
+    lunghezza DECIMAL(5,3), 
     numero_curve INT,
     PRIMARY KEY (id),
     UNIQUE INDEX idx_nome_circuito (nome)
@@ -127,8 +123,7 @@ CREATE TABLE IF NOT EXISTS ClassificaCostruttori (
     scuderia_nome VARCHAR(100) NOT NULL,
     posizione INT,
     punti INT DEFAULT 0,
-    PRIMARY KEY (anno),
-    UNIQUE INDEX idx_anno_scuderia (anno, scuderia_nome),
+    PRIMARY KEY (anno, scuderia_nome),
     CONSTRAINT fk_scuderia_stand FOREIGN KEY (scuderia_nome) 
         REFERENCES Scuderie(nome) 
         ON DELETE CASCADE 
@@ -229,6 +224,10 @@ CREATE TABLE IF NOT EXISTS Commento (
     CONSTRAINT fk_utente_commento FOREIGN KEY (username) 
         REFERENCES Utente(username) 
         ON DELETE CASCADE 
+        ON UPDATE CASCADE,
+    CONSTRAINT fk_gara_commento FOREIGN KEY (gara_id) 
+        REFERENCES Gare(id)
+        ON DELETE CASCADE
         ON UPDATE CASCADE
 ) ENGINE=InnoDB;
 
