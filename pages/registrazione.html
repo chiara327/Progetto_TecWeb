@@ -1,8 +1,9 @@
 <!DOCTYPE html>
+
 <html lang="it">
 
 <head>
-    <title>Errore 500 | F1 Fan Club</title>
+    <title>Formula1</title>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,7 +16,8 @@
     <link rel="stylesheet" href="mini.css" media="screen and (max-width:800px)"><!--per mobile-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap"
+        rel="stylesheet">
 
 </head>
 
@@ -30,33 +32,38 @@
         <nav class="navbar">
             <ul>
                 <li></li>
-                <li><a href="../index.html"><span lang="en">Home</span></a></li>
+                <li><a href="index.html"><span lang="en">Home</span></a></li>
                 <li><a href="ultime_notizie.html">Ultime Notizie</a></li>
                 <li><a href="piloti.html">Piloti</a></li>
                 <li><a href="scuderie.html">Scuderie</a></li>
                 <li><a href="classifica.html">Classifica</a></li>
                 <li><a href="gare.html">Gare</a></li>
                 <li><a href="circuiti.html">Circuiti</a></li>
-                <li><a href="login.html">Login</a></li>        
             </ul>
         </nav>
     </header>
-    
+
     <nav id="breadcrumb">
-        <p>Ti trovi in: Errore 500</p>
+        <p>Ti trovi in: <span lang="en">Home</span></p>
     </nav>
 
-    <main>
-        <h1>Problema ai box!</h1>
-        <h2>Il <span lang="en">server</span> non è attualmente raggiungibile.</h2>
-        <p>
-            Ci dispiace, Il nostro sito ha incontrato un problema tecnico interno, un po' come quando una monoposto
-            rientra ai box per un controllo imprevisto.
-            I nostri meccanici digitali stanno lavorando per risolvere il problema. Per favore, riprova più tardi con la
-            tua richiesta.
-            La gara ripartirà presto, nel mentre <a href=../index.html>torna alla griglia di partenza nella <span lang="en">Home</span></a>.
-        </p>
-    </main>
+
+    <main class="signup_content" id="signup_main">
+
+            <h1>Benvenuto nel Paddock</h1>
+            <p>Inserisci le tue credenziali per registrarti.</p>
+
+            <form id="signup_form" method="post" action="registrazione.php">
+                <fieldset>
+                    <legend><span lang="en">Sign Up</span></legend>
+                    <label id="signup_label_username" for="signup_username"><span lang="en">Username</span></label>
+                    <input type="text" name="username" id="signup_username" required data-msg-required="Per favore, inserisci il tuo username" data-msg-invalid="Ci dispiace, formato non corretto" placeholder="Username">
+                    <label id="signup_label_password" for="signup_password"><span lang="en">Password</span></label>
+                    <input type="password" name="password" id="password" required data-msg-required="Per favore, inserisci la tua password" value="[password]" placeholder="Minimo 8 caratteri">
+                    <input id="signup_button" type="submit" value="Registrati">
+                </fieldset>
+            </form>
+        </main>
 
     <footer class="f1-footer">
         <div class="footer-container">
@@ -92,4 +99,5 @@
         </div>
     </footer>
 </body>
+
 </html>

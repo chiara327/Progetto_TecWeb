@@ -1,12 +1,13 @@
 <!DOCTYPE html>
+
 <html lang="it">
 
 <head>
-    <title>Errore 500 | F1 Fan Club</title>
+    <title>Login | F1 Fan Club</title>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="formula 1, gare, circuiti, classifica, mondiali, qualifiche, piloti, team">
+    <meta name="keywords" content="formula 1, gare, circuiti, classifica, mondiali, qualifiche, piloti, team, login">
     <meta name="description" content="Pagina dedicata alla home page di formula 1">
     <!-- DA METTERE NEL CONTENT : Pagina dedicata alla formula 1 con informazioni riguardanti le qualifiche e la classifica dei piloti e dei team alle varie gare nei circuiti dei mondiali-->
     <!-- Consigliato partire a riempire le keyword (riga sotto) e poi mettere nel content della description (riga sopra) -->
@@ -15,8 +16,8 @@
     <link rel="stylesheet" href="mini.css" media="screen and (max-width:800px)"><!--per mobile-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
@@ -37,24 +38,44 @@
                 <li><a href="classifica.html">Classifica</a></li>
                 <li><a href="gare.html">Gare</a></li>
                 <li><a href="circuiti.html">Circuiti</a></li>
-                <li><a href="login.html">Login</a></li>        
+                <li><a href="login.html">Login</a></li>
             </ul>
         </nav>
     </header>
-    
+
     <nav id="breadcrumb">
-        <p>Ti trovi in: Errore 500</p>
+        <p>Ti trovi in: <span lang="en">Home</span></p>
     </nav>
 
-    <main>
-        <h1>Problema ai box!</h1>
-        <h2>Il <span lang="en">server</span> non è attualmente raggiungibile.</h2>
-        <p>
-            Ci dispiace, Il nostro sito ha incontrato un problema tecnico interno, un po' come quando una monoposto
-            rientra ai box per un controllo imprevisto.
-            I nostri meccanici digitali stanno lavorando per risolvere il problema. Per favore, riprova più tardi con la
-            tua richiesta.
-            La gara ripartirà presto, nel mentre <a href=../index.html>torna alla griglia di partenza nella <span lang="en">Home</span></a>.
+
+    <main class="login_content" id="login_main">
+
+        <h1>Bentornato nel Paddock</h1>
+        <p>Inserisci le tue credenziali per accedere in pista.</p>
+
+        <form id="login_form" method="post" action="login.php">
+            <fieldset>
+                <legend><span lang="en">Log In</span></legend>
+                <ul>
+                    <li>
+                        <label for="login_username"><span lang="en">Username</span></label>
+                        <input type="text" name="username" id="login_username" required
+                            data-msg-required="Per favore, inserisci il tuo username"
+                            data-msg-invalid="Ci dispiace, formato non corretto" placeholder="Username">
+                    </li>
+                    <li>
+                        <label for="password"><span lang="en">Password</span></label>
+                        <input type="password" name="password" id="password" required
+                            data-msg-required="Per favore, inserisci la tua password" placeholder="Minimo 8 caratteri">
+                    </li>
+                    <li class="form-actions">
+                        <input id="accedi" type="submit" value="Accedi">
+                    </li>
+                </ul>
+            </fieldset>
+        </form>
+
+        <p>Se non sei ancora registrato allora <a href="registrazione.html">crea un <span lang="en">account</span></a>!
         </p>
     </main>
 
@@ -92,4 +113,5 @@
         </div>
     </footer>
 </body>
+
 </html>
