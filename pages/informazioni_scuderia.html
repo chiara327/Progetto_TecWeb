@@ -25,63 +25,53 @@
 <main>
 
     <!-- Sezione informazioni generali -->
-    <section aria-labelledby="team-info-heading">
-        <h2 id="team-info-heading">Informazioni generali</h2>
+    <main>
+        <h1>[nome_scuderia]</h1>
+        <!-- Informazioni generali -->
+        <section aria-labelledby="info-scuderia-heading">
+            <h2 id="info-scuderia-heading">Informazioni generali</h2>
 
-        <dl>
-            <dt>Paese</dt>
-            <dd>{{PAESE}}</dd>
+            <dl>
+                <dt>Nome scuderia</dt>
+                <dd>[nome_scuderia]</dd>
 
-            <dt>Sede</dt>
-            <dd>{{SEDE}}</dd>
+                <dt>Presenze in Formula 1</dt>
+                <dd>[presenze]</dd>
+            </dl>
+        </section>
 
-            <dt>Team Principal</dt>
-            <dd>{{TEAM_PRINCIPAL}}</dd>
+        <!-- Statistiche -->
+        <section aria-labelledby="statistiche-scuderia-heading">
+            <h2 id="statistiche-scuderia-heading">Statistiche</h2>
 
-            <dt>Motorizzazione</dt>
-            <dd>{{MOTORE}}</dd>
+            <dl>
+                <dt>Punti in campionato</dt>
+                <dd>[punti_campionato]</dd>
 
-            <dt>Anno di debutto</dt>
-            <dd>{{ANNO_DEBUTTO}}</dd>
-        </dl>
-    </section>
+                <dt>Titoli mondiali costruttori</dt>
+                <dd>[titoli]</dd>
+            </dl>
+        </section>
 
-    <!-- Sezione statistiche -->
-    <section aria-labelledby="team-stats-heading">
-        <h2 id="team-stats-heading">Statistiche</h2>
+        <!-- Piloti attuali -->
+        <section aria-labelledby="piloti-scuderia-heading">
+            <h2 id="piloti-scuderia-heading">Piloti attuali</h2>
 
-        <dl>
-            <dt>Titoli costruttori</dt>
-            <dd>{{TITOLI_COSTRUTTORI}}</dd>
+            <ul>
+                <li>
+                    <a href="information_driver.php?id=[pilota1_id]">
+                        [pilota1_nome]
+                    </a>
+                </li>
 
-            <dt>Vittorie totali</dt>
-            <dd>{{VITTORIE}}</dd>
+                <li>
+                    <a href="information_driver.php?id=[pilota2_id]">
+                        [pilota2_nome]
+                    </a>
+                </li>
+            </ul>
+        </section>
 
-            <dt>Pole position</dt>
-            <dd>{{POLE}}</dd>
-
-            <dt>Punti totali</dt>
-            <dd>{{PUNTI}}</dd>
-        </dl>
-    </section>
-
-    <!-- Sezione piloti -->
-    <section aria-labelledby="drivers-heading">
-        <h2 id="drivers-heading">Piloti della stagione</h2>
-
-        <ul>
-            <li>
-                <a href="information_driver.php?id={{DRIVER1_ID}}">
-                    {{DRIVER1_NOME}}
-                </a>
-            </li>
-
-            <li>
-                <a href="information_driver.php?id={{DRIVER2_ID}}">
-                    {{DRIVER2_NOME}}
-                </a>
-            </li>
-        </ul>
-    </section>
+    </main>
 
 </main>
