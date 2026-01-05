@@ -19,6 +19,20 @@
     --accent-color: #E10600;
     --footer-border-color: #333333;
     --social-bg-color: #333333;
+
+/*  COLORI DA USARE PER SCUDERIE/PILOTI */
+/*
+    --redbull-color:;
+    --ferrari-color:;
+    --mclaren-color:;
+    --mercedes-color:;
+    --alpine-color:;
+    --astonmartin-color:;
+    --williams-color:;
+    --haas-color:;
+    --racingbulls-color:;
+    --sauber-color:;
+*/
 }
 
 /* =========================
@@ -273,6 +287,97 @@ h1.hide {
     margin-top: 0.4em;
 }
 
+/* =========================
+   INDEX PAGE
+   ========================= */
+/*
+#content {
+padding: 20px;
+}
+*/
+#content p{
+padding: 1em;
+}
+
+#content h1 {
+    font-size: 2.5em;
+    margin-bottom: 0.4em;
+    border-top: 0.07em solid var(--accent-color);
+    border-bottom: 0.07em solid var(--accent-color);
+    padding-top: 0.4em;
+    padding-bottom: 0.4em;
+}
+
+#content h2 {
+    border-top: 0.07em solid var(--accent-color);
+    border-bottom: 0.07em solid var(--accent-color);
+    padding-top: 0.3em;
+    padding-bottom: 0.3em;
+    margin-top: 0.4em;
+}
+
+#content h3{
+    text-align: left;
+    border-left: 0.2em solid var(--accent-color);
+    padding-left: 0.2em;
+
+}
+
+#content section {
+    display: flex;
+    align-items: stretch;
+    gap: 2em;
+    padding: 1em;
+}
+
+#content img {
+    max-width: 30em;
+    display: block;
+    margin: 1em;
+    border-radius: 1em;
+}
+.sponsors{
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    /*gap: 1em;*/
+}
+.sponsors img{
+    flex: 0 1 20em;
+    height: 20em;
+    /*object-fit: cover;*/
+}
+
+/* =========================
+   PILOTI PAGE
+   ========================= */
+.piloti li{
+    list-style: none;
+}
+.piloti article{ 
+    position: relative;       
+    overflow: hidden;   
+    background-color: purple;
+}
+
+.piloti article img{
+    max-width: 30%;        
+    display: block;     
+}
+
+.piloti article h3 {
+    position: absolute;          
+    bottom: 0;                   
+    left: 0;                     
+    max-width: 30%;                 
+    margin: 0;                   
+
+    color: var(--content-text-color);                
+    background-color: var(--content-bg-color); 
+    padding: 10px;               
+    text-align: center;          
+    box-sizing: border-box;      
+}
 /* =========================
    PAGE SPECIFIC CSS
    ========================= */
