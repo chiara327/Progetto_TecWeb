@@ -53,21 +53,19 @@
                 <ul>
                     <li>
                         <label for="login_username"><span lang="en">Username</span></label>
-                        <input type="text" name="username" id="login_username" required
-                            data-msg-required="Per favore, inserisci il tuo username"
-                            data-msg-invalid="Ci dispiace, formato non corretto" placeholder="Username">
+                        <input type="text" name="username" id="login_username" placeholder="Username">
                     </li>
                     <li>
                         <label for="password"><span lang="en">Password</span></label>
-                        <input type="password" name="password" id="password" required
-                            data-msg-required="Per favore, inserisci la tua password" placeholder="Minimo 8 caratteri">
+                        <input type="password" name="password" id="password" placeholder="Minimo 8 caratteri">
                     </li>
                     <li class="form-actions">
                         <input id="accedi" type="submit" value="Accedi">
                     </li>
                 </ul>
             </fieldset>
-            <p>Se non sei ancora registrato allora <a href="registrazione.html">crea un <span
+            <!--TODO: CONTROLLARE CHE LE PAGINE CHE HANNO INTERAZIONE DB PUNTINO AI RISPETTIVI .PHP DOVUNQUE-->
+            <p>Se non sei ancora registrato allora <a href="registrazione.php">crea un <span
                         lang="en">account</span></a>!
             </p>
         </form>

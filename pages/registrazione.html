@@ -45,20 +45,30 @@
 
     <main class="signup_content" id="signup_main">
 
-            <h1>Benvenuto nel Paddock</h1>
-            <p>Inserisci le tue credenziali per registrarti.</p>
+        <h1>Benvenuto nel Paddock</h1>
+        <p>Inserisci le tue credenziali per registrarti.</p>
 
-            <form id="signup_form" method="post" action="registrazione.php">
-                <fieldset>
-                    <legend><span lang="en">Sign Up</span></legend>
-                    <label id="signup_label_username" for="signup_username"><span lang="en">Username</span></label>
-                    <input type="text" name="username" id="signup_username" required data-msg-required="Per favore, inserisci il tuo username" data-msg-invalid="Ci dispiace, formato non corretto" placeholder="Username">
-                    <label id="signup_label_password" for="signup_password"><span lang="en">Password</span></label>
-                    <input type="password" name="password" id="password" required data-msg-required="Per favore, inserisci la tua password" value="[password]" placeholder="Minimo 8 caratteri">
+        <form id="signup_form" method="post" action="registrazione.php">
+            <fieldset>
+                <legend><span lang="en">Sign Up</span></legend>
+                <ul>
+                    <li>
+                        <label id="signup_label_username" for="signup_username"><span lang="en">Username</span></label>
+                        <input type="text" name="username" id="signup_username" value="[username]" placeholder="Username">
+                    </li>
+                    <li>
+                        <label id="signup_label_password" for="signup_password"><span lang="en">Password</span></label>
+                        <input type="password" name="password" id="password" value="[password]"
+                            placeholder="Minimo 8 caratteri">
+                    </li>
                     <input id="signup_button" type="submit" value="Registrati">
-                </fieldset>
-            </form>
-        </main>
+                    <ul>
+            </fieldset>
+            <div class="form_errors">
+                [err]
+            </div>
+        </form>
+    </main>
 
     <footer class="f1-footer">
         <div class="footer-container">
@@ -90,7 +100,8 @@
         <div class="footer-bottom">
             <p>&copy; 2025 F1 <span lang="en">Fan Club</span>. Sito non ufficiale.</p>
             <p class="disclaimer">Questo sito <span lang="en">web</span> non è associato in alcun modo al gruppo Formula
-                1. F1, <span lang="en">FORMULA ONE</span>, FORMULA 1 sono marchi di <span lang="en">Formula One Licensing B.V.</span></p>
+                1. F1, <span lang="en">FORMULA ONE</span>, FORMULA 1 sono marchi di <span lang="en">Formula One
+                    Licensing B.V.</span></p>
         </div>
     </footer>
 </body>
