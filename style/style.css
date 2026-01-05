@@ -1,3 +1,7 @@
+/*
+    TODO: ZOOMANDO L'ICONA SCOMPARE
+*/
+
 /* =========================
    GLOBAL COLORS
    ========================= */
@@ -306,5 +310,41 @@ h1.hide {
 }
 
 #login_form li {
+    margin-bottom: 1em;
+}
+
+/* =========================
+   LOGIN PAGE
+   ========================= */
+
+/*
+    TODO: FARE SIGNUP FORM COME LOGIN FORM
+*/
+
+#signup_form h1,
+#signup_form p {
+    text-align: center;
+}
+
+#signup_form {
+    border: 0.15em solid var(--content-text-color);
+    border-radius: 0.5em;
+    padding: 1em;
+
+    max-width: 28em;     
+    margin: 2em auto;    
+}
+
+#signup_form legend{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+#signup_form ul {
+    list-style-type: none;
+}
+
+#signup_form li {
     margin-bottom: 1em;
 }
