@@ -54,19 +54,19 @@
                 <ul>
                     <li>
                         <label id="signup_label_username" for="signup_username"><span lang="en">Username</span></label>
-                        <input type="text" name="username" id="signup_username" required
-                            data-msg-required="Per favore, inserisci il tuo username"
-                            data-msg-invalid="Ci dispiace, formato non corretto" placeholder="Username">
+                        <input type="text" name="username" id="signup_username" value="[username]" placeholder="Username">
                     </li>
                     <li>
                         <label id="signup_label_password" for="signup_password"><span lang="en">Password</span></label>
-                        <input type="password" name="password" id="password" required
-                            data-msg-required="Per favore, inserisci la tua password" value="[password]"
+                        <input type="password" name="password" id="password" value="[password]"
                             placeholder="Minimo 8 caratteri">
                     </li>
                     <input id="signup_button" type="submit" value="Registrati">
-                <ul>
+                    <ul>
             </fieldset>
+            <div class="form_errors">
+                [err]
+            </div>
         </form>
     </main>
 
