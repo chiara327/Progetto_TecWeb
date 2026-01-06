@@ -3,7 +3,7 @@ require_once 'db_connection.php';
 use DB\DBConnection;
 
 function input_restore() {
-	$html_page = file_get_contents('registrazione.html');
+	$html_page = file_get_contents("../pages/registrazione.html");
 	$html_page = str_replace("[nome]", htmlspecialchars(isset($_POST['nome']) ? $_POST['nome'] : ''), $html_page);
 	$html_page = str_replace("[cognome]", htmlspecialchars(isset($_POST['cognome']) ? $_POST['cognome'] : ''), $html_page);
 	$html_page = str_replace("[username]", htmlspecialchars(isset($_POST['username']) ? $_POST['username'] : ''), $html_page);
@@ -12,7 +12,7 @@ function input_restore() {
 	return $html_page;
 }
 
-$html_page = file_get_contents('registrazione.html');
+$html_page = file_get_contents("../pages/registrazione.html");
 
 // Variabili per placeholder
 $form_errors = "";
@@ -26,11 +26,13 @@ if (isset($_SESSION["utente"])) {
 	exit();
 }
 
-if(isset($_POST["nome"]) && isset($_POST["cognome"]) && isset($_POST["username"]) && isset($_POST["password"]) && isset($_POST["data"])) {
-    $err = $err . '<p>LETSGOSKI</p>';
+// TODO: TEST if(isset($_POST["nome"]) && isset($_POST["cognome"]) && isset($_POST["username"]) && isset($_POST["password"]) && isset($_POST["data"])) {
+if (isset($_POST["username"]) && isset($_POST["password"])) { 
+	$form_errors = $form_errors . '<p>LETSGOSKI</p>';
+	echo str_replace("[err]", $form_errors, $html_page);
 } else {
-    $registrazioneHTML = input_restore();
-	echo str_replace("[err]", $err, $registrazioneHTML);
+    $html_page = input_restore();
+	echo str_replace("[err]", $form_errors, $html_page);
 }
 
 ?>

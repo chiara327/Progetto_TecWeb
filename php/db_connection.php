@@ -14,9 +14,9 @@ class DBConnection {
     */
 
     private const HOST = "localhost";
-	private const DB_NAME = "";
-	private const USER = "";
-	private const PASSWORD = "";
+	private const DB_NAME = "rgrazian";
+	private const USER = "rgrazian";
+	private const PASSWORD = "aeQu2Mah8Ahqu0Ba";
 
     private $connection;
 
