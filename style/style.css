@@ -123,7 +123,7 @@ a:focus-visible {
 }
 
 h1.hide {
-    background-image: url("/resources/logo.svg");
+    background-image: url("../resources/logo.svg");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -419,15 +419,15 @@ padding: 1em;
 }
 
 /* =========================
-   LOGIN PAGE
+   SIGNUP PAGE
    ========================= */
 
 /*
     TODO: FARE SIGNUP FORM COME LOGIN FORM
 */
 
-#signup_form h1,
-#signup_form p {
+#signup_main h1,
+#signup_main p {
     text-align: center;
 }
 
