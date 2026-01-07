@@ -158,6 +158,7 @@ h1.hide {
 
 /*QUESTO SERVE PER INDICARE LA POSIZIONE CORRENTE*/
 #menu a[aria-current="page"] {
+    pointer-events: none; /* Disabilita i link */
     text-decoration-thickness: 0.2em;
     text-decoration-color: var(--accent-color);
 }
