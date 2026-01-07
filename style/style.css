@@ -25,9 +25,10 @@
     --social-bg-color: #333333;
 
 /*  COLORI DA USARE PER SCUDERIE/PILOTI */
+
+    --ferrari-color:#FF2800;
 /*
     --redbull-color:;
-    --ferrari-color:;
     --mclaren-color:;
     --mercedes-color:;
     --alpine-color:;
@@ -356,9 +357,22 @@ padding: 1em;
 /* =========================
    PILOTI PAGE
    ========================= */
-.piloti li{
+.piloti ul{
     list-style: none;
+    padding: 0;
+    margin: 0;
+
+    display: flex;          
+    flex-wrap: wrap;        
+    gap: 1em;              
+    justify-content: center;
 }
+
+.piloti li {
+    width: 30em;           
+    padding: 2em;
+}
+
 .piloti article{ 
     position: relative;       
     overflow: hidden;   
@@ -366,23 +380,54 @@ padding: 1em;
 }
 
 .piloti article img{
-    max-width: 30%;        
-    display: block;     
+    width: 30em;
+    height: 15em;
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.3s ease;  
+}
+
+.piloti article a:hover img {
+    transform: scale(1.05);    
+}
+
+.piloti article a:hover h3{
+    text-decoration: underline;
 }
 
 .piloti article h3 {
     position: absolute;          
     bottom: 0;                   
     left: 0;                     
-    max-width: 30%;                 
+    width: 30em;
+    height: 3em;                 
     margin: 0;                   
 
     color: var(--content-text-color);                
-    background-color: var(--content-bg-color); 
-    padding: 10px;               
+    background-color: var(--footer-border-color); 
+    padding: 2em;               
     text-align: center;          
-    box-sizing: border-box;      
+    box-sizing: border-box;
+    
+    z-index: 2;
 }
+
+/* =========================
+   GARE PAGE
+   ========================= */
+.gp {
+    display: flex;           /* affianca immagine e testo */
+    align-items: center;
+    text-decoration: none;   /* rimuove sottolineatura link */
+
+    padding: 2em;
+    align-items: stretch;
+}
+.gp img{
+    width: 10em;
+    height: 15em;
+}
+
 /* =========================
    PAGE SPECIFIC CSS
    ========================= */
