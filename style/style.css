@@ -357,6 +357,15 @@ padding: 1em;
 /* =========================
    PILOTI PAGE
    ========================= */
+#piloti h1{
+    font-size: 2.5em;
+    margin-bottom: 0.4em;
+    border-top: 0.07em solid var(--accent-color);
+    border-bottom: 0.07em solid var(--accent-color);
+    padding-top: 0.4em;
+    padding-bottom: 0.4em;
+}
+
 .piloti ul{
     list-style: none;
     padding: 0;
@@ -376,7 +385,7 @@ padding: 1em;
 .piloti article{ 
     position: relative;       
     overflow: hidden;   
-    background-color: purple;
+    border: 0.5em solid var(--navbar-bg-color);
 }
 
 .piloti article img{
@@ -415,20 +424,120 @@ padding: 1em;
 /* =========================
    GARE PAGE
    ========================= */
-.gp {
-    display: flex;           /* affianca immagine e testo */
-    align-items: center;
-    text-decoration: none;   /* rimuove sottolineatura link */
 
-    padding: 2em;
-    align-items: stretch;
+#gare h1{
+    font-size: 2.5em;
+    margin-bottom: 0.4em;
+    border-top: 0.07em solid var(--accent-color);
+    border-bottom: 0.07em solid var(--accent-color);
+    padding-top: 0.4em;
+    padding-bottom: 0.4em;
 }
+
+.gp {
+    display: flex;           
+    align-items: center;
+    text-decoration: none;   
+
+    padding: 1em;
+    align-items: stretch;
+    gap: 2em;
+    border: 0.5em solid var(--social-bg-color);
+    margin: 1em auto;
+    width: 50em;
+}
+.gp dt, dd {
+    display: inline-block;
+    margin: 0;
+}
+
+.gp dt {
+    font-weight: bold;
+    width: 10em;          
+}
+
+.gp dd {
+    margin: 0;
+}
+
 .gp img{
-    width: 10em;
-    height: 15em;
+    width: 20em;
+    height: 25em;
+}
+/* =========================
+   ULTIME NOTIZIE PAGE
+   ========================= */
+
+#ultime_notizie h1{
+    font-size: 2.5em;
+    margin-bottom: 0.4em;
+    border-top: 0.07em solid var(--accent-color);
+    border-bottom: 0.07em solid var(--accent-color);
+    padding-top: 0.4em;
+    padding-bottom: 0.4em;
+}
+
+.notizia {
+    display: flex;           
+    align-items: center;
+    text-decoration: none;   
+
+    padding: 1em;
+    align-items: stretch;
+    gap: 2em;
+    border: 0.5em solid var(--social-bg-color);
+    margin: 1em auto;
+    width: 50em;
+}
+.notizia img{
+    width: 17em;
+    height: 25em;
 }
 
 /* =========================
+   CIRCUITI PAGE
+   ========================= */
+
+#circuiti h1{
+    font-size: 2.5em;
+    margin-bottom: 0.4em;
+    border-top: 0.07em solid var(--accent-color);
+    border-bottom: 0.07em solid var(--accent-color);
+    padding-top: 0.4em;
+    padding-bottom: 0.4em;
+}
+
+.circuito img{
+    width: 50em;
+    height: 30em;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.circuito article h3 {
+    position: absolute;          
+    bottom: 0;                   
+    left: 0;                     
+    width: 30em;
+    height: 3em;                 
+    margin: 0;                   
+
+    color: var(--content-text-color);                
+    background-color: var(--footer-border-color); 
+    padding: 2em;               
+    text-align: center;          
+    box-sizing: border-box;
+    
+    z-index: 2;
+}
+
+.circuito article{ 
+    position: relative;       
+    overflow: hidden;   
+    border: 0.5em solid var(--navbar-bg-color);
+}
+
+   /* =========================
    PAGE SPECIFIC CSS
    ========================= */
 
