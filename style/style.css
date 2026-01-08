@@ -51,6 +51,10 @@
 
 html {
     scroll-behavior: smooth;
+    background-image: url(../resources/macchina.jpg);
+    background-repeat:repeat;
+    background-position:left top;
+    background-size: 5%;
 }
 
 body {
@@ -58,6 +62,8 @@ body {
     color: var(--content-text-color);
     font-size: 100%;
     line-height: 1.5em;
+    margin-left: 10em;
+    margin-right: 10em;
 }
 
 header {
@@ -68,6 +74,15 @@ h1,
 h2,
 h3 {
     text-align: center;
+}
+
+main h1{
+    font-size: 2.5em;
+    margin-bottom: 0.4em;
+    border-top: 0.07em solid var(--accent-color);
+    border-bottom: 0.07em solid var(--accent-color);
+    padding-top: 0.4em;
+    padding-bottom: 0.4em;
 }
 
 abbr {
@@ -296,22 +311,9 @@ h1.hide {
 /* =========================
    INDEX PAGE
    ========================= */
-/*
-#content {
-padding: 20px;
-}
-*/
-#content p{
-padding: 1em;
-}
 
-#content h1 {
-    font-size: 2.5em;
-    margin-bottom: 0.4em;
-    border-top: 0.07em solid var(--accent-color);
-    border-bottom: 0.07em solid var(--accent-color);
-    padding-top: 0.4em;
-    padding-bottom: 0.4em;
+#content p{
+padding: 1em 2.5em;
 }
 
 #content h2 {
@@ -326,6 +328,8 @@ padding: 1em;
     text-align: left;
     border-left: 0.2em solid var(--accent-color);
     padding-left: 0.2em;
+    padding-right: 0.2em;
+    border-right: 0.2em;
 
 }
 
@@ -337,34 +341,28 @@ padding: 1em;
 }
 
 #content img {
-    max-width: 30em;
+    width: 10em;
+    height: 10em;
     display: block;
     margin: 1em;
     border-radius: 1em;
 }
 .sponsors{
+    max-width: 80em;
     list-style: none;
     display: flex;
     flex-wrap: wrap;
-    /*gap: 1em;*/
+    align-content: stretch;
 }
 .sponsors img{
-    flex: 0 1 20em;
-    height: 20em;
-    /*object-fit: cover;*/
+  max-width: 100%;
+  height: auto;
+  flex-shrink: 0;
 }
 
 /* =========================
    PILOTI PAGE
    ========================= */
-#piloti h1{
-    font-size: 2.5em;
-    margin-bottom: 0.4em;
-    border-top: 0.07em solid var(--accent-color);
-    border-bottom: 0.07em solid var(--accent-color);
-    padding-top: 0.4em;
-    padding-bottom: 0.4em;
-}
 
 .piloti ul{
     list-style: none;
@@ -424,15 +422,6 @@ padding: 1em;
 /* =========================
    GARE PAGE
    ========================= */
-
-#gare h1{
-    font-size: 2.5em;
-    margin-bottom: 0.4em;
-    border-top: 0.07em solid var(--accent-color);
-    border-bottom: 0.07em solid var(--accent-color);
-    padding-top: 0.4em;
-    padding-bottom: 0.4em;
-}
 
 .gp {
     display: flex;           
@@ -498,15 +487,6 @@ padding: 1em;
    CIRCUITI PAGE
    ========================= */
 
-#circuiti h1{
-    font-size: 2.5em;
-    margin-bottom: 0.4em;
-    border-top: 0.07em solid var(--accent-color);
-    border-bottom: 0.07em solid var(--accent-color);
-    padding-top: 0.4em;
-    padding-bottom: 0.4em;
-}
-
 .circuito img{
     width: 50em;
     height: 30em;
@@ -536,6 +516,31 @@ padding: 1em;
     overflow: hidden;   
     border: 0.5em solid var(--navbar-bg-color);
 }
+
+/* =========================
+   CLASSIFICA PAGE
+   ========================= */
+.classifica{
+    margin: 0 auto;
+    line-height: 2em;
+    width: 100%;
+    max-width: 100%;
+    border-collapse: collapse;
+    padding: 1em;
+}
+
+.classifica td, th {
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 0.2em;
+}
+
+.classifica tr{
+    padding: 1em;
+    border: 0.2em solid var(--link-color);
+    background:var(--footer-border-color)
+}
+
 
    /* =========================
    PAGE SPECIFIC CSS
