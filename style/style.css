@@ -255,6 +255,12 @@ h1.hide {
     color: var(--footer-text-color);
 }
 
+.footer-col ul li a[aria-current="page"] {
+    pointer-events: none; /* Disabilita i link */
+    text-decoration-thickness: 0.15em;
+    /*TODO: DOVREMMO SEGNALARE NEL FOOTER SE LA PAGINA CORRENTE È QUELLA VISUALIZZATA?*/
+}
+
 .footer-col ul li a:visited {
     color: var(--link-visited-color);
 }
