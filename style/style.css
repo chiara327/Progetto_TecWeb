@@ -62,10 +62,9 @@ body {
     color: var(--content-text-color);
     font-size: 100%;
     line-height: 1.5em;
-    margin-left: 10em;
-    margin-right: 10em;
+    max-width: 1200px;
+    margin: 0 auto;
 }
-
 header {
     padding: 0;
 }
@@ -394,7 +393,7 @@ padding: 1em 2.5em;
 
 .piloti article img{
     width: 30em;
-    height: 15em;
+    height: 20em;
     object-fit: cover;
     cursor: pointer;
     transition: transform 0.3s ease;  
@@ -441,14 +440,16 @@ padding: 1em 2.5em;
     margin: 1em auto;
     width: 50em;
 }
+
 .gp dt, dd {
-    display: inline-block;
+    display: block;
     margin: 0;
 }
 
 .gp dt {
     font-weight: bold;
-    width: 10em;          
+    width: 10em;
+    float: left;        
 }
 
 .gp dd {
@@ -529,22 +530,27 @@ padding: 1em 2.5em;
 .classifica{
     margin: 0 auto;
     line-height: 2em;
-    width: 100%;
-    max-width: 100%;
+    width: calc(100% - 4em);
+    margin: 2em;
     border-collapse: collapse;
-    padding: 1em;
+    margin: 2em;
 }
 
 .classifica td, th {
   text-align: center;
   vertical-align: middle;
   border-radius: 0.2em;
+  border: 0.2em solid var(--link-color);
 }
 
 .classifica tr{
     padding: 1em;
-    border: 0.2em solid var(--link-color);
-    background:var(--footer-border-color)
+    background:var(--footer-border-color);
+}
+
+.classifica th{
+    font-size: larger ;
+    background:var(--navbar-bg-color);
 }
 
 
