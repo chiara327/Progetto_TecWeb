@@ -24,10 +24,10 @@
     --footer-border-color: #333333;
     --social-bg-color: #333333;
 
-/*  COLORI DA USARE PER SCUDERIE/PILOTI */
+    /*  COLORI DA USARE PER SCUDERIE/PILOTI */
 
-    --ferrari-color:#FF2800;
-/*
+    --ferrari-color: #FF2800;
+    /*
     --redbull-color:;
     --mclaren-color:;
     --mercedes-color:;
@@ -52,8 +52,8 @@
 html {
     scroll-behavior: smooth;
     background-image: url(../resources/macchina.jpg);
-    background-repeat:repeat;
-    background-position:left top;
+    background-repeat: repeat;
+    background-position: left top;
     background-size: 5%;
 }
 
@@ -65,6 +65,7 @@ body {
     max-width: 1200px;
     margin: 0 auto;
 }
+
 header {
     padding: 0;
 }
@@ -75,7 +76,7 @@ h3 {
     text-align: center;
 }
 
-main h1{
+main h1 {
     font-size: 2.5em;
     margin-bottom: 0.4em;
     border-top: 0.07em solid var(--accent-color);
@@ -173,7 +174,8 @@ h1.hide {
 
 /*QUESTO SERVE PER INDICARE LA POSIZIONE CORRENTE*/
 #menu a[aria-current="page"] {
-    pointer-events: none; /* Disabilita i link */
+    pointer-events: none;
+    /* Disabilita i link */
     text-decoration-thickness: 0.2em;
     text-decoration-color: var(--accent-color);
 }
@@ -255,7 +257,8 @@ h1.hide {
 }
 
 .footer-col ul li a[aria-current="page"] {
-    pointer-events: none; /* Disabilita i link */
+    pointer-events: none;
+    /* Disabilita i link */
     text-decoration-thickness: 0.15em;
     /*TODO: DOVREMMO SEGNALARE NEL FOOTER SE LA PAGINA CORRENTE È QUELLA VISUALIZZATA?*/
 }
@@ -314,11 +317,15 @@ h1.hide {
 }
 
 /* =========================
+   PAGE SPECIFIC CSS
+   ========================= */
+
+/* =========================
    INDEX PAGE
    ========================= */
 
-#content p{
-padding: 1em 2.5em;
+#content p {
+    padding: 1em 2.5em;
 }
 
 #content h2 {
@@ -329,7 +336,7 @@ padding: 1em 2.5em;
     margin-top: 0.4em;
 }
 
-#content h3{
+#content h3 {
     text-align: left;
     border-left: 0.2em solid var(--accent-color);
     padding-left: 0.2em;
@@ -352,75 +359,77 @@ padding: 1em 2.5em;
     margin: 1em;
     border-radius: 1em;
 }
-.sponsors{
+
+.sponsors {
     max-width: 80em;
     list-style: none;
     display: flex;
     flex-wrap: wrap;
     align-content: stretch;
 }
-.sponsors img{
-  max-width: 100%;
-  height: auto;
-  flex-shrink: 0;
+
+.sponsors img {
+    max-width: 100%;
+    height: auto;
+    flex-shrink: 0;
 }
 
 /* =========================
    PILOTI PAGE
    ========================= */
 
-.piloti ul{
+.piloti ul {
     list-style: none;
     padding: 0;
     margin: 0;
 
-    display: flex;          
-    flex-wrap: wrap;        
-    gap: 1em;              
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
     justify-content: center;
 }
 
 .piloti li {
-    width: 30em;           
+    width: 30em;
     padding: 2em;
 }
 
-.piloti article{ 
-    position: relative;       
-    overflow: hidden;   
+.piloti article {
+    position: relative;
+    overflow: hidden;
     border: 0.5em solid var(--navbar-bg-color);
 }
 
-.piloti article img{
+.piloti article img {
     width: 30em;
     height: 20em;
     object-fit: cover;
     cursor: pointer;
-    transition: transform 0.3s ease;  
+    transition: transform 0.3s ease;
 }
 
 .piloti article a:hover img {
-    transform: scale(1.05);    
+    transform: scale(1.05);
 }
 
-.piloti article a:hover h3{
+.piloti article a:hover h3 {
     text-decoration: underline;
 }
 
 .piloti article h3 {
-    position: absolute;          
-    bottom: 0;                   
-    left: 0;                     
+    position: absolute;
+    bottom: 0;
+    left: 0;
     width: 30em;
-    height: 3em;                 
-    margin: 0;                   
+    height: 3em;
+    margin: 0;
 
-    color: var(--content-text-color);                
-    background-color: var(--footer-border-color); 
-    padding: 2em;               
-    text-align: center;          
+    color: var(--content-text-color);
+    background-color: var(--footer-border-color);
+    padding: 2em;
+    text-align: center;
     box-sizing: border-box;
-    
+
     z-index: 2;
 }
 
@@ -429,9 +438,9 @@ padding: 1em 2.5em;
    ========================= */
 
 .gp {
-    display: flex;           
+    display: flex;
     align-items: center;
-    text-decoration: none;   
+    text-decoration: none;
 
     padding: 1em;
     align-items: stretch;
@@ -441,7 +450,8 @@ padding: 1em 2.5em;
     width: 50em;
 }
 
-.gp dt, dd {
+.gp dt,
+dd {
     display: block;
     margin: 0;
 }
@@ -449,22 +459,23 @@ padding: 1em 2.5em;
 .gp dt {
     font-weight: bold;
     width: 10em;
-    float: left;        
+    float: left;
 }
 
 .gp dd {
     margin: 0;
 }
 
-.gp img{
+.gp img {
     width: 20em;
     height: 25em;
 }
+
 /* =========================
    ULTIME NOTIZIE PAGE
    ========================= */
 
-#ultime_notizie h1{
+#ultime_notizie h1 {
     font-size: 2.5em;
     margin-bottom: 0.4em;
     border-top: 0.07em solid var(--accent-color);
@@ -474,9 +485,9 @@ padding: 1em 2.5em;
 }
 
 .notizia {
-    display: flex;           
+    display: flex;
     align-items: center;
-    text-decoration: none;   
+    text-decoration: none;
 
     padding: 1em;
     align-items: stretch;
@@ -485,7 +496,8 @@ padding: 1em 2.5em;
     margin: 1em auto;
     width: 50em;
 }
-.notizia img{
+
+.notizia img {
     width: 17em;
     height: 25em;
 }
@@ -494,7 +506,7 @@ padding: 1em 2.5em;
    CIRCUITI PAGE
    ========================= */
 
-.circuito img{
+.circuito img {
     width: 50em;
     height: 30em;
     object-fit: cover;
@@ -502,32 +514,33 @@ padding: 1em 2.5em;
 }
 
 .circuito article h3 {
-    position: absolute;          
-    bottom: 0;                   
-    left: 0;                     
+    position: absolute;
+    bottom: 0;
+    left: 0;
     width: 30em;
-    height: 3em;                 
-    margin: 0;                   
+    height: 3em;
+    margin: 0;
 
-    color: var(--content-text-color);                
-    background-color: var(--footer-border-color); 
-    padding: 2em;               
-    text-align: center;          
+    color: var(--content-text-color);
+    background-color: var(--footer-border-color);
+    padding: 2em;
+    text-align: center;
     box-sizing: border-box;
-    
+
     z-index: 2;
 }
 
-.circuito article{ 
-    position: relative;       
-    overflow: hidden;   
+.circuito article {
+    position: relative;
+    overflow: hidden;
     border: 0.5em solid var(--navbar-bg-color);
 }
 
 /* =========================
    CLASSIFICA PAGE
    ========================= */
-.classifica{
+
+.classifica {
     margin: 0 auto;
     line-height: 2em;
     width: calc(100% - 4em);
@@ -536,27 +549,23 @@ padding: 1em 2.5em;
     margin: 2em;
 }
 
-.classifica td, th {
-  text-align: center;
-  vertical-align: middle;
-  border-radius: 0.2em;
-  border: 0.2em solid var(--link-color);
+.classifica td,
+th {
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 0.2em;
+    border: 0.2em solid var(--link-color);
 }
 
-.classifica tr{
+.classifica tr {
     padding: 1em;
-    background:var(--footer-border-color);
+    background: var(--footer-border-color);
 }
 
-.classifica th{
-    font-size: larger ;
-    background:var(--navbar-bg-color);
+.classifica th {
+    font-size: larger;
+    background: var(--navbar-bg-color);
 }
-
-
-   /* =========================
-   PAGE SPECIFIC CSS
-   ========================= */
 
 /* =========================
    LOGIN PAGE
@@ -572,11 +581,11 @@ padding: 1em 2.5em;
     border-radius: 0.5em;
     padding: 1em;
 
-    max-width: 28em;     
-    margin: 2em auto;    
+    max-width: 28em;
+    margin: 2em auto;
 }
 
-#login_form legend{
+#login_form legend {
     width: 100%;
     text-align: center;
     margin-bottom: 1em;
@@ -608,11 +617,11 @@ padding: 1em 2.5em;
     border-radius: 0.5em;
     padding: 1em;
 
-    max-width: 28em;     
-    margin: 2em auto;    
+    max-width: 28em;
+    margin: 2em auto;
 }
 
-#signup_form legend{
+#signup_form legend {
     width: 100%;
     text-align: center;
     margin-bottom: 1em;
