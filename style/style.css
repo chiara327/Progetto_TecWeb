@@ -757,3 +757,146 @@ th {
 #login_form .switch-form a:hover {
     color: var(--link-bg-color);
 }
+
+/* =========================
+   AREA UTENTE (PROFILO)
+   ========================= */
+
+/* Layout generale delle sezioni nell'area utente */
+.area_utente_info, 
+.area_utente_modifica, 
+.area_utente_commenti, 
+.area_utente_logout {
+    max-width: 50em; /* Coerente con .gp e .notizia */
+    margin: 2em auto;
+    padding: 1.5em;
+    background-color: var(--navbar-bg-color); /* Leggermente più scuro dello sfondo */
+    border: 0.15em solid var(--footer-border-color);
+    border-radius: 0.5em;
+}
+
+/* Titoli delle sezioni */
+.area_utente_info h2, 
+.area_utente_modifica h2, 
+.area_utente_commenti h2, 
+.area_utente_logout h2 {
+    text-align: left;
+    color: var(--accent-color);
+    border-bottom: 0.1em solid var(--accent-color);
+    padding-bottom: 0.3em;
+    margin-bottom: 1em;
+    font-size: 1.5em;
+}
+
+/* --- Info Personali (dl) --- */
+.area_utente_info dl {
+    display: grid;
+    grid-template-columns: 12em 1fr;
+    gap: 0.8em;
+}
+
+.area_utente_info dt {
+    font-weight: bold;
+    color: var(--accent-color);
+}
+
+.area_utente_info dd {
+    margin: 0;
+    color: var(--content-text-color);
+}
+
+/* --- Form di Modifica --- */
+/* Riutilizziamo la logica dei tuoi login_form per coerenza */
+#modifica-info-form fieldset {
+    border: none;
+    padding: 0;
+}
+
+#modifica-info-form legend {
+    display: none; /* Titolo già presente nell'H2 */
+}
+
+#modifica-info-form label {
+    display: block;
+    margin-bottom: 0.4em;
+    font-weight: bold;
+}
+
+#modifica-info-form input {
+    width: 100%;
+    padding: 0.6em;
+    margin-bottom: 1.2em;
+    background-color: var(--content-bg-color);
+    border: 0.1em solid var(--footer-border-color);
+    border-radius: 0.3em;
+    color: var(--content-text-color);
+    box-sizing: border-box;
+}
+
+#modifica-info-form input:focus {
+    border-color: var(--accent-color);
+    outline: none;
+    box-shadow: 0 0 0 0.1em var(--accent-color);
+}
+
+/* --- Commenti --- */
+.area_utente_commenti ul {
+    list-style: none;
+    padding: 0;
+}
+
+.area_utente_commenti li {
+    padding: 1em;
+    border-left: 0.3em solid var(--accent-color);
+    background-color: var(--content-bg-color);
+    margin-bottom: 1em;
+}
+
+.area_utente_commenti blockquote {
+    margin: 0;
+}
+
+.area_utente_commenti q {
+    font-style: italic;
+}
+
+.area_utente_commenti footer {
+    margin-top: 0.5em;
+    font-size: 0.85em;
+    color: var(--footer-text-color);
+}
+
+/* --- Bottoni (Salva e Logout) --- */
+.area_utente_modifica button,
+.area_utente_logout button {
+    display: inline-block;
+    padding: 0.8em 2em;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 0.3em;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+/* Bottone Salva */
+.btn-save {
+    background-color: transparent;
+    color: var(--accent-color);
+    border: 0.15em solid var(--accent-color);
+}
+
+.btn-save:hover {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+/* Bottone Logout */
+.btn-logout {
+    background-color: var(--footer-border-color);
+    color: white;
+    border: 0.15em solid transparent;
+}
+
+.btn-logout:hover {
+    background-color: #b91c1c; /* Un rosso più scuro/pericolo */
+}

@@ -3,7 +3,7 @@
 <html lang="it">
 
 <head>
-    <title>Classifica | F1 Fan Club</title>
+    <title>Area Utente | F1 Fan Club</title>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,11 +36,71 @@
         </nav>
     </header>
     <nav id="breadcrumb">
-        <p>Ti trovi in: <a href="../index.html"><span lang="en">Home</span></a>->Classifica</p>
+        <p>Ti trovi in: <span lang="en">Home</span>->Area Utente</p>
+        <!--TODO: TOGLIERE IL LINK DELLA HOME DAL BREADCRUMB-->
     </nav>
 
     <main>
-        <h1>TEST TEST TEST</h1>
+        <h1>Ciao, <span class="highlight">[nome]</span></h1>
+        
+        <section aria-labelledby="titolo-info" class="area_utente_info">
+            <h2 id="titolo-info">Informazioni Personali</h2>
+            <dl>
+                <dt>Username:</dt>
+                <dd>[username]</dd>
+                
+                <dt>Nome Completo:</dt>
+                <dd>[nome] [cognome]</dd>
+                
+                <dt>Data di nascita:</dt>
+                <dd><time datetime="[data-formato-iso]">[data di nascita]</time></dd>
+            </dl>
+        </section>
+
+        <section aria-labelledby="titolo-modifica" class="area_utente_modifica">
+            <h2 id="titolo-modifica">Modifica Informazioni Personali</h2>
+            <form action="/update-profile" method="POST" id="modifica-info-form">
+                <fieldset>
+                    <legend>Dati Anagrafici</legend>
+                    
+                    <div class="form-group">
+                        <label for="nome">Nome:</label>
+                        <input type="text" id="nome" name="nome" value="[nome]" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cognome">Cognome:</label>
+                        <input type="text" id="cognome" name="cognome" value="[cognome]" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="data-nascita">Data di Nascita:</label>
+                        <input type="date" id="data-nascita" name="data-nascita" value="[data di nascita]">
+                    </div>
+
+                    <button type="submit" class="btn-save">Salva Modifiche</button>
+                </fieldset>
+            </form>
+        </section>
+
+        <section aria-labelledby="titolo-commenti" class="area_utente_commenti">
+            <h2 id="titolo-commenti">I tuoi ultimi commenti</h2>
+            <ul class="comment-list">
+                <li>
+                    <blockquote cite="#">
+                        <p><q>[commento 1]</q></p>
+                        <footer>Postato il <time datetime="2023-10-27">[data 1]</time></footer>
+                    </blockquote>
+                </li>
+                </ul>
+        </section>
+
+        <section aria-labelledby="titolo-logout" class="area_utente_logout">
+            <h2 id="titolo-logout">Gestione Account</h2>
+            <form action="/logout" method="POST" id="logout-form">
+                <button type="submit" class="btn-logout">Esci dal tuo account</button>
+            </form>
+        </section>
     </main>
 
     <footer class="f1-footer">
