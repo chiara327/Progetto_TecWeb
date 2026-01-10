@@ -74,6 +74,7 @@ class DBConnection {
         // Check errore strano (vedi Luzzauto)
 
         $stmt->bind_param("sssss", $username, $password, $nome, $cognome, $dataNascita);
+        // TODO: Check return value di execute in un if
         $result = $stmt->execute();
 
         if ($result) {
@@ -83,6 +84,24 @@ class DBConnection {
         }
     }
 
+    public function login_user($username, $password) {
+        $query = "SELECT username, password FROM Utene WHERE username = ?";
 
+        $stmt = $this->connection->prepare($query);
+
+        $stmt->bind_param("s", $username);
+
+        // TODO: Check return value di execute in un if
+        $result = $stmt->execute();
+        $rows = $result->fetch_all(MYSQLI_ASSOC);
+        
+        if (count($rows) == 0) {
+            return -1;
+        } else {
+            // TODO: Fare hash password nella registrazione e qui fare controllo hash
+            return 1;
+        }
+
+    }
 }
 ?>
