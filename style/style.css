@@ -51,10 +51,6 @@
 
 html {
     scroll-behavior: smooth;
-    background-image: url(../resources/macchina.jpg);
-    background-repeat: repeat;
-    background-position: left top;
-    background-size: 5%;
 }
 
 body {
@@ -722,25 +718,27 @@ th {
 /* Pulsante di invio */
 #login_form input[type="submit"],
 #signup_form input[type="submit"] {
-    width: 100%;
-    padding: 0.8em;
-    font-size: 1em;
-    font-weight: bold;
-    color: var(--content-text-color);
-    background-color: var(--accent-color);
-    border: none;
-    border-radius: 0.3em;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  display: block;
+  width: 100%;
+  padding: 0.8em;
+  font-size: 1em;
+  font-weight: bold;
+  background-color: transparent;
+  color: var(--accent-color);
+  border: 0.15em solid var(--accent-color);
+  border-radius: 0.3em;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
-
+ 
 /* Hover/Focus sul pulsante */
 #login_form input[type="submit"]:hover,
 #login_form input[type="submit"]:focus,
 #signup_form input[type="submit"]:hover,
 #signup_form input[type="submit"]:focus {
-    background-color: var(--link-bg-color);
-    outline: none;
+  background-color: var(--accent-color);
+  color: var(--content-text-color);
+  outline: none;
 }
 
 /* Per i link “Hai già un account?” o “Torna al login” */
