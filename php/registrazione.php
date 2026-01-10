@@ -43,7 +43,7 @@ function check_invalid_input($nome, $cognome, $data, $username, $password) {
 	// TODO: COME VOGLIAMO MOSTRARE L'ERRORE IN BASE A COSA MANCA NELLA PASSWORD? DIVERSI <P>? DIVERSI CONTROLLI CON APPEND DI DIVERSI <P>?
 	// La password deve avere almeno 8 caratteri, contenere una lettera minuscola, una maiuscola, un numero e un carattere speciale
 	if (!preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/", $_POST["password"])) {
-		$form_errors = $form_errors . "<p>La password deve essere lunga almeno 8 caratteri.</p>";
+		$form_errors = $form_errors . "<p>La password deve essere lunga almeno 8 caratteri e contenere: 1 lettera minuscola, 1 lettera maiuscola, 1 numero e 1 carattere speciale.</p>";
 	}
 }
 
@@ -87,7 +87,7 @@ if (isset($_POST["nome"]) && isset($_POST["cognome"]) && isset($_POST["data"]) &
 				echo str_replace("[err]", $form_errors, $html_page);
 				exit();
 			} else {
-				// Redirect
+				header("location: ../pages/area_utente.html");
 			}
 		} catch (Exception) {
 			header("location: 500.html");
