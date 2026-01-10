@@ -568,69 +568,195 @@ th {
 }
 
 /* =========================
-   LOGIN PAGE
+   LOGIN & REGISTRAZIONE PAGES
    ========================= */
 
+#login_form,
+#signup_form {
+    background-color: var(--content-bg-color);
+    border: 0.15em solid var(--content-text-color);
+    border-radius: 0.5em;
+    padding: 2em;
+    max-width: 28em;
+    margin: 2em auto;
+    box-sizing: border-box;
+}
+
+#signup_main h1,
+#signup_main p,
 #login_main h1,
 #login_main p {
     text-align: center;
 }
 
-#login_form {
-    border: 0.15em solid var(--content-text-color);
-    border-radius: 0.5em;
-    padding: 1em;
-
-    max-width: 28em;
-    margin: 2em auto;
-}
-
-#login_form legend {
-    width: 100%;
-    text-align: center;
-    margin-bottom: 1em;
-}
-
-#login_form ul {
-    list-style-type: none;
-}
-
-#login_form li {
-    margin-bottom: 1em;
-}
-
-/* =========================
-   SIGNUP PAGE
-   ========================= */
-
-/*
-    TODO: FARE SIGNUP FORM COME LOGIN FORM
-*/
-
-#signup_main h1,
-#signup_main p {
-    text-align: center;
-}
-
-#signup_form {
-    border: 0.15em solid var(--content-text-color);
-    border-radius: 0.5em;
-    padding: 1em;
-
-    max-width: 28em;
-    margin: 2em auto;
-}
-
+#login_form legend,
 #signup_form legend {
-    width: 100%;
-    text-align: center;
-    margin-bottom: 1em;
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: var(--content-text-color);
+  margin-bottom: 1em;
 }
 
+
+/* Rimuoviamo eventuali marker della lista e mettiamo tutto in verticale */
+#login_form ul,
 #signup_form ul {
-    list-style-type: none;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
+/* Ogni riga (label + input/checkbox) in colonna */
+#login_form li,
 #signup_form li {
-    margin-bottom: 1em;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5em;
+}
+
+/* Label ben visibili */
+#login_form label,
+#signup_form label {
+    font-weight: bold;
+    margin-bottom: 0.5em;
+    color: var(--content-text-color);
+}
+
+/* Campi di testo, email e password */
+#login_form input[type="text"],
+#login_form input[type="email"],
+#login_form input[type="password"],
+#signup_form input[type="text"],
+#signup_form input[type="email"],
+#signup_form input[type="password"] {
+    padding: 0.6em 0.8em;
+    font-size: 1em;
+    border: 0.1em solid var(--footer-border-color);
+    border-radius: 0.3em;
+    background-color: var(--content-bg-color);
+    color: var(--content-text-color);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#login_form input[type="date"],
+#signup_form input[type="date"] {
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+    appearance: none;
+    padding: 0.6em 1.5em 0.6em 0.8em;
+    /* spazio a destra per l’icona */
+    font-size: 1em;
+    border: 0.1em solid var(--footer-border-color);
+    border-radius: 0.3em;
+    background-color: var(--content-bg-color);
+    color: var(--content-text-color);
+    background-image: none;
+    /* rimuoviamo qualunque iconcina di default */
+    background-repeat: no-repeat;
+    background-position: right 0.8em center;
+    cursor: pointer;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Focus ring coerente */
+#login_form input[type="date"]:focus,
+#signup_form input[type="date"]:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 0.15em var(--accent-color);
+}
+
+/* Nascondiamo spin/clear buttons in WebKit */
+#login_form input[type="date"]::-webkit-clear-button,
+#login_form input[type="date"]::-webkit-inner-spin-button,
+#signup_form input[type="date"]::-webkit-clear-button,
+#signup_form input[type="date"]::-webkit-inner-spin-button {
+    display: none;
+}
+
+/* Stile per il “picker” calendar icon in WebKit */
+#login_form input[type="date"]::-webkit-calendar-picker-indicator,
+#signup_form input[type="date"]::-webkit-calendar-picker-indicator {
+    position: absolute;
+    right: 0.8em;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1.2em;
+    height: 1.2em;
+    right: 0.3em;
+    color: var(--accent-color);
+    /* imposta il colore dell’icona */
+    filter: invert(1) sepia(1) saturate(5) hue-rotate(330deg);
+    /* elimina il background default */
+    background: none;
+    cursor: pointer;
+}
+
+/* Focus sui campi */
+#login_form input:focus,
+#signup_form input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 0.1em var(--accent-color);
+}
+
+/* Checkbox + label orizzontale */
+#login_form input[type="checkbox"],
+#signup_form input[type="checkbox"] {
+    margin-right: 0.5em;
+}
+
+#login_form li.checkbox-group,
+#signup_form li.checkbox-group {
+    flex-direction: row;
+    align-items: center;
+}
+
+/* Pulsante di invio */
+#login_form input[type="submit"],
+#signup_form input[type="submit"] {
+    width: 100%;
+    padding: 0.8em;
+    font-size: 1em;
+    font-weight: bold;
+    color: #FFFFFF;
+    background-color: var(--accent-color);
+    border: none;
+    border-radius: 0.3em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover/Focus sul pulsante */
+#login_form input[type="submit"]:hover,
+#login_form input[type="submit"]:focus,
+#signup_form input[type="submit"]:hover,
+#signup_form input[type="submit"]:focus {
+    background-color: var(--link-bg-color);
+    outline: none;
+}
+
+/* Per i link “Hai già un account?” o “Torna al login” */
+#signup_form .switch-form,
+#login_form .switch-form {
+    text-align: center;
+    margin-top: 1em;
+}
+
+#signup_form .switch-form a,
+#login_form .switch-form a {
+    color: var(--link-color);
+    text-decoration: underline;
+}
+
+#signup_form .switch-form a:hover,
+#login_form .switch-form a:hover {
+    color: var(--link-bg-color);
 }
