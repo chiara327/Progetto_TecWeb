@@ -157,5 +157,35 @@ class DBConnection {
         // Ritorna true se l'operazione è andata a buon fine
         return true; 
     }
+
+    public function get_scuderia($nome) {
+        $query = "SELECT * FROM Scuderie WHERE nome = ?";
+
+        $stmt = $this->connection->prepare($query);
+        $stmt->bind_param("s", $nome);
+
+        if (!$stmt->execute()) {
+            die("Errore durante l'esecuzione: " . $stmt->error);
+        }
+
+        $result = $stmt->get_result();
+
+        return $result->fetch_assoc();
+    }
+
+    public function get_pilota($id) {
+        $query = "SELECT * FROM Piloti WHERE id = ?";
+
+        $stmt = $this->connection->prepare($query);
+        $stmt->bind_param("i", $id);
+
+        if (!$stmt->execute()) {
+            die("Errore durante l'esecuzione: " . $stmt->error);
+        }
+
+        $result = $stmt->get_result();
+        
+        return $result->fetch_assoc();
+    }
 }
 ?>
