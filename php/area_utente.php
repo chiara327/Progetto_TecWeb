@@ -15,7 +15,7 @@ $username_sessione = $_SESSION["user"];
 $status_message = ""; 
 
 try {
-    $db_connection = new DBConnection();
+    
 
     // --- GESTIONE LOGOUT ---
     if (isset($_POST["logout"])) {
@@ -39,16 +39,21 @@ try {
             $status_message = "<p class='error'>La data di nascita non può essere nel futuro.</p>";
         } else {
             // Chiamata al metodo della classe DBConnection
+            $db_connection = new DBConnection();
             $db_connection->update_user_profile($username_sessione, $nome, $cognome, $data_nascita);
+            $db_connection->close_connection();
             $status_message = "<p class='success'>Informazioni aggiornate con successo!</p>";
         }
     }
 
     // --- RECUPERO DATI UTENTE ---
+    $db_connection = new DBConnection();
     $user_data = $db_connection->get_user_info($username_sessione);
 
     // --- GENERAZIONE DINAMICA COMMENTI ---
     $commenti_data = $db_connection->get_user_comments($username_sessione);
+    $db_connection->close_connection();
+
     $commenti_html = "";
 
     if (empty($commenti_data)) {
@@ -91,7 +96,6 @@ try {
     
     $html_page = str_replace("[lista-commenti]", $commenti_html, $html_page);
 
-    $db_connection->close_connection();
     echo $html_page;
 
 } catch (Exception $e) {

@@ -1,0 +1,172 @@
+<!DOCTYPE html> 
+
+<html lang="it">
+
+<head>
+    <title>Area Amministratore | F1 Fan Club</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="formula 1, gare, circuiti, classifica, mondiali, qualifiche, piloti, team">
+    <meta name="description" content="Pagina dedicata alla home page di formula 1">
+    <!-- DA METTERE NEL CONTENT : Pagina dedicata alla formula 1 con informazioni riguardanti le qualifiche e la classifica dei piloti e dei team alle varie gare nei circuiti dei mondiali-->
+    <!-- Consigliato partire a riempire le keyword (riga sotto) e poi mettere nel content della description (riga sopra) -->
+    <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="mini.css" media="screen and (max-width:800px)"><!--per mobile-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <h1 class="hide">F1 <span lang="en">FAN CLUB</span></h1>
+            <ul id="menu">
+                <li><a href="../index.html"><span lang="en">Home</span></a></li>
+                <li><a href="../pages/piloti.html">Piloti</a></li>
+                <li><a href="../pages/scuderie.html">Scuderie</a></li>
+                <li><a href="../pages/classifica.html">Classifica</a></li>
+                <li><a href="gare.html">Gare</a></li>
+                <li><a href="circuiti.html">Circuiti</a></li>
+                <!--TODO: Vedere se tenere il link a login o spostarlo in area utente-->
+                <li><a href="../php/login.php" aria-current="page">Area Riservata</a></li>
+            </ul>
+        </nav>
+    </header>
+    <nav id="breadcrumb">
+        <p>Ti trovi in: <span lang="en">Home</span>->Area Amministratore</p>
+        <!--TODO: TOGLIERE IL LINK DELLA HOME DAL BREADCRUMB-->
+    </nav>
+
+    <main>
+        <h1>Ciao, <span class="highlight">[nome]</span></h1>
+        
+        <section aria-labelledby="titolo-info" class="area_utente_info">
+            <h2 id="titolo-info">Informazioni Personali</h2>
+            <dl>
+                <dt>Username:</dt>
+                <dd>[username]</dd>
+                
+                <dt>Nome Completo:</dt>
+                <dd>[nome] [cognome]</dd>
+                
+                <dt>Data di nascita:</dt>
+                <dd><time datetime="[data-formato-iso]">[data di nascita]</time></dd>
+            </dl>
+        </section>
+
+        <section aria-labelledby="titolo-modifica" class="area_utente_modifica">
+            <h2 id="titolo-modifica">Modifica Informazioni Personali</h2>
+            <form action="/update-profile" method="POST" id="modifica-info-form">
+                <fieldset>
+                    <legend>Dati Anagrafici</legend>
+                    
+                    <div class="form-group">
+                        <label for="nome">Nome:</label>
+                        <input type="text" id="nome" name="nome" value="[nome]" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cognome">Cognome:</label>
+                        <input type="text" id="cognome" name="cognome" value="[cognome]" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="data-nascita">Data di Nascita:</label>
+                        <input type="date" id="data-nascita" name="data-nascita" value="[data di nascita]">
+                    </div>
+
+                    <button type="submit" class="btn-save">Salva Modifiche</button>
+                </fieldset>
+            </form>
+        </section>
+
+        <section aria-labelledby="titolo-commenti" class="area_utente_commenti">
+            <h2 id="titolo-commenti">I tuoi ultimi commenti</h2>
+            <ul class="comment-list">
+                [lista-commenti]
+            </ul>
+        </section>
+
+        <section aria-labelledby="titolo-logout" class="area_utente_logout">
+            <h2 id="titolo-logout">Gestione Account</h2>
+            <form action="../php/logout.php" method="POST" id="logout-form">
+                <button type="submit" class="btn-logout">Esci dal tuo account</button>
+            </form>
+        </section>
+        
+        <section aria-labelledby="titolo-selezione-area" class="area_utente_gestione_sito">
+            <h2 id="titolo-selezione-area">Gestione sito</h2>
+            <form action="../php/area_amministratore.php" method="POST" id="gestione-sito-form">
+                <fieldset>
+                    <legend>Seleziona un'area da gestire:</legend>
+            
+                    <div class="radio-area-group">
+                        <input type="radio" id="circuiti" name="area_sito" value="circuiti" checked>
+                        <label for="circuiti">Circuiti</label>
+                        
+                        <input type="radio" id="classifica_costruttori" name="area_sito" value="classifica_costruttori">
+                        <label for="classifica_costruttori">Classifica costruttori</label>
+                        
+                        <input type="radio" id="classifica_piloti" name="area_sito" value="classifica_piloti">
+                        <label for="classifica_piloti">Clasifica piloti</label>
+                        
+                        <input type="radio" id="gare" name="area_sito" value="gare" checked>
+                        <label for="gare">Gare</label>
+                        
+                        <input type="radio" id="circuiti" name="area_sviluppo" value="piloti" checked>
+                        <label for="piloti">Piloti</label>
+                        
+                        <input type="radio" id="scuderie" name="area_sviluppo" value="scuderie" checked>
+                        <label for="scuderie">Scuderie</label>
+                        
+                        <input type="radio" id="utenti" name="area_sviluppo" value="utenti" checked>
+                        <label for="utenti">Utenti</label>
+                    </div>
+            
+                    
+                </fieldset>
+            
+                <button type="submit">Salva Preferenza</button>
+            </form>
+        </section>
+    </main>
+
+    <footer class="f1-footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>F1 <span lang="en">FAN CLUB</span></h3>
+                <p>Il punto di riferimento per gli appassionati di velocità. <span lang="en">News</span>, classifiche e
+                    analisi tecnica ogni settimana.</p>
+            </div>
+            <!--TODO: LINK CIRCOLARE SU CIRCUITI, COME RISOLVIAMO?-->
+            <div class="footer-col">
+                <h3><span lang="en">Paddock</span></h3>
+                <ul>
+                    <li><a href="../pages/classifica.html">Campionato</a></li>
+                    <li><a href="../pages/piloti.html">Piloti</a></li>
+                    <li><a href="../pages/scuderie.html">Scuderie</a></li>
+                    <li><a href="../pages/circuiti.html" aria-current="page">Circuiti</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Segui la F1</h3>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/Formula1/"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/f1/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://x.com/F1"><i class="fab fa-x-twitter"></i></a>
+                    <a href="https://www.youtube.com/@Formula1"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 F1 <span lang="en">Fan Club</span>. Sito non ufficiale.</p>
+            <p class="disclaimer">Questo sito <span lang="en">web</span> non è associato in alcun modo al gruppo Formula
+                1. F1, <span lang="en">FORMULA ONE</span>, FORMULA 1 sono marchi di <span lang="en">Formula One Licensing B.V.</span></p>
+        </div>
+    </footer>
+
+</body>

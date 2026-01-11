@@ -35,7 +35,7 @@ INSERT INTO Piloti (id, nome, cognome, numero, vittorie, n_pole, gran_premi, tit
 (17, 'Pierre', 'Gasly', 10, 3, 2, 155, 0, 395, 29),
 (18, 'Franco', 'Colapinto', 3, 8, 3, 240, 0, 1320, 35),
 (19, 'Nico', 'Hulkenberg', 27, 0, 1, 210, 0, 530, 37),
-(20, 'Gabriel', 'Bortoleto', 27, 0, 1, 210, 0, 530, 37);
+(20, 'Gabriel', 'Bortoleto', 88, 0, 1, 210, 0, 530, 37);
 
 CREATE TABLE IF NOT EXISTS Scuderie (
     nome VARCHAR(100) NOT NULL,
@@ -144,74 +144,48 @@ VALUES
 (2025, 'Haas', 9, 140),
 (2025, 'Sauber', 10, 120);
 
-
 CREATE TABLE IF NOT EXISTS Gare (
     id INT NOT NULL,
     circuito_id INT NOT NULL,
     data DATE,
+    primo_posto INT DEFAULT NOT NULL,
+    secondo_posto INT DEFAULT NOT NULL,
+    terzo_posto INT DEFAULT NOT NULL,
     PRIMARY KEY (id),
     CONSTRAINT fk_circuito_gara FOREIGN KEY (circuito_id) 
         REFERENCES Circuiti(id) 
         ON DELETE CASCADE 
         ON UPDATE CASCADE
-) ENGINE=InnoDB;
-
-INSERT INTO Gare (id, circuito_id, data) VALUES
-(1, 1, '2025-09-07');
-
-CREATE TABLE IF NOT EXISTS RisultatiGara (
-    id INT NOT NULL,
-    gara_id INT NOT NULL,
-    pilota_id INT NOT NULL,
-    posizione INT,
-    PRIMARY KEY (id),
-    UNIQUE INDEX idx_gara_pilota (gara_id, pilota_id),
-    CONSTRAINT fk_gara_res FOREIGN KEY (gara_id) 
-        REFERENCES Gare(id) 
-        ON DELETE CASCADE 
-        ON UPDATE CASCADE,
-    CONSTRAINT fk_pilota_res FOREIGN KEY (pilota_id) 
-        REFERENCES Piloti(id) 
-        ON DELETE CASCADE 
+    CONSTRAINT fk_primo_posto FOREIGN KEY (primo_posto)
+        REFERENCES Piloti(id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+    CONSTRAINT fk_secondo_posto FOREIGN KEY (secondo_posto)
+        REFERENCES Piloti(id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+    CONSTRAINT fk_terzo_posto FOREIGN KEY (terzo_posto)
+        REFERENCES Piloti(id)
+        ON DELETE CASCADE
         ON UPDATE CASCADE
 ) ENGINE=InnoDB;
 
-INSERT INTO RisultatiGara
-(id, gara_id, pilota_id, posizione)
-VALUES
-(1, 1, 1, 1),   
-(2, 1, 4, 2),   
-(3, 1, 3, 3),   
-(4, 1, 5, 4),   
-(5, 1, 11, 5),  
-(6, 1, 9, 6),   
-(7, 1, 7, 7),   
-(8, 1, 6, 8),   
-(9, 1, 2, 9),   
-(10, 1, 14, 10),
-(11, 1, 13, 11),
-(12, 1, 17, 12),
-(13, 1, 18, 13),
-(14, 1, 12, 14),
-(15, 1, 19, 15),
-(16, 1, 20, 16),
-(17, 1, 15, 17),
-(18, 1, 16, 18),
-(19, 1, 8, 19), 
-(20, 1, 10, 20);
+INSERT INTO Gare (id, circuito_id, data, primo_posto, secondo_posto, terzo_posto) VALUES
+(1, 1, '2025-09-07', 1, 2, 3);
 
 CREATE TABLE IF NOT EXISTS Utente (
     username VARCHAR(30) NOT NULL,
     password VARCHAR(255) NOT NULL,
+    adminPower TINYINT(1) NOT NULL DEFAULT 0,
     nome VARCHAR(30) NOT NULL,
     cognome VARCHAR(30) NOT NULL,
     dataNascita DATE NOT NULL,
     PRIMARY KEY (username)
 ) ENGINE=InnoDB;
 
-INSERT INTO Utente (username, password, nome, cognome, dataNascita) VALUES
-('luigi', '0000', 'Luigi', 'Verdi', '2025-01-01'),
-('pippo99', '1234', 'Filippo', 'Pippino', '2025-01-01');
+INSERT INTO Utente (username, password, adminPower, nome, cognome, dataNascita) VALUES
+('luigi', '0000', 1, 'Luigi', 'Verdi', '2025-01-01'),
+('pippo99', '1234', 0, 'Filippo', 'Pippino', '2025-01-01');
 
 
 CREATE TABLE IF NOT EXISTS Commento (

@@ -35,3 +35,15 @@ Sito Web: http://localhost:8080
 phpMyAdmin: http://localhost:8081 
   - User: root
   - Pass: root_password
+
+### Per spegnere il container
+Serve per liberare le porte ad esempio
+```
+docker-compose stop
+```
+
+### Per resettare i dati del container
+Serve per aggiornare la struttura delle tabelle (per esempio) o se si sfancula qualcosa.
+```
+docker-compose down -v
+```
