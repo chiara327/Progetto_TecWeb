@@ -50,9 +50,7 @@ function check_invalid_input($nome, $cognome, $data, $username, $password) {
 // Se esiste sessione login redirect automatico
 session_start();
 if (isset($_SESSION["user"])) {
-	// Se abbiamo voglia/ci viene imposto, fare pagina home per utente
-    // loggato in cui puoi fare diverse azioni
-    //header("location: utente.php");
+    header("location: area_utente.php");
 	exit();
 }
 

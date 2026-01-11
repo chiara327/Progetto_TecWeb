@@ -4,11 +4,6 @@ use DB\DBConnection;
 
 session_start();
 
-// --- SIMULAZIONE LOGIN PER TEST ---
-// Rimuovere queste righe quando il sistema di login sarà pronto
-$_SESSION["user"] = "luigi";
-// ----------------------------------
-
 // 1. Controllo Accesso: se non è loggato, rimanda al login reale
 if (!isset($_SESSION["user"])) {
     header("location: login.php");
@@ -102,7 +97,7 @@ try {
 } catch (Exception $e) {
     // In caso di errore grave (es. database offline)
     error_log($e->getMessage());
-    header("location: 500.html");
+    header("location: ../pages/500.html");
     exit();
 }
 ?>

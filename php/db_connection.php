@@ -13,10 +13,10 @@ class DBConnection {
         PASS: password nel file .txt del server personale
     */
 
-    private const HOST = "db";
-	private const DB_NAME = "f1_db";
-	private const USER = "root";
-	private const PASSWORD = "root_password";
+    private const HOST = "localhost";
+	private const DB_NAME = "rgrazian";
+	private const USER = "rgrazian";
+	private const PASSWORD = "aeQu2Mah8Ahqu0Ba";
 
     private $connection;
 
@@ -74,7 +74,6 @@ class DBConnection {
         // Check errore strano (vedi Luzzauto)
 
         $stmt->bind_param("sssss", $username, $password, $nome, $cognome, $dataNascita);
-        // TODO: Check return value di execute in un if
         $result = $stmt->execute();
 
         if ($result) {
@@ -85,14 +84,18 @@ class DBConnection {
     }
 
     public function login_user($username, $password) {
-        $query = "SELECT username, password FROM Utene WHERE username = ?";
+        $query = "SELECT username, password FROM Utente WHERE username = ?";
 
         $stmt = $this->connection->prepare($query);
 
         $stmt->bind_param("s", $username);
 
         // TODO: Check return value di execute in un if
-        $result = $stmt->execute();
+        if (!$stmt->execute()) {
+            die ("Errore riscontrato durante l'esecuzione: " . $stmt->error);
+        }
+
+        $result = $stmt->get_result();
         $rows = $result->fetch_all(MYSQLI_ASSOC);
         
         if (count($rows) == 0) {
