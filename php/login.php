@@ -48,7 +48,7 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
                 // TODO: Mettere controllo password
                 // TODO: Mettere casistica per utente admin
                 $_SESSION["user"] = $_POST["username"];
-                header("location: ../pages/area_utente.html");
+                header("location: area_utente.php");
             }
         } catch (Exception) {
             header("location: ../pages/500.html");
