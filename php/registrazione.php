@@ -21,28 +21,28 @@ function input_restore() {
 function check_invalid_input($nome, $cognome, $data, $username, $password) {
 	global $form_errors;
 	// Caratteri ammessi: lettere (M e m), caratteri speciali, spazi, trattini e apostrofi
-	if (!preg_match("/^[A-Za-zÀ-ÿ\s\-\']+$/", $_POST["nome"])) {
+	if (!preg_match("/^[A-Za-zÀ-ÿ\s\-\']+$/", $nome)) {
 		$form_errors = $form_errors . "<p>Il nome deve contenere solo lettere, spazi, trattini e apostrofi.</p>";
 	}
 
 	// Caratteri ammessi: lettere (M e m), caratteri speciali, spazi, trattini e apostrofi
-	if (!preg_match("/^[A-Za-zÀ-ÿ\s\-\']+$/", $_POST["cognome"])) {
+	if (!preg_match("/^[A-Za-zÀ-ÿ\s\-\']+$/", $cognome)) {
 		$form_errors = $form_errors . "<p>Il cognome deve contenere solo lettere, spazi, trattini e apostrofi.</p>";
 	}
 
 	// Data non deve essere nel futuro e nel formato internazionale
-	if (strtotime($_POST["data"]) > strtotime(date("Y-m-d")) || !preg_match("/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/", $_POST["data"])) {
+	if (strtotime($_POST["data"]) > strtotime(date("Y-m-d")) || !preg_match("/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/", $data)) {
 		$form_errors = $form_errors . "<p>La data inserita non è valida, scegliere una data nel formato dd-mm-yyyy e che non sia nel futuro.</p>";
 	}
 
 	// Ammessi tutti i caratteri, controlliamo solo la lunghezza
-	if (strlen($_POST["username"]) > 30) {
+	if (strlen($username) > 30) {
 		$form_errors = $form_errors . "<p>Lo <span lang='en'>username</span> non deve superare i 30 caratteri.</p>";
 	}
 
 	// TODO: COME VOGLIAMO MOSTRARE L'ERRORE IN BASE A COSA MANCA NELLA PASSWORD? DIVERSI <P>? DIVERSI CONTROLLI CON APPEND DI DIVERSI <P>?
 	// La password deve avere almeno 8 caratteri, contenere una lettera minuscola, una maiuscola, un numero e un carattere speciale
-	if (!preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/", $_POST["password"])) {
+	if (!preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/", $password)) {
 		$form_errors = $form_errors . "<p>La <span lang='en'>password</span> deve essere lunga almeno 8 caratteri e contenere: 1 lettera minuscola, 1 lettera maiuscola, 1 numero e 1 carattere speciale.</p>";
 	}
 }
@@ -75,18 +75,19 @@ if (isset($_POST["nome"]) && isset($_POST["cognome"]) && isset($_POST["data"]) &
 		// Transaction per registrare nuovo utente
 		try {
 			$db_connection = new DBConnection();
-			$result = $db_connection->register_new_user($_POST["username"], $_POST["password"], $_POST["nome"], $_POST["cognome"], $_POST["data"]);
+			$result = $db_connection->register_new_user($_POST["username"], password_hash($_POST["password"], PASSWORD_BCRYPT), $_POST["nome"], $_POST["cognome"], $_POST["data"]);
 			$db_connection->close_connection();
 
 			// Username esistente
-			if ($result == -1) {
+			if (!$result) {
 				$form_errors = $form_errors . "<p>Lo <span lang='en'>username</span> che hai scelto &egrave; stato già registrato.</p>";
 				$html_page = input_restore();
 				echo str_replace("[err]", $form_errors, $html_page);
 				exit();
 			} else {
+				// TODO: Disambiguare in base a admin o user normale
 				$_SESSION["user"] = $_POST["username"];
-				header("location: ../pages/area_utente.html");
+				header("location: area_utente.php");
 			}
 		} catch (Exception) {
 			header("location: ../pages/500.html");

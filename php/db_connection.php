@@ -13,10 +13,10 @@ class DBConnection {
         PASS: password nel file .txt del server personale
     */
 
-    private const HOST = "localhost";
-	private const DB_NAME = "rgrazian";
-	private const USER = "rgrazian";
-	private const PASSWORD = "aeQu2Mah8Ahqu0Ba";
+    private const HOST = "db"; 
+    private const DB_NAME = "f1_db"; 
+    private const USER = "root"; 
+    private const PASSWORD = "root_password"; 
 
     private $connection;
 
@@ -57,15 +57,15 @@ class DBConnection {
 		$numRows = count($rows);
 
 		if($numRows != 0){
-			return -1;
+			return false;
 		}
 
-        return 0;
+        return true;
     }
 
     public function register_new_user($username, $password, $nome, $cognome, $dataNascita) {
-        if ($this->check_for_existing_username($username) === -1) {
-            return -1;
+        if (!$this->check_for_existing_username($username)) {
+            return false;
         }
 
 		$query = "INSERT INTO Utente (username, password, nome, cognome, dataNascita) VALUES (?, ?, ?, ?, ?)";
@@ -77,9 +77,9 @@ class DBConnection {
         $result = $stmt->execute();
 
         if ($result) {
-            return 1;
+            return true;
         } else {
-            return 0;
+            return false;
         }
     }
 
@@ -99,10 +99,12 @@ class DBConnection {
         $rows = $result->fetch_all(MYSQLI_ASSOC);
         
         if (count($rows) == 0) {
-            return -1;
+            return false;
         } else {
-            // TODO: Fare hash password nella registrazione e qui fare controllo hash
-            return 1;
+            if (password_verify($password, $rows[0]["password"])) {
+                return true;
+            }
+            return false;
         }
 
     }
