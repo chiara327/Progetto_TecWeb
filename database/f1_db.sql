@@ -148,22 +148,22 @@ CREATE TABLE IF NOT EXISTS Gare (
     id INT NOT NULL,
     circuito_id INT NOT NULL,
     data DATE,
-    primo_posto INT DEFAULT NOT NULL,
-    secondo_posto INT DEFAULT NOT NULL,
-    terzo_posto INT DEFAULT NOT NULL,
+    primo_posto INT NOT NULL,
+    secondo_posto INT NOT NULL,
+    terzo_posto INT NOT NULL,
     PRIMARY KEY (id),
     CONSTRAINT fk_circuito_gara FOREIGN KEY (circuito_id) 
         REFERENCES Circuiti(id) 
         ON DELETE CASCADE 
-        ON UPDATE CASCADE
+        ON UPDATE CASCADE,
     CONSTRAINT fk_primo_posto FOREIGN KEY (primo_posto)
         REFERENCES Piloti(id)
         ON DELETE CASCADE
-        ON UPDATE CASCADE
+        ON UPDATE CASCADE,
     CONSTRAINT fk_secondo_posto FOREIGN KEY (secondo_posto)
         REFERENCES Piloti(id)
         ON DELETE CASCADE
-        ON UPDATE CASCADE
+        ON UPDATE CASCADE,
     CONSTRAINT fk_terzo_posto FOREIGN KEY (terzo_posto)
         REFERENCES Piloti(id)
         ON DELETE CASCADE
