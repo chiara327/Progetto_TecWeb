@@ -68,6 +68,61 @@ try {
         }
     }
 
+        // PARTE ADMIN
+    $area = $_POST['area'] ?? null;
+    $admin_content = "";
+    switch ($area) {
+
+    case 'circuiti':
+        $admin_content = '
+        <form action="area_amministratore.php" method="POST" class="admin-form">
+            
+            <label for="id_circuito">ID</label>
+            <input type="text" id="id_circuito" name="id_circuito">
+
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" name="nome">
+
+            <label for="citta">Città</label>
+            <input type="text" id="citta" name="citta">
+
+            <label for="nazione">Nazione</label>
+            <input type="text" id="nazione" name="nazione">
+
+            <label for="lunghezza">Lunghezza (km)</label>
+            <input type="text" id="lunghezza" name="lunghezza">
+
+            <label for="numero_curve">Numero curve</label>
+            <input type="number" id="numero_curve" name="numero_curve">
+
+            <button type="submit" name="aggiungi_circuito">
+                Aggiungi circuito
+            </button>
+        </form>';
+        break;
+
+    case 'classifica_costruttori':
+        break;
+
+    case 'classifica_piloti':
+        break;
+
+    case 'gare':
+        break;
+
+    case 'piloti':
+        break;
+
+    case 'scuderie':
+        break;
+
+    case 'utenti':
+        break;
+
+    default:
+        $admin_content = 'Dio Bavoso';
+    }
+
     // --- MAPPA DELLE SOSTITUZIONI ---
     $sostituzioni = [
         "[username]"         => htmlspecialchars($user_data['username']),
@@ -75,7 +130,8 @@ try {
         "[cognome]"          => htmlspecialchars($user_data['cognome']),
         "[data di nascita]"  => date("d/m/Y", strtotime($user_data['dataNascita'])), // Testo leggibile
         "[data-formato-iso]" => $user_data['dataNascita'], // Per attributo value dell'input date
-        "[err]"              => $status_message
+        "[err]"              => $status_message,
+        "[admin-area]"       => $admin_content
     ];
 
     // Sostituzioni testuali e form

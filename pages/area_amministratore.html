@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 
 <html lang="it">
 
@@ -16,9 +16,12 @@
     <link rel="stylesheet" href="mini.css" media="screen and (max-width:800px)"><!--per mobile-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap"
+        rel="stylesheet">
+    <script src="../javascript/admin.js"></script>
 
 </head>
+
 <body>
     <header>
         <nav class="navbar">
@@ -42,16 +45,16 @@
 
     <main>
         <h1>Ciao, <span class="highlight">[nome]</span></h1>
-        
+
         <section aria-labelledby="titolo-info" class="area_utente_info">
             <h2 id="titolo-info">Informazioni Personali</h2>
             <dl>
                 <dt>Username:</dt>
                 <dd>[username]</dd>
-                
+
                 <dt>Nome Completo:</dt>
                 <dd>[nome] [cognome]</dd>
-                
+
                 <dt>Data di nascita:</dt>
                 <dd><time datetime="[data-formato-iso]">[data di nascita]</time></dd>
             </dl>
@@ -62,7 +65,7 @@
             <form action="/update-profile" method="POST" id="modifica-info-form">
                 <fieldset>
                     <legend>Dati Anagrafici</legend>
-                    
+
                     <div class="form-group">
                         <label for="nome">Nome:</label>
                         <input type="text" id="nome" name="nome" value="[nome]" required>
@@ -96,43 +99,49 @@
                 <button type="submit" class="btn-logout">Esci dal tuo account</button>
             </form>
         </section>
-        
+
         <section aria-labelledby="titolo-selezione-area" class="area_utente_gestione_sito">
             <h2 id="titolo-selezione-area">Gestione sito</h2>
-            <form action="../php/area_amministratore.php" method="POST" id="gestione-sito-form">
+
+            <form id="gestione-sito-form">
                 <fieldset>
                     <legend>Seleziona un'area da gestire:</legend>
-            
+
                     <div class="radio-area-group">
-                        <input type="radio" id="circuiti" name="area_sito" value="circuiti" checked>
-                        <label for="circuiti">Circuiti</label>
-                        
-                        <input type="radio" id="classifica_costruttori" name="area_sito" value="classifica_costruttori">
-                        <label for="classifica_costruttori">Classifica costruttori</label>
-                        
-                        <input type="radio" id="classifica_piloti" name="area_sito" value="classifica_piloti">
-                        <label for="classifica_piloti">Clasifica piloti</label>
-                        
-                        <input type="radio" id="gare" name="area_sito" value="gare" checked>
-                        <label for="gare">Gare</label>
-                        
-                        <input type="radio" id="circuiti" name="area_sviluppo" value="piloti" checked>
-                        <label for="piloti">Piloti</label>
-                        
-                        <input type="radio" id="scuderie" name="area_sviluppo" value="scuderie" checked>
-                        <label for="scuderie">Scuderie</label>
-                        
-                        <input type="radio" id="utenti" name="area_sviluppo" value="utenti" checked>
-                        <label for="utenti">Utenti</label>
+                        <input type="radio" name="area" value="circuiti">
+                        <label>Circuiti</label>
+
+                        <input type="radio" name="area" value="classifica_costruttori">
+                        <label>Classifica costruttori</label>
+
+                        <input type="radio" name="area" value="classifica_piloti">
+                        <label>Classifica piloti</label>
+
+                        <input type="radio" name="area" value="gare">
+                        <label>Gare</label>
+
+                        <input type="radio" name="area" value="piloti">
+                        <label>Piloti</label>
+
+                        <input type="radio" name="area" value="scuderie">
+                        <label>Scuderie</label>
+
+                        <input type="radio" name="area" value="utenti">
+                        <label>Utenti</label>
                     </div>
-            
-                    
                 </fieldset>
-            
-                <button type="submit">Salva Preferenza</button>
             </form>
         </section>
+
+
+        <section class="admin-dynamic-area">
+            <h2>Inserisci i valori</h2>
+            <div id="admin-area"></div>
+        </section>
+
     </main>
+    
+
 
     <footer class="f1-footer">
         <div class="footer-container">
@@ -165,7 +174,8 @@
         <div class="footer-bottom">
             <p>&copy; 2025 F1 <span lang="en">Fan Club</span>. Sito non ufficiale.</p>
             <p class="disclaimer">Questo sito <span lang="en">web</span> non è associato in alcun modo al gruppo Formula
-                1. F1, <span lang="en">FORMULA ONE</span>, FORMULA 1 sono marchi di <span lang="en">Formula One Licensing B.V.</span></p>
+                1. F1, <span lang="en">FORMULA ONE</span>, FORMULA 1 sono marchi di <span lang="en">Formula One
+                    Licensing B.V.</span></p>
         </div>
     </footer>
 

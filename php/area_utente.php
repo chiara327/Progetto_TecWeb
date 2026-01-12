@@ -24,6 +24,11 @@ try {
         exit();
     }
 
+    if (isset($_POST["admin_area"])) {
+        header("location: area_amministratore.html");
+        exit();
+    }
+
     // --- GESTIONE AGGIORNAMENTO PROFILO ---
     if (isset($_POST["nome"]) && isset($_POST["cognome"]) && isset($_POST["data-nascita"])) {
         $nome = trim($_POST["nome"]);
