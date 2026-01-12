@@ -25,6 +25,7 @@ try {
 
 $sostituzioni = [
     "[nome_scuderia]"     => htmlspecialchars($scuderia['nome']),
+    "[Scuderia]"          => htmlspecialchars($scuderia['nome']),
     "[presenze]"          => htmlspecialchars($scuderia['presenze']),
     "[punti_campionato]"  => htmlspecialchars($scuderia['punti_campionato']),
     "[titoli]"            => htmlspecialchars($scuderia['titoli']), 

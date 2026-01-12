@@ -568,8 +568,8 @@ th {
 
 #login_form,
 #signup_form {
-    background-color: var(--content-bg-color);
-    border: 0.15em solid var(--content-text-color);
+    background-color: var(--navbar-bg-color);
+    border: 0.15em solid var(--footer-border-color);
     border-radius: 0.5em;
     padding: 2em;
     max-width: 28em;
