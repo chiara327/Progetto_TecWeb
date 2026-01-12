@@ -68,8 +68,8 @@ try {
         }
     }
 
-        // PARTE ADMIN
-    $area = $_POST['area'] ?? null;
+    // PARTE ADMIN (DA ELIMINARE, GESTITA DA AJAX)
+    /*$area = $_POST['area'] ?? null;
     $admin_content = "";
     switch ($area) {
 
@@ -121,7 +121,7 @@ try {
 
     default:
         $admin_content = 'Dio Bavoso';
-    }
+    }*/
 
     // --- MAPPA DELLE SOSTITUZIONI ---
     $sostituzioni = [
@@ -131,7 +131,6 @@ try {
         "[data di nascita]"  => date("d/m/Y", strtotime($user_data['dataNascita'])), // Testo leggibile
         "[data-formato-iso]" => $user_data['dataNascita'], // Per attributo value dell'input date
         "[err]"              => $status_message,
-        "[admin-area]"       => $admin_content
     ];
 
     // Sostituzioni testuali e form
