@@ -58,28 +58,53 @@
 
         <section aria-labelledby="titolo-modifica" class="area_utente_modifica">
             <h2 id="titolo-modifica">Modifica Informazioni Personali</h2>
-            <form action="/update-profile" method="POST" id="modifica-info-form">
+            
+            <form id="modifica-anagrafica" method="post" action="area_utente.php">
                 <fieldset>
-                    <legend>Dati Anagrafici</legend>
-                    
-                    <div class="form-group">
-                        <label for="nome">Nome:</label>
-                        <input type="text" id="nome" name="nome" value="[nome]" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="cognome">Cognome:</label>
-                        <input type="text" id="cognome" name="cognome" value="[cognome]" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="data-nascita">Data di Nascita:</label>
-                        <input type="date" id="data-nascita" name="data-nascita" value="[data di nascita]">
-                    </div>
-
-                    <button type="submit" class="btn-save">Salva Modifiche</button>
+                    <legend>Dati anagrafici</legend>
+                    <ul>
+                        <li>
+                            <label for="signup_nome">Nome</label>
+                            <input type="text" name="nome" id="signup_nome" value="[nome]" placeholder="Il tuo nome">
+                        </li>
+                        <li>
+                            <label for="signup_cognome">Cognome</label>
+                            <input type="text" name="cognome" id="signup_cognome" value="[cognome]" placeholder="Il tuo cognome">
+                        </li>
+                        <li>
+                            <label for="signup_data">Data di nascita</label>
+                            <input type="date" name="data" id="signup_data" value="[data]">
+                        </li>
+                    </ul>
+                    <input id="modify_button" type="submit" name="salva_modifiche" value="Salva Modifiche">
                 </fieldset>
+                
+                <div class="anagrafica_errors">
+                    [err-anag]
+                </div>
             </form>
+        </section>
+
+        <section aria-labelledby="titolo-sicurezza" class="area_utente_modifica">
+            <h2 id="titolo-sicurezza">Sicurezza Account</h2>
+            <form action="../php/area_utente.php" method="POST">
+                <div class="form-group">
+                    <label for="nuovo-username">Nuovo Username:</label>
+                    <input type="text" id="nuovo-username" name="nuovo-username">
+                </div>
+                <div class="form-group">
+                    <label for="nuova-password">Nuova Password:</label>
+                    <input type="password" id="nuova-password" name="nuova-password">
+                </div>
+                <div class="form-group">
+                    <label for="password-attuale"><strong>Password Attuale (per confermare):</strong></label>
+                    <input type="password" id="password-attuale" name="password-attuale" required>
+                </div>
+                <button type="submit" class="btn-save">Aggiorna Credenziali</button>
+            </form>
+            <div class="form_errors">
+                [err-sicurezza]
+            </div>
         </section>
 
         <section aria-labelledby="titolo-commenti" class="area_utente_commenti">

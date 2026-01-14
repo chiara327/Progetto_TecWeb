@@ -4,109 +4,103 @@ use DB\DBConnection;
 
 session_start();
 
-// 1. Controllo Accesso: se non è loggato, rimanda al login reale
+// 1. Controllo Accesso
 if (!isset($_SESSION["user"])) {
     header("location: login.php");
     exit();
 }
 
-$html_page = file_get_contents("../pages/area_utente.html");
-$username_sessione = $_SESSION["user"];
-$status_message = ""; 
+$anagrafica_errors = "";
+$sicurezza_errors = "";
 
-try {
-    
+// --- LOGICA DI AGGIORNAMENTO ANAGRAFICA ---
+if (isset($_POST["salva_modifiche"])) {
+    $nome = trim($_POST["nome"]);
+    $cognome = trim($_POST["cognome"]);
+    $data = $_POST["data"];
 
-    // --- GESTIONE LOGOUT ---
-    if (isset($_POST["logout"])) {
-        session_destroy();
-        header("location: login.html");
-        exit();
-    }
-
-    if (isset($_POST["admin_area"])) {
-        header("location: area_amministratore.html");
-        exit();
-    }
-
-    // --- GESTIONE AGGIORNAMENTO PROFILO ---
-    if (isset($_POST["nome"]) && isset($_POST["cognome"]) && isset($_POST["data-nascita"])) {
-        $nome = trim($_POST["nome"]);
-        $cognome = trim($_POST["cognome"]);
-        $data_nascita = $_POST["data-nascita"]; // Formato YYYY-MM-DD dall'input date
-
-        // Validazione (Stessa logica della registrazione)
-        if (empty($nome) || empty($cognome) || empty($data_nascita)) {
-            $status_message = "<p class='error'>Tutti i campi sono obbligatori.</p>";
-        } elseif (!preg_match("/^[A-Za-zÀ-ÿ\s\-\']+$/", $nome) || !preg_match("/^[A-Za-zÀ-ÿ\s\-\']+$/", $cognome)) {
-            $status_message = "<p class='error'>Il nome e il cognome devono contenere solo lettere.</p>";
-        } elseif (strtotime($data_nascita) > strtotime(date("Y-m-d"))) {
-            $status_message = "<p class='error'>La data di nascita non può essere nel futuro.</p>";
-        } else {
-            // Chiamata al metodo della classe DBConnection
-            $db_connection = new DBConnection();
-            $db_connection->update_user_profile($username_sessione, $nome, $cognome, $data_nascita);
-            $db_connection->close_connection();
-            $status_message = "<p class='success'>Informazioni aggiornate con successo!</p>";
-        }
-    }
-
-    // --- RECUPERO DATI UTENTE ---
-    $db_connection = new DBConnection();
-    $user_data = $db_connection->get_user_info($username_sessione);
-
-    // --- GENERAZIONE DINAMICA COMMENTI ---
-    $commenti_data = $db_connection->get_user_comments($username_sessione);
-    $db_connection->close_connection();
-
-    $commenti_html = "";
-
-    if (empty($commenti_data)) {
-        $commenti_html = "<li>Non hai ancora postato alcun commento.</li>";
+    if (empty($nome) || empty($cognome) || empty($data)) {
+        $anagrafica_errors = "<p class='error'>Tutti i campi anagrafici sono obbligatori.</p>";
     } else {
-        foreach ($commenti_data as $comm) {
-            $data_formattata = date("d/m/Y", strtotime($comm['data']));
-            $commenti_html .= "<li>
-                <blockquote cite='#'>
-                    <p><q>" . htmlspecialchars($comm['testo']) . "</q></p>
-                    <footer>Postato il <time datetime='{$comm['data']}'>{$data_formattata}</time></footer>
-                </blockquote>
-            </li>";
+        // Validazione (puoi usare la funzione preg_match vista prima)
+        $db_connection = new DBConnection();
+        $res = $db_connection->update_user_info($_SESSION["user"], $nome, $cognome, $data);
+        $db_connection->close_connection();
+        if ($res) {
+            header("Location: area_utente.php?status=ok_anag");
+            exit();
+        } else {
+            $anagrafica_errors = "<p class='error'>Errore nell'aggiornamento dei dati.</p>";
         }
     }
-
-    // --- MAPPA DELLE SOSTITUZIONI ---
-    $sostituzioni = [
-        "[username]"         => htmlspecialchars($user_data['username']),
-        "[nome]"             => htmlspecialchars($user_data['nome']),
-        "[cognome]"          => htmlspecialchars($user_data['cognome']),
-        "[data di nascita]"  => date("d/m/Y", strtotime($user_data['dataNascita'])), // Testo leggibile
-        "[data-formato-iso]" => $user_data['dataNascita'], // Per attributo value dell'input date
-        "[err]"              => $status_message
-    ];
-
-    // Sostituzioni testuali e form
-    foreach ($sostituzioni as $placeholder => $valore) {
-        $html_page = str_replace($placeholder, $valore, $html_page);
-    }
-
-    // Sostituzione della lista commenti
-    // Cerchiamo il blocco <li> d'esempio nel tuo HTML per rimpiazzarlo con quelli reali
-    $blocco_commento_esempio = '<li>
-                    <blockquote cite="#">
-                        <p><q>[commento 1]</q></p>
-                        <footer>Postato il <time datetime="2023-10-27">[data 1]</time></footer>
-                    </blockquote>
-                </li>';
-    
-    $html_page = str_replace("[lista-commenti]", $commenti_html, $html_page);
-
-    echo $html_page;
-
-} catch (Exception $e) {
-    // In caso di errore grave (es. database offline)
-    error_log($e->getMessage());
-    header("location: ../pages/500.html");
-    exit();
 }
+
+// --- LOGICA DI AGGIORNAMENTO SICUREZZA ---
+if (isset($_POST["password-attuale"])) {
+    $nuovo_user = trim($_POST["nuovo-username"]);
+    $nuova_pw = $_POST["nuova-password"];
+    $pw_attuale = $_POST["password-attuale"];
+
+    // Qui andrebbe la logica di verifica password attuale e update
+    // Esempio semplificato:
+    $db_connection = new DBConnection();
+    $verify = $db_connection->verify_password($_SESSION["user"], $pw_attuale);
+    if ($verify) {
+        if (!empty($nuovo_user)) {
+            $db_connection->update_username($_SESSION["user"], $nuovo_user);
+            $_SESSION["user"] = $nuovo_user; // Aggiorno la sessione
+        }
+        if (!empty($nuova_pw)) {
+            $db_connection->update_password($_SESSION["user"], $nuova_pw);
+        }
+        header("Location: area_utente.php?status=ok_sec");
+        exit();
+    } else {
+        $sicurezza_errors = "<p class='error'>Password attuale errata.</p>";
+    }
+    $db_connection->close_connection();
+}
+
+// --- RECUPERO DATI PER RENDERING ---
+$db_connection = new DBConnection();
+$user_data = $db_connection->get_user_info($_SESSION["user"]);
+$commenti_data = $db_connection->get_user_comments($_SESSION["user"]);
+$db_connection->close_connection();
+
+// --- COSTRUZIONE HTML ---
+$html_page = file_get_contents("../pages/area_utente.html");
+
+// 1. Sostituzione Errori
+$html_page = str_replace("[err-anag]", $anagrafica_errors, $html_page);
+$html_page = str_replace("[err-sicurezza]", $sicurezza_errors, $html_page);
+
+// 2. Dati Anagrafici (Header e Lista)
+$html_page = str_replace("[username]", htmlspecialchars($_SESSION["user"]), $html_page);
+$html_page = str_replace("[nome]", htmlspecialchars($user_data['nome']), $html_page);
+$html_page = str_replace("[cognome]", htmlspecialchars($user_data['cognome']), $html_page);
+
+// 3. Gestione Date (Tre formati diversi per l'HTML)
+$data_nascita = $user_data['dataNascita']; // formato YYYY-MM-DD
+$html_page = str_replace("[data-formato-iso]", $data_nascita, $html_page); // Per datetime
+$html_page = str_replace("[data di nascita]", date("d/m/Y", strtotime($data_nascita)), $html_page); // Per la lista <dd>
+$html_page = str_replace("[data]", $data_nascita, $html_page); // Per l'input type="date"
+
+// 4. Generazione Lista Commenti
+$commenti_html = "";
+if (empty($commenti_data)) {
+    $commenti_html = "<li>Non hai ancora postato alcun commento.</li>";
+} else {
+    foreach ($commenti_data as $comm) {
+        $data_c = date("d/m/Y", strtotime($comm['data']));
+        $commenti_html .= "<li>
+            <blockquote cite='#'>
+                <p><q>" . htmlspecialchars($comm['testo']) . "</q></p>
+                <footer>Postato il <time datetime='{$comm['data']}'>{$data_c}</time></footer>
+            </blockquote>
+        </li>";
+    }
+}
+$html_page = str_replace("[lista-commenti]", $commenti_html, $html_page);
+
+echo $html_page;
 ?>

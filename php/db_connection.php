@@ -83,80 +83,63 @@ class DBConnection {
         }
     }
 
-    public function login_user($username, $password) {
-        $query = "SELECT username, password FROM Utente WHERE username = ?";
-
-        $stmt = $this->connection->prepare($query);
-
-        $stmt->bind_param("s", $username);
-
-        // TODO: Check return value di execute in un if
-        if (!$stmt->execute()) {
-            die ("Errore riscontrato durante l'esecuzione: " . $stmt->error);
-        }
-
-        $result = $stmt->get_result();
-        $rows = $result->fetch_all(MYSQLI_ASSOC);
-        
-        if (count($rows) == 0) {
-            return false;
-        } else {
-            if (password_verify($password, $rows[0]["password"])) {
-                return true;
-            }
-            return false;
-        }
-
-    }
-
-    // TODO: Controllare se le 3 funzioni successive sono OK
-    public function get_user_info($username) {
-        $query = "SELECT username, nome, cognome, dataNascita FROM Utente WHERE username = ?";
-
-        $stmt = $this->connection->prepare($query);
-        $stmt->bind_param("s", $username);
-
-        if (!$stmt->execute()) {
-            die("Errore durante l'esecuzione: " . $stmt->error);
-        }
-
-        $result = $stmt->get_result();
-        
-        return $result->fetch_assoc(); 
-    }
-
+    // Area Utente functions
     public function get_user_comments($username) {
-        // Nota: Assicurati che il nome della tabella e delle colonne 
-        // corrispondano a quelle del tuo database (es. Commento o commenti)
         $query = "SELECT testo, data FROM Commento WHERE username = ? ORDER BY data DESC LIMIT 5";
-
         $stmt = $this->connection->prepare($query);
         $stmt->bind_param("s", $username);
-
+    
         if (!$stmt->execute()) {
-            die("Errore durante l'esecuzione: " . $stmt->error);
+            return []; // Ritorna un array vuoto in caso di errore
         }
-
+    
         $result = $stmt->get_result();
-        // Restituiamo tutte le righe trovate come array associativo
         return $result->fetch_all(MYSQLI_ASSOC);
     }
-
-    public function update_user_profile($username, $nome, $cognome, $dataNascita) {
-        $query = "UPDATE Utente SET nome = ?, cognome = ?, dataNascita = ? WHERE username = ?";
-
+    
+    public function get_user_info($username) {
+        $query = "SELECT nome, cognome, dataNascita FROM Utente WHERE username = ?";
         $stmt = $this->connection->prepare($query);
-        
-        // "ssss" indica che passiamo 4 stringhe
-        $stmt->bind_param("ssss", $nome, $cognome, $dataNascita, $username);
-
+        $stmt->bind_param("s", $username);
+    
         if (!$stmt->execute()) {
-            die("Errore durante l'aggiornamento: " . $stmt->error);
+            return null;
         }
-
-        // Ritorna true se l'operazione è andata a buon fine
-        return true; 
+    
+        $result = $stmt->get_result();
+        return $result->fetch_assoc();
     }
+    
+    public function update_user_info($username, $nome, $cognome, $dataNascita) {
+        $query = "UPDATE Utente SET nome = ?, cognome = ?, dataNascita = ? WHERE username = ?";
+        $stmt = $this->connection->prepare($query);
+        $stmt->bind_param("ssss", $nome, $cognome, $dataNascita, $username);
+        return $stmt->execute();
+    }
+
+    public function verify_password($username, $password) {
+        $query = "SELECT password FROM Utente WHERE username = ?";
+        $stmt = $this->connection->prepare($query);
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($row = $result->fetch_assoc()) {
+            return password_verify($password, $row['password']);
+        }
+        return false;
+    }
+
+    public function update_username($old_username, $new_username) {
+        // Verifica prima che il nuovo username non sia già preso
+        if (!$this->check_for_existing_username($new_username)) {
+            return false;
+        }
+        $query = "UPDATE Utente SET username = ? WHERE username = ?";
+        $stmt = $this->connection->prepare($query);
+        $stmt->bind_param("ss", $new_username, $old_username);
+        return $stmt->execute();
+    }
+    // ---------------------------------------------
 
     public function get_scuderia($nome) {
         $query = "SELECT * FROM Scuderie WHERE nome = ?";
