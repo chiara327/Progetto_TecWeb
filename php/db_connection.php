@@ -83,6 +83,32 @@ class DBConnection {
         }
     }
 
+        public function login_user($username, $password) {
+        $query = "SELECT username, password FROM Utente WHERE username = ?";
+
+        $stmt = $this->connection->prepare($query);
+
+        $stmt->bind_param("s", $username);
+
+        // TODO: Check return value di execute in un if
+        if (!$stmt->execute()) {
+            die ("Errore riscontrato durante l'esecuzione: " . $stmt->error);
+        }
+
+        $result = $stmt->get_result();
+        $rows = $result->fetch_all(MYSQLI_ASSOC);
+        
+        if (count($rows) == 0) {
+            return false;
+        } else {
+            if (password_verify($password, $rows[0]["password"])) {
+                return true;
+            }
+            return false;
+        }
+
+    }
+
     // Area Utente functions
     public function get_user_comments($username) {
         $query = "SELECT testo, data FROM Commento WHERE username = ? ORDER BY data DESC LIMIT 5";

@@ -51,6 +51,7 @@ if (isset($_POST["password-attuale"])) {
             $_SESSION["user"] = $nuovo_user; // Aggiorno la sessione
         }
         if (!empty($nuova_pw)) {
+            // Ale ma porco dio se fai sta roba almeno scrivi il metodo
             //$db_connection->update_password($_SESSION["user"], $nuova_pw);
         }
         header("Location: area_utente.php?status=ok_sec");

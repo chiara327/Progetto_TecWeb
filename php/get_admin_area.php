@@ -1,4 +1,7 @@
 <?php
+require_once 'db_connection.php';
+use DB\DBConnection;
+
 session_start();
 
 if (!isset($_SESSION['user'])) {
