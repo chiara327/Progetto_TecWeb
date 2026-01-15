@@ -170,5 +170,32 @@ class DBConnection {
         
         return $result->fetch_assoc();
     }
+
+    public function get_piloti_page_data() {
+        $query = "SELECT 
+                    s.nome AS team_name,
+                    p1.id AS p1_id,
+                    p1.nome AS p1_nome,
+                    p1.cognome AS p1_cognome,
+
+                    p2.id AS p2_id,
+                    p2.nome AS p2_nome,
+                    p2.cognome AS p2_cognome
+
+                    FROM Scuderie s
+                    JOIN Piloti p1 ON s.pilota_attuale1_id = p1.id
+                    JOIN Piloti p2 ON s.pilota_attuale2_id = p2.id
+                    ORDER BY s.nome ASC ";
+
+        $stmt = $this->connection->prepare($query);
+
+        if (!$stmt->execute()) {
+            die("Errore durante l'esecuzione: " . $stmt->error);
+        }
+
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 }
 ?>
