@@ -17,7 +17,7 @@
     --footer-text-color: #CCCCCC;
 
     --link-color: #F1F1F1;
-    --link-visited-color: #B88A8A;
+    --link-visited-color: #8AB4F8;
     --link-bg-color: #E10600;
 
     --accent-color: #E10600;
@@ -177,7 +177,7 @@ h1.hide {
 
 /* Prevent visited color in navbar */
 #menu a:visited {
-    color: var(--link-color);
+    color: var(--link-visited-color);
 }
 
 .navbar a:hover,
@@ -185,6 +185,11 @@ h1.hide {
     background-color: var(--link-bg-color);
     color: var(--link-color);
     text-decoration-thickness: 0.18em;
+}
+
+.navbar a:visited:hover,
+.navbar a:visited:focus-visible {
+    color: var(--link-visited-color);
 }
 
 /* =========================
