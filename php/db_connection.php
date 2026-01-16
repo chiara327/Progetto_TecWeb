@@ -223,5 +223,42 @@ class DBConnection {
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function admin_add_user($username, $password, $admin, $nome, $cognome, $dataNascita){
+        if (!$this->check_for_existing_username($username)) {
+            return false;
+        }
+
+		$query = "INSERT INTO Utente (username, password, adminPower, nome, cognome, dataNascita) VALUES (?, ?, ?, ?, ?, ?)";
+
+        $stmt = $this->connection->prepare($query);
+        // Check errore strano (vedi Luzzauto)
+
+        $stmt->bind_param("ssssss", $username, $password, $admin, $nome, $cognome, $dataNascita);
+        $result = $stmt->execute();
+
+        if ($result) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function admin_add_race($id, $circuito_id, $data, $primo_posto, $secondo_posto, $terzo_posto){
+
+		$query = "INSERT INTO Gare (id, circuito_id, data, primo_posto, secondo_posto, terzo_posto) VALUES (?, ?, ?, ?, ?, ?)";
+
+        $stmt = $this->connection->prepare($query);
+        // Check errore strano (vedi Luzzauto)
+
+        $stmt->bind_param("ssssss", $id, $circuito_id, $data, $primo_posto, $secondo_posto, $terzo_posto);
+        $result = $stmt->execute();
+
+        if ($result) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
 ?>

@@ -148,9 +148,9 @@ CREATE TABLE IF NOT EXISTS Gare (
     id INT NOT NULL,
     circuito_id INT NOT NULL,
     data DATE,
-    primo_posto INT NOT NULL,
-    secondo_posto INT NOT NULL,
-    terzo_posto INT NOT NULL,
+    primo_posto INT,
+    secondo_posto INT,
+    terzo_posto INT,
     PRIMARY KEY (id),
     CONSTRAINT fk_circuito_gara FOREIGN KEY (circuito_id) 
         REFERENCES Circuiti(id) 
@@ -185,6 +185,7 @@ CREATE TABLE IF NOT EXISTS Utente (
 
 INSERT INTO Utente (username, password, adminPower, nome, cognome, dataNascita) VALUES
 ('luigi', '0000', 1, 'Luigi', 'Verdi', '2025-01-01'),
+('Admin', '$2y$10$3nBJqkuPFy9aHA8pMCOyZegRUQbGCvGN56aFPdX/qhgW6Ju6b45j2', 1, 'Mario', 'Rossi', '2000-01-01'),
 ('pippo99', '1234', 0, 'Filippo', 'Pippino', '2025-01-01');
 
 
