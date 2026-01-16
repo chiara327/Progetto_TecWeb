@@ -88,18 +88,21 @@
         <section aria-labelledby="titolo-sicurezza" class="area_utente_modifica">
             <h2 id="titolo-sicurezza">Sicurezza Account</h2>
             <form action="../php/area_utente.php" method="POST">
-                <div class="form-group">
-                    <label for="nuovo-username">Nuovo Username:</label>
-                    <input type="text" id="nuovo-username" name="nuovo-username">
-                </div>
-                <div class="form-group">
-                    <label for="nuova-password">Nuova Password:</label>
-                    <input type="password" id="nuova-password" name="nuova-password">
-                </div>
-                <div class="form-group">
-                    <label for="password-attuale"><strong>Password Attuale (per confermare):</strong></label>
-                    <input type="password" id="password-attuale" name="password-attuale" required>
-                </div>
+                <legend>Sicurezza Account</legend>
+                <ul>
+                    <li>
+                        <label for="nuovo-username">Nuovo Username:</label>
+                        <input type="text" id="nuovo-username" value="[username]" name="nuovo-username">
+                    </li>
+                    <li>
+                        <label for="nuova-password">Nuova Password:</label>
+                        <input type="password" id="nuova-password" name="nuova-password">
+                    </li>
+                    <li>
+                        <label for="password-attuale"><strong>Password Attuale (per confermare):</strong></label>
+                        <input type="password" id="password-attuale" name="password-attuale" required>
+                    </li>
+                </ul>
                 <button type="submit" class="btn-save">Aggiorna Credenziali</button>
             </form>
             <div class="form_errors">

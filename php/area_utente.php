@@ -4,7 +4,6 @@ use DB\DBConnection;
 
 session_start();
 
-// 1. Controllo Accesso
 if (!isset($_SESSION["user"])) {
     header("location: login.php");
     exit();
@@ -12,6 +11,13 @@ if (!isset($_SESSION["user"])) {
 
 $anagrafica_errors = "";
 $sicurezza_errors = "";
+$success_msg = "";
+
+// Gestione messaggi di successo dai redirect
+if (isset($_GET['status'])) {
+    if ($_GET['status'] == 'ok_anag') $success_msg = "<p class='success'>Dati anagrafici aggiornati correttamente.</p>";
+    if ($_GET['status'] == 'ok_sec') $success_msg = "<p class='success'>Credenziali aggiornate con successo.</p>";
+}
 
 // --- LOGICA DI AGGIORNAMENTO ANAGRAFICA ---
 if (isset($_POST["salva_modifiche"])) {
@@ -19,18 +25,32 @@ if (isset($_POST["salva_modifiche"])) {
     $cognome = trim($_POST["cognome"]);
     $data = $_POST["data"];
 
+    // 1. Controllo campi vuoti
     if (empty($nome) || empty($cognome) || empty($data)) {
-        $anagrafica_errors = "<p class='error'>Tutti i campi anagrafici sono obbligatori.</p>";
+        $anagrafica_errors .= "<p class='error'>Tutti i campi anagrafici sono obbligatori.</p>";
     } else {
-        // Validazione (puoi usare la funzione preg_match vista prima)
-        $db_connection = new DBConnection();
-        $res = $db_connection->update_user_info($_SESSION["user"], $nome, $cognome, $data);
-        $db_connection->close_connection();
-        if ($res) {
-            header("Location: area_utente.php?status=ok_anag");
-            exit();
-        } else {
-            $anagrafica_errors = "<p class='error'>Errore nell'aggiornamento dei dati.</p>";
+        // 2. Validazione Struttura Dati
+        if (!preg_match("/^[A-Za-zÀ-ÿ\s\-\']+$/", $nome)) {
+            $anagrafica_errors .= "<p class='error'>Il nome contiene caratteri non validi.</p>";
+        }
+        if (!preg_match("/^[A-Za-zÀ-ÿ\s\-\']+$/", $cognome)) {
+            $anagrafica_errors .= "<p class='error'>Il cognome contiene caratteri non validi.</p>";
+        }
+        if (strtotime($data) > time()) {
+            $anagrafica_errors .= "<p class='error'>La data di nascita non può essere nel futuro.</p>";
+        }
+
+        // 3. Se non ci sono errori, procedo al database
+        if (empty($anagrafica_errors)) {
+            $db_connection = new DBConnection();
+            if ($db_connection->update_user_info($_SESSION["user"], $nome, $cognome, $data)) {
+                $db_connection->close_connection();
+                header("Location: area_utente.php?status=ok_anag");
+                exit();
+            } else {
+                $anagrafica_errors .= "<p class='error'>Errore nel salvataggio dei dati.</p>";
+            }
+            $db_connection->close_connection();
         }
     }
 }
@@ -41,62 +61,82 @@ if (isset($_POST["password-attuale"])) {
     $nuova_pw = $_POST["nuova-password"];
     $pw_attuale = $_POST["password-attuale"];
 
-    // Qui andrebbe la logica di verifica password attuale e update
-    // Esempio semplificato:
     $db_connection = new DBConnection();
-    $verify = $db_connection->verify_password($_SESSION["user"], $pw_attuale);
-    if ($verify) {
-        if (!empty($nuovo_user)) {
-            $db_connection->update_username($_SESSION["user"], $nuovo_user);
-            $_SESSION["user"] = $nuovo_user; // Aggiorno la sessione
+    
+    // 1. Verifica password attuale obbligatoria
+    if ($db_connection->verify_password($_SESSION["user"], $pw_attuale)) {
+        $update_allowed = true;
+
+        // 2. Controllo Struttura Nuovo Username
+        if (!empty($nuovo_user) && $nuovo_user !== $_SESSION["user"]) {
+            if (strlen($nuovo_user) > 30) {
+                $sicurezza_errors .= "<p class='error'>Lo username non può superare i 30 caratteri.</p>";
+                $update_allowed = false;
+            } else {
+                if ($db_connection->update_username($_SESSION["user"], $nuovo_user)) {
+                    $_SESSION["user"] = $nuovo_user; // Aggiorno sessione se cambiato
+                } else {
+                    $sicurezza_errors .= "<p class='error'>Lo username scelto è già in uso.</p>";
+                    $update_allowed = false;
+                }
+            }
         }
-        if (!empty($nuova_pw)) {
-            // Ale ma porco dio se fai sta roba almeno scrivi il metodo
-            //$db_connection->update_password($_SESSION["user"], $nuova_pw);
+
+        // 3. Controllo Struttura Nuova Password (Regex Complessa)
+        if ($update_allowed && !empty($nuova_pw)) {
+            // Almeno 8 caratteri, 1 Maiusc, 1 minusc, 1 numero, 1 speciale
+            if (!preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/", $nuova_pw)) {
+                $sicurezza_errors .= "<p class='error'>La password deve avere 8 caratteri, una maiuscola, un numero e un carattere speciale.</p>";
+                $update_allowed = false;
+            } else {
+                $hash = password_hash($nuova_pw, PASSWORD_DEFAULT);
+                $db_connection->update_password($_SESSION["user"], $hash);
+            }
         }
-        header("Location: area_utente.php?status=ok_sec");
-        exit();
+
+        // 4. Redirect finale solo se tutto è andato bene
+        if ($update_allowed && (!empty($nuovo_user) || !empty($nuova_pw))) {
+            $db_connection->close_connection();
+            header("Location: area_utente.php?status=ok_sec");
+            exit();
+        }
     } else {
-        $sicurezza_errors = "<p class='error'>Password attuale errata.</p>";
+        $sicurezza_errors .= "<p class='error'>Password attuale errata.</p>";
     }
     $db_connection->close_connection();
 }
 
-// --- RECUPERO DATI PER RENDERING ---
+// --- RECUPERO DATI E RENDERING ---
 $db_connection = new DBConnection();
 $user_data = $db_connection->get_user_info($_SESSION["user"]);
 $commenti_data = $db_connection->get_user_comments($_SESSION["user"]);
 $db_connection->close_connection();
 
-// --- COSTRUZIONE HTML ---
 $html_page = file_get_contents("../pages/area_utente.html");
 
-// 1. Sostituzione Errori
+// Sostituzioni segnaposto
 $html_page = str_replace("[err-anag]", $anagrafica_errors, $html_page);
 $html_page = str_replace("[err-sicurezza]", $sicurezza_errors, $html_page);
+$html_page = str_replace("[messaggio-successo]", $success_msg, $html_page);
 
-// 2. Dati Anagrafici (Header e Lista)
 $html_page = str_replace("[username]", htmlspecialchars($_SESSION["user"]), $html_page);
 $html_page = str_replace("[nome]", htmlspecialchars($user_data['nome']), $html_page);
 $html_page = str_replace("[cognome]", htmlspecialchars($user_data['cognome']), $html_page);
 
-// 3. Gestione Date (Tre formati diversi per l'HTML)
-$data_nascita = $user_data['dataNascita']; // formato YYYY-MM-DD
-$html_page = str_replace("[data-formato-iso]", $data_nascita, $html_page); // Per datetime
-$html_page = str_replace("[data di nascita]", date("d/m/Y", strtotime($data_nascita)), $html_page); // Per la lista <dd>
-$html_page = str_replace("[data]", $data_nascita, $html_page); // Per l'input type="date"
+$data_nascita = $user_data['dataNascita'];
+$html_page = str_replace("[data di nascita]", date("d/m/Y", strtotime($data_nascita)), $html_page);
+$html_page = str_replace("[data]", $data_nascita, $html_page);
 
-// 4. Generazione Lista Commenti
+// Commenti
 $commenti_html = "";
 if (empty($commenti_data)) {
     $commenti_html = "<li>Non hai ancora postato alcun commento.</li>";
 } else {
     foreach ($commenti_data as $comm) {
-        $data_c = date("d/m/Y", strtotime($comm['data']));
         $commenti_html .= "<li>
             <blockquote cite='#'>
                 <p><q>" . htmlspecialchars($comm['testo']) . "</q></p>
-                <footer>Postato il <time datetime='{$comm['data']}'>{$data_c}</time></footer>
+                <footer>Postato il <time datetime='{$comm['data']}'>" . date("d/m/Y", strtotime($comm['data'])) . "</time></footer>
             </blockquote>
         </li>";
     }

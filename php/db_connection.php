@@ -152,7 +152,7 @@ class DBConnection {
         if ($row = $result->fetch_assoc()) {
             return password_verify($password, $row['password']);
         }
-        return false;
+        return false;     
     }
 
     public function update_username($old_username, $new_username) {
@@ -164,6 +164,18 @@ class DBConnection {
         $stmt = $this->connection->prepare($query);
         $stmt->bind_param("ss", $new_username, $old_username);
         return $stmt->execute();
+    }
+
+    public function update_password($username, $hashed_password) {
+        $query = "UPDATE Utente SET password = ? WHERE username = ?";
+        $stmt = $this->connection->prepare($query);
+        
+        // Qui non usiamo più password_hash, usiamo direttamente la variabile ricevuta
+        $stmt->bind_param("ss", $hashed_password, $username);
+        
+        $success = $stmt->execute();
+        $stmt->close();
+        return $success;
     }
     // ---------------------------------------------
 

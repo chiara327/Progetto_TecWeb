@@ -913,3 +913,90 @@ th {
 .btn-logout:hover {
     background-color: #b91c1c; /* Un rosso più scuro/pericolo */
 }
+
+/* Rimuoviamo i punti elenco dalle liste dei form */
+.area_utente_modifica ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.area_utente_modifica li {
+    margin-bottom: 1.2em;
+}
+
+/* Applichiamo lo stile degli input a entrambi i form di modifica */
+#modifica-anagrafica input,
+.area_utente_modifica form input {
+    width: 100%;
+    padding: 0.6em;
+    background-color: var(--content-bg-color);
+    border: 0.1em solid var(--footer-border-color);
+    border-radius: 0.3em;
+    color: var(--content-text-color);
+    box-sizing: border-box;
+    margin-top: 0.4em; /* Spazio tra label e input */
+}
+
+/* Focus per gli input */
+#modifica-anagrafica input:focus,
+.area_utente_modifica form input:focus {
+    border-color: var(--accent-color);
+    outline: none;
+    box-shadow: 0 0 0 0.1em var(--accent-color);
+}
+
+/* Gestione dei Legend (nascondiamoli come nel form precedente per coerenza con l'H2) */
+#modifica-anagrafica legend,
+.area_utente_modifica fieldset legend,
+.area_utente_modifica form legend {
+    display: none;
+}
+
+#modifica-anagrafica fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* --- Pulsanti --- */
+
+/* Rendiamo il pulsante "Salva Modifiche" (input submit) identico al .btn-save */
+#modify_button {
+    display: inline-block;
+    padding: 0.8em 2em;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 0.3em;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    
+    background-color: transparent;
+    color: var(--accent-color);
+    border: 0.15em solid var(--accent-color);
+    width: auto; /* Sovrascrive il width 100% degli input generici */
+    margin-top: 1em;
+}
+
+#modify_button:hover {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+/* --- Messaggi di Errore --- */
+.anagrafica_errors,
+.form_errors {
+    margin-top: 1em;
+    padding: 0.8em;
+    background-color: rgba(185, 28, 28, 0.1); /* Rosso leggero trasparente */
+    border-left: 0.3em solid #b91c1c;
+    color: #b91c1c;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+/* Se non ci sono errori (contenitore vuoto), non mostrare padding/bordi */
+.anagrafica_errors:empty,
+.form_errors:empty {
+    display: none;
+}
