@@ -437,6 +437,14 @@ h1.hide {
    GARE PAGE
    ========================= */
 
+#scuderie .visually-hidden {
+    visibility: hidden;
+}
+
+/* =========================
+   GARE PAGE
+   ========================= */
+
 .gp {
     display: flex;
     align-items: center;

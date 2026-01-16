@@ -6,8 +6,6 @@ session_start();
 
 $html_page = file_get_contents("../pages/piloti.html");
 $dynamic_content = "";
-$slug = "";
-$teamHeading = "";  
 
 
 function render_drivers($id, $nome, $cognome) {
@@ -58,7 +56,7 @@ foreach ($piloti_data as $team) {
     <<<HTML
         <section aria-labelledby="{$slug_team}-heading" class="piloti">
             <h2 id="{$slug_team}-heading">
-                $teamHeading
+                $team_header
             </h2>
             <ul>
                 $driver1_html
