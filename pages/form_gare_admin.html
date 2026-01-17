@@ -1,0 +1,137 @@
+<html>
+
+<head>
+    <title>Formula1</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="formula 1, gare, circuiti, classifica, mondiali, qualifiche, piloti, team">
+    <meta name="description" content="Pagina dedicata alla home page di formula 1">
+    <!-- DA METTERE NEL CONTENT : Pagina dedicata alla formula 1 con informazioni riguardanti le qualifiche e la classifica dei piloti e dei team alle varie gare nei circuiti dei mondiali-->
+    <!-- Consigliato partire a riempire le keyword (riga sotto) e poi mettere nel content della description (riga sopra) -->
+    <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="mini.css" media="screen and (max-width:800px)"><!--per mobile-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <h1 class="hide">F1 <span lang="en">FAN CLUB</span></h1>
+            <ul id="menu">
+                <li><a href="../index.html"><span lang="en">Home</span></a></li>
+                <li><a href="../php/piloti.php">Piloti</a></li>
+                <li><a href="../php/scuderie.php">Scuderie</a></li>
+                <li><a href="../pages/classifica.html">Classifica</a></li>
+                <li><a href="../pages/gare.html">Gare</a></li>
+                <li><a href="../pages/circuiti.html">Circuiti</a></li>
+                <li><a href="../php/login.php">Area Riservata</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <nav id="breadcrumb">
+        <p>Ti trovi in: <span lang="en">MODIFICAMI</span></p>
+    </nav>
+
+    <main id="form_gare_admin">
+        <section aria-labelledby="titolo-crea-gare" class="crea-gare-section">
+            <form class="admin-form" action="../php/form_gare_admin.php#creazione_gare" method="post"
+                id="form-gare-aggiungi">
+                <fieldset>
+                    <legend><span lang="en">Crea Utente</span></legend>
+                    <ul>
+                        <li>
+                            <label id="create_label_id" for="create_id">ID Gara</label>
+                            <input type="text" name="id" id="create_id" value="[id]" placeholder="ID Gara">
+                        </li>
+                        <li>
+                            <label id="create_label_id_circuito" for="create_id_circuito">ID Circuito</label>
+                            <input type="text" name="id_circuito" id="create_id_circuito" value="[id_circuito]"
+                                placeholder="ID Circuito">
+                        </li>
+                        <li>
+                            <label id="create_label_data" for="create_data">Data della gara</label>
+                            <input type="date" name="data" id="create_data" value="[data]" placeholder="Data della gara">
+                        </li>
+                        <li>
+                            <label id="create_label_primo_posto" for="create_primo_posto">ID Pilota primo posto</label>
+                            <input type="text" name="primo_posto" id="create_primo_posto" value="[primo_posto]" placeholder="Primo posto">
+                        </li>
+                        <li>
+                            <label id="create_label_secondo_posto" for="create_secondo_posto">ID Pilota secondo posto</label>
+                            <input type="text" name="secondo_posto" id="create_secondo_posto" value="[secondo_posto]" placeholder="Secondo posto">
+                        </li>
+                        <li>
+                            <label id="create_label_terzo_posto" for="create_terzo_posto">ID Pilota terzo posto</label>
+                            <input type="text" name="terzo_posto" id="create_terzo_posto" value="[terzo_posto]" placeholder="Terzo posto">
+                        </li>
+                        <input type="submit" value="Crea Gara" id="creazione_gare"
+                            name="creazione_gare">
+                        <ul>
+                </fieldset>
+                <div class="form_errors">
+                    [err_gare_creazione]
+                </div>
+            </form>
+        </section>
+
+        <section aria-labelledby="titolo-elimina-gare" class="elimina-gare-section">
+            <form class="admin-form" action="../php/form_gare_admin.php#elimina_gare" method="post"
+                id="form-gare-elimina">
+                <fieldset>
+                    <legend><span lang="en">Elimina Gare</span></legend>
+
+                    <label for="id_delete">ID Gara</label>
+                    <input type="text" name="id_delete" value="[id]" id="id_delete"
+                        placeholder="Gara da eliminare">
+                    <input id="elimina_gare" type="submit" value="Conferma Elimina" name="elimina_gare">
+
+                </fieldset>
+                <div class="form_errors">
+                    [err_gare_elimina]
+                </div>
+            </form>
+            </sections>
+    </main>
+
+    <footer class="f1-footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>F1 <span lang="en">FAN CLUB</span></h3>
+                <p>Il punto di riferimento per gli appassionati di velocità. <span lang="en">News</span>, classifiche e
+                    analisi tecnica ogni settimana.</p>
+            </div>
+            <div class="footer-col">
+                <h3><span lang="en">Paddock</span></h3>
+                <ul>
+                    <li><a href="../pages/classifica.html">Campionato</a></li>
+                    <li><a href="../pages/piloti.html">Piloti</a></li>
+                    <li><a href="../pages/scuderie.html">Scuderie</a></li>
+                    <li><a href="../pages/circuiti.html">Circuiti</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Segui la F1</h3>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/Formula1/"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/f1/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://x.com/F1"><i class="fab fa-x-twitter"></i></a>
+                    <a href="https://www.youtube.com/@Formula1"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 F1 <span lang="en">Fan Club</span>. Sito non ufficiale.</p>
+            <p class="disclaimer">Questo sito <span lang="en">web</span> non è associato in alcun modo al gruppo Formula
+                1. F1, <span lang="en">FORMULA ONE</span>, FORMULA 1 sono marchi di <span lang="en">Formula One
+                    Licensing B.V.</span></p>
+        </div>
+    </footer>
+</body>
+
+</html>

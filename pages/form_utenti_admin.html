@@ -55,13 +55,15 @@
                         </li>
                         <li>
                             <label id="create_label_data" for="create_data">Data di nascita</label>
-                            <input type="date" name="data" id="create_data" value="[data]" placeholder="Cognome">
+                            <input type="date" name="data" id="create_data" value="[data]">
                         </li>
-                        <label for="adminPower">Admin</label>
-                        <select name="adminPower" id="adminPower">
-                            <option value="0">No</option>
-                            <option value="1">Si</option>
-                        </select>
+                        <li>
+                            <label for="adminPower">Admin</label>
+                            <select name="adminPower" id="adminPower">
+                                <option value="0">No</option>
+                                <option value="1">Si</option>
+                            </select>
+                        </li>
                         <li>
                             <label id="create_label_username" for="create_username"><span
                                     lang="en">Username</span></label>
@@ -71,12 +73,12 @@
                         <li>
                             <label id="create_label_password" for="create_password"><span
                                     lang="en">Password</span></label>
-                            <input type="password" name="password" id="password" value="[password]"
+                            <input type="password" name="password" id="create_password" value="[password]"
                                 placeholder="Minimo 8 caratteri">
                         </li>
-                        <input id="create_button" type="submit" value="Crea Utente" id="creazione_utente"
-                            name="conferma_creazione_utente">
-                        <ul>
+                        <input type="submit" value="Crea Utente" id="creazione_utente"
+                            name="creazione_utente">
+                    </ul>
                 </fieldset>
                 <div class="form_errors">
                     [err_utenti_creazione]

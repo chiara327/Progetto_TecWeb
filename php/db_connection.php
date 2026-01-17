@@ -303,5 +303,44 @@ class DBConnection {
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function check_for_existing_race($id) {
+        $query = "SELECT * FROM Gare WHERE id = ?";
+
+        $stmt = $this->connection->prepare($query);
+        // Check errore strano (vedi Luzzauto)
+
+        $stmt->bind_param("s", $id);
+
+        if (!$stmt->execute()) {
+            die ("Errore riscontrato durante l'esecuzione: " . $stmt->error);
+        }
+
+        $result = $stmt->get_result();
+		$rows = $result->fetch_all(MYSQLI_ASSOC);
+		$numRows = count($rows);
+
+		if($numRows != 0){
+			return false;
+		}
+
+        return true;
+    }
+
+    public function admin_delete_race($id) {
+        $query = "DELETE FROM Gare WHERE id = ?";
+
+        $stmt = $this->connection->prepare($query);
+        // Check errore strano (vedi Luzzauto)
+
+        $stmt->bind_param("s", $id);
+        $result = $stmt->execute();
+
+        if ($result) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
 ?>

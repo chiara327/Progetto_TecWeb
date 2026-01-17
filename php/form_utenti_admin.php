@@ -45,11 +45,11 @@ function check_invalid_input($nome, $cognome, $data, $username, $password) {
 	}
 }
 
-if (isset($_POST["conferma_creazione_utente"])) {
-    if (empty($_POST["nome"]) || empty($_POST["cognome"]) || empty($_POST["adminPower"]) || empty($_POST["username"]) || empty($_POST["password"]) || empty($_POST["data"])) {
+if (isset($_POST["creazione_utente"])) {
+    if (empty($_POST["nome"]) || empty($_POST["cognome"]) || !isset($_POST["adminPower"]) || empty($_POST["username"]) || empty($_POST["password"]) || empty($_POST["data"])) {
 		$form_errors = $form_errors . "<p>Devi compilare tutti i campi.</p>";
 		$html_page = input_restore();
-		echo str_replace("[err_utenti_creazione]", $form_errors, $html_page);
+		echo str_replace(["[err_utenti_creazione]", "[err_utenti_elimina]"], [$form_errors, ""], $html_page);
 		exit();
 	} else {
 		// Validazione degli input, se riscontra errori li segnala in $form_errors
@@ -57,7 +57,7 @@ if (isset($_POST["conferma_creazione_utente"])) {
 		// Ha segnalato errori negli input
 		if (!empty($form_errors)) {
 			$html_page = input_restore();
-			echo str_replace("[err_utenti_creazione]", $form_errors, $html_page);
+			echo str_replace(["[err_utenti_creazione]", "[err_utenti_elimina]"], [$form_errors, ""], $html_page);
 			exit();
 		}
 
@@ -71,7 +71,7 @@ if (isset($_POST["conferma_creazione_utente"])) {
 			if (!$result) {
 				$form_errors = $form_errors . "<p>Lo <span lang='en'>username</span> che hai scelto &egrave; stato già registrato.</p>";
 				$html_page = input_restore();
-				echo str_replace("[err_utenti_creazione]", $form_errors, $html_page);
+				echo str_replace(["[err_utenti_creazione]", "[err_utenti_elimina]"], [$form_errors, ""], $html_page);
 				exit();
 			} else {
 				header("location: area_amministratore.php");
@@ -81,23 +81,24 @@ if (isset($_POST["conferma_creazione_utente"])) {
 			exit();
 		}
 	}
-    echo str_replace("[err_utenti_creazione]", $form_errors, $html_page);
+    echo str_replace(["[err_utenti_creazione]", "[err_utenti_elimina]"], [$form_errors, ""], $html_page);
+	
     exit();
 } else if (isset($_POST["elimina_utente"])) {
     if (empty($_POST["username_delete"])) {
         $form_errors = "<p>Devi inserire uno username da eliminare.</p>";
         $html_page = input_restore();
-        echo str_replace("[err_utenti_elimina]", $form_errors, $html_page);
+        echo str_replace(["[err_utenti_creazione]", "[err_utenti_elimina]"], ["", $form_errors], $html_page);
         exit();
     }
     try {
         $db_connection = new DBConnection();
         $userExists = $db_connection->check_for_existing_username($_POST["username_delete"]);
-        if (!$userExists) {
+        if ($userExists) {
             $db_connection->close_connection();
             $form_errors = "<p>Lo username inserito non esiste.</p>";
             $html_page = input_restore();
-            echo str_replace("[err_utenti_elimina]", $form_errors, $html_page);
+            echo str_replace(["[err_utenti_creazione]", "[err_utenti_elimina]"], ["", $form_errors], $html_page);
             exit();
         }
         $result = $db_connection->admin_delete_user($_POST["username_delete"]);
@@ -106,7 +107,7 @@ if (isset($_POST["conferma_creazione_utente"])) {
         if (!$result) {
             $form_errors = "<p>Errore durante l'eliminazione dell'utente.</p>";
             $html_page = input_restore();
-            echo str_replace("[err_utenti_elimina]", $form_errors, $html_page);
+            echo str_replace(["[err_utenti_creazione]", "[err_utenti_elimina]"], ["", $form_errors], $html_page);
             exit();
         } else {
             header("location: area_amministratore.php");
@@ -115,7 +116,7 @@ if (isset($_POST["conferma_creazione_utente"])) {
         header("location: ../pages/500.html");
         exit();
     }
-    echo str_replace("[err_utenti_elimina]", $form_errors, $html_page);
+    echo str_replace(["[err_utenti_creazione]", "[err_utenti_elimina]"], ["", $form_errors], $html_page);
     exit();
 } else {
     $html_page = input_restore();
