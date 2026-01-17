@@ -39,42 +39,68 @@
 
     <main id="form_utenti_admin">
         <section aria-labelledby="titolo-crea-utente" class="crea-utente-section">
-            <form class="admin-form" action="../php/form_utenti_admin.php" method="post" id="form-utenti-aggiungi">
-
-                <label for="usernameAdd">Username</label>
-                <input type="text" name="usernameAdd" required>
-
-                <label for="passwordAdd">Password</label>
-                <input type="password" name="passwordAdd" required>
-
-                <label for="adminPower">Admin</label>
-                <select name="adminPowerAdd">
-                    <option value="0">No</option>
-                    <option value="1">Si</option>
-                </select>
-
-                <label for="nomeAdd">Nome</label>
-                <input type="text" name="nomeAdd" required>
-
-                <label for="cognomeAdd">Cognome</label>
-                <input type="text" name="cognomeAdd" required>
-
-                <label for="dataNascitaAdd">Data di nascita</label>
-                <input type="date" name="dataNascitaAdd" required>
-
-                <input type="submit" name="conferma_creazione_utente">
-                Crea utente
-                </input>
+            <form class="admin-form" action="../php/form_utenti_admin.php#creazione_utente" method="post"
+                id="form-utenti-aggiungi">
+                <fieldset>
+                    <legend><span lang="en">Crea Utente</span></legend>
+                    <ul>
+                        <li>
+                            <label id="create_label_nome" for="create_nome">Nome</label>
+                            <input type="text" name="nome" id="create_nome" value="[nome]" placeholder="Nome">
+                        </li>
+                        <li>
+                            <label id="create_label_cognome" for="create_cognome">Cognome</label>
+                            <input type="text" name="cognome" id="create_cognome" value="[cognome]"
+                                placeholder="Cognome">
+                        </li>
+                        <li>
+                            <label id="create_label_data" for="create_data">Data di nascita</label>
+                            <input type="date" name="data" id="create_data" value="[data]" placeholder="Cognome">
+                        </li>
+                        <label for="adminPower">Admin</label>
+                        <select name="adminPower" id="adminPower">
+                            <option value="0">No</option>
+                            <option value="1">Si</option>
+                        </select>
+                        <li>
+                            <label id="create_label_username" for="create_username"><span
+                                    lang="en">Username</span></label>
+                            <input type="text" name="username" id="create_username" value="[username]"
+                                placeholder="Username">
+                        </li>
+                        <li>
+                            <label id="create_label_password" for="create_password"><span
+                                    lang="en">Password</span></label>
+                            <input type="password" name="password" id="password" value="[password]"
+                                placeholder="Minimo 8 caratteri">
+                        </li>
+                        <input id="create_button" type="submit" value="Crea Utente" id="creazione_utente"
+                            name="conferma_creazione_utente">
+                        <ul>
+                </fieldset>
+                <div class="form_errors">
+                    [err_utenti_creazione]
+                </div>
             </form>
         </section>
 
         <section aria-labelledby="titolo-elimina-utente" class="elimina-utente-section">
-            <form class="admin-form" action="../php/form_utenti_admin.php" method="post" id="form-utenti-elimina">
-                <label for="username">Username</label>
-                <input type="text" name="username" required>
-                <button type="submit">Conferma Elimina</button>
+            <form class="admin-form" action="../php/form_utenti_admin.php#elimina_utente" method="post"
+                id="form-utenti-elimina">
+                <fieldset>
+                    <legend><span lang="en">Elimina Utente</span></legend>
+
+                    <label for="username_delete">Username</label>
+                    <input type="text" name="username_delete" value="[username]" id="username_delete"
+                        placeholder="Utente da eliminare">
+                    <input id="elimina_utente" type="submit" value="Conferma Elimina" name="elimina_utente">
+
+                </fieldset>
+                <div class="form_errors">
+                    [err_utenti_elimina]
+                </div>
             </form>
-        </sections>
+            </sections>
     </main>
 
     <footer class="f1-footer">

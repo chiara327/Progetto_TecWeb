@@ -63,18 +63,26 @@ class DBConnection {
         return true;
     }
 
-    public function register_new_user($username, $password, $nome, $cognome, $dataNascita) {
+    public function register_new_user($username, $password, $nome, $cognome, $dataNascita, $adminPower = 0) {
         if (!$this->check_for_existing_username($username)) {
             return false;
         }
 
-		$query = "INSERT INTO Utente (username, password, nome, cognome, dataNascita) VALUES (?, ?, ?, ?, ?)";
+        if ($adminPower) {
+            $query = "INSERT INTO Utente (username, password, adminPower, nome, cognome, dataNascita) VALUES (?, ?, ?, ?, ?, ?)";
+            $stmt = $this->connection->prepare($query);
+            // Check errore strano (vedi Luzzauto)
 
-        $stmt = $this->connection->prepare($query);
-        // Check errore strano (vedi Luzzauto)
+            $stmt->bind_param("ssssss", $username, $password, $adminPower, $nome, $cognome, $dataNascita);
+            $result = $stmt->execute();
+        } else {
+		    $query = "INSERT INTO Utente (username, password, nome, cognome, dataNascita) VALUES (?, ?, ?, ?, ?)";
+            $stmt = $this->connection->prepare($query);
+            // Check errore strano (vedi Luzzauto)
 
-        $stmt->bind_param("sssss", $username, $password, $nome, $cognome, $dataNascita);
-        $result = $stmt->execute();
+            $stmt->bind_param("sssss", $username, $password, $nome, $cognome, $dataNascita);
+            $result = $stmt->execute();
+        }
 
         if ($result) {
             return true;
@@ -236,17 +244,13 @@ class DBConnection {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function admin_add_user($username, $password, $admin, $nome, $cognome, $dataNascita){
-        if (!$this->check_for_existing_username($username)) {
-            return false;
-        }
-
-		$query = "INSERT INTO Utente (username, password, adminPower, nome, cognome, dataNascita) VALUES (?, ?, ?, ?, ?, ?)";
+    public function admin_delete_user($username) {
+        $query = "DELETE FROM Utente WHERE username = ?";
 
         $stmt = $this->connection->prepare($query);
         // Check errore strano (vedi Luzzauto)
 
-        $stmt->bind_param("ssssss", $username, $password, $admin, $nome, $cognome, $dataNascita);
+        $stmt->bind_param("s", $username);
         $result = $stmt->execute();
 
         if ($result) {

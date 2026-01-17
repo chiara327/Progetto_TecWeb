@@ -3,9 +3,10 @@ require_once 'db_connection.php';
 use DB\DBConnection;
 
 $html_page = file_get_contents('../pages/form_utenti_admin.html');
+$form_errors = "";
 
 function input_restore() {
-	$html_page = file_get_contents("../pages/registrazione.html");
+	$html_page = file_get_contents("../pages/form_utenti_admin.html");
 	$html_page = str_replace("[nome]", htmlspecialchars(isset($_POST['nome']) ? $_POST['nome'] : ''), $html_page);
 	$html_page = str_replace("[cognome]", htmlspecialchars(isset($_POST['cognome']) ? $_POST['cognome'] : ''), $html_page);
 	$html_page = str_replace("[username]", htmlspecialchars(isset($_POST['username']) ? $_POST['username'] : ''), $html_page);
@@ -14,6 +15,7 @@ function input_restore() {
 	return $html_page;
 }
 
+// TODO: NON FUNZIONA ELIMINA UTENTE, GLI ERRORI IN PLACEHOLDER NON VANNO
 function check_invalid_input($nome, $cognome, $data, $username, $password) {
 	global $form_errors;
 	// Caratteri ammessi: lettere (M e m), caratteri speciali, spazi, trattini e apostrofi
@@ -43,7 +45,83 @@ function check_invalid_input($nome, $cognome, $data, $username, $password) {
 	}
 }
 
+if (isset($_POST["conferma_creazione_utente"])) {
+    if (empty($_POST["nome"]) || empty($_POST["cognome"]) || empty($_POST["adminPower"]) || empty($_POST["username"]) || empty($_POST["password"]) || empty($_POST["data"])) {
+		$form_errors = $form_errors . "<p>Devi compilare tutti i campi.</p>";
+		$html_page = input_restore();
+		echo str_replace("[err_utenti_creazione]", $form_errors, $html_page);
+		exit();
+	} else {
+		// Validazione degli input, se riscontra errori li segnala in $form_errors
+		check_invalid_input($_POST["nome"], $_POST["cognome"], $_POST["data"], $_POST["username"], $_POST["password"]);
+		// Ha segnalato errori negli input
+		if (!empty($form_errors)) {
+			$html_page = input_restore();
+			echo str_replace("[err_utenti_creazione]", $form_errors, $html_page);
+			exit();
+		}
 
+		// Transaction per registrare nuovo utente
+		try {
+			$db_connection = new DBConnection();
+			$result = $db_connection->register_new_user($_POST["username"], password_hash($_POST["password"], PASSWORD_BCRYPT), $_POST["nome"], $_POST["cognome"], $_POST["data"], $_POST["adminPower"]);
+			$db_connection->close_connection();
+
+			// Username esistente
+			if (!$result) {
+				$form_errors = $form_errors . "<p>Lo <span lang='en'>username</span> che hai scelto &egrave; stato già registrato.</p>";
+				$html_page = input_restore();
+				echo str_replace("[err_utenti_creazione]", $form_errors, $html_page);
+				exit();
+			} else {
+				header("location: area_amministratore.php");
+			}
+		} catch (Exception) {
+			header("location: ../pages/500.html");
+			exit();
+		}
+	}
+    echo str_replace("[err_utenti_creazione]", $form_errors, $html_page);
+    exit();
+} else if (isset($_POST["elimina_utente"])) {
+    if (empty($_POST["username_delete"])) {
+        $form_errors = "<p>Devi inserire uno username da eliminare.</p>";
+        $html_page = input_restore();
+        echo str_replace("[err_utenti_elimina]", $form_errors, $html_page);
+        exit();
+    }
+    try {
+        $db_connection = new DBConnection();
+        $userExists = $db_connection->check_for_existing_username($_POST["username_delete"]);
+        if (!$userExists) {
+            $db_connection->close_connection();
+            $form_errors = "<p>Lo username inserito non esiste.</p>";
+            $html_page = input_restore();
+            echo str_replace("[err_utenti_elimina]", $form_errors, $html_page);
+            exit();
+        }
+        $result = $db_connection->admin_delete_user($_POST["username_delete"]);
+        $db_connection->close_connection();
+
+        if (!$result) {
+            $form_errors = "<p>Errore durante l'eliminazione dell'utente.</p>";
+            $html_page = input_restore();
+            echo str_replace("[err_utenti_elimina]", $form_errors, $html_page);
+            exit();
+        } else {
+            header("location: area_amministratore.php");
+        }
+    } catch (Exception) {
+        header("location: ../pages/500.html");
+        exit();
+    }
+    echo str_replace("[err_utenti_elimina]", $form_errors, $html_page);
+    exit();
+} else {
+    $html_page = input_restore();
+    echo str_replace(["[err_utenti_creazione]", "[err_utenti_elimina]"], $form_errors, $html_page);
+    exit();
+}
 
 echo $html_page;
 ?>
