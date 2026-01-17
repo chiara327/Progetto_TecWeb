@@ -359,19 +359,19 @@ h1.hide {
     padding: 2em 2.5em;
     position: relative;
     box-sizing: border-box;
+    margin-right: 40%;
 }
 
 #content section img {
-    float: right;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
     width: 40%;
-    height: auto;
+    height: 100%;
     object-fit: cover;
     clip-path: polygon(40% 0%, 100% 0%, 100% 100%, 0% 100%);
-    -webkit-clip-path: polygon(40% 0%, 100% 0%, 100% 100%, 0% 100%);
-    shape-outside: polygon(40% 0%, 100% 0%, 100% 100%, 0% 100%);
-    -webkit-shape-outside: polygon(40% 0%, 100% 0%, 100% 100%, 0% 100%);
-    shape-margin: 0.4em;
-    margin: 0 0 1em 1em;
+    margin: 0;
     display: block;
 }
 
