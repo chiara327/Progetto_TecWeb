@@ -10,7 +10,8 @@ if (!isset($_SESSION["user"])) {
 }
 
 $anagrafica_errors = "";
-$sicurezza_errors = "";
+$password_errors = "";
+$username_errors = "";
 $success_msg = "";
 
 // Gestione messaggi di successo dai redirect
@@ -56,55 +57,58 @@ if (isset($_POST["salva_modifiche"])) {
 }
 
 // --- LOGICA DI AGGIORNAMENTO SICUREZZA ---
-if (isset($_POST["password-attuale"])) {
+$db_connection = new DBConnection();
+
+// --- BLOCCO 1: AGGIORNAMENTO USERNAME ---
+if (isset($_POST["modifica_username"])) {
     $nuovo_user = trim($_POST["nuovo-username"]);
-    $nuova_pw = $_POST["nuova-password"];
     $pw_attuale = $_POST["password-attuale"];
 
-    $db_connection = new DBConnection();
-    
-    // 1. Verifica password attuale obbligatoria
+    // 1. Verifica password attuale
     if ($db_connection->verify_password($_SESSION["user"], $pw_attuale)) {
-        $update_allowed = true;
-
-        // 2. Controllo Struttura Nuovo Username
         if (!empty($nuovo_user) && $nuovo_user !== $_SESSION["user"]) {
             if (strlen($nuovo_user) > 30) {
-                $sicurezza_errors .= "<p class='error'>Lo username non può superare i 30 caratteri.</p>";
-                $update_allowed = false;
+                $username_errors = "<p class='error'>Lo username non può superare i 30 caratteri.</p>";
             } else {
                 if ($db_connection->update_username($_SESSION["user"], $nuovo_user)) {
-                    $_SESSION["user"] = $nuovo_user; // Aggiorno sessione se cambiato
+                    $_SESSION["user"] = $nuovo_user;
+                    header("Location: area_utente.php?status=ok_user");
+                    exit();
                 } else {
-                    $sicurezza_errors .= "<p class='error'>Lo username scelto è già in uso.</p>";
-                    $update_allowed = false;
+                    $username_errors = "<p class='error'>Lo username scelto è già in uso.</p>";
                 }
             }
         }
+    } else {
+        $username_errors = "<p class='error'>Password attuale errata.</p>";
+    }
+}
 
-        // 3. Controllo Struttura Nuova Password (Regex Complessa)
-        if ($update_allowed && !empty($nuova_pw)) {
-            // Almeno 8 caratteri, 1 Maiusc, 1 minusc, 1 numero, 1 speciale
+// --- BLOCCO 2: AGGIORNAMENTO PASSWORD ---
+if (isset($_POST["modifica_password"])) {
+    $nuova_pw = $_POST["nuova-password"];
+    $pw_attuale = $_POST["password-attuale"];
+
+    // 1. Verifica password attuale
+    if ($db_connection->verify_password($_SESSION["user"], $pw_attuale)) {
+        if (!empty($nuova_pw)) {
+            // Regex: 8 car, 1 Maiusc, 1 minusc, 1 numero, 1 speciale
             if (!preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/", $nuova_pw)) {
-                $sicurezza_errors .= "<p class='error'>La password deve avere 8 caratteri, una maiuscola, un numero e un carattere speciale.</p>";
-                $update_allowed = false;
+                $password_errors = "<p class='error'>La password deve avere 8 caratteri, una maiuscola, un numero e un speciale.</p>";
             } else {
                 $hash = password_hash($nuova_pw, PASSWORD_DEFAULT);
-                $db_connection->update_password($_SESSION["user"], $hash);
+                if ($db_connection->update_password($_SESSION["user"], $hash)) {
+                    header("Location: area_utente.php?status=ok_pass");
+                    exit();
+                }
             }
         }
-
-        // 4. Redirect finale solo se tutto è andato bene
-        if ($update_allowed && (!empty($nuovo_user) || !empty($nuova_pw))) {
-            $db_connection->close_connection();
-            header("Location: area_utente.php?status=ok_sec");
-            exit();
-        }
     } else {
-        $sicurezza_errors .= "<p class='error'>Password attuale errata.</p>";
+        $password_errors = "<p class='error'>Password attuale errata.</p>";
     }
-    $db_connection->close_connection();
 }
+
+$db_connection->close_connection();
 
 // --- RECUPERO DATI E RENDERING ---
 $db_connection = new DBConnection();
@@ -116,7 +120,8 @@ $html_page = file_get_contents("../pages/area_utente.html");
 
 // Sostituzioni segnaposto
 $html_page = str_replace("[err-anag]", $anagrafica_errors, $html_page);
-$html_page = str_replace("[err-sicurezza]", $sicurezza_errors, $html_page);
+$html_page = str_replace("[err-username]", $username_errors, $html_page);
+$html_page = str_replace("[err-password]", $password_errors, $html_page);
 $html_page = str_replace("[messaggio-successo]", $success_msg, $html_page);
 
 $html_page = str_replace("[username]", htmlspecialchars($_SESSION["user"]), $html_page);
