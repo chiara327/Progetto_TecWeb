@@ -359,19 +359,19 @@ h1.hide {
     padding: 2em 2.5em;
     position: relative;
     box-sizing: border-box;
+    margin-right: 40%;
 }
 
 #content section img {
-    float: right;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
     width: 40%;
-    height: auto;
+    height: 100%;
     object-fit: cover;
     clip-path: polygon(40% 0%, 100% 0%, 100% 100%, 0% 100%);
-    -webkit-clip-path: polygon(40% 0%, 100% 0%, 100% 100%, 0% 100%);
-    shape-outside: polygon(40% 0%, 100% 0%, 100% 100%, 0% 100%);
-    -webkit-shape-outside: polygon(40% 0%, 100% 0%, 100% 100%, 0% 100%);
-    shape-margin: 0.4em;
-    margin: 0 0 1em 1em;
+    margin: 0;
     display: block;
 }
 
@@ -754,7 +754,10 @@ th {
 
 /* Pulsante di invio */
 #login_form input[type="submit"],
-#signup_form input[type="submit"] {
+#signup_form input[type="submit"],
+#modifica-anagrafica input[type="submit"],
+#modifica-username input[type="submit"],
+#modifica-password input[type="submit"] {
   display: block;
   width: 100%;
   padding: 0.8em;
@@ -772,7 +775,13 @@ th {
 #login_form input[type="submit"]:hover,
 #login_form input[type="submit"]:focus,
 #signup_form input[type="submit"]:hover,
-#signup_form input[type="submit"]:focus {
+#signup_form input[type="submit"]:focus,
+#modifica-anagrafica input[type="submit"]:hover,
+#modifica-anagrafica input[type="submit"]:focus,
+#modifica-username input[type="submit"]:hover,
+#modifica-username input[type="submit"]:focus,
+#modifica-password input[type="submit"]:hover,
+#modifica-password input[type="submit"]:focus {
   background-color: var(--accent-color);
   color: var(--content-text-color);
   outline: none;
@@ -916,27 +925,16 @@ th {
     text-transform: uppercase;
 }
 
-/* Bottone Salva */
-.btn-save {
+/* Bottone Logout */
+.btn-logout {
     background-color: transparent;
     color: var(--accent-color);
     border: 0.15em solid var(--accent-color);
 }
 
-.btn-save:hover {
+.btn-logout:hover {
     background-color: var(--accent-color);
     color: white;
-}
-
-/* Bottone Logout */
-.btn-logout {
-    background-color: var(--footer-border-color);
-    color: white;
-    border: 0.15em solid transparent;
-}
-
-.btn-logout:hover {
-    background-color: #b91c1c; /* Un rosso più scuro/pericolo */
 }
 
 /* Rimuoviamo i punti elenco dalle liste dei form */
@@ -975,7 +973,13 @@ th {
 #modifica-anagrafica legend,
 .area_utente_modifica fieldset legend,
 .area_utente_modifica form legend {
-    display: none;
+    /* Titoli delle sezioni */
+    text-align: left;
+    color: var(--accent-color);
+    border-bottom: 0.1em solid var(--accent-color);
+    padding-bottom: 0.3em;
+    margin-bottom: 1em;
+    font-size: 1em;
 }
 
 #modifica-anagrafica fieldset {
@@ -984,37 +988,11 @@ th {
     margin: 0;
 }
 
-/* --- Pulsanti --- */
-
-/* Rendiamo il pulsante "Salva Modifiche" (input submit) identico al .btn-save */
-#modify_button {
-    display: inline-block;
-    padding: 0.8em 2em;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 0.3em;
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-    
-    background-color: transparent;
-    color: var(--accent-color);
-    border: 0.15em solid var(--accent-color);
-    width: auto; /* Sovrascrive il width 100% degli input generici */
-    margin-top: 1em;
-}
-
-#modify_button:hover {
-    background-color: var(--accent-color);
-    color: white;
-}
-
 /* --- Messaggi di Errore --- */
 .anagrafica_errors,
 .form_errors {
     margin-top: 1em;
     padding: 0.8em;
-    background-color: rgba(185, 28, 28, 0.1); /* Rosso leggero trasparente */
-    border-left: 0.3em solid #b91c1c;
     color: #b91c1c;
     font-weight: bold;
     font-size: 0.9em;
