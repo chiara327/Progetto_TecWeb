@@ -1,10 +1,7 @@
-<!DOCTYPE html>
-
-<html lang="it">
+<html>
 
 <head>
-    <title>Area Amministratore | F1 Fan Club</title>
-
+    <title>Formula1</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="formula 1, gare, circuiti, classifica, mondiali, qualifiche, piloti, team">
@@ -18,8 +15,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap"
         rel="stylesheet">
-    <script src="../javascript/admin.js"></script>
-
 </head>
 
 <body>
@@ -28,84 +23,58 @@
             <h1 class="hide">F1 <span lang="en">FAN CLUB</span></h1>
             <ul id="menu">
                 <li><a href="../index.html"><span lang="en">Home</span></a></li>
-                <li><a href="../pages/piloti.html">Piloti</a></li>
-                <li><a href="../pages/scuderie.html">Scuderie</a></li>
+                <li><a href="../php/piloti.php">Piloti</a></li>
+                <li><a href="../php/scuderie.php">Scuderie</a></li>
                 <li><a href="../pages/classifica.html">Classifica</a></li>
-                <li><a href="./pages/gare.html">Gare</a></li>
+                <li><a href="../pages/gare.html">Gare</a></li>
                 <li><a href="../pages/circuiti.html">Circuiti</a></li>
-                <!--TODO: Vedere se tenere il link a login o spostarlo in area utente-->
-                <li><a href="../php/login.php" aria-current="page">Area Riservata</a></li>
+                <li><a href="../php/login.php">Area Riservata</a></li>
             </ul>
         </nav>
     </header>
+
     <nav id="breadcrumb">
-        <p>Ti trovi in: <span lang="en">Home</span>->Area Amministratore</p>
-        <!--TODO: TOGLIERE IL LINK DELLA HOME DAL BREADCRUMB-->
+        <p>Ti trovi in: <span lang="en">MODIFICAMI</span></p>
     </nav>
 
-    <main>
-        <h1>Ciao, <span class="highlight">[nome]</span></h1>
+    <main id="form_utenti_admin">
+        <section aria-labelledby="titolo-crea-utente" class="crea-utente-section">
+            <form class="admin-form" action="../php/form_utenti_admin.php" method="post" id="form-utenti-aggiungi">
 
-        <section aria-labelledby="titolo-info" class="area_utente_info">
-            <h2 id="titolo-info">Informazioni Personali</h2>
-            <dl>
-                <dt>Username:</dt>
-                <dd>[username]</dd>
+                <label for="usernameAdd">Username</label>
+                <input type="text" name="usernameAdd" required>
 
-                <dt>Nome Completo:</dt>
-                <dd>[nome] [cognome]</dd>
+                <label for="passwordAdd">Password</label>
+                <input type="password" name="passwordAdd" required>
 
-                <dt>Data di nascita:</dt>
-                <dd><time datetime="[data-formato-iso]">[data di nascita]</time></dd>
-            </dl>
-        </section>
+                <label for="adminPower">Admin</label>
+                <select name="adminPowerAdd">
+                    <option value="0">No</option>
+                    <option value="1">Si</option>
+                </select>
 
-        <section aria-labelledby="titolo-modifica" class="area_utente_modifica">
-            <h2 id="titolo-modifica">Modifica Informazioni Personali</h2>
-            <form action="/update-profile" method="POST" id="modifica-info-form">
-                <fieldset>
-                    <legend>Dati Anagrafici</legend>
+                <label for="nomeAdd">Nome</label>
+                <input type="text" name="nomeAdd" required>
 
-                    <div class="form-group">
-                        <label for="nome">Nome:</label>
-                        <input type="text" id="nome" name="nome" value="[nome]" required>
-                    </div>
+                <label for="cognomeAdd">Cognome</label>
+                <input type="text" name="cognomeAdd" required>
 
-                    <div class="form-group">
-                        <label for="cognome">Cognome:</label>
-                        <input type="text" id="cognome" name="cognome" value="[cognome]" required>
-                    </div>
+                <label for="dataNascitaAdd">Data di nascita</label>
+                <input type="date" name="dataNascitaAdd" required>
 
-                    <div class="form-group">
-                        <label for="data-nascita">Data di Nascita:</label>
-                        <input type="date" id="data-nascita" name="data-nascita" value="[data di nascita]">
-                    </div>
-
-                    <button type="submit" class="btn-save">Salva Modifiche</button>
-                </fieldset>
+                <input type="submit" name="conferma_creazione_utente">
+                Crea utente
+                </input>
             </form>
         </section>
 
-        <section aria-labelledby="titolo-commenti" class="area_utente_commenti">
-            <h2 id="titolo-commenti">I tuoi ultimi commenti</h2>
-            <ul class="comment-list">
-                [lista-commenti]
-            </ul>
-        </section>
-
-        <section aria-labelledby="titolo-logout" class="area_utente_logout">
-            <h2 id="titolo-logout">Gestione Account</h2>
-            <form action="../php/logout.php" method="POST" id="logout-form">
-                <button type="submit" class="btn-logout">Esci dal tuo account</button>
+        <section aria-labelledby="titolo-elimina-utente" class="elimina-utente-section">
+            <form class="admin-form" action="../php/form_utenti_admin.php" method="post" id="form-utenti-elimina">
+                <label for="username">Username</label>
+                <input type="text" name="username" required>
+                <button type="submit">Conferma Elimina</button>
             </form>
-        </section>
-
-        <!--TODO: FARCI CSS-->
-        <section aria-labelledby="azioni-admin" class="azioni_admin">
-            <h2 id="azioni-admin">Azioni Admin</h2>
-                <a href="../php/form_utenti_admin.php" class="btn-admin-action">Gestione Utenti</a>
-        </section>
-
+        </sections>
     </main>
 
     <footer class="f1-footer">
@@ -115,14 +84,13 @@
                 <p>Il punto di riferimento per gli appassionati di velocità. <span lang="en">News</span>, classifiche e
                     analisi tecnica ogni settimana.</p>
             </div>
-            <!--TODO: LINK CIRCOLARE SU CIRCUITI, COME RISOLVIAMO?-->
             <div class="footer-col">
                 <h3><span lang="en">Paddock</span></h3>
                 <ul>
                     <li><a href="../pages/classifica.html">Campionato</a></li>
                     <li><a href="../pages/piloti.html">Piloti</a></li>
                     <li><a href="../pages/scuderie.html">Scuderie</a></li>
-                    <li><a href="../pages/circuiti.html" aria-current="page">Circuiti</a></li>
+                    <li><a href="../pages/circuiti.html">Circuiti</a></li>
                 </ul>
             </div>
             <div class="footer-col">
@@ -143,5 +111,6 @@
                     Licensing B.V.</span></p>
         </div>
     </footer>
-
 </body>
+
+</html>
