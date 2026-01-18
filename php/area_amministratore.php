@@ -46,7 +46,7 @@ if (isset($_POST["salva_modifiche"])) {
             $db_connection = new DBConnection();
             if ($db_connection->update_user_info($_SESSION["user"], $nome, $cognome, $data)) {
                 $db_connection->close_connection();
-                header("Location: area_amministratore.php?status=ok_anag");
+                header("Location: area_utente.php?status=ok_anag");
                 exit();
             } else {
                 $anagrafica_errors .= "<p class='error'>Errore nel salvataggio dei dati.</p>";
@@ -72,7 +72,7 @@ if (isset($_POST["modifica_username"])) {
             } else {
                 if ($db_connection->update_username($_SESSION["user"], $nuovo_user)) {
                     $_SESSION["user"] = $nuovo_user;
-                    header("Location: area_amministratore.php?status=ok_user");
+                    header("Location: area_utente.php?status=ok_user");
                     exit();
                 } else {
                     $username_errors = "<p class='error'>Lo username scelto è già in uso.</p>";
@@ -98,7 +98,7 @@ if (isset($_POST["modifica_password"])) {
             } else {
                 $hash = password_hash($nuova_pw, PASSWORD_DEFAULT);
                 if ($db_connection->update_password($_SESSION["user"], $hash)) {
-                    header("Location: area_amministratore.php?status=ok_pass");
+                    header("Location: area_utente.php?status=ok_pass");
                     exit();
                 }
             }
@@ -138,14 +138,23 @@ if (empty($commenti_data)) {
     $commenti_html = "<li>Non hai ancora postato alcun commento.</li>";
 } else {
     foreach ($commenti_data as $comm) {
+        $testo = htmlspecialchars($comm['testo']);
+        $gara = htmlspecialchars($comm['nome_gara']);
+        $data_iso = $comm['data'];
+        $data_it = date("d/m/Y", strtotime($comm['data']));
+
         $commenti_html .= "<li>
-            <blockquote cite='#'>
-                <p><q>" . htmlspecialchars($comm['testo']) . "</q></p>
-                <footer>Postato il <time datetime='{$comm['data']}'>" . date("d/m/Y", strtotime($comm['data'])) . "</time></footer>
-            </blockquote>
+            <article class='commento-card'>
+                <header>
+                    <h3>Commento su: $gara</h3>
+                    <p class='comment-date'>Pubblicato il <time datetime='$data_iso'>$data_it</time></p>
+                </header>
+                <p class='comment-content'>$testo</p>
+            </article>
         </li>";
     }
 }
+
 $html_page = str_replace("[lista-commenti]", $commenti_html, $html_page);
 
 echo $html_page;

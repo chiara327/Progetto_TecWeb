@@ -119,18 +119,24 @@ class DBConnection {
 
     // Area Utente functions
     public function get_user_comments($username) {
-        $query = "SELECT testo, data FROM Commento WHERE username = ? ORDER BY data DESC LIMIT 5";
+        $query = "SELECT 
+                    C.testo, 
+                    C.data, 
+                    Ci.nome AS nome_gara 
+                  FROM Commento C 
+                  LEFT JOIN Gare G ON C.gara_id = G.id 
+                  LEFT JOIN Circuiti Ci ON G.circuito_id = Ci.id 
+                  WHERE C.username = ? 
+                  ORDER BY C.data DESC 
+                  LIMIT 5";
+        
         $stmt = $this->connection->prepare($query);
         $stmt->bind_param("s", $username);
-    
-        if (!$stmt->execute()) {
-            return []; // Ritorna un array vuoto in caso di errore
-        }
-    
+        $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
-    
+        
     public function get_user_info($username) {
         $query = "SELECT nome, cognome, dataNascita FROM Utente WHERE username = ?";
         $stmt = $this->connection->prepare($query);
@@ -317,6 +323,55 @@ class DBConnection {
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    // --- FUNZIONI PER LE CLASSIFICHE ---
+
+    // --- CLASSIFICA PILOTI 2025 ---
+    public function get_drivers_standings() {
+        // Uniamo la tabella ClassificaPiloti con Piloti (per i nomi) 
+        // e Scuderie (per trovare il team attuale del pilota)
+        $query = "SELECT 
+                    cp.posizione, 
+                    p.nome, 
+                    p.cognome, 
+                    s.nome AS nome_scuderia, 
+                    cp.punti 
+                  FROM ClassificaPiloti cp
+                  JOIN Piloti p ON cp.pilota_id = p.id
+                  LEFT JOIN Scuderie s ON (p.id = s.pilota_attuale1_id OR p.id = s.pilota_attuale2_id)
+                  WHERE cp.anno = 2025
+                  ORDER BY cp.posizione ASC";
+
+        $stmt = $this->connection->prepare($query);
+
+        if (!$stmt->execute()) {
+            die("Errore classifica piloti: " . $stmt->error);
+        }
+
+        return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+    }
+
+    // --- CLASSIFICA COSTRUTTORI 2025 ---
+    public function get_constructors_standings() {
+        // Query diretta sulla tabella ClassificaCostruttori
+        $query = "SELECT 
+                    posizione, 
+                    scuderia_nome AS nome_scuderia, 
+                    punti 
+                  FROM ClassificaCostruttori 
+                  WHERE anno = 2025
+                  ORDER BY posizione ASC";
+
+        $stmt = $this->connection->prepare($query);
+
+        if (!$stmt->execute()) {
+            die("Errore classifica costruttori: " . $stmt->error);
+        }
+
+        return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+    }
+
+    // ---------------------------------------------
 
     public function check_for_existing_race($id) {
         $query = "SELECT * FROM Gare WHERE id = ?";

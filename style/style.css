@@ -328,7 +328,8 @@ h1.hide {
     padding: 1em 2.5em;
 }
 
-#content h2 {
+#content h2,
+.classifica caption {
     border-top: 0.07em solid var(--accent-color);
     border-bottom: 0.07em solid var(--accent-color);
     padding-top: 0.3em;
@@ -795,24 +796,22 @@ th {
     color: var(--link-bg-color);
 }
 
-/* =========================
-   AREA UTENTE (PROFILO)
-   ========================= */
+/* ============================================================
+   AREA UTENTE - STILI GENERALI
+   ============================================================ */
 
-/* Layout generale delle sezioni nell'area utente */
 .area_utente_info, 
 .area_utente_modifica, 
 .area_utente_commenti, 
 .area_utente_logout {
-    max-width: 50em; /* Coerente con .gp e .notizia */
+    max-width: 50em;
     margin: 2em auto;
     padding: 1.5em;
-    background-color: var(--navbar-bg-color); /* Leggermente più scuro dello sfondo */
+    background-color: var(--navbar-bg-color);
     border: 0.15em solid var(--footer-border-color);
     border-radius: 0.5em;
 }
 
-/* Titoli delle sezioni */
 .area_utente_info h2, 
 .area_utente_modifica h2, 
 .area_utente_commenti h2, 
@@ -823,9 +822,10 @@ th {
     padding-bottom: 0.3em;
     margin-bottom: 1em;
     font-size: 1.5em;
+    text-transform: uppercase;
 }
 
-/* --- Info Personali (dl) --- */
+/* --- Info Personali (Griglia Dati) --- */
 .area_utente_info dl {
     display: grid;
     grid-template-columns: 12em 1fr;
@@ -843,124 +843,47 @@ th {
 }
 
 /* --- Form di Modifica --- */
-/* Riutilizziamo la logica dei tuoi login_form per coerenza */
-#modifica-info-form fieldset {
+.area_utente_modifica fieldset {
     border: none;
     padding: 0;
+    margin: 0;
 }
 
-#modifica-info-form legend {
+#modifica-anagrafica legend {
     display: none; /* Titolo già presente nell'H2 */
 }
 
-#modifica-info-form label {
-    display: block;
-    margin-bottom: 0.4em;
-    font-weight: bold;
-}
-
-#modifica-info-form input {
-    width: 100%;
-    padding: 0.6em;
-    margin-bottom: 1.2em;
-    background-color: var(--content-bg-color);
-    border: 0.1em solid var(--footer-border-color);
-    border-radius: 0.3em;
-    color: var(--content-text-color);
-    box-sizing: border-box;
-}
-
-#modifica-info-form input:focus {
-    border-color: var(--accent-color);
-    outline: none;
-    box-shadow: 0 0 0 0.1em var(--accent-color);
-}
-
-/* --- Commenti --- */
-.area_utente_commenti ul {
-    list-style: none;
-    padding: 0;
-}
-
-.area_utente_commenti li {
-    padding: 1em;
-    border-left: 0.3em solid var(--accent-color);
-    background-color: var(--content-bg-color);
-    margin-bottom: 1em;
-}
-
-.area_utente_commenti blockquote {
-    margin: 0;
-}
-
-.area_utente_commenti q {
-    font-style: italic;
-}
-
-.area_utente_commenti footer {
-    margin-top: 0.5em;
-    font-size: 0.85em;
-    color: var(--footer-text-color);
-}
-
-/* --- Bottoni (Salva e Logout) --- */
-.area_utente_modifica button,
-.area_utente_logout button {
-    display: inline-block;
-    padding: 0.8em 2em;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 0.3em;
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-}
-
-/* Bottone Logout */
-.btn-logout {
-    background-color: transparent;
-    color: var(--accent-color);
-    border: 0.15em solid var(--accent-color);
-}
-
-.btn-logout:hover {
-    background-color: var(--accent-color);
-    color: white;
-}
-
-/* Rimuoviamo i punti elenco dalle liste dei form */
 .area_utente_modifica ul {
     list-style: none;
     padding: 0;
-    margin: 0;
 }
 
 .area_utente_modifica li {
     margin-bottom: 1.2em;
 }
 
-/* Applichiamo lo stile degli input a entrambi i form di modifica */
-#modifica-anagrafica input,
-.area_utente_modifica form input {
+.area_utente_modifica label {
+    display: block;
+    margin-bottom: 0.4em;
+    font-weight: bold;
+}
+
+.area_utente_modifica input {
     width: 100%;
-    padding: 0.6em;
+    padding: 0.7em;
     background-color: var(--content-bg-color);
     border: 0.1em solid var(--footer-border-color);
     border-radius: 0.3em;
     color: var(--content-text-color);
     box-sizing: border-box;
-    margin-top: 0.4em; /* Spazio tra label e input */
 }
 
-/* Focus per gli input */
-#modifica-anagrafica input:focus,
-.area_utente_modifica form input:focus {
+.area_utente_modifica input:focus {
     border-color: var(--accent-color);
     outline: none;
-    box-shadow: 0 0 0 0.1em var(--accent-color);
+    box-shadow: 0 0 5px var(--accent-color);
 }
 
-/* Gestione dei Legend (nascondiamoli come nel form precedente per coerenza con l'H2) */
-#modifica-anagrafica legend,
 .area_utente_modifica fieldset legend,
 .area_utente_modifica form legend {
     /* Titoli delle sezioni */
@@ -972,26 +895,191 @@ th {
     font-size: 1em;
 }
 
-#modifica-anagrafica fieldset {
-    border: none;
+/* --- Nuova Sezione Commenti (Card) --- */
+.area_utente_commenti .comment-list {
+    list-style: none;
     padding: 0;
-    margin: 0;
 }
 
-/* --- Messaggi di Errore --- */
-.anagrafica_errors,
-.form_errors {
+.commento-card {
+    background-color: var(--content-bg-color);
+    border-left: 0.3em solid var(--accent-color);
+    padding: 1.2em;
+    margin-bottom: 1.5em;
+    border-radius: 0 0.4em 0.4em 0;
+    transition: transform 0.2s ease;
+}
+
+.commento-card:hover {
+    transform: translateX(5px);
+}
+
+.commento-card h3 {
+    margin: 0 0 0.3em 0;
+    font-size: 1.1em;
+    color: var(--accent-color);
+}
+
+.comment-date {
+    font-size: 0.85em;
+    color: var(--footer-text-color);
+    margin-bottom: 0.8em;
+}
+
+.comment-content {
+    margin: 0;
+    line-height: 1.5;
+    font-style: italic; /* Manteniamo lo stile citazione per il testo */
+}
+
+/* --- Bottoni ed Errori --- */
+.btn-logout, .btn-admin, input[type="submit"] {
+    display: inline-block;
+    padding: 0.8em 1.5em;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 0.3em;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    border: 0.15em solid var(--accent-color);
+    background-color: transparent;
+    color: var(--accent-color);
+}
+
+input[type="submit"] {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.btn-logout:hover, .btn-admin:hover, input[type="submit"]:hover {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.anagrafica_errors, .form_errors {
     margin-top: 1em;
     padding: 0.8em;
+    /*background-color: rgba(185, 28, 28, 0.1);*/
     color: #b91c1c;
+    border-radius: 0.3em;
     font-weight: bold;
     font-size: 0.9em;
 }
 
-/* Se non ci sono errori (contenitore vuoto), non mostrare padding/bordi */
-.anagrafica_errors:empty,
-.form_errors:empty {
+.anagrafica_errors:empty, .form_errors:empty {
     display: none;
+}
+
+/* =========================
+   TAB & TABLE ENHANCEMENTS
+   ========================= */
+
+/* Navigazione Tab */
+.tabs-navigation {
+    display: flex;
+    justify-content: center;
+    gap: 0; /* Uniamo i bottoni per un look a "scheda" */
+    margin: 2em auto;
+    max-width: 50em;
+}
+
+[role="tab"] {
+    background-color: var(--navbar-bg-color);
+    color: var(--content-text-color);
+    padding: 0.8em 1.5em;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: 0.15em solid var(--footer-border-color);
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+/* Arrotondiamo solo i bordi esterni della coppia di tasti */
+[role="tab"]:first-child {
+    border-radius: 0.5em 0 0 0.5em;
+}
+[role="tab"]:last-child {
+    border-radius: 0 0.5em 0.5em 0;
+    border-left: none; /* Evita il doppio bordo al centro */
+}
+
+/* Stato Hover e Focus */
+[role="tab"]:hover, 
+[role="tab"]:focus-visible {
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+    outline: none;
+    z-index: 1; /* Porta sopra il bordo in hover */
+}
+
+/* Stato Attivo (Tab Selezionato) */
+[role="tab"][aria-selected="true"] {
+    background-color: var(--accent-color);
+    color: white;
+    border-color: var(--accent-color);
+}
+
+/* Pannelli */
+[role="tabpanel"][hidden] {
+    display: none;
+}
+
+/* Rifinitura Tabella .classifica */
+.classifica {
+    width: calc(100% - 2em);
+    max-width: 60em;
+    margin: 2em auto;
+    border-collapse: separate;
+    border-spacing: 0 0.4em; /* Effetto righe staccate */
+}
+
+.classifica th {
+    background-color: var(--navbar-bg-color);
+    color: var(--accent-color);
+    text-transform: uppercase;
+    font-size: 0.9em;
+    letter-spacing: 0.1em;
+    padding: 1em;
+    border: none;
+    border-bottom: 0.2em solid var(--accent-color);
+}
+
+.classifica td, 
+.classifica th[scope="row"] {
+    background-color: var(--footer-border-color);
+    padding: 0.8em;
+    border: none; /* Rimuoviamo i bordi interni per un look più pulito */
+}
+
+/* Stile per la posizione (colonna 1) */
+.classifica th[scope="row"] {
+    font-weight: 900;
+    font-size: 1.2em;
+    color: var(--content-text-color);
+    width: 3em;
+    background-color: var(--navbar-bg-color);
+    border-left: 0.3em solid var(--accent-color);
+}
+
+/* Hover sulla riga per facilitare la lettura */
+.classifica tbody tr:hover td {
+    background-color: #444444;
+    cursor: default;
+}
+
+/* Responsive per tabelle */
+@media screen and (max-width: 800px) {
+    .classifica {
+        font-size: 0.85em;
+        width: 100%;
+        margin: 1em 0;
+    }
+    
+    [role="tab"] {
+        padding: 0.6em 0.8em;
+        font-size: 0.9em;
+    }
 }
 
 /* ===== Accessible native combobox ===== */

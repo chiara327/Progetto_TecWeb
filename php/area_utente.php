@@ -138,14 +138,23 @@ if (empty($commenti_data)) {
     $commenti_html = "<li>Non hai ancora postato alcun commento.</li>";
 } else {
     foreach ($commenti_data as $comm) {
+        $testo = htmlspecialchars($comm['testo']);
+        $gara = htmlspecialchars($comm['nome_gara']);
+        $data_iso = $comm['data'];
+        $data_it = date("d/m/Y", strtotime($comm['data']));
+
         $commenti_html .= "<li>
-            <blockquote cite='#'>
-                <p><q>" . htmlspecialchars($comm['testo']) . "</q></p>
-                <footer>Postato il <time datetime='{$comm['data']}'>" . date("d/m/Y", strtotime($comm['data'])) . "</time></footer>
-            </blockquote>
+            <article class='commento-card'>
+                <header>
+                    <h3>Commento su: $gara</h3>
+                    <p class='comment-date'>Pubblicato il <time datetime='$data_iso'>$data_it</time></p>
+                </header>
+                <p class='comment-content'>$testo</p>
+            </article>
         </li>";
     }
 }
+
 $html_page = str_replace("[lista-commenti]", $commenti_html, $html_page);
 
 echo $html_page;
