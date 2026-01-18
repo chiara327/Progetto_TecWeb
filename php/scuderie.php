@@ -41,11 +41,9 @@ foreach ($scuderie_data as $team) {
 
     $dynamic_content .= 
     <<<HTML
-        <section aria-labelledby="{$slug_team}-heading" class="team">
+        <article aria-labelledby="{$slug_team}-heading" class="team">
             <h2 id="{$slug_team}-heading">{$team_header}</h2>
-            <article>
-                {$team_alt}
-            </article>
+            {$team_alt}
             <h3>Piloti</h3>
             <ul>
                 <li>
@@ -55,7 +53,7 @@ foreach ($scuderie_data as $team) {
                     <a href="informazioni_pilota.php?id={$p2_id}">{$pilota2_name}</a>
                 </li>
             </ul>    
-        </section>
+        </article>
     HTML;
 }
 

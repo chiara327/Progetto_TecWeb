@@ -244,6 +244,20 @@ class DBConnection {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function get_circuiti_page_data() {
+        $query = "SELECT * FROM Circuiti ORDER BY nome ASC";
+
+        $stmt = $this->connection->prepare($query);
+
+        if (!$stmt->execute()) {
+            die("Errore durante l'esecuzione: " . $stmt->error);
+        }
+
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function admin_delete_user($username) {
         $query = "DELETE FROM Utente WHERE username = ?";
 
