@@ -993,3 +993,53 @@ th {
 .form_errors:empty {
     display: none;
 }
+
+/* ===== Accessible native combobox ===== */
+
+select {
+    background-color: var(--content-bg-color);   /* #15151E */
+    color: var(--content-text-color);             /* #F1F1F1 */
+
+    border: 2px solid var(--footer-border-color); /* #333333 */
+    border-radius: 4px;
+
+    font-size: 1rem;
+    line-height: 1.4;
+    padding: 0.6rem 0.75rem;
+
+    min-height: 44px; /* Touch-friendly */
+
+    /* Preserve native behavior */
+    appearance: auto;
+}
+
+/* Hover state (non-essential, safe) */
+select:hover {
+    border-color: var(--accent-color); /* #E10600 */
+}
+
+/* Focus state — REQUIRED for WCAG 2.4.7 */
+select:focus {
+    outline: 3px solid var(--accent-color); /* #E10600 */
+    outline-offset: 2px;
+    border-color: var(--accent-color);
+}
+
+/* Disabled state */
+select:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Error state (optional, accessible) */
+select[aria-invalid="true"] {
+    border-color: var(--accent-color);
+}
+
+/* Label styling (keeps association intact) */
+label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-weight: 600;
+    color: var(--content-text-color);
+}
