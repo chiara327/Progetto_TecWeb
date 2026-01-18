@@ -375,16 +375,6 @@ h1.hide {
     display: block;
 }
 
-
-/*
-#content img {
-    width: 10em;
-    height: 10em;
-    display: block;
-    margin: 1em;
-    border-radius: 1em;
-}
-*/
 .sponsors {
     max-width: 80em;
     list-style: none;
@@ -459,7 +449,7 @@ h1.hide {
 }
 
 /* =========================
-   GARE PAGE
+   SCUDERIE PAGE
    ========================= */
 
 #scuderie .visually-hidden {
@@ -507,7 +497,7 @@ dd {
 /* =========================
    ULTIME NOTIZIE PAGE
    ========================= */
-
+/*
 #ultime_notizie h1 {
     font-size: 2.5em;
     margin-bottom: 0.4em;
@@ -534,7 +524,7 @@ dd {
     width: 17em;
     height: 25em;
 }
-
+*/
 /* =========================
    CIRCUITI PAGE
    ========================= */
