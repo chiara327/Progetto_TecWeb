@@ -26,6 +26,7 @@ foreach ($scuderie_data as $team) {
     $slug_team = create_slug($nome_team);
     $team_straniero = (stripos($nome_team, 'Ferrari') === false && stripos($nome_team, 'Unipd') === false);
 
+    // TODO: TOGLIERE IL P
     $team_alt = "<a href=\"../php/informazioni_scuderia.php?team={$nome_team}\">
                     <img src=\"../resources/{$slug_team}.jpg\" alt=\"Logo della scuderia {$nome_team}\">
                     <p id=\"{$slug_team}-desc\" class=\"visually-hidden\">
