@@ -971,7 +971,53 @@ input[type="submit"] {
 }
 
 /* =========================
-   TAB & TABLE ENHANCEMENTS
+   AREA ADMIN - AZIONI ADMIN
+   ========================= */
+
+.azioni_admin {    
+    max-width: 50em;
+    margin: 2em auto;
+    padding: 1.5em;
+    background-color: var(--navbar-bg-color);
+    border: 0.15em solid var(--footer-border-color);
+    border-radius: 0.5em;
+}
+
+.azioni_admin h2 {
+    text-align: left;
+    color: var(--accent-color);
+    border-bottom: 0.1em solid var(--accent-color);
+    padding-bottom: 0.3em;
+    margin-bottom: 1em;
+    font-size: 1.5em;
+    text-transform: uppercase;
+}
+
+.azioni_admin .btn-admin-action {
+    display: inline-block;
+    width: 50%;
+    padding: 0.8em;
+    font-size: 1em;
+    font-weight: bold;
+    background-color: transparent;
+    color: var(--accent-color);
+    border: 0.15em solid var(--accent-color);
+    border-radius: 0.3em;
+    cursor: pointer;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 1em;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    text-decoration: none;
+}
+
+.azioni_admin .btn-admin-action:hover {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+/* =========================
+   CLASSIFICA - TABS STYLES
    ========================= */
 
 /* Navigazione Tab */
