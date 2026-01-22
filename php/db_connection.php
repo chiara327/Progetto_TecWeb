@@ -411,5 +411,31 @@ class DBConnection {
             return false;
         }
     }
+
+    public function get_gare_data() {
+        $query = "SELECT 
+                    G.id, 
+                    G.data, 
+                    C.nome AS circuito_nome, 
+                    C.citta AS circuito_citta,
+                    P1.nome AS p1_nome, P1.cognome AS p1_cognome, P1.id AS p1_id,
+                    P2.nome AS p2_nome, P2.cognome AS p2_cognome, P2.id AS p2_id,
+                    P3.nome AS p3_nome, P3.cognome AS p3_cognome, P3.id AS p3_id
+                FROM Gare G
+                JOIN Circuiti C ON G.circuito_id = C.id
+                LEFT JOIN Piloti P1 ON G.primo_posto = P1.id
+                LEFT JOIN Piloti P2 ON G.secondo_posto = P2.id
+                LEFT JOIN Piloti P3 ON G.terzo_posto = P3.id
+                ORDER BY G.data DESC";
+
+        $stmt = $this->connection->prepare($query);
+
+        if (!$stmt->execute()) {
+            die("Errore nel recupero dati gare: " . $stmt->error);
+        }
+
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 }
 ?>

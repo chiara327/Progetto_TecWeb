@@ -496,37 +496,6 @@ dd {
 }
 
 /* =========================
-   ULTIME NOTIZIE PAGE
-   ========================= */
-/*
-#ultime_notizie h1 {
-    font-size: 2.5em;
-    margin-bottom: 0.4em;
-    border-top: 0.07em solid var(--accent-color);
-    border-bottom: 0.07em solid var(--accent-color);
-    padding-top: 0.4em;
-    padding-bottom: 0.4em;
-}
-
-.notizia {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-
-    padding: 1em;
-    align-items: stretch;
-    gap: 2em;
-    border: 0.5em solid var(--social-bg-color);
-    margin: 1em auto;
-    width: 50em;
-}
-
-.notizia img {
-    width: 17em;
-    height: 25em;
-}
-*/
-/* =========================
    CIRCUITI PAGE
    ========================= */
 

@@ -1,5 +1,7 @@
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
+SET NAMES 'utf8mb4';
+SET CHARACTER SET utf8mb4;
 
 CREATE TABLE IF NOT EXISTS Piloti (
     id INT NOT NULL,
@@ -13,7 +15,7 @@ CREATE TABLE IF NOT EXISTS Piloti (
     punti INT DEFAULT 0,
     eta INT DEFAULT NULL,
     PRIMARY KEY (id)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO Piloti (id, nome, cognome, numero, vittorie, n_pole, gran_premi, titoli_mondiali, punti, eta) VALUES
 (1, 'Max', 'Verstappen', 1, 58, 36, 215, 3, 620, 27),
@@ -68,16 +70,34 @@ CREATE TABLE IF NOT EXISTS Circuiti (
     numero_curve INT,
     PRIMARY KEY (id),
     UNIQUE INDEX idx_nome_circuito (nome)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-INSERT INTO Circuiti
-(id, nome, citta, nazione, lunghezza, numero_curve)
-VALUES
-(1, 'Autodromo Nazionale di Monza', 'Monza', 'Italia', 5.793, 11),
-(2, 'Circuit de Monaco', 'Monte Carlo', 'Monaco', 3.337, 19),
-(3, 'Silverstone Circuit', 'Silverstone', 'Regno Unito', 5.891, 18),
-(4, 'Suzuka International Racing Course', 'Suzuka', 'Giappone', 5.807, 18),
-(5, 'Circuit of the Americas', 'Austin', 'Stati Uniti', 5.513, 20);
+INSERT INTO Circuiti (id, nome, citta, nazione, lunghezza, numero_curve) VALUES
+(1, 'Albert Park Circuit', 'Melbourne', 'Australia', 5.278, 14),
+(2, 'Shanghai International Circuit', 'Shanghai', 'Cina', 5.451, 16),
+(3, 'Suzuka International Racing Course', 'Suzuka', 'Giappone', 5.807, 18),
+(4, 'Bahrain International Circuit', 'Sakhir', 'Bahrain', 5.412, 15),
+(5, 'Jeddah Corniche Circuit', 'Jeddah', 'Arabia Saudita', 6.174, 27),
+(6, 'Miami International Autodrome', 'Miami', 'Stati Uniti', 5.412, 19),
+(7, 'Autodromo Enzo e Dino Ferrari', 'Imola', 'Italia', 4.909, 19),
+(8, 'Circuit de Monaco', 'Monte Carlo', 'Monaco', 3.337, 19),
+(9, 'Circuit de Barcelona-Catalunya', 'Montmeló', 'Spagna', 4.657, 14),
+(10, 'Circuit Gilles-Villeneuve', 'Montreal', 'Canada', 4.361, 14),
+(11, 'Red Bull Ring', 'Spielberg', 'Austria', 4.318, 10),
+(12, 'Silverstone Circuit', 'Silverstone', 'Regno Unito', 5.891, 18),
+(13, 'Circuit de Spa-Francorchamps', 'Stavelot', 'Belgio', 7.004, 19),
+(14, 'Hungaroring', 'Mogyoród', 'Ungheria', 4.381, 14),
+(15, 'Circuit Zandvoort', 'Zandvoort', 'Paesi Bassi', 4.259, 14),
+(16, 'Autodromo Nazionale di Monza', 'Monza', 'Italia', 5.793, 11),
+(17, 'Baku City Circuit', 'Baku', 'Azerbaigian', 6.003, 20),
+(18, 'Marina Bay Street Circuit', 'Singapore', 'Singapore', 4.940, 19),
+(19, 'Circuit of the Americas', 'Austin', 'Stati Uniti', 5.513, 20),
+(20, 'Autódromo Hermanos Rodríguez', 'Città del Messico', 'Messico', 4.304, 17),
+(21, 'Autódromo José Carlos Pace', 'San Paolo', 'Brasile', 4.309, 15),
+(22, 'Las Vegas Strip Circuit', 'Las Vegas', 'Stati Uniti', 6.201, 17),
+(23, 'Lusail International Circuit', 'Lusail', 'Qatar', 5.419, 16),
+(24, 'Yas Marina Circuit', 'Abu Dhabi', 'Emirati Arabi Uniti', 5.281, 16),
+(25, 'Circuito Piovego', 'Padova', 'Italia', 3.128, 13);
 
 CREATE TABLE IF NOT EXISTS ClassificaPiloti (
     id INT NOT NULL,
@@ -170,8 +190,35 @@ CREATE TABLE IF NOT EXISTS Gare (
         ON UPDATE CASCADE
 ) ENGINE=InnoDB;
 
+-- Svuota la tabella se vuoi evitare duplicati di ID prima di inserire
+-- DELETE FROM Gare; 
+
 INSERT INTO Gare (id, circuito_id, data, primo_posto, secondo_posto, terzo_posto) VALUES
-(1, 1, '2025-09-07', 1, 2, 3);
+(1, 1, '2025-03-16', 5, 4, 1),    -- Australia: Norris, Leclerc, Verstappen
+(2, 2, '2025-03-23', 1, 5, 3),    -- Cina: Verstappen, Norris, Hamilton
+(3, 3, '2025-04-06', 1, 4, 2),    -- Giappone: Verstappen, Leclerc, Tsunoda
+(4, 4, '2025-04-13', 4, 1, 11),   -- Bahrain: Leclerc, Verstappen, Sainz
+(5, 5, '2025-04-20', 1, 9, 4),    -- Arabia Saudita: Verstappen, Russell, Leclerc
+(6, 6, '2025-05-04', 5, 1, 6),    -- Miami: Norris, Verstappen, Piastri
+(7, 7, '2025-05-18', 4, 11, 1),   -- Imola: Leclerc, Sainz, Verstappen
+(8, 8, '2025-05-25', 4, 6, 11),   -- Monaco: Leclerc, Piastri, Sainz
+(9, 9, '2025-06-01', 1, 5, 3),    -- Spagna: Verstappen, Norris, Hamilton
+(10, 10, '2025-06-15', 3, 1, 9),  -- Canada: Hamilton, Verstappen, Russell
+(11, 11, '2025-06-29', 9, 6, 11), -- Austria: Russell, Piastri, Sainz
+(12, 12, '2025-07-06', 3, 5, 1),  -- Regno Unito: Hamilton, Norris, Verstappen
+(13, 13, '2025-07-27', 1, 3, 4),  -- Belgio: Verstappen, Hamilton, Leclerc
+(14, 14, '2025-08-03', 6, 5, 3),  -- Ungheria: Piastri, Norris, Hamilton
+(15, 15, '2025-08-31', 5, 1, 4),  -- Paesi Bassi: Norris, Verstappen, Leclerc
+(16, 16, '2025-09-07', 11, 4, 1), -- Italia: Sainz, Leclerc, Verstappen (Festa Ferrari!)
+(17, 17, '2025-09-21', 6, 4, 9),  -- Azerbaigian: Piastri, Leclerc, Russell
+(18, 18, '2025-10-05', 5, 1, 6),  -- Singapore: Norris, Verstappen, Piastri
+(19, 19, '2025-10-19', 4, 5, 1),  -- Stati Uniti (Austin): Leclerc, Norris, Verstappen
+(20, 20, '2025-10-26', 11, 5, 4), -- Messico: Sainz, Norris, Leclerc
+(21, 21, '2025-11-09', 1, 17, 3), -- Brasile: Verstappen, Gasly, Hamilton
+(22, 22, '2025-11-22', 9, 3, 1),  -- Las Vegas: Russell, Hamilton, Verstappen
+(23, 23, '2025-11-30', 1, 5, 6),  -- Qatar: Verstappen, Norris, Piastri
+(24, 24, '2025-12-07', 1, 4, 5),  -- Abu Dhabi: Verstappen, Leclerc, Norris
+(25, 25, '2025-12-14', 1, 2, 3);  -- Padova: Verstappen, Tsunoda, Hamilton
 
 CREATE TABLE IF NOT EXISTS Utente (
     username VARCHAR(30) NOT NULL,
@@ -181,7 +228,7 @@ CREATE TABLE IF NOT EXISTS Utente (
     cognome VARCHAR(30) NOT NULL,
     dataNascita DATE NOT NULL,
     PRIMARY KEY (username)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO Utente (username, password, adminPower, nome, cognome, dataNascita) VALUES
 ('luigi', '0000', 1, 'Luigi', 'Verdi', '2025-01-01'),
@@ -204,7 +251,7 @@ CREATE TABLE IF NOT EXISTS Commento (
         REFERENCES Gare(id)
         ON DELETE CASCADE
         ON UPDATE CASCADE
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO Commento (username, gara_id, testo, data) VALUES
 ('luigi', 1, 'Grande gara di Verstappen, ha dominato dall''inizio alla fine!', '2025-09-08'),
