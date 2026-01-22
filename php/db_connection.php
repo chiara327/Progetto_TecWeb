@@ -92,7 +92,7 @@ class DBConnection {
     }
 
     public function login_user($username, $password) {
-        $query = "SELECT username, password FROM Utente WHERE username = ?";
+        $query = "SELECT username, password, adminPower FROM Utente WHERE username = ?";
 
         $stmt = $this->connection->prepare($query);
 
@@ -107,12 +107,12 @@ class DBConnection {
         $rows = $result->fetch_all(MYSQLI_ASSOC);
         
         if (count($rows) == 0) {
-            return false;
+            return [$rows[0]["adminPower"], false];
         } else {
             if (password_verify($password, $rows[0]["password"])) {
-                return true;
+                return [$rows[0]["adminPower"], true];
             }
-            return false;
+            return [$rows[0]["adminPower"], false];
         }
 
     }

@@ -11,15 +11,22 @@ $dynamic_content = "";
 function render_drivers($id, $nome, $cognome) {
     $display_name = htmlspecialchars($nome . " " . $cognome);
 
-    // TODO: Mettere gli span sui nomi stranieri (possiamo mettere un attributo su db per nazionalità?)
-    $img_path = strtolower($nome . "_" . $cognome . ".jpg");
+    // TODO: SPAN PER NOMI STRANIERI
+    $filename = strtolower($nome . "_" . $cognome . ".jpg");
+    $base_path = "../resources/piloti/";
+    $full_path = __DIR__ . "/" . $base_path . $filename; 
 
-    return  
-    <<<HTML
+    if (!file_exists($full_path)) {
+        $img_src = $base_path . "placeholder_driver.jpg";
+    } else {
+        $img_src = $base_path . $filename;
+    }
+
+    return <<<HTML
         <li>
             <article>
                 <a href="informazioni_pilota.php?id={$id}">
-                    <img src="../resources/{$img_path}" alt="Ritratto di {$display_name}">
+                    <img src="{$img_src}" alt="Ritratto di {$display_name}">
                     <h3>{$display_name}</h3>
                 </a>
             </article>

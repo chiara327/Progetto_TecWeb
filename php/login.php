@@ -40,13 +40,17 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
             $db_connection->close_connection();
 
             // Utente non trovato
-            if (!$result) {
+            if (!$result[1]) {
                 $form_errors = $form_errors . "<p>Lo <span lang='en'>username</span> o o la password che hai inserito non sono corretti.</p>";
                 $html_page = input_restore();
                 echo str_replace("[err]", $form_errors, $html_page);
             } else {
-                // TODO: Mettere casistica per utente admin
                 $_SESSION["user"] = $_POST["username"];
+                if ($result[0]) {
+                    $_SESSION["admin"] = true;
+                    header("location: area_amministratore.php");
+                    exit();
+                }
                 header("location: area_utente.php");
             }
         } catch (Exception) {
