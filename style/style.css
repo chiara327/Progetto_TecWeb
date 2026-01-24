@@ -27,17 +27,15 @@
     /*  COLORI DA USARE PER SCUDERIE/PILOTI */
 
     --ferrari-color: #FF2800;
-    /*
-    --redbull-color:;
-    --mclaren-color:;
-    --mercedes-color:;
-    --alpine-color:;
-    --astonmartin-color:;
-    --williams-color:;
-    --haas-color:;
-    --racingbulls-color:;
-    --sauber-color:;
-*/
+    --redbull-color: #0600EF;
+    --mclaren-color: #FF8700;
+    --mercedes-color: #00D4BE;
+    --alpine-color: #0082FA;
+    --astonmartin-color: #006A3A;
+    --williams-color: #0082FA;
+    --haas-color: #E10600;
+    --racingbulls-color: #0066CC;
+    --sauber-color: #00FF00;
 }
 
 /* =========================
@@ -436,19 +434,57 @@ h1.hide {
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 30em;
+    width: 100%;
     height: 3em;
     margin: 0;
 
     color: var(--content-text-color);
     background-color: var(--footer-border-color);
-    padding: 2em;
+    padding: 1em;
     text-align: center;
     box-sizing: border-box;
 
     z-index: 2;
 }
 
+.piloti h2#alpine-heading~ul article h3{
+    background-color: var(--alpine-color);
+}
+
+.piloti h2#astonmartin-heading~ul article h3{
+    background-color: var(--astonmartin-color);
+}
+
+.piloti h2#ferrari-heading~ul article h3{
+    background-color: var(--ferrari-color);
+}
+
+.piloti h2#haas-heading~ul article h3{
+    background-color: var(--haas-color);
+}
+
+.piloti h2#mclaren-heading~ul article h3{
+    background-color: var(--mclaren-color);
+}
+
+.piloti h2#mercedes-heading~ul article h3{
+    background-color: var(--mercedes-color);
+}
+
+.piloti h2#rbheading~ul article h3{
+    background-color: var(--racingbulls-color);
+}
+
+.piloti h2#redbullracing-heading~ul article h3{
+    background-color: var(--redbull-color);
+}
+
+.piloti h2#sauber-heading~ul article h3{
+    background-color: var(--sauber-color);
+}
+.piloti h2#williams-heading~ul article h3{
+    background-color: var(--williams-color);
+}
 /* =========================
    SCUDERIE PAGE
    ========================= */
