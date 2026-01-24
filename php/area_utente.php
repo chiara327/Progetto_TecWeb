@@ -157,5 +157,28 @@ if (empty($commenti_data)) {
 
 $html_page = str_replace("[lista-commenti]", $commenti_html, $html_page);
 
+$delete_errors = "";
+// --- LOGICA DI ELIMINAZIONE ACCOUNT ---
+if (isset($_POST["conferma_eliminazione"])) {
+    $db_connection = new DBConnection();
+    
+    // Esegui la cancellazione (passando lo username dalla sessione)
+    if ($db_connection->delete_user($_SESSION["user"])) {
+        $db_connection->close_connection();
+        
+        // Pulizia sessione e redirect
+        session_unset();
+        session_destroy();
+        
+        // Reindirizziamo alla home o a una pagina di addio
+        header("Location: ../index.html");
+        exit();
+    } else {
+        $delete_errors .= "<p class='error'>Errore tecnico durante l'eliminazione dell'account.</p>";
+    }
+    $db_connection->close_connection();
+}
+$html_page = str_replace("[err-delete]", $delete_errors, $html_page);
+
 echo $html_page;
 ?>

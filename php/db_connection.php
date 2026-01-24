@@ -44,7 +44,9 @@ class DBConnection {
         $query = "SELECT * FROM Utente WHERE username = ?";
 
         $stmt = $this->connection->prepare($query);
-        // Check errore strano (vedi Luzzauto)
+        if ($stmt === false) {
+			die("Errore nella preparazione dello statement: " . $this->connection->error);
+		}
 
         $stmt->bind_param("s", $username);
 
@@ -71,16 +73,26 @@ class DBConnection {
         if ($adminPower) {
             $query = "INSERT INTO Utente (username, password, adminPower, nome, cognome, dataNascita) VALUES (?, ?, ?, ?, ?, ?)";
             $stmt = $this->connection->prepare($query);
-            // Check errore strano (vedi Luzzauto)
+            if ($stmt === false) {
+			    die("Errore nella preparazione dello statement: " . $this->connection->error);
+		    }
 
             $stmt->bind_param("ssssss", $username, $password, $adminPower, $nome, $cognome, $dataNascita);
+            if (!$stmt->execute()) {
+                die("Errore durante l'esecuzione: " . $stmt->error);
+            }
             $result = $stmt->execute();
         } else {
 		    $query = "INSERT INTO Utente (username, password, nome, cognome, dataNascita) VALUES (?, ?, ?, ?, ?)";
             $stmt = $this->connection->prepare($query);
-            // Check errore strano (vedi Luzzauto)
+            if ($stmt === false) {
+			    die("Errore nella preparazione dello statement: " . $this->connection->error);
+		    }
 
             $stmt->bind_param("sssss", $username, $password, $nome, $cognome, $dataNascita);
+            if (!$stmt->execute()) {
+                die("Errore durante l'esecuzione: " . $stmt->error);
+            }
             $result = $stmt->execute();
         }
 
@@ -93,12 +105,12 @@ class DBConnection {
 
     public function login_user($username, $password) {
         $query = "SELECT username, password, adminPower FROM Utente WHERE username = ?";
-
         $stmt = $this->connection->prepare($query);
-
+        if ($stmt === false) {
+			die("Errore nella preparazione dello statement: " . $this->connection->error);
+		}
         $stmt->bind_param("s", $username);
 
-        // TODO: Check return value di execute in un if
         if (!$stmt->execute()) {
             die ("Errore riscontrato durante l'esecuzione: " . $stmt->error);
         }
@@ -106,15 +118,16 @@ class DBConnection {
         $result = $stmt->get_result();
         $rows = $result->fetch_all(MYSQLI_ASSOC);
         
+        // Se l'array è vuoto, l'utente non esiste
         if (count($rows) == 0) {
-            return [$rows[0]["adminPower"], false];
+            return [null, false]; // Restituiamo null per adminPower
         } else {
+            // L'utente esiste, verifichiamo la password
             if (password_verify($password, $rows[0]["password"])) {
                 return [$rows[0]["adminPower"], true];
             }
             return [$rows[0]["adminPower"], false];
         }
-
     }
 
     // Area Utente functions
@@ -140,6 +153,9 @@ class DBConnection {
     public function get_user_info($username) {
         $query = "SELECT nome, cognome, dataNascita FROM Utente WHERE username = ?";
         $stmt = $this->connection->prepare($query);
+        if ($stmt === false) {
+			die("Errore nella preparazione dello statement: " . $this->connection->error);
+		}
         $stmt->bind_param("s", $username);
     
         if (!$stmt->execute()) {
@@ -147,20 +163,35 @@ class DBConnection {
         }
     
         $result = $stmt->get_result();
+        if (!$stmt->execute()) {
+            die("Errore durante l'esecuzione: " . $stmt->error);
+        }
         return $result->fetch_assoc();
     }
     
     public function update_user_info($username, $nome, $cognome, $dataNascita) {
         $query = "UPDATE Utente SET nome = ?, cognome = ?, dataNascita = ? WHERE username = ?";
         $stmt = $this->connection->prepare($query);
+        if ($stmt === false) {
+			die("Errore nella preparazione dello statement: " . $this->connection->error);
+		}
         $stmt->bind_param("ssss", $nome, $cognome, $dataNascita, $username);
+        if (!$stmt->execute()) {
+            die("Errore durante l'esecuzione: " . $stmt->error);
+        }
         return $stmt->execute();
     }
 
     public function verify_password($username, $password) {
         $query = "SELECT password FROM Utente WHERE username = ?";
         $stmt = $this->connection->prepare($query);
+        if ($stmt === false) {
+			die("Errore nella preparazione dello statement: " . $this->connection->error);
+		}
         $stmt->bind_param("s", $username);
+        if (!$stmt->execute()) {
+            die("Errore durante l'esecuzione: " . $stmt->error);
+        }
         $stmt->execute();
         $result = $stmt->get_result();
         if ($row = $result->fetch_assoc()) {
@@ -176,20 +207,42 @@ class DBConnection {
         }
         $query = "UPDATE Utente SET username = ? WHERE username = ?";
         $stmt = $this->connection->prepare($query);
+        if ($stmt === false) {
+			die("Errore nella preparazione dello statement: " . $this->connection->error);
+		}
         $stmt->bind_param("ss", $new_username, $old_username);
+        if (!$stmt->execute()) {
+            die("Errore durante l'esecuzione: " . $stmt->error);
+        }
         return $stmt->execute();
     }
 
     public function update_password($username, $hashed_password) {
         $query = "UPDATE Utente SET password = ? WHERE username = ?";
         $stmt = $this->connection->prepare($query);
-        
-        // Qui non usiamo più password_hash, usiamo direttamente la variabile ricevuta
+        if ($stmt === false) {
+			die("Errore nella preparazione dello statement: " . $this->connection->error);
+		}
         $stmt->bind_param("ss", $hashed_password, $username);
-        
+        if (!$stmt->execute()) {
+            die("Errore durante l'esecuzione: " . $stmt->error);
+        }
         $success = $stmt->execute();
         $stmt->close();
         return $success;
+    }
+
+    public function delete_user($username) {
+        try {
+            $query = "DELETE FROM Utente WHERE username = ?";
+            $stmt = $this->connection->prepare($query);
+            $stmt->bind_param("s", $username);
+            return $stmt->execute();
+        } catch (Exception $e) {
+            // Se c'è un errore, annulla tutto (rollback)
+            $this->connection->rollback();
+            return false;
+        }
     }
     // ---------------------------------------------
 
@@ -198,7 +251,9 @@ class DBConnection {
 
         $stmt = $this->connection->prepare($query);
         $stmt->bind_param("s", $nome);
-
+        if ($stmt === false) {
+			die("Errore nella preparazione dello statement: " . $this->connection->error);
+		}
         if (!$stmt->execute()) {
             die("Errore durante l'esecuzione: " . $stmt->error);
         }
@@ -213,7 +268,9 @@ class DBConnection {
 
         $stmt = $this->connection->prepare($query);
         $stmt->bind_param("i", $id);
-
+        if ($stmt === false) {
+			die("Errore nella preparazione dello statement: " . $this->connection->error);
+		}
         if (!$stmt->execute()) {
             die("Errore durante l'esecuzione: " . $stmt->error);
         }
@@ -240,7 +297,9 @@ class DBConnection {
                     ORDER BY s.nome ASC ";
 
         $stmt = $this->connection->prepare($query);
-
+        if ($stmt === false) {
+			die("Errore nella preparazione dello statement: " . $this->connection->error);
+		}
         if (!$stmt->execute()) {
             die("Errore durante l'esecuzione: " . $stmt->error);
         }
@@ -254,7 +313,9 @@ class DBConnection {
         $query = "SELECT * FROM Circuiti ORDER BY nome ASC";
 
         $stmt = $this->connection->prepare($query);
-
+        if ($stmt === false) {
+			die("Errore nella preparazione dello statement: " . $this->connection->error);
+		}
         if (!$stmt->execute()) {
             die("Errore durante l'esecuzione: " . $stmt->error);
         }
@@ -268,7 +329,9 @@ class DBConnection {
         $query = "DELETE FROM Utente WHERE username = ?";
 
         $stmt = $this->connection->prepare($query);
-        // Check errore strano (vedi Luzzauto)
+        if ($stmt === false) {
+			die("Errore nella preparazione dello statement: " . $this->connection->error);
+		}
 
         $stmt->bind_param("s", $username);
         $result = $stmt->execute();
@@ -280,14 +343,16 @@ class DBConnection {
         }
     }
 
-    public function admin_add_race($id, $circuito_id, $data, $primo_posto, $secondo_posto, $terzo_posto){
+    public function admin_add_race($circuito_id, $data, $primo_posto, $secondo_posto, $terzo_posto){
 
-		$query = "INSERT INTO Gare (id, circuito_id, data, primo_posto, secondo_posto, terzo_posto) VALUES (?, ?, ?, ?, ?, ?)";
+		$query = "INSERT INTO Gare (circuito_id, data, primo_posto, secondo_posto, terzo_posto) VALUES (?, ?, ?, ?, ?)";
 
         $stmt = $this->connection->prepare($query);
-        // Check errore strano (vedi Luzzauto)
+        if ($stmt === false) {
+			die("Errore nella preparazione dello statement: " . $this->connection->error);
+		}
 
-        $stmt->bind_param("ssssss", $id, $circuito_id, $data, $primo_posto, $secondo_posto, $terzo_posto);
+        $stmt->bind_param("sssss", $circuito_id, $data, $primo_posto, $secondo_posto, $terzo_posto);
         $result = $stmt->execute();
 
         if ($result) {
@@ -314,6 +379,10 @@ class DBConnection {
                     ORDER BY s.nome ASC ";   
 
         $stmt = $this->connection->prepare($query);
+
+        if ($stmt === false) {
+			die("Errore nella preparazione dello statement: " . $this->connection->error);
+		}
 
         if (!$stmt->execute()) {
             die("Errore durante l'esecuzione: " . $stmt->error);
@@ -343,7 +412,10 @@ class DBConnection {
                   ORDER BY cp.posizione ASC";
 
         $stmt = $this->connection->prepare($query);
-
+        if ($stmt === false) {
+			die("Errore nella preparazione dello statement: " . $this->connection->error);
+		}
+        
         if (!$stmt->execute()) {
             die("Errore classifica piloti: " . $stmt->error);
         }
@@ -363,6 +435,9 @@ class DBConnection {
                   ORDER BY posizione ASC";
 
         $stmt = $this->connection->prepare($query);
+        if ($stmt === false) {
+			die("Errore nella preparazione dello statement: " . $this->connection->error);
+		}
 
         if (!$stmt->execute()) {
             die("Errore classifica costruttori: " . $stmt->error);
@@ -372,12 +447,43 @@ class DBConnection {
     }
 
     // ---------------------------------------------
+    public function get_gare_data() {
+        $query = "SELECT 
+                    G.id, 
+                    G.data, 
+                    C.nome AS circuito_nome, 
+                    C.citta AS circuito_citta,
+                    P1.nome AS p1_nome, P1.cognome AS p1_cognome, P1.id AS p1_id,
+                    P2.nome AS p2_nome, P2.cognome AS p2_cognome, P2.id AS p2_id,
+                    P3.nome AS p3_nome, P3.cognome AS p3_cognome, P3.id AS p3_id
+                FROM Gare G
+                JOIN Circuiti C ON G.circuito_id = C.id
+                LEFT JOIN Piloti P1 ON G.primo_posto = P1.id
+                LEFT JOIN Piloti P2 ON G.secondo_posto = P2.id
+                LEFT JOIN Piloti P3 ON G.terzo_posto = P3.id
+                ORDER BY G.data DESC";
 
+        $stmt = $this->connection->prepare($query);
+        if ($stmt === false) {
+			die("Errore nella preparazione dello statement: " . $this->connection->error);
+		}
+
+        if (!$stmt->execute()) {
+            die("Errore nel recupero dati gare: " . $stmt->error);
+        }
+
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    // --- FUNZIONI ADMIN ---
     public function check_for_existing_race($id) {
         $query = "SELECT * FROM Gare WHERE id = ?";
 
         $stmt = $this->connection->prepare($query);
-        // Check errore strano (vedi Luzzauto)
+        if ($stmt === false) {
+			die("Errore nella preparazione dello statement: " . $this->connection->error);
+		}
 
         $stmt->bind_param("s", $id);
 
@@ -396,11 +502,38 @@ class DBConnection {
         return true;
     }
 
+    public function check_for_existing_pilot($id) {
+        $query = "SELECT * FROM Piloti WHERE id = ?";
+
+        $stmt = $this->connection->prepare($query);
+        if ($stmt === false) {
+			die("Errore nella preparazione dello statement: " . $this->connection->error);
+		}
+
+        $stmt->bind_param("s", $id);
+
+        if (!$stmt->execute()) {
+            die ("Errore riscontrato durante l'esecuzione: " . $stmt->error);
+        }
+
+        $result = $stmt->get_result();
+        $rows = $result->fetch_all(MYSQLI_ASSOC);
+		$numRows = count($rows);
+
+		if($numRows != 0){
+			return false;
+		}
+
+        return true;
+    }
+
     public function admin_delete_race($id) {
         $query = "DELETE FROM Gare WHERE id = ?";
 
         $stmt = $this->connection->prepare($query);
-        // Check errore strano (vedi Luzzauto)
+        if ($stmt === false) {
+			die("Errore nella preparazione dello statement: " . $this->connection->error);
+		}
 
         $stmt->bind_param("s", $id);
         $result = $stmt->execute();
@@ -412,29 +545,95 @@ class DBConnection {
         }
     }
 
-    public function get_gare_data() {
-        $query = "SELECT 
-                    G.id, 
-                    G.data, 
-                    C.nome AS circuito_nome, 
-                    C.citta AS circuito_citta,
-                    P1.nome AS p1_nome, P1.cognome AS p1_cognome, P1.id AS p1_id,
-                    P2.nome AS p2_nome, P2.cognome AS p2_cognome, P2.id AS p2_id,
-                    P3.nome AS p3_nome, P3.cognome AS p3_cognome, P3.id AS p3_id
-                FROM Gare G
-                JOIN Circuiti C ON G.circuito_id = C.id
-                LEFT JOIN Piloti P1 ON G.primo_posto = P1.id
-                LEFT JOIN Piloti P2 ON G.secondo_posto = P2.id
-                LEFT JOIN Piloti P3 ON G.terzo_posto = P3.id
-                ORDER BY G.data DESC";
+    public function find_team_by_pilot_id($id_pilota) {
+        $query = "SELECT nome FROM Scuderie WHERE pilota_attuale1_id = ? OR pilota_attuale2_id = ?";
 
         $stmt = $this->connection->prepare($query);
+        if ($stmt === false) {
+			die("Errore nella preparazione dello statement: " . $this->connection->error);
+		}
 
+        $stmt->bind_param("ii", $id_pilota, $id_pilota);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+
+        return $row ? $row['nome'] : null;
+    }
+
+    public function admin_update_team_points($team_name, $punti){
+        $query = "UPDATE ClassificaCostruttori SET punti = punti + ? WHERE scuderia_nome = ?";
+
+        $stmt = $this->connection->prepare($query);
+        if ($stmt === false) {
+			die("Errore nella preparazione dello statement: " . $this->connection->error);
+		}
+
+        $stmt->bind_param("is", $punti, $team_name);
+        $result = $stmt->execute();
+
+        if ($result) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function admin_increase_pilot_points($id_pilota, $punti){
+        $query = "UPDATE ClassificaPiloti SET punti = punti + ? WHERE pilota_id = ?";
+
+        $stmt = $this->connection->prepare($query);
+        if ($stmt === false) {
+			die("Errore nella preparazione dello statement: " . $this->connection->error);
+		}
+
+        $stmt->bind_param("ii", $punti, $id_pilota);
+        $result = $stmt->execute();
+
+        $current_team = $this->find_team_by_pilot_id($id_pilota);
+        $this->admin_update_team_points($current_team, $punti);
+
+        if ($result) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function admin_decrease_pilot_points($id_pilota, $punti){
+        $query = "UPDATE ClassificaPiloti SET punti = punti - ? WHERE pilota_id = ?";
+
+        $stmt = $this->connection->prepare($query);
+        if ($stmt === false) {
+			die("Errore nella preparazione dello statement: " . $this->connection->error);
+		}
+
+        $stmt->bind_param("ii", $punti, $id_pilota);
+        $result = $stmt->execute();
+        
+        $current_team = $this->find_team_by_pilot_id($id_pilota);
+        $punti_meno = -$punti;
+        $this->admin_update_team_points($current_team, $punti_meno);
+
+        if ($result) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function get_commenti($id_gara) {
+        $query = "SELECT testo, data FROM Commento WHERE gara_id=? ORDER BY data DESC";
+
+        $stmt = $this->connection->prepare($query);
+        $stmt->bind_param("s", $id_gara);
         if (!$stmt->execute()) {
-            die("Errore nel recupero dati gare: " . $stmt->error);
+            die("Errore durante l'esecuzione: " . $stmt->error);
         }
 
         $result = $stmt->get_result();
+
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 }

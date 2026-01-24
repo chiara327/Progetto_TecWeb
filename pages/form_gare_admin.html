@@ -34,7 +34,7 @@
     </header>
 
     <nav id="breadcrumb">
-        <p>Ti trovi in: <span lang="en">MODIFICAMI</span></p>
+        <p>Ti trovi in: <span lang="en">Home->Area Amministratore->Gestione Gare</span></p>
     </nav>
 
     <main id="form_gare_admin">
@@ -42,16 +42,37 @@
             <form class="admin-form" action="../php/form_gare_admin.php#creazione_gare" method="post"
                 id="form-gare-aggiungi">
                 <fieldset>
-                    <legend><span lang="en">Crea Utente</span></legend>
+                    <legend><span lang="en">Crea Gare</span></legend>
                     <ul>
                         <li>
-                            <label id="create_label_id" for="create_id">ID Gara</label>
-                            <input type="text" name="id" id="create_id" value="[id]" placeholder="ID Gara">
-                        </li>
-                        <li>
-                            <label id="create_label_id_circuito" for="create_id_circuito">ID Circuito</label>
-                            <input type="text" name="id_circuito" id="create_id_circuito" value="[id_circuito]"
-                                placeholder="ID Circuito">
+                            <label id="create_label_id_circuito" for="create_id_circuito">Circuito in cui si effettua la gara</label>
+                            <select name="id_circuito" id="create_id_circuito">
+                                <option value="1">Albert Park Circuit</option>
+                                <option value="2">Shanghai International Circuit</option>
+                                <option value="3">Suzuka International Racing Course</option>
+                                <option value="4">Bahrain International Circuit</option>
+                                <option value="5">Jeddah Corniche Circuit</option>
+                                <option value="6">Miami International Autodrome</option>
+                                <option value="7">Autodromo Enzo e Dino Ferrari</option>
+                                <option value="8">Circuit de Monaco</option>
+                                <option value="9">Circuit de Barcelona-Catalunya</option>
+                                <option value="10">Circuit Gilles-Villeneuve</option>
+                                <option value="11">Red Bull Ring</option>
+                                <option value="12">Silverstone Circuit</option>
+                                <option value="13">Circuit de Spa-Francorchamps</option>
+                                <option value="14">Hungaroring</option>
+                                <option value="15">Circuit Zandvoort</option>
+                                <option value="16">Autodromo Nazionale di Monza</option>
+                                <option value="17">Baku City Circuit</option>
+                                <option value="18">Marina Bay Street Circuit</option>
+                                <option value="19">Circuit of the Americas</option>
+                                <option value="20">Autódromo Hermanos Rodríguez</option>
+                                <option value="21">Autódromo José Carlos Pace</option>
+                                <option value="22">Las Vegas Strip Circuit</option>
+                                <option value="23">Lusail International Circuit</option>
+                                <option value="24">Yas Marina Circuit</option>
+                                
+                            </select>
                         </li>
                         <li>
                             <label id="create_label_data" for="create_data">Data della gara</label>
@@ -153,7 +174,7 @@
                     <legend><span lang="en">Elimina Gare</span></legend>
 
                     <label for="id_delete">ID Gara</label>
-                    <input type="text" name="id_delete" value="[id]" id="id_delete"
+                    <input type="text" name="id_delete" id="id_delete"
                         placeholder="Gara da eliminare">
                     <input id="elimina_gare" type="submit" value="Conferma Elimina" name="elimina_gare">
 

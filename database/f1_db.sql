@@ -4,7 +4,7 @@ SET NAMES 'utf8mb4';
 SET CHARACTER SET utf8mb4;
 
 CREATE TABLE IF NOT EXISTS Piloti (
-    id INT NOT NULL,
+    id INT NOT NULL ,
     nome VARCHAR(50) NOT NULL,
     cognome VARCHAR(50) NOT NULL,
     numero INT DEFAULT NULL,
@@ -165,7 +165,7 @@ VALUES
 (2025, 'Sauber', 10, 120);
 
 CREATE TABLE IF NOT EXISTS Gare (
-    id INT NOT NULL,
+    id INT NOT NULL AUTO_INCREMENT,
     circuito_id INT NOT NULL,
     data DATE,
     primo_posto INT,
@@ -193,32 +193,32 @@ CREATE TABLE IF NOT EXISTS Gare (
 -- Svuota la tabella se vuoi evitare duplicati di ID prima di inserire
 -- DELETE FROM Gare; 
 
-INSERT INTO Gare (id, circuito_id, data, primo_posto, secondo_posto, terzo_posto) VALUES
-(1, 1, '2025-03-16', 5, 4, 1),    -- Australia: Norris, Leclerc, Verstappen
-(2, 2, '2025-03-23', 1, 5, 3),    -- Cina: Verstappen, Norris, Hamilton
-(3, 3, '2025-04-06', 1, 4, 2),    -- Giappone: Verstappen, Leclerc, Tsunoda
-(4, 4, '2025-04-13', 4, 1, 11),   -- Bahrain: Leclerc, Verstappen, Sainz
-(5, 5, '2025-04-20', 1, 9, 4),    -- Arabia Saudita: Verstappen, Russell, Leclerc
-(6, 6, '2025-05-04', 5, 1, 6),    -- Miami: Norris, Verstappen, Piastri
-(7, 7, '2025-05-18', 4, 11, 1),   -- Imola: Leclerc, Sainz, Verstappen
-(8, 8, '2025-05-25', 4, 6, 11),   -- Monaco: Leclerc, Piastri, Sainz
-(9, 9, '2025-06-01', 1, 5, 3),    -- Spagna: Verstappen, Norris, Hamilton
-(10, 10, '2025-06-15', 3, 1, 9),  -- Canada: Hamilton, Verstappen, Russell
-(11, 11, '2025-06-29', 9, 6, 11), -- Austria: Russell, Piastri, Sainz
-(12, 12, '2025-07-06', 3, 5, 1),  -- Regno Unito: Hamilton, Norris, Verstappen
-(13, 13, '2025-07-27', 1, 3, 4),  -- Belgio: Verstappen, Hamilton, Leclerc
-(14, 14, '2025-08-03', 6, 5, 3),  -- Ungheria: Piastri, Norris, Hamilton
-(15, 15, '2025-08-31', 5, 1, 4),  -- Paesi Bassi: Norris, Verstappen, Leclerc
-(16, 16, '2025-09-07', 11, 4, 1), -- Italia: Sainz, Leclerc, Verstappen (Festa Ferrari!)
-(17, 17, '2025-09-21', 6, 4, 9),  -- Azerbaigian: Piastri, Leclerc, Russell
-(18, 18, '2025-10-05', 5, 1, 6),  -- Singapore: Norris, Verstappen, Piastri
-(19, 19, '2025-10-19', 4, 5, 1),  -- Stati Uniti (Austin): Leclerc, Norris, Verstappen
-(20, 20, '2025-10-26', 11, 5, 4), -- Messico: Sainz, Norris, Leclerc
-(21, 21, '2025-11-09', 1, 17, 3), -- Brasile: Verstappen, Gasly, Hamilton
-(22, 22, '2025-11-22', 9, 3, 1),  -- Las Vegas: Russell, Hamilton, Verstappen
-(23, 23, '2025-11-30', 1, 5, 6),  -- Qatar: Verstappen, Norris, Piastri
-(24, 24, '2025-12-07', 1, 4, 5),  -- Abu Dhabi: Verstappen, Leclerc, Norris
-(25, 25, '2025-12-14', 1, 2, 3);  -- Padova: Verstappen, Tsunoda, Hamilton
+INSERT INTO Gare (circuito_id, data, primo_posto, secondo_posto, terzo_posto) VALUES
+(1, '2025-03-16', 5, 4, 1),    -- Australia: Norris, Leclerc, Verstappen
+(2, '2025-03-23', 1, 5, 3),    -- Cina: Verstappen, Norris, Hamilton
+(3, '2025-04-06', 1, 4, 2),    -- Giappone: Verstappen, Leclerc, Tsunoda
+(4, '2025-04-13', 4, 1, 11),   -- Bahrain: Leclerc, Verstappen, Sainz
+(5, '2025-04-20', 1, 9, 4),    -- Arabia Saudita: Verstappen, Russell, Leclerc
+(6, '2025-05-04', 5, 1, 6),    -- Miami: Norris, Verstappen, Piastri
+(7, '2025-05-18', 4, 11, 1),   -- Imola: Leclerc, Sainz, Verstappen
+(8, '2025-05-25', 4, 6, 11),   -- Monaco: Leclerc, Piastri, Sainz
+(9, '2025-06-01', 1, 5, 3),    -- Spagna: Verstappen, Norris, Hamilton
+(10, '2025-06-15', 3, 1, 9),  -- Canada: Hamilton, Verstappen, Russell
+(11, '2025-06-29', 9, 6, 11), -- Austria: Russell, Piastri, Sainz
+(12, '2025-07-06', 3, 5, 1),  -- Regno Unito: Hamilton, Norris, Verstappen
+(13, '2025-07-27', 1, 3, 4),  -- Belgio: Verstappen, Hamilton, Leclerc
+(14, '2025-08-03', 6, 5, 3),  -- Ungheria: Piastri, Norris, Hamilton
+(15, '2025-08-31', 5, 1, 4),  -- Paesi Bassi: Norris, Verstappen, Leclerc
+(16, '2025-09-07', 11, 4, 1), -- Italia: Sainz, Leclerc, Verstappen (Festa Ferrari!)
+(17, '2025-09-21', 6, 4, 9),  -- Azerbaigian: Piastri, Leclerc, Russell
+(18, '2025-10-05', 5, 1, 6),  -- Singapore: Norris, Verstappen, Piastri
+(19, '2025-10-19', 4, 5, 1),  -- Stati Uniti (Austin): Leclerc, Norris, Verstappen
+(20, '2025-10-26', 11, 5, 4), -- Messico: Sainz, Norris, Leclerc
+(21, '2025-11-09', 1, 17, 3), -- Brasile: Verstappen, Gasly, Hamilton
+(22, '2025-11-22', 9, 3, 1),  -- Las Vegas: Russell, Hamilton, Verstappen
+(23, '2025-11-30', 1, 5, 6),  -- Qatar: Verstappen, Norris, Piastri
+(24, '2025-12-07', 1, 4, 5),  -- Abu Dhabi: Verstappen, Leclerc, Norris
+(25, '2025-12-14', 1, 2, 3);  -- Padova: Verstappen, Tsunoda, Hamilton
 
 CREATE TABLE IF NOT EXISTS Utente (
     username VARCHAR(30) NOT NULL,
@@ -231,9 +231,7 @@ CREATE TABLE IF NOT EXISTS Utente (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO Utente (username, password, adminPower, nome, cognome, dataNascita) VALUES
-('luigi', '0000', 1, 'Luigi', 'Verdi', '2025-01-01'),
-('Admin', '$2y$10$3nBJqkuPFy9aHA8pMCOyZegRUQbGCvGN56aFPdX/qhgW6Ju6b45j2', 1, 'Mario', 'Rossi', '2000-01-01'),
-('pippo99', '1234', 0, 'Filippo', 'Pippino', '2025-01-01');
+('Admin', '$2y$10$3nBJqkuPFy9aHA8pMCOyZegRUQbGCvGN56aFPdX/qhgW6Ju6b45j2', 1, 'Mario', 'Rossi', '2000-01-01');
 
 
 CREATE TABLE IF NOT EXISTS Commento (
@@ -254,5 +252,4 @@ CREATE TABLE IF NOT EXISTS Commento (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO Commento (username, gara_id, testo, data) VALUES
-('luigi', 1, 'Grande gara di Verstappen, ha dominato dall''inizio alla fine!', '2025-09-08'),
-('pippo99', 1, 'Leclerc ha fatto un ottimo lavoro per la Ferrari, ma non è bastato.', '2025-09-08');
+('Admin', 1, 'Grande gara di Verstappen, ha dominato dall''inizio alla fine!', '2025-09-08');

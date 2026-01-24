@@ -17,7 +17,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
-
+    <script src="../javascript/area_utente.js" defer></script>
 </head>
 <body>
     <header>
@@ -135,12 +135,51 @@
             </ul>
         </section>
 
-        <section aria-labelledby="titolo-logout" class="area_utente_logout">
-            <h2 id="titolo-logout">Gestione Account</h2>
+        <section aria-labelledby="titolo-gestione" class="area_utente_logout">
+            <h2 id="titolo-gestione">Gestione Account</h2>
+            
             <form action="../php/logout.php" method="POST" id="logout-form">
                 <button type="submit" class="btn-logout">Esci dal tuo account</button>
             </form>
+
+            <div class="danger-zone">
+                <button type="button" 
+                        id="open-delete-modal" 
+                        class="btn-delete" 
+                        aria-haspopup="dialog">
+                    Elimina il tuo account
+                </button>
+            </div>
         </section>
+
+        <div id="delete-modal" 
+            role="dialog" 
+            aria-labelledby="modal-title" 
+            aria-describedby="modal-desc" 
+            aria-modal="true" 
+            hidden>
+            <div class="modal-overlay" tabindex="-1">
+                <div class="modal-content">
+                    <h2 id="modal-title">Sei proprio sicuro?</h2>
+                    <p id="modal-desc">Eliminando l'account perderai l'accesso a tutti i contenuti esclusivi del F1 Fan Club e i tuoi dati saranno rimossi permanentemente.</p>
+                    
+                    <div class="modal-actions">
+                        <button type="button" id="close-modal" class="btn-secondary">
+                            No, mantieni account
+                        </button>
+
+                        <form action="../php/area_utente.php" method="POST">
+                            <button type="submit" name="conferma_eliminazione" class="btn-confirm-delete">
+                                Sì, elimina definitivamente
+                            </button>
+                        </form>
+                        <div class="form_errors">
+                            [err-delete]
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
     <footer class="f1-footer">

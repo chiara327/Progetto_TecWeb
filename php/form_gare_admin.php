@@ -2,105 +2,85 @@
 require_once 'db_connection.php';
 use DB\DBConnection;
 
-$html_page = file_get_contents('../pages/form_utenti_admin.html');
+$html_page = file_get_contents('../pages/form_gare_admin.html');
 $form_errors = "";
+$form_errors_delete = ""; // Variabile separata per gli errori di eliminazione
 
-function input_restore() {
-	$html_page = file_get_contents("../pages/form_gare_admin.html");
-	$html_page = str_replace("[id]", htmlspecialchars(isset($_POST['id']) ? $_POST['id'] : ''), $html_page);
-	$html_page = str_replace("[id_circuito]", htmlspecialchars(isset($_POST['id_circuito']) ? $_POST['id_circuito'] : ''), $html_page);
-	$html_page = str_replace("[data]", htmlspecialchars(isset($_POST['data']) ? $_POST['data'] : ''), $html_page);
-	$html_page = str_replace("[primo_posto]", htmlspecialchars(isset($_POST['primo_posto']) ? $_POST['primo_posto'] : ''), $html_page);
-	$html_page = str_replace("[secondo_posto]", htmlspecialchars(isset($_POST['secondo_posto']) ? $_POST['secondo_posto'] : ''), $html_page);
-	$html_page = str_replace("[terzo_posto]", htmlspecialchars(isset($_POST['terzo_posto']) ? $_POST['terzo_posto'] : ''), $html_page);
-	return $html_page;
+function check_invalid_input($anno, $primo_posto, $secondo_posto, $terzo_posto) {
+	global $form_errors;
+	$parti = explode("-", $anno);
+	$anno = $parti[0]; // Prende la prima parte prima del trattino
+	if (!($anno == "2025" || $anno == "2026")) {
+		$form_errors = $form_errors . "<p>La data inserita non è valida. Deve appartenere agli anni 2025 o 2026.</p>" . $anno;
+	}
+	if($primo_posto === $secondo_posto || $primo_posto === $terzo_posto || $secondo_posto === $terzo_posto) {
+		$form_errors = $form_errors . "<p>I piloti non possono occupare più di una posizione.</p>";
+	}
 }
 
-// TODO: NON FUNZIONA ELIMINA UTENTE, GLI ERRORI IN PLACEHOLDER NON VANNO
-function check_invalid_input($id, $id_circuito, $data, $primo_posto, $secondo_posto, $terzo_posto) {
-	global $form_errors;
-	// TODO: IMPLEMENTARE CONTROLLI PER LE GARE (Anche in db_connection.php, soprattutto per ID univoco e se esistono gli ID piloti e circuito)
+function input_restore() {
+    $html_page = file_get_contents("../pages/form_gare_admin.html");
+    $html_page = str_replace("[data]", htmlspecialchars(isset($_POST['data']) ? $_POST['data'] : ''), $html_page);
+    $html_page = str_replace("[primo_posto]", htmlspecialchars(isset($_POST['primo_posto']) ? $_POST['primo_posto'] : ''), $html_page);
+    $html_page = str_replace("[secondo_posto]", htmlspecialchars(isset($_POST['secondo_posto']) ? $_POST['secondo_posto'] : ''), $html_page);
+    $html_page = str_replace("[terzo_posto]", htmlspecialchars(isset($_POST['terzo_posto']) ? $_POST['terzo_posto'] : ''), $html_page);
+    return $html_page;
 }
 
 if (isset($_POST["creazione_gare"])) {
-    if (empty($_POST["id"]) || empty($_POST["id_circuito"]) || empty($_POST["data"]) || empty($_POST["primo_posto"]) || empty($_POST["secondo_posto"]) || empty($_POST["terzo_posto"])) {
-		$form_errors = $form_errors . "<p>Devi compilare tutti i campi.</p>";
-		$html_page = input_restore();
-		echo str_replace(["[err_gare_creazione]", "[err_gare_elimina]"], [$form_errors, ""], $html_page);
-		exit();
-	} else {
-		// Validazione degli input, se riscontra errori li segnala in $form_errors
-		check_invalid_input($_POST["id"], $_POST["id_circuito"], $_POST["data"], $_POST["primo_posto"], $_POST["secondo_posto"], $_POST["terzo_posto"]);
-		// Ha segnalato errori negli input
-		if (!empty($form_errors)) {
-			$html_page = input_restore();
-			echo str_replace(["[err_gare_creazione]", "[err_gare_elimina]"], [$form_errors, ""], $html_page);
-			exit();
-		}
+    if (empty($_POST["id_circuito"]) || empty($_POST["data"]) || empty($_POST["primo_posto"]) || empty($_POST["secondo_posto"]) || empty($_POST["terzo_posto"])) {
+        $form_errors = "<p>Devi compilare tutti i campi.</p>";
+    } else {
+		
+		check_invalid_input($_POST["data"], $_POST["primo_posto"], $_POST["secondo_posto"], $_POST["terzo_posto"]);
 
-		// Transaction per registrare nuovo utente
-		try {
-			$db_connection = new DBConnection();
-			$result = $db_connection->admin_add_race($_POST["id"], $_POST["id_circuito"], $_POST["data"], $_POST["primo_posto"], $_POST["secondo_posto"], $_POST["terzo_posto"]);
-			$db_connection->close_connection();
-
-			// TODO: GESTIRE ERRORE ID GIA ESISTENTE IN QUESTO BELLISSIMO IF COMMENTATO (implementare anche in db_connection.php)
-			/*if (!$result) {
-				$form_errors = $form_errors . "<p>Lo <span lang='en'>username</span> che hai scelto &egrave; stato già registrato.</p>";
-				$html_page = input_restore();
-				echo str_replace(["[err_gare_creazione]", "[err_gare_elimina]"], [$form_errors, ""], $html_page);
-				exit();
-			} else {
-				header("location: area_amministratore.php");
-			}*/
-			header("location: area_amministratore.php"); //ricordati di eliminare questo quando hai fatto if
-		} catch (Exception) {
-			header("location: ../pages/500.html");
-			exit();
-		}
-	}
-    echo str_replace(["[err_gare_creazione]", "[err_gare_elimina]"], [$form_errors, ""], $html_page);
-	
-    exit();
+        if (empty($form_errors)) {
+            try {
+                $db_connection = new DBConnection();
+                $db_connection->admin_add_race($_POST["id_circuito"], $_POST["data"], $_POST["primo_posto"], $_POST["secondo_posto"], $_POST["terzo_posto"]);
+                $db_connection->close_connection();
+                
+                header("Location: " . $_SERVER['PHP_SELF'] . "?res=ok");
+                exit();
+            } catch (Exception) {
+                header("Location: ../pages/500.html");
+                exit();
+            }
+        }
+    }
 } else if (isset($_POST["elimina_gare"])) {
     if (empty($_POST["id_delete"])) {
-        $form_errors = "<p>Devi inserire un ID gara da eliminare.</p>";
-        $html_page = input_restore();
-        echo str_replace(["[err_gare_creazione]", "[err_gare_elimina]"], ["", $form_errors], $html_page);
-        exit();
-    }
-    try {
-        $db_connection = new DBConnection();
-        $raceExist = $db_connection->check_for_existing_race($_POST["id_delete"]);
-        if ($raceExist) {
-            $db_connection->close_connection();
-            $form_errors = "<p>La gara inserita non esiste.</p>";
-            $html_page = input_restore();
-            echo str_replace(["[err_gare_creazione]", "[err_gare_elimina]"], ["", $form_errors], $html_page);
+        $form_errors_delete = "<p>Devi inserire un ID gara da eliminare.</p>";
+    } else {
+        try {
+            $db_connection = new DBConnection();
+            $raceExist = $db_connection->check_for_existing_race($_POST["id_delete"]);
+            if ($raceExist) {
+                $db_connection->close_connection();
+                $form_errors_delete = "<p>La gara inserita non esiste.</p>";
+            } else {
+                $result = $db_connection->admin_delete_race($_POST["id_delete"]);
+                $db_connection->close_connection();
+                if (!$result) {
+                    $form_errors_delete = "<p>Errore durante l'eliminazione della gara.</p>";
+                } else {
+                    header("Location: " . $_SERVER['PHP_SELF'] . "?res=del");
+                    exit();
+                }
+            }
+        } catch (Exception) {
+            header("Location: ../pages/500.html");
             exit();
         }
-        $result = $db_connection->admin_delete_race($_POST["id_delete"]);
-        $db_connection->close_connection();
-
-        if (!$result) {
-            $form_errors = "<p>Errore durante l'eliminazione della gara.</p>";
-            $html_page = input_restore();
-            echo str_replace(["[err_gare_creazione]", "[err_gare_elimina]"], ["", $form_errors], $html_page);
-            exit();
-        } else {
-            header("location: area_amministratore.php");
-        }
-    } catch (Exception) {
-        header("location: ../pages/500.html");
-        exit();
     }
-    echo str_replace(["[err_gare_creazione]", "[err_gare_elimina]"], ["", $form_errors], $html_page);
-    exit();
-} else {
-    $html_page = input_restore();
-    echo str_replace(["[err_gare_creazione]", "[err_gare_elimina]"], $form_errors, $html_page);
-    exit();
 }
 
-echo $html_page;
+// --- GESTIONE OUTPUT (PRG) ---
+if (isset($_GET['res'])) {
+    if ($_GET['res'] == 'ok') $form_errors = "Gara creata con successo!";
+    if ($_GET['res'] == 'del') $form_errors_delete = "Gara eliminata con successo!";
+}
+
+$html_page = input_restore();
+echo str_replace(["[err_gare_creazione]", "[err_gare_elimina]"], [$form_errors, $form_errors_delete], $html_page);
 ?>
