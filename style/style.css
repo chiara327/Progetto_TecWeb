@@ -991,7 +991,7 @@ th {
 }
 
 /* --- Bottoni ed Errori --- */
-.btn-logout, .btn-admin, input[type="submit"] {
+.btn-logout, .btn-admin, input[type="submit"], #open-delete-modal {
     display: inline-block;
     padding: 0.8em 1.5em;
     font-weight: bold;
@@ -1009,7 +1009,7 @@ input[type="submit"] {
     color: white;
 }
 
-.btn-logout:hover, .btn-admin:hover, input[type="submit"]:hover {
+.btn-logout:hover, .btn-admin:hover, input[type="submit"]:hover, #open-delete-modal:hover {
     background-color: var(--accent-color);
     color: white;
 }
@@ -1025,6 +1025,132 @@ input[type="submit"] {
 }
 
 .anagrafica_errors:empty, .form_errors:empty {
+    display: none;
+}
+
+/* Nasconde il modale quando ha l'attributo hidden */
+#delete-modal[hidden] {
+    display: none;
+}
+
+/* Overlay che copre tutta la pagina */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Sfondo scuro semitrasparente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Assicura che sia sopra a tutto */
+}
+
+/* Scatola del contenuto */
+.modal-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    max-width: 400px;
+    text-align: center;
+    color: #333;
+}
+
+/* Overlay: Oscura lo sfondo e mette in risalto il modale */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85); /* Sfondo molto scuro per focus massimo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000; /* Sopra a tutto il resto */
+    backdrop-filter: blur(3px); /* Effetto sfocatura moderno */
+}
+
+/* Box centrale del modale */
+.modal-content {
+    background-color: var(--navbar-bg-color); /* #0B0B10 */
+    border: 0.2em solid var(--accent-color);   /* Bordo rosso F1 */
+    border-radius: 0.5em;
+    padding: 2.5em;
+    max-width: 30em;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 0 2em rgba(0, 0, 0, 0.5);
+}
+
+/* Titolo dentro il modale */
+#modal-title {
+    color: var(--accent-color);
+    text-transform: uppercase;
+    font-size: 1.8em;
+    margin-bottom: 0.8em;
+    border-bottom: 0.05em solid var(--footer-border-color);
+    padding-bottom: 0.4em;
+}
+
+/* Descrizione del pericolo */
+#modal-desc {
+    color: var(--content-text-color);
+    margin-bottom: 2em;
+    font-size: 1em;
+    line-height: 1.6;
+}
+
+/* Allineamento pulsanti */
+.modal-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1.5em;
+    flex-wrap: wrap;
+}
+
+/* Pulsante "No, mantieni" (Stile neutro) */
+.btn-secondary {
+    background-color: transparent;
+    color: var(--content-text-color);
+    border: 0.15em solid var(--footer-border-color);
+    padding: 0.8em 1.5em;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 0.3em;
+    transition: background-color 0.3s ease;
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus-visible {
+    background-color: var(--footer-border-color);
+    outline: none;
+}
+
+/* Pulsante "Sì, elimina" (Stile distruttivo/F1) */
+.btn-confirm-delete {
+    background-color: var(--accent-color);
+    color: white;
+    border: 0.15em solid var(--accent-color);
+    padding: 0.8em 1.5em;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 0.3em;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.btn-confirm-delete:hover,
+.btn-confirm-delete:focus-visible {
+    background-color: #b91c1c; /* Rosso più scuro per pericolo */
+    transform: scale(1.05); /* Leggero zoom per feedback visivo */
+    outline: none;
+}
+
+/* Nasconde il modale quando non attivo */
+#delete-modal[hidden] {
     display: none;
 }
 

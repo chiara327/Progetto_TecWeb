@@ -105,7 +105,6 @@ class DBConnection {
 
     public function login_user($username, $password) {
         $query = "SELECT username, password, adminPower FROM Utente WHERE username = ?";
-
         $stmt = $this->connection->prepare($query);
         if ($stmt === false) {
 			die("Errore nella preparazione dello statement: " . $this->connection->error);
@@ -119,15 +118,16 @@ class DBConnection {
         $result = $stmt->get_result();
         $rows = $result->fetch_all(MYSQLI_ASSOC);
         
+        // Se l'array è vuoto, l'utente non esiste
         if (count($rows) == 0) {
-            return [$rows[0]["adminPower"], false];
+            return [null, false]; // Restituiamo null per adminPower
         } else {
+            // L'utente esiste, verifichiamo la password
             if (password_verify($password, $rows[0]["password"])) {
                 return [$rows[0]["adminPower"], true];
             }
             return [$rows[0]["adminPower"], false];
         }
-
     }
 
     // Area Utente functions
@@ -230,6 +230,19 @@ class DBConnection {
         $success = $stmt->execute();
         $stmt->close();
         return $success;
+    }
+
+    public function delete_user($username) {
+        try {
+            $query = "DELETE FROM Utente WHERE username = ?";
+            $stmt = $this->connection->prepare($query);
+            $stmt->bind_param("s", $username);
+            return $stmt->execute();
+        } catch (Exception $e) {
+            // Se c'è un errore, annulla tutto (rollback)
+            $this->connection->rollback();
+            return false;
+        }
     }
     // ---------------------------------------------
 
@@ -608,6 +621,20 @@ class DBConnection {
         } else {
             return false;
         }
+    }
+
+    public function get_commenti($id_gara) {
+        $query = "SELECT testo, data FROM Commento WHERE gara_id=? ORDER BY data DESC";
+
+        $stmt = $this->connection->prepare($query);
+        $stmt->bind_param("s", $id_gara);
+        if (!$stmt->execute()) {
+            die("Errore durante l'esecuzione: " . $stmt->error);
+        }
+
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
     }
 }
 ?>
