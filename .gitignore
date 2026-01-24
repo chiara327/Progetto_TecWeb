@@ -8,3 +8,4 @@ resources/gare/*.png
 *.out
 *.synctex.gz
 *.toc
+.vscode/
