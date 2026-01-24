@@ -449,6 +449,7 @@ h1.hide {
     z-index: 2;
 }
 
+/* TODO: NON FUNZIONA */
 .piloti h2#alpine-heading~ul article h3{
     background-color: var(--alpine-color);
 }
