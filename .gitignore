@@ -1,3 +1,10 @@
 tmp/
 docker-compose.yml
 resources/gare/*.png
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.toc
