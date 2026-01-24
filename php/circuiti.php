@@ -20,7 +20,7 @@ function render_circuits($id, $nome, $citta, $nazione, $lunghezza, $curve) {
     return  
     <<<HTML
         <article class="circuit-card">
-            <img src="../resources/circuito_{$id}.jpg" 
+            <img src="../resources/circuiti/circuito_{$id}.jpg" 
                  alt="Mappa del circuto {$display_name}" 
                  class="circuit-image">
                  
