@@ -24,6 +24,9 @@
     --footer-border-color: #333333;
     --social-bg-color: #333333;
 
+    --quote-bg-color: #8B0000;
+    --quote-border-color: #E10600;
+
     /*  COLORI DA USARE PER SCUDERIE/PILOTI */
 
     --ferrari-color: #FF2800;
@@ -373,19 +376,18 @@ h1.hide {
     margin: 0;
     display: block;
 }
-
-.sponsors {
-    max-width: 80em;
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    align-content: stretch;
+.aboutus{
+    text-align: center;
 }
-
-.sponsors img {
-    max-width: 100%;
-    height: auto;
-    flex-shrink: 0;
+.aboutus blockquote{
+    background-color: var(--quote-bg-color);
+    border: 0.2em solid var(--quote-border-color);
+    text-align: center;
+    font-style: italic;
+    font-size: larger;
+}
+.aboutus cite{
+    font-size: medium;
 }
 
 /* =========================
