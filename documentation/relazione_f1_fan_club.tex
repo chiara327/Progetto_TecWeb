@@ -1,0 +1,153 @@
+\documentclass[12pt,a4paper]{article}
+
+% --- Pacchetti Standard ---
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{listings} % Per il codice
+\usepackage{fancyhdr}
+\geometry{
+    a4paper,
+    margin=2.5cm,
+    headheight=15pt, % Risolve il warning di fancyhdr (arrotondato per sicurezza)
+    top=3cm          % Aumentiamo un po' il margine superiore per far spazio all'header
+}
+\pagestyle{fancy}
+\fancyhf{} % Pulisce header e footer predefiniti
+
+% --- Configurazione Link ---
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=cyan,
+}
+
+% --- Configurazione Header ---
+\fancyhead[L]{F1 Fan Club} % Sinistra
+\fancyhead[R]{UniPD} % Destra
+
+% --- Configurazione Footer ---
+\fancyfoot[L]{Informatica} % Sinistra
+\fancyfoot[R]{Pag. \thepage} % Destra
+
+\renewcommand{\headrulewidth}{0.4pt} % Linea sotto l'header
+\renewcommand{\footrulewidth}{0.4pt} % Linea sopra il footer
+
+\begin{document}
+
+% --- Frontespizio ---
+\begin{titlepage}
+    \centering
+    % LOGO UNIPD
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.25\textwidth]{../resources/logo_unipd.png} % Sostituisci con il nome corretto
+    \end{figure}
+    
+    \vspace{0.5cm}
+    {\Large \textbf{Università degli Studi di Padova}} \\
+    {\large Corso di Laurea in Informatica} \\
+    
+    \vspace{1.5cm}
+    
+    % LOGO PROGETTO
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.4\textwidth]{../resources/logo.jpeg}
+    \end{figure}
+    
+    {\Huge \textbf{F1 Fan Club}} \\
+    \vspace{0.5cm}
+    {\large Relazione per il progetto di Tecnologie Web} \\
+    
+    \vfill
+    
+    % --- Tabella Componenti ---
+    \begin{table}[h]
+        \centering
+        \begin{tabular}{lll}
+            \textbf{Nome e Cognome} & \textbf{Matricola} & \textbf{Email (studenti.unipd.it)} \\ \midrule
+            Giuliano Banchieri     & ------- & giuliano.banchieri@studenti.unipd.it \\
+            Alessandro Frison      & 2111932 & alessandro.frison.13@studenti.unipd.it \\
+            Riccardo Graziani      & ------- & riccardo.graziani.1@studenti.unipd.it \\
+            Chiara Grossele        & ------- & chiara.grossele@studenti.unipd.it \\
+            Mattia Oliva Medin     & ------- & mattia.olivamedin@studenti.unipd.it \\
+        \end{tabular}
+    \end{table}
+
+    \vfill
+    {\large Anno Accademico 2025/2026}
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+% --- Sezioni Contenuto ---
+
+\section{Introduzione}
+Descrizione del progetto "F1 Fan Club". Obiettivi del sito, target di utenza (appassionati di motori) e finalità comunicative.
+
+\newpage
+
+\section{Analisi dei Requisiti}
+\subsection{Target di utenza}
+Chi sono i visitatori? Tifosi occasionali e appassionati di F1.    
+\subsection{SEO}
+Strategie per migliorare la visibilità sui motori di ricerca (parole chiave, meta tag, contenuti di qualità).
+
+\section{Progettazione}
+Descrizione dell'architettura del sito, delle tecnologie utilizzate e della struttura del database.
+\subsection{Schema organizzativo}
+Schema organizzativo del sito, inclusi i principali moduli e le interazioni tra essi.
+\subsection{Tipi di utente}
+Descrizione dei diversi tipi di utenti (es. utente normale, amministratore) e i permessi associati.
+\subsection{Funzionalità}
+\subsection{Convenzioni interne}
+\subsection{Schema del Database}
+Descrizione delle tabelle (Utenti, Commenti, Piloti, Classifiche, ...).
+
+\newpage
+
+\section{Realizzazione}
+Descrizione delle fasi di sviluppo, delle difficoltà incontrate e delle soluzioni adottate.
+\subsection{Struttura e contenuto}
+Descrizione delle pagine principali del sito e delle loro funzionalità.
+\subsubsection{HTML}
+\subsubsection{Popolamento database}
+\subsection{Presentazione}
+Descrizione dell'aspetto grafico del sito, del layout e delle scelte di design.
+\subsubsection{CSS}
+\subsubsection{Immagini e icone}
+\subsubsection{Font}
+\subsubsection{Colori}
+\subsection{Comportamento}
+Descrizione delle funzionalità interattive del sito.
+\subsection{PHP}
+\subsubsection{JavaScript}
+\subsubsection{Validazione dell'Input}
+\subsubsection{Sicurezza}
+\subsubsection{Errori di navigazione o del server}
+\subsection{Accessibilità e Usabilità}
+Misure adottate per garantire l'accessibilità (es. contrasto colori, navigazione da tastiera) e l'usabilità (es. layout intuitivo, tempi di caricamento rapidi).
+\subsubsection{Aiuti per lo screen reader}
+\subsubsection{Compatibilità}
+\subsection{Versionamento del codice}
+Uso di Git per il controllo delle versioni e la collaborazione tra i membri del team.
+
+\section{Test e Validazione}
+Descrizione dei test effettuati per verificare il corretto funzionamento del sito e la conformità ai requisiti iniziali.
+\subsection{Navigabilità ed accessibilità}
+\subsection{Falsi positivi}
+\subsection{Screen reader}
+
+\newpage
+
+\section{Suddivisione del lavoro}
+Breve descrizione dei compiti svolti da ciascun membro del gruppo.
+
+\section{Note}
+
+\end{document}
