@@ -1197,3 +1197,67 @@ label {
     font-weight: 600;
     color: var(--content-text-color);
 }
+
+/* =========================
+   PILOTA DETAIL PAGE
+   ========================= */
+
+/* Centratura del contenuto principale */
+main {
+    max-width: 60em;
+    margin: 0 auto;
+    padding: 2em 1.25em;
+}
+
+/* Stile per le sezioni Informazioni e Statistiche */
+main section {
+    background-color: var(--navbar-bg-color);
+    border: 0.15em solid var(--footer-border-color);
+    border-radius: 0.5em;
+    padding: 2em;
+    margin-bottom: 2em;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Titolo della sezione con la linea rossa distintiva */
+main section h2 {
+    text-align: left;
+    color: var(--accent-color);
+    text-transform: uppercase;
+    font-size: 1.4em;
+    margin-bottom: 1.5em;
+    border-bottom: 0.1em solid var(--accent-color);
+    padding-bottom: 0.4em;
+}
+
+/* Layout a griglia per le liste di dati (Nome, Cognome, Età...) */
+main dl {
+    display: grid;
+    grid-template-columns: 15em 1fr; /* Colonna fissa per l'etichetta, resto al valore */
+    gap: 1em;
+}
+
+main dt {
+    font-weight: bold;
+    color: var(--footer-text-color);
+    text-transform: uppercase;
+    font-size: 0.9em;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+}
+
+main dd {
+    margin: 0;
+    font-size: 1.2em;
+    font-weight: 600;
+    color: var(--content-text-color);
+}
+
+/* Evidenzia i numeri nelle statistiche */
+[aria-labelledby="statistiche-pilota-heading"] dd {
+    color: var(--accent-color);
+    font-family: 'Lexend', sans-serif; /* Usiamo il font che hai caricato */
+    font-weight: 800;
+}

@@ -18,6 +18,7 @@ if (empty($gare_data)) {
         // Setlocale serve per avere i mesi in italiano
         setlocale(LC_TIME, 'it_IT.UTF-8');
         $data_formattata = date("d F Y", strtotime($g['data']));
+        $data_iso = date("Y-m-d", strtotime($g['data']));
         
         // Prepariamo un ID unico per l'accessibilità (aria-labelledby)
         $card_id = "gp-" . $g['id'];
@@ -26,25 +27,31 @@ if (empty($gare_data)) {
         $img_name = strtolower(str_replace(' ', '_', $g['circuito_citta']));
 
         $gare_html .= "
-        <section class=\"gp\" aria-labelledby=\"$card_id\">
-            <img src=\"../resources/gare/{$img_name}.jpg\" alt=\"Circuito di {$g['circuito_nome']}\">
-            <div>
-                <h2 id=\"$card_id\">{$g['circuito_citta']}<span lang=\"en\"> Grand Prix</span></h2>
-                <p><strong>$data_formattata</strong></p>
-                <dl>
-                    <dt>Circuito</dt>
-                    <dd>{$g['circuito_nome']}, {$g['circuito_citta']}</dd>
-                    <dt>Tipo</dt>
-                    <dd>Circuito permanente</dd>
-                    <dt>1° classificato</dt>
-                    <dd><a href=\"informazioni_pilota.php?id={$g['p1_id']}\">{$g['p1_nome']} {$g['p1_cognome']}</a></dd>
-                    <dt>2° classificato</dt>
-                    <dd><a href=\"informazioni_pilota.php?id={$g['p2_id']}\">{$g['p2_nome']} {$g['p2_cognome']}</a></dd>
-                    <dt>3° classificato</dt>
-                    <dd><a href=\"informazioni_pilota.php?id={$g['p3_id']}\">{$g['p3_nome']} {$g['p3_cognome']}</a></dd>
-                </dl>
-            </div>
-        </section>";
+            <section class=\"gp\" aria-labelledby=\"$card_id\">
+                <img src=\"../resources/gare/{$img_name}.jpg\" alt=\"\" aria-hidden=\"true\"> 
+                <div>
+                    <h2 id=\"$card_id\">
+                        {$g['circuito_citta']} <span lang=\"en\">Grand Prix</span>
+                    </h2>
+                    <p><strong><time datetime=\"$data_iso\">$data_formattata</time></strong></p>
+                    <dl>
+                        <dt>Circuito</dt>
+                        <dd>{$g['circuito_nome']}, {$g['circuito_citta']}</dd>
+                        <dt>Tipo</dt>
+                        <dd>Circuito permanente</dd>
+                        <dt>1° classificato</dt>
+                        <dd>
+                            <a href=\"informazioni_pilota.php?id={$g['p1_id']}\" aria-label=\"Profilo di {$g['p1_nome']} {$g['p1_cognome']}\">
+                                {$g['p1_nome']} {$g['p1_cognome']}
+                            </a>
+                        </dd>
+                        <dt>2° classificato</dt>
+                        <dd><a href=\"informazioni_pilota.php?id={$g['p2_id']}\">{$g['p2_nome']} {$g['p2_cognome']}</a></dd>
+                        <dt>3° classificato</dt>
+                        <dd><a href=\"informazioni_pilota.php?id={$g['p3_id']}\">{$g['p3_nome']} {$g['p3_cognome']}</a></dd>
+                    </dl>
+                </div>
+            </section>";
     }
 }
 
