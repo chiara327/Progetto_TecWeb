@@ -20,7 +20,7 @@ function input_restore() {
 // Se esiste sessione login redirect automatico
 session_start();
 if (isset($_SESSION["user"])) {
-    header("location: area_utente.php");
+    ($_SESSION["admin"]) ? header("location: area_amministratore.php") : header("location: area_utente.php");
 	exit();
 }
 
@@ -46,6 +46,7 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
                 echo str_replace("[err]", $form_errors, $html_page);
             } else {
                 $_SESSION["user"] = $_POST["username"];
+                $_SESSION["admin"] = ($result[0]) ? true : false;
                 if ($result[0]) {
                     $_SESSION["admin"] = true;
                     header("location: area_amministratore.php");
