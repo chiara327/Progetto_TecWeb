@@ -15,6 +15,7 @@ function input_restore() {
 	return $html_page;
 }
 
+// TODO: FARE COME NEGLI ALTRI FORM CON HEADER SU SELF_PHP
 // TODO: NON FUNZIONA ELIMINA UTENTE, GLI ERRORI IN PLACEHOLDER NON VANNO
 function check_invalid_input($nome, $cognome, $data, $username, $password) {
 	global $form_errors;

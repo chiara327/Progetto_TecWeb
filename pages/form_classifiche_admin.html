@@ -1,0 +1,97 @@
+<html>
+
+<head>
+    <title>Formula1</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="formula 1, gare, circuiti, classifica, mondiali, qualifiche, piloti, team">
+    <meta name="description" content="Pagina dedicata alla home page di formula 1">
+    <!-- DA METTERE NEL CONTENT : Pagina dedicata alla formula 1 con informazioni riguardanti le qualifiche e la classifica dei piloti e dei team alle varie gare nei circuiti dei mondiali-->
+    <!-- Consigliato partire a riempire le keyword (riga sotto) e poi mettere nel content della description (riga sopra) -->
+    <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../style/mini.css" media="screen and (max-width:800px)"><!--per mobile-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <h1 class="hide">F1 <span lang="en">FAN CLUB</span></h1>
+            <ul id="menu">
+                <li><a href="../index.html"><span lang="en">Home</span></a></li>
+                <li><a href="../php/piloti.php">Piloti</a></li>
+                <li><a href="../php/scuderie.php">Scuderie</a></li>
+                <li><a href="../php/classifica.php">Classifica</a></li>
+                <li><a href="../php/gare.php">Gare</a></li>
+                <li><a href="../php/circuiti.php">Circuiti</a></li>
+                <li><a href="../php/login.php">Area Riservata</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <nav id="breadcrumb">
+        <p>Ti trovi in: <span lang="en">Home->Area Amministratore->Gestione Classifiche</span></p>
+    </nav>
+
+    <main id="form_classifiche">
+        <section aria-labelledby="titolo-crea-classifica" class="crea-classifica-section">
+            <form class="admin-form" action="../php/form_classifiche_admin.php#modifica_punti_pilota" method="post"
+                id="form-modifica-punti-pilota">
+                <fieldset>
+                    <legend>Modifica punti pilota</legend>
+                    <ul>
+                        <li>
+                            <label id="select_pilota" for="select_pilota">Pilota</label>
+                            <select name="pilota_to_increase" id="select_pilota">
+                                <option value="1">Max Verstappen</option>
+                                <option value="2">Yuki Tsunoda</option>
+                                <option value="3">Lewis Hamilton</option>
+                                <option value="4">Charles Leclerc</option>
+                                <option value="5">Lando Norris</option>
+                                <option value="6">Oscar Piastri</option>
+                                <option value="7">Fernando Alonso</option>
+                                <option value="8">Lance Stroll</option>
+                                <option value="9">George Russell</option>
+                                <option value="10">Andrea Kimi Antonelli</option>
+                                <option value="11">Carlos Sainz</option>
+                                <option value="12">Alex Albon</option>
+                                <option value="13">Esteban Ocon</option>
+                                <option value="14">Oliver Bearman</option>
+                                <option value="15">Liam Lawson</option>
+                                <option value="16">Isack Hadjar</option>
+                                <option value="17">Pierre Gasly</option>
+                                <option value="18">Franco Colapinto</option>
+                                <option value="19">Nico Hulkenberg</option>
+                                <option value="20">Gabriel Bortoleto</option>
+                            </select>
+                        </li>
+
+                        <li>
+                            <input type="radio" name="azione" value="aumenta" id="aumenta">
+                            <label for="aumenta">Aumenta Punti</label>
+                            <input type="radio" name="azione" value="diminuisci" id="diminuisci">
+                            <label for="diminuisci">Diminuisci Punti</label>
+                        </li>
+
+                        <li>
+                            <label for="punti">Punti:</label>
+                            <input type="number" name="punti" id="punti" min="0" placeholder="Inserisci i punti"
+                                value="[punti]">
+                        </li>
+                    </ul>
+                    <input type="submit" value="Modifica Punti" name="modifica_punti_pilota" id="modifica_punti_pilota">
+                </fieldset>
+            </form>
+            <div class="form_errors">
+                [err_classifica_modifica]
+            </div>
+        </section>
+    </main>
+
+</body>
+
+</html>
