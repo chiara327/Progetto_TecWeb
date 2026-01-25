@@ -565,7 +565,7 @@ h1.hide {
 
 /* Immagine del circuito */
 
-.circuit-image {    /* MODIFICATE COME VOLETE, se preferite jpg vi tocca modificare l'estensione di tutte le immagini */
+#circuiti img {    /* MODIFICATE COME VOLETE, se preferite jpg vi tocca modificare l'estensione di tutte le immagini */
     width: 100%;
     max-width: 500px;   
     height: auto;
@@ -1507,5 +1507,15 @@ main dd {
     width: auto;
     height: 10em;
     padding: 1em;
+    animation: fluttua 3s ease-in-out infinite;
 }
+
+/*VERIFICARE SE POSSO USARE @keyframes*/
+@keyframes fluttua {
+  0%   { transform: translateY(0); opacity: 1; }
+  50%  { transform: translateY(-15px); opacity: 0.8; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+
 
