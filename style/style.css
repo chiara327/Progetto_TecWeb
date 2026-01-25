@@ -1426,3 +1426,31 @@ main dd {
     font-family: 'Lexend', sans-serif; /* Usiamo il font che hai caricato */
     font-weight: 800;
 }
+
+/* =========================
+   ERROR 403 PAGE
+   ========================= */
+
+#E403 {
+    text-align: center;
+}
+
+#E403 img{
+    width: 20em;
+    height: 20em;
+    padding: 1em;
+}
+
+/* =========================
+   ERROR 500 PAGE
+   ========================= */
+#E500 {
+    text-align: center;
+}
+
+#E500 img{
+    width: auto;
+    height: 10em;
+    padding: 1em;
+}
+
