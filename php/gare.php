@@ -50,6 +50,13 @@ if (empty($gare_data)) {
                         <dt>3° classificato</dt>
                         <dd><a href=\"informazioni_pilota.php?id={$g['p3_id']}\">{$g['p3_nome']} {$g['p3_cognome']}</a></dd>
                     </dl>
+                    <form action=\"commenti.php\" method=\"POST\" class=\"form-commenti-link\">
+                        <input type=\"hidden\" name=\"gara_id\" value=\"{$g['id']}\">
+                        
+                        <button type=\"submit\" class=\"btn-view-comments\">
+                            Vedi commenti <span class=\"sr-only\">per il GP di {$g['circuito_citta']}</span>
+                        </button>
+                    </form>
                 </div>
             </section>";
     }
