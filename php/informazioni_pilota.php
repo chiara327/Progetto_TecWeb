@@ -32,7 +32,6 @@ $sostituzioni = [
     "[n_pole]" => htmlspecialchars($pilota['n_pole']),
     "[gran_premi]" => htmlspecialchars($pilota['gran_premi']),
     "[titoli_mondiali]" => htmlspecialchars($pilota['titoli_mondiali']),
-    "[punti]" => htmlspecialchars($pilota['punti']),
     "[Pilota]" => htmlspecialchars($pilota['nome']) . " " . htmlspecialchars($pilota['cognome']),
 ];
 

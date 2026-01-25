@@ -4,14 +4,14 @@ use DB\DBConnection;
 
 $html_page = file_get_contents('../pages/form_gare_admin.html');
 $form_errors = "";
-$form_errors_delete = ""; // Variabile separata per gli errori di eliminazione
+$form_errors_delete = "";
 
-function check_invalid_input($anno, $primo_posto, $secondo_posto, $terzo_posto) {
+function check_invalid_input($data, $primo_posto, $secondo_posto, $terzo_posto) {
 	global $form_errors;
-	$parti = explode("-", $anno);
+	$parti = explode("-", $data);
 	$anno = $parti[0]; // Prende la prima parte prima del trattino
-	if (!($anno == "2025" || $anno == "2026")) {
-		$form_errors = $form_errors . "<p>La data inserita non è valida. Deve appartenere agli anni 2025 o 2026.</p>" . $anno;
+	if (!($anno == "2025" || $anno == "2026") || strtotime($data) > strtotime(date("Y-m-d"))) {
+		$form_errors = $form_errors . "<p>La data inserita non è valida. Deve appartenere agli anni 2025 o 2026 e non essere nel futuro.</p>";
 	}
 	if($primo_posto === $secondo_posto || $primo_posto === $terzo_posto || $secondo_posto === $terzo_posto) {
 		$form_errors = $form_errors . "<p>I piloti non possono occupare più di una posizione.</p>";

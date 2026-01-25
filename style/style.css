@@ -564,6 +564,15 @@ h1.hide {
 }
 
 /* Immagine del circuito */
+
+.circuit-image {    /* MODIFICATE COME VOLETE, se preferite jpg vi tocca modificare l'estensione di tutte le immagini */
+    width: 100%;
+    max-width: 500px;   
+    height: auto;
+    display: block;
+    background-color: white;
+}
+
 .gp img {
     width: 22em;
     height: auto;

@@ -4,6 +4,7 @@ use DB\DBConnection;
 
 $html_page = file_get_contents('../pages/form_utenti_admin.html');
 $form_errors = "";
+$form_errors_delete = "";
 
 function input_restore() {
 	$html_page = file_get_contents("../pages/form_utenti_admin.html");
@@ -75,7 +76,8 @@ if (isset($_POST["creazione_utente"])) {
 				echo str_replace(["[err_utenti_creazione]", "[err_utenti_elimina]"], [$form_errors, ""], $html_page);
 				exit();
 			} else {
-				header("location: area_amministratore.php");
+				header("Location: " . $_SERVER['PHP_SELF'] . "?res=ok");
+				exit();
 			}
 		} catch (Exception) {
 			header("location: ../pages/500.html");
@@ -87,9 +89,9 @@ if (isset($_POST["creazione_utente"])) {
     exit();
 } else if (isset($_POST["elimina_utente"])) {
     if (empty($_POST["username_delete"])) {
-        $form_errors = "<p>Devi inserire uno username da eliminare.</p>";
+        $form_errors_delete = "<p>Devi inserire uno username da eliminare.</p>";
         $html_page = input_restore();
-        echo str_replace(["[err_utenti_creazione]", "[err_utenti_elimina]"], ["", $form_errors], $html_page);
+        echo str_replace(["[err_utenti_creazione]", "[err_utenti_elimina]"], ["", $form_errors_delete], $html_page);
         exit();
     }
     try {
@@ -97,21 +99,22 @@ if (isset($_POST["creazione_utente"])) {
         $userExists = $db_connection->check_for_existing_username($_POST["username_delete"]);
         if ($userExists) {
             $db_connection->close_connection();
-            $form_errors = "<p>Lo username inserito non esiste.</p>";
+            $form_errors_delete = "<p>Lo username inserito non esiste.</p>";
             $html_page = input_restore();
-            echo str_replace(["[err_utenti_creazione]", "[err_utenti_elimina]"], ["", $form_errors], $html_page);
+            echo str_replace(["[err_utenti_creazione]", "[err_utenti_elimina]"], ["", $form_errors_delete], $html_page);
             exit();
         }
         $result = $db_connection->admin_delete_user($_POST["username_delete"]);
         $db_connection->close_connection();
 
         if (!$result) {
-            $form_errors = "<p>Errore durante l'eliminazione dell'utente.</p>";
+            $form_errors_delete = "<p>Non puoi eliminare un Admin!.</p>";
             $html_page = input_restore();
-            echo str_replace(["[err_utenti_creazione]", "[err_utenti_elimina]"], ["", $form_errors], $html_page);
+            echo str_replace(["[err_utenti_creazione]", "[err_utenti_elimina]"], ["", $form_errors_delete], $html_page);
             exit();
         } else {
-            header("location: area_amministratore.php");
+            header("Location: " . $_SERVER['PHP_SELF'] . "?res=del");
+            exit();
         }
     } catch (Exception) {
         header("location: ../pages/500.html");
@@ -120,8 +123,13 @@ if (isset($_POST["creazione_utente"])) {
     echo str_replace(["[err_utenti_creazione]", "[err_utenti_elimina]"], ["", $form_errors], $html_page);
     exit();
 } else {
+	if (isset($_GET['res'])) {
+		if ($_GET['res'] == 'ok') $form_errors = "Utente creato con successo!";
+		if ($_GET['res'] == 'del') $form_errors_delete = "Utente eliminato con successo!";
+	}
+
     $html_page = input_restore();
-    echo str_replace(["[err_utenti_creazione]", "[err_utenti_elimina]"], $form_errors, $html_page);
+    echo str_replace(["[err_utenti_creazione]", "[err_utenti_elimina]"], [$form_errors, $form_errors_delete], $html_page);
     exit();
 }
 

@@ -18,7 +18,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap"
         rel="stylesheet">
-    <script src="../javascript/admin.js"></script>
+    <script src="../javascript/area_conferma_elimina.js" defer></script>
 
 </head>
 
@@ -143,7 +143,45 @@
             <form action="../php/logout.php" method="POST" id="logout-form">
                 <button type="submit" class="btn-logout">Esci dal tuo account</button>
             </form>
+
+            <div class="danger-zone">
+                <button type="button" 
+                        id="open-delete-modal" 
+                        class="btn-delete" 
+                        aria-haspopup="dialog">
+                    Elimina il tuo account
+                </button>
+            </div>
         </section>
+
+        <div id="delete-modal" 
+            role="dialog" 
+            aria-labelledby="modal-title" 
+            aria-describedby="modal-desc" 
+            aria-modal="true" 
+            hidden>
+            <div class="modal-overlay" tabindex="-1">
+                <div class="modal-content">
+                    <h2 id="modal-title">Sei proprio sicuro?</h2>
+                    <p id="modal-desc">Eliminando l'account perderai l'accesso a tutti i contenuti esclusivi del F1 Fan Club e i tuoi dati saranno rimossi permanentemente.</p>
+                    
+                    <div class="modal-actions">
+                        <button type="button" id="close-modal" class="btn-secondary">
+                            No, mantieni account
+                        </button>
+
+                        <form action="../php/area_amministratore.php" method="POST">
+                            <button type="submit" name="conferma_eliminazione" class="btn-confirm-delete">
+                                Sì, elimina definitivamente
+                            </button>
+                        </form>
+                        <div class="form_errors">
+                            [err-delete]
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!--TODO: FARCI CSS-->
         <section aria-labelledby="azioni-admin" class="azioni_admin">
@@ -187,8 +225,7 @@
         <div class="footer-bottom">
             <p>&copy; 2025 F1 <span lang="en">Fan Club</span>. Sito non ufficiale.</p>
             <p class="disclaimer">Questo sito <span lang="en">web</span> non è associato in alcun modo al gruppo Formula
-                1. F1, <span lang="en">FORMULA ONE</span>, FORMULA 1 sono marchi di <span lang="en">Formula One
-                    Licensing B.V.</span></p>
+                1. F1, <span lang="en">FORMULA ONE</span>, FORMULA 1 sono marchi di <span lang="en">Formula One Licensing B.V.</span></p>
         </div>
     </footer>
 

@@ -46,7 +46,7 @@ if (isset($_POST["salva_modifiche"])) {
             $db_connection = new DBConnection();
             if ($db_connection->update_user_info($_SESSION["user"], $nome, $cognome, $data)) {
                 $db_connection->close_connection();
-                header("Location: area_utente.php?status=ok_anag");
+                header("Location: area_amministratore.php?status=ok_anag");
                 exit();
             } else {
                 $anagrafica_errors .= "<p class='error'>Errore nel salvataggio dei dati.</p>";
@@ -72,7 +72,7 @@ if (isset($_POST["modifica_username"])) {
             } else {
                 if ($db_connection->update_username($_SESSION["user"], $nuovo_user)) {
                     $_SESSION["user"] = $nuovo_user;
-                    header("Location: area_utente.php?status=ok_user");
+                    header("Location: area_amministratore.php?status=ok_user");
                     exit();
                 } else {
                     $username_errors = "<p class='error'>Lo username scelto è già in uso.</p>";
@@ -98,7 +98,7 @@ if (isset($_POST["modifica_password"])) {
             } else {
                 $hash = password_hash($nuova_pw, PASSWORD_DEFAULT);
                 if ($db_connection->update_password($_SESSION["user"], $hash)) {
-                    header("Location: area_utente.php?status=ok_pass");
+                    header("Location: area_amministratore.php?status=ok_pass");
                     exit();
                 }
             }
@@ -156,6 +156,29 @@ if (empty($commenti_data)) {
 }
 
 $html_page = str_replace("[lista-commenti]", $commenti_html, $html_page);
+
+$delete_errors = "";
+// --- LOGICA DI ELIMINAZIONE ACCOUNT ---
+if (isset($_POST["conferma_eliminazione"])) {
+    $db_connection = new DBConnection();
+    
+    // Esegui la cancellazione (passando lo username dalla sessione)
+    if ($db_connection->delete_user($_SESSION["user"])) {
+        $db_connection->close_connection();
+        
+        // Pulizia sessione e redirect
+        session_unset();
+        session_destroy();
+        
+        // Reindirizziamo alla home o a una pagina di addio
+        header("Location: ../index.html");
+        exit();
+    } else {
+        $delete_errors .= "<p class='error'>Errore tecnico durante l'eliminazione dell'account.</p>";
+    }
+    $db_connection->close_connection();
+}
+$html_page = str_replace("[err-delete]", $delete_errors, $html_page);
 
 echo $html_page;
 ?>

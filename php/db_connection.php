@@ -78,9 +78,6 @@ class DBConnection {
 		    }
 
             $stmt->bind_param("ssssss", $username, $password, $adminPower, $nome, $cognome, $dataNascita);
-            if (!$stmt->execute()) {
-                die("Errore durante l'esecuzione: " . $stmt->error);
-            }
             $result = $stmt->execute();
         } else {
 		    $query = "INSERT INTO Utente (username, password, nome, cognome, dataNascita) VALUES (?, ?, ?, ?, ?)";
@@ -90,9 +87,6 @@ class DBConnection {
 		    }
 
             $stmt->bind_param("sssss", $username, $password, $nome, $cognome, $dataNascita);
-            if (!$stmt->execute()) {
-                die("Errore durante l'esecuzione: " . $stmt->error);
-            }
             $result = $stmt->execute();
         }
 
@@ -211,9 +205,7 @@ class DBConnection {
 			die("Errore nella preparazione dello statement: " . $this->connection->error);
 		}
         $stmt->bind_param("ss", $new_username, $old_username);
-        if (!$stmt->execute()) {
-            die("Errore durante l'esecuzione: " . $stmt->error);
-        }
+
         return $stmt->execute();
     }
 
@@ -224,9 +216,7 @@ class DBConnection {
 			die("Errore nella preparazione dello statement: " . $this->connection->error);
 		}
         $stmt->bind_param("ss", $hashed_password, $username);
-        if (!$stmt->execute()) {
-            die("Errore durante l'esecuzione: " . $stmt->error);
-        }
+
         $success = $stmt->execute();
         $stmt->close();
         return $success;
@@ -326,6 +316,22 @@ class DBConnection {
     }
 
     public function admin_delete_user($username) {
+        $query_check = "SELECT adminPower FROM Utente WHERE username = ?";
+
+        $stmt_check = $this->connection->prepare($query_check);
+        if ($stmt_check === false) {
+            die("Errore nella preparazione dello statement: " . $this->connection->error);
+        }
+        $stmt_check->bind_param("s", $username);
+        if (!$stmt_check->execute()) {
+            die("Errore durante l'esecuzione: " . $stmt_check->error);
+        }
+        $result_check = $stmt_check->get_result();
+        $row = $result_check->fetch_assoc();
+        if ($row['adminPower'] == 1) {
+            return false;
+        }
+
         $query = "DELETE FROM Utente WHERE username = ?";
 
         $stmt = $this->connection->prepare($query);

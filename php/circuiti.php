@@ -17,10 +17,12 @@ function render_circuits($id, $nome, $citta, $nazione, $lunghezza, $curve) {
     $display_length = htmlspecialchars($lunghezza); 
     $display_corners = htmlspecialchars($curve);
 
+    $img_name = strtolower(str_replace(' ', '_', $nome));
+
     return  
     <<<HTML
         <article class="circuit-card">
-            <img src="../resources/circuiti/circuito_{$id}.jpg" 
+            <img src="../resources/circuiti/{$img_name}.svg" 
                  alt="Mappa del circuto {$display_name}" 
                  class="circuit-image">
                  
