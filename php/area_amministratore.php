@@ -56,7 +56,6 @@ if (isset($_POST["salva_modifiche"])) {
     }
 }
 
-// --- LOGICA DI AGGIORNAMENTO SICUREZZA ---
 $db_connection = new DBConnection();
 
 // --- BLOCCO 1: AGGIORNAMENTO USERNAME ---
@@ -132,7 +131,7 @@ $data_nascita = $user_data['dataNascita'];
 $html_page = str_replace("[data di nascita]", date("d/m/Y", strtotime($data_nascita)), $html_page);
 $html_page = str_replace("[data]", $data_nascita, $html_page);
 
-// Commenti
+// --- COMMENTI ---
 $commenti_html = "";
 if (empty($commenti_data)) {
     $commenti_html = "<li>Non hai ancora postato alcun commento.</li>";

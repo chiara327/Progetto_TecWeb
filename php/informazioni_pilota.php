@@ -17,7 +17,6 @@ $pilota = "";
 try {
     $db_connection = new DBConnection();
     $pilota = $db_connection->get_pilota($idSlug);
-    //$scuderia = $db_connection->get_scuderia($pilota["scuderia_id"]);
     $db_connection->close_connection();
 } catch (Exception) {
     header("location: ../pages/500.html");

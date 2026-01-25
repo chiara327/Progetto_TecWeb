@@ -16,8 +16,6 @@ function input_restore() {
 	return $html_page;
 }
 
-// TODO: FARE COME NEGLI ALTRI FORM CON HEADER SU SELF_PHP
-// TODO: NON FUNZIONA ELIMINA UTENTE, GLI ERRORI IN PLACEHOLDER NON VANNO
 function check_invalid_input($nome, $cognome, $data, $username, $password) {
 	global $form_errors;
 	// Caratteri ammessi: lettere (M e m), caratteri speciali, spazi, trattini e apostrofi
@@ -40,7 +38,6 @@ function check_invalid_input($nome, $cognome, $data, $username, $password) {
 		$form_errors = $form_errors . "<p>Lo <span lang='en'>username</span> non deve superare i 30 caratteri.</p>";
 	}
 
-	// TODO: COME VOGLIAMO MOSTRARE L'ERRORE IN BASE A COSA MANCA NELLA PASSWORD? DIVERSI <P>? DIVERSI CONTROLLI CON APPEND DI DIVERSI <P>?
 	// La password deve avere almeno 8 caratteri, contenere una lettera minuscola, una maiuscola, un numero e un carattere speciale
 	if (!preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/", $password)) {
 		$form_errors = $form_errors . "<p>La <span lang='en'>password</span> deve essere lunga almeno 8 caratteri e contenere: 1 lettera minuscola, 1 lettera maiuscola, 1 numero e 1 carattere speciale.</p>";

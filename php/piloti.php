@@ -11,7 +11,6 @@ $dynamic_content = "";
 function render_drivers($id, $nome, $cognome) {
     $display_name = htmlspecialchars($nome . " " . $cognome);
 
-    // TODO: SPAN PER NOMI STRANIERI
     $filename = strtolower($nome . "_" . $cognome . ".jpg");
     $base_path = "../resources/piloti/";
     $full_path = __DIR__ . "/" . $base_path . $filename; 
