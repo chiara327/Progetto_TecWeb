@@ -449,7 +449,6 @@ h1.hide {
     z-index: 2;
 }
 
-/* TODO: NON FUNZIONA */
 .piloti h2#alpine-heading~ul article h3{
     background-color: var(--alpine-color);
 }
@@ -492,8 +491,55 @@ h1.hide {
    SCUDERIE PAGE
    ========================= */
 
+#scuderie article{
+    position: relative;
+    overflow: hidden;
+    padding-top: 0em;
+    padding-right: 2em;
+    padding-left: 2em;
+    background-color: var(--navbar-bg-color);
+    border: 0.15em solid var(--footer-border-color);
+    border-radius: 0.5em;
+    margin: 0.5em;
+}
+
+#scuderie article img {
+    width: 100%;
+    height: 40%;
+    object-fit: cover;
+}
+
+#scuderie article h2 {
+    padding: 0.5em;
+    color: var(--content-text-color);
+    text-align: center;
+}
+
+#scuderie article ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding-top: 0;
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+
+#scuderie article ul li{
+  margin-right: auto;
+  margin-left: auto;
+}
+
+
 #scuderie .visually-hidden {
-    visibility: hidden;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
 }
 
 /* =========================
