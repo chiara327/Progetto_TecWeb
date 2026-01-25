@@ -23,7 +23,7 @@ function render_circuits($id, $nome, $citta, $nazione, $lunghezza, $curve) {
     <<<HTML
         <article class="circuit-card">
             <img src="../resources/circuiti/{$img_name}.svg" 
-                 alt="Mappa del circuto {$display_name}" 
+                 alt="Mappa del circuito {$display_name}, situato a {$display_city}, {$display_country}, lungo {$display_length} metri con {$display_corners} curve." 
                  class="circuit-image">
                  
             <div class="circuit-info">

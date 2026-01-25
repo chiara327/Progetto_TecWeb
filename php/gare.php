@@ -28,7 +28,7 @@ if (empty($gare_data)) {
 
         $gare_html .= "
             <section class=\"gp\" aria-labelledby=\"$card_id\">
-                <img src=\"../resources/gare/{$img_name}.jpg\" alt=\"\" aria-hidden=\"true\"> 
+                <img src=\"../resources/gare/{$img_name}.jpg\" alt=\"Immagine del Gran Premio di {$g['circuito_citta']}\" aria-hidden=\"true\"> 
                 <div>
                     <h2 id=\"$card_id\">
                         {$g['circuito_citta']} <span lang=\"en\">Grand Prix</span>

@@ -13,6 +13,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap"
         rel="stylesheet">
+
+    <script src="../javascript/validation_utils.js" defer></script>
+    <script src="../javascript/validate_gestione_classifiche.js" defer></script>
 </head>
 
 <body>
@@ -69,7 +72,7 @@
                         </li>
 
                         <li>
-                            <input type="radio" name="azione" value="aumenta" id="aumenta">
+                            <input type="radio" name="azione" value="aumenta" id="aumenta" checked>
                             <label for="aumenta">Aumenta Punti</label>
                             <input type="radio" name="azione" value="diminuisci" id="diminuisci">
                             <label for="diminuisci">Diminuisci Punti</label>
@@ -77,7 +80,7 @@
 
                         <li>
                             <label for="punti">Punti:</label>
-                            <input type="number" name="punti" id="punti" min="0" placeholder="Inserisci i punti"
+                            <input type="number" name="punti" id="punti" placeholder="Inserisci i punti"
                                 value="[punti]">
                         </li>
                     </ul>

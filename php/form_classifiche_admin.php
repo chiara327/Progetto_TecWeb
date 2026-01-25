@@ -11,51 +11,67 @@ function input_restore() {
     return $html_page;
 }
 
+function check_invalid_input($punti) {
+	global $form_errors;
+
+    if (!is_numeric($punti) || intval($punti) < 0) {
+        $form_errors .= "<p>I punti devono essere un numero intero positivo.</p>";
+    }
+}
+
 if (isset($_POST["modifica_punti_pilota"])) {
     if (empty($_POST["pilota_to_increase"]) || empty($_POST["azione"]) || empty($_POST["punti"])) {
         $form_errors = "<p>Devi compilare tutti i campi.</p>";
         $html_page = input_restore();
         echo str_replace("[err_classifica_modifica]", $form_errors, $html_page);
         exit();
-    }
+    } else {
+        check_invalid_input($_POST["punti"]);
 
-    $id_pilota = $_POST["pilota_to_increase"];
-    $azione = $_POST["azione"];
-    $punti = intval($_POST["punti"]);
-
-    try {
-        $db_connection = new DBConnection();
-        $pilotExist = $db_connection->check_for_existing_pilot($id_pilota);
-        if ($pilotExist) {
-            $db_connection->close_connection();
-            $form_errors = "<p>Il pilota inserito non esiste.</p>";
+        if (!empty($form_errors)) {
             $html_page = input_restore();
             echo str_replace("[err_classifica_modifica]", $form_errors, $html_page);
             exit();
         }
 
-        if ($azione === "aumenta") {
-            $result = $db_connection->admin_increase_pilot_points($id_pilota, $punti);
-        } else if ($azione === "diminuisci") {
-            $result = $db_connection->admin_decrease_pilot_points($id_pilota, $punti);
-        } else {
+        $id_pilota = $_POST["pilota_to_increase"];
+        $azione = $_POST["azione"];
+        $punti = intval($_POST["punti"]);
+
+        try {
+            $db_connection = new DBConnection();
+            $pilotExist = $db_connection->check_for_existing_pilot($id_pilota);
+            if ($pilotExist) {
+                $db_connection->close_connection();
+                $form_errors = "<p>Il pilota inserito non esiste.</p>";
+                $html_page = input_restore();
+                echo str_replace("[err_classifica_modifica]", $form_errors, $html_page);
+                exit();
+            }
+
+            if ($azione === "aumenta") {
+                $result = $db_connection->admin_increase_pilot_points($id_pilota, $punti);
+            } else if ($azione === "diminuisci") {
+                $result = $db_connection->admin_decrease_pilot_points($id_pilota, $punti);
+            } else {
+                $db_connection->close_connection();
+                $form_errors = "<p>Azione non valida.</p>";
+                $html_page = input_restore();
+                echo str_replace("[err_classifica_modifica]", $form_errors, $html_page);
+                exit();
+            }
+
             $db_connection->close_connection();
-            $form_errors = "<p>Azione non valida.</p>";
-            $html_page = input_restore();
-            echo str_replace("[err_classifica_modifica]", $form_errors, $html_page);
+
+            // Se refresh pagina non re invia il comando già fatto (qui es. non aumenta di nuovo i punti)
+            header("Location: " . $_SERVER['PHP_SELF'] . "?msg=ok");
+            exit();
+        } catch (Exception) {
+            header("location: ../pages/500.html");
             exit();
         }
-
-        $db_connection->close_connection();
-
-        // Se refresh pagina non re invia il comando già fatto (qui es. non aumenta di nuovo i punti)
-        header("Location: " . $_SERVER['PHP_SELF'] . "?msg=ok");
-        exit();
-    } catch (Exception) {
-        header("location: ../pages/500.html");
-        exit();
+        $html_page = input_restore();
     }
-    $html_page = input_restore();
 } else {
     $html_page = input_restore();
 

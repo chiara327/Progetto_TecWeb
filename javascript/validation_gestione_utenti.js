@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
-    validate_registrazione();
+    validate_gestione_utenti();
 });
 
-function validate_registrazione() {
-    var form = document.getElementById("signup_form");
+function validate_gestione_utenti() {
+    var form = document.getElementById("form-utenti-aggiungi");
 
     form.addEventListener("submit", function (event) {
         resetErrors(0);
@@ -37,7 +37,7 @@ function validate_registrazione() {
 }
 
 function validateNome() {
-    var nome = document.getElementById("signup_nome").value;
+    var nome = document.getElementById("create_nome").value;
     var name_regex = /^[A-Za-zÀ-ÿ\s\-\']+$/;
 
     if (!name_regex.test(nome)) {
@@ -48,7 +48,7 @@ function validateNome() {
 }
 
 function validateCognome() {
-    var cognome = document.getElementById("signup_cognome").value;
+    var cognome = document.getElementById("create_cognome").value;
     var name_regex = /^[A-Za-zÀ-ÿ\s\-\']+$/;
 
     if (!name_regex.test(cognome)) {
@@ -59,7 +59,7 @@ function validateCognome() {
 }
 
 function validateUsername() {
-    var username = document.getElementById("signup_username").value;
+    var username = document.getElementById("create_username").value;
 
     if (username.length > 30) {
         return false;
@@ -69,7 +69,7 @@ function validateUsername() {
 }
 
 function validatePassword() {
-    var password = document.getElementById("signup_password").value;
+    var password = document.getElementById("create_password").value;
     var password_regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
     if (!password_regex.test(password)) {
@@ -80,7 +80,7 @@ function validatePassword() {
 }
 
 function validateDate() {
-    var date = document.getElementById("signup_data").value;
+    var date = document.getElementById("create_data").value;
     var date_regex = /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/;
 
     if (!date_regex.test(date)) {
