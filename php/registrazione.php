@@ -40,7 +40,6 @@ function check_invalid_input($nome, $cognome, $data, $username, $password) {
 		$form_errors = $form_errors . "<p>Lo <span lang='en'>username</span> non deve superare i 30 caratteri.</p>";
 	}
 
-	// TODO: COME VOGLIAMO MOSTRARE L'ERRORE IN BASE A COSA MANCA NELLA PASSWORD? DIVERSI <P>? DIVERSI CONTROLLI CON APPEND DI DIVERSI <P>?
 	// La password deve avere almeno 8 caratteri, contenere una lettera minuscola, una maiuscola, un numero e un carattere speciale
 	if (!preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/", $password)) {
 		$form_errors = $form_errors . "<p>La <span lang='en'>password</span> deve essere lunga almeno 8 caratteri e contenere: 1 lettera minuscola, 1 lettera maiuscola, 1 numero e 1 carattere speciale.</p>";
@@ -85,7 +84,6 @@ if (isset($_POST["nome"]) && isset($_POST["cognome"]) && isset($_POST["data"]) &
 				echo str_replace("[err]", $form_errors, $html_page);
 				exit();
 			} else {
-				// TODO: Disambiguare in base a admin o user normale
 				$_SESSION["user"] = $_POST["username"];
 				header("location: area_utente.php");
 			}

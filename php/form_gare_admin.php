@@ -75,7 +75,6 @@ if (isset($_POST["creazione_gare"])) {
     }
 }
 
-// --- GESTIONE OUTPUT (PRG) ---
 if (isset($_GET['res'])) {
     if ($_GET['res'] == 'ok') $form_errors = "Gara creata con successo!";
     if ($_GET['res'] == 'del') $form_errors_delete = "Gara eliminata con successo!";
