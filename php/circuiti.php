@@ -21,20 +21,21 @@ function render_circuits($id, $nome, $citta, $nazione, $lunghezza, $curve) {
 
     return  
     <<<HTML
-        <article class="circuit-card">
+        <article class="circuiti">
             <img src="../resources/circuiti/{$img_name}.svg" 
-                 alt="Mappa del circuito {$display_name}, situato a {$display_city}, {$display_country}, lungo {$display_length} metri con {$display_corners} curve." 
-                 class="circuit-image">
+                alt="Mappa del circuito {$display_name}, situato a {$display_city}, {$display_country}, lungo {$display_length} metri con {$display_corners} curve." >
                  
-            <div class="circuit-info">
-                <h3 class="circuit-name">{$display_name}</h3>
-                
-                <p id="circuit-city-country">{$display_city}, {$display_country}</p>
-
-                <p id="stat-label">Lunghezza</p>
-                <p id="stat-value">{$display_length} m</p>
-                <p id="stat-label">Curve</p>
-                <p id="stat-value">{$display_corners}</p>
+            <div class="circuiti-info">
+                <h2>{$display_name}</h2>
+                <dl>
+                    <dt>Luogo</dt>
+                    <dd>{$display_city}, {$display_country}</dd>
+                    <dt>Lunghezza</dt>
+                    <dd>{$display_length} m</dd>
+                    <dt>Curve</dt>
+                    <dd>{$display_corners}</dd>
+                </dl>
+            </div>
             </div>
         </article>
     HTML;
