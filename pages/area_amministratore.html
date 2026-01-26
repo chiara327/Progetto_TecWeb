@@ -139,17 +139,19 @@
 
         <section aria-labelledby="titolo-logout" class="area_utente_logout">
             <h2 id="titolo-logout">Gestione Account</h2>
-            <form action="../php/logout.php" method="POST" id="logout-form">
-                <button type="submit" class="btn-logout">Esci dal tuo account</button>
-            </form>
+            <div id="logout-container">
+                <form action="../php/logout.php" method="POST" id="logout-form">
+                    <button type="submit" class="btn-logout">Esci dal tuo account</button>
+                </form>
 
-            <div class="danger-zone">
-                <button type="button" 
-                        id="open-delete-modal" 
-                        class="btn-delete" 
-                        aria-haspopup="dialog">
-                    Elimina il tuo account
-                </button>
+                <div class="danger-zone">
+                    <button type="button" 
+                            id="open-delete-modal" 
+                            class="btn-delete" 
+                            aria-haspopup="dialog">
+                        Elimina il tuo account
+                    </button>
+                </div>
             </div>
         </section>
 
