@@ -952,6 +952,37 @@ th {
     text-transform: uppercase;
 }
 
+.area_utente_logout #logout-container {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+.area_utente_logout #logout-container .btn-logout,
+.area_utente_logout #logout-container .btn-delete {
+    display: inline-block;
+    width: 100%;
+    padding: 0.8em;
+    font-size: 1em;
+    font-weight: bold;
+    background-color: transparent;
+    color: var(--accent-color);
+    border: 0.15em solid var(--accent-color);
+    border-radius: 0.3em;
+    cursor: pointer;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 1em;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    text-decoration: none;
+}
+
+.area_utente_logout #logout-container .btn-logout:hover,
+.area_utente_logout #logout-container .btn-delete:hover {
+    background-color: var(--accent-color);
+    color: var(--content-text-color);
+}
+
 /* --- Info Personali (Griglia Dati) --- */
 .area_utente_info dl {
     display: grid;
@@ -1245,10 +1276,11 @@ input[type="submit"] {
     text-transform: uppercase;
 }
 
-.azioni_admin .btn-admin-action {
+.azioni_admin a.btn-admin-action {
     display: inline-block;
     width: 50%;
     padding: 0.8em;
+    font-family: inherit; 
     font-size: 1em;
     font-weight: bold;
     background-color: transparent;
@@ -1263,7 +1295,7 @@ input[type="submit"] {
     text-decoration: none;
 }
 
-.azioni_admin .btn-admin-action:hover {
+.azioni_admin a.btn-admin-action:hover {
     background-color: var(--accent-color);
     color: white;
 }
