@@ -2031,7 +2031,19 @@ main dd {
 
 #E403 img{
     width: 20em;
-    height: 20em;
+    height: auto;
+}
+
+/* =========================
+   ERROR 404 PAGE
+   ========================= */
+#E404 {
+    text-align: center;
+}
+
+#E404 img{
+    width: 20em;
+    height: auto;
     padding: 1em;
 }
 
@@ -2048,6 +2060,7 @@ main dd {
     padding: 1em;
     animation: fluttua 3s ease-in-out infinite;
 }
+/*MANCA L'ANIMAZIONE, SE NON RIESCO A FARLA LA TOLGO (-chiara)*/
 
 @keyframes fluttua {
   0%   { transform: translateY(0); opacity: 1; }
