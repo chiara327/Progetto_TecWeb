@@ -14,7 +14,9 @@ if (empty($gare_data)) {
     $gare_html = "<p>Nessuna gara registrata nel database.</p>";
 } else {
     // Array dei mesi in italiano
-    $mesi = array(1=>'Gennaio',2=>'Febbraio',3=>'Marzo',4=>'Aprile',5=>'Maggio',6=>'Giugno',7=>'Luglio',8=>'Agosto',9=>'Settembre',10=>'Ottobre',11=>'Novembre',12=>'Dicembre');
+    $mesi = array(1=>'Gennaio', 2=>'Febbraio', 3=>'Marzo', 4=>'Aprile',
+                  5=>'Maggio', 6=>'Giugno', 7=>'Luglio', 8=>'Agosto',
+                  9=>'Settembre',10=>'Ottobre',11=>'Novembre',12=>'Dicembre');
     
     foreach ($gare_data as $g) {
         // Formattazione data (es: 07 Settembre 2025)
