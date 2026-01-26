@@ -13,12 +13,17 @@ $gare_html = "";
 if (empty($gare_data)) {
     $gare_html = "<p>Nessuna gara registrata nel database.</p>";
 } else {
+    // Array dei mesi in italiano
+    $mesi = array(1=>'Gennaio',2=>'Febbraio',3=>'Marzo',4=>'Aprile',5=>'Maggio',6=>'Giugno',7=>'Luglio',8=>'Agosto',9=>'Settembre',10=>'Ottobre',11=>'Novembre',12=>'Dicembre');
+    
     foreach ($gare_data as $g) {
         // Formattazione data (es: 07 Settembre 2025)
-        // Setlocale serve per avere i mesi in italiano
-        setlocale(LC_TIME, 'it_IT.UTF-8');
-        $data_formattata = date("d F Y", strtotime($g['data']));
-        $data_iso = date("Y-m-d", strtotime($g['data']));
+        $timestamp = strtotime($g['data']);
+        $giorno = date('d', $timestamp);
+        $mese_num = date('n', $timestamp);
+        $anno = date('Y', $timestamp);
+        $data_formattata = $giorno . ' ' . $mesi[$mese_num] . ' ' . $anno;
+        $data_iso = date("Y-m-d", $timestamp);
         
         // Prepariamo un ID unico per l'accessibilità (aria-labelledby)
         $card_id = "gp-" . $g['id'];
