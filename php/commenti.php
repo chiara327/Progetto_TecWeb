@@ -108,6 +108,7 @@ if (isset($_SESSION["user"])) {
 }
 
 // 5. SOSTITUZIONI
+$html_page = str_replace("[GP]", $gara_data['circuito_citta'] . " Grand Prix", $html_page);
 $html_page = str_replace("[form-commento]", $form_commento, $html_page);
 $html_page = str_replace("[dettagli-gara]", $info_gara_html, $html_page);
 $html_page = str_replace("[titolo-gp]", $titolo_gp, $html_page);
