@@ -29,21 +29,12 @@ function render_circuits($id, $nome, $citta, $nazione, $lunghezza, $curve) {
             <div class="circuit-info">
                 <h3 class="circuit-name">{$display_name}</h3>
                 
-                <div class="circuit-location">
-                    <span>{$display_city}, <span class="nation">{$display_country}</span></span>
-                </div>
+                <p id="circuit-city-country">{$display_city}, {$display_country}</p>
 
-                <div class="circuit-stats">
-                    <div class="stat-item">
-                        <span class="stat-label">Lunghezza</span>
-                        <span class="stat-value">{$display_length} m</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-label">Curve</span>
-                        <span class="stat-value">{$display_corners}</span>
-                    </div>
-                </div>
-
+                <p id="stat-label">Lunghezza</p>
+                <p id="stat-value">{$display_length} m</p>
+                <p id="stat-label">Curve</p>
+                <p id="stat-value">{$display_corners}</p>
             </div>
         </article>
     HTML;
