@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS Piloti (
 
 INSERT INTO Piloti (id, nome, cognome, numero, vittorie, n_pole, gran_premi, titoli_mondiali, eta) VALUES
 (1, 'Max', 'Verstappen', 1, 58, 36, 215, 3, 27),
-(2, 'Yuki', 'Tsunoda', 22, 1, 0, 85, 0, 24),
+(2, 'Lee Faker', 'Sang-hyeok', 22, 1, 0, 85, 0, 24),
 (3, 'Lewis', 'Hamilton', 44, 105, 69, 310, 7, 40),
 (4, 'Charles', 'Leclerc', 16, 9, 26, 150, 0, 27),
 (5, 'Lando', 'Norris', 4, 6, 7, 140, 0, 25),
@@ -26,13 +26,13 @@ INSERT INTO Piloti (id, nome, cognome, numero, vittorie, n_pole, gran_premi, tit
 (7, 'Fernando', 'Alonso', 14, 32, 22, 385, 2, 43),
 (8, 'Lance', 'Stroll', 18, 1, 1, 150, 0, 27),
 (9, 'George', 'Russell', 63, 5, 4, 120, 0, 27),
-(10, 'Andrea Kimi', 'Antonelli', 12, 0, 0, 22, 0, 18),
+(10, 'Mario', 'Mario', 12, 0, 0, 22, 0, 18),
 (11, 'Carlos', 'Sainz', 55, 6, 4, 190, 0, 30),
 (12, 'Alex', 'Albon', 23, 2, 2, 115, 0, 29),
 (13, 'Esteban', 'Ocon', 31, 2, 0, 145, 0, 28),
 (14, 'Oliver', 'Bearman', 10, 3, 2, 155, 0, 29),
 (15, 'Liam', 'Lawson', 77, 10, 20, 240, 0, 35),
-(16, 'Isack', 'Hadjar', 24, 0, 0, 65, 0, 26),
+(16, 'Luigi', 'Mario', 24, 0, 0, 65, 0, 26),
 (17, 'Pierre', 'Gasly', 10, 3, 2, 155, 0, 29),
 (18, 'Franco', 'Colapinto', 3, 8, 3, 240, 0, 35),
 (19, 'Nico', 'Hulkenberg', 27, 0, 1, 210, 0, 37),
@@ -50,11 +50,11 @@ CREATE TABLE IF NOT EXISTS Scuderie (
 
 INSERT INTO Scuderie (nome, presenze, pilota_attuale1_id, pilota_attuale2_id, punti_campionato, titoli) VALUES
 ('McLaren', 950, 5, 6, 640, 8),
-('Mercedes', 520, 9, 10, 680, 8),
+('Mercedes', 520, 9, 15, 680, 8),
 ('Red Bull Racing', 380, 1, 2, 860, 6),
 ('Ferrari', 1050, 3, 4, 720, 16),
 ('Williams', 800, 11, 12, 190, 9),
-('RB', 90, 15, 16, 260, 0),
+('SuperStar', 90, 10, 16, 260, 0),
 ('Aston Martin', 150, 7, 8, 420, 0),
 ('Haas', 180, 13, 14, 140, 0),
 ('Sauber', 520, 19, 20, 120, 0),
@@ -102,7 +102,6 @@ CREATE TABLE IF NOT EXISTS ClassificaPiloti (
     id INT NOT NULL,
     anno INT NOT NULL,
     pilota_id INT NOT NULL,
-    posizione INT,
     punti INT DEFAULT 0,
     PRIMARY KEY (id),
     UNIQUE INDEX idx_anno_pilota (anno, pilota_id),
@@ -113,34 +112,32 @@ CREATE TABLE IF NOT EXISTS ClassificaPiloti (
 ) ENGINE=InnoDB;
 
 INSERT INTO ClassificaPiloti
-(id, anno, pilota_id, posizione, punti)
+(id, anno, pilota_id, punti)
 VALUES
-(1, 2025, 1, 1, 423),   
-(2, 2025, 4, 2, 421),   
-(3, 2025, 3, 3, 410),  
-(4, 2025, 5, 4, 319),  
-(5, 2025, 11, 5, 242),  
-(6, 2025, 9, 6, 156),    
-(7, 2025, 7, 7, 150),   
-(8, 2025, 6, 8, 125),   
-(9, 2025, 2, 9, 83),    
-(10, 2025, 14, 10, 67), 
-(11, 2025, 13, 11, 42), 
-(12, 2025, 17, 12, 36), 
-(13, 2025, 18, 13, 31), 
-(14, 2025, 12, 14, 29), 
-(15, 2025, 19, 15, 18), 
-(16, 2025, 20, 16, 16), 
-(17, 2025, 15, 17, 12), 
-(18, 2025, 16, 18, 7), 
-(19, 2025, 8, 19, 2),  
-(20, 2025, 10, 20, 1); 
-
+(1, 2025, 1, 423),   
+(2, 2025, 4, 421),   
+(3, 2025, 3, 410),  
+(4, 2025, 5, 319),  
+(5, 2025, 11, 242),  
+(6, 2025, 9, 156),    
+(7, 2025, 7, 150),   
+(8, 2025, 6, 125),   
+(9, 2025, 2, 780),    
+(10, 2025, 14, 1), 
+(11, 2025, 13, 42), 
+(12, 2025, 17, 36), 
+(13, 2025, 18, 31), 
+(14, 2025, 12, 29), 
+(15, 2025, 19, 18), 
+(16, 2025, 20, 41), 
+(17, 2025, 15, 12), 
+(18, 2025, 16, 422), 
+(19, 2025, 8, 2),  
+(20, 2025, 10, 512); 
 
 CREATE TABLE IF NOT EXISTS ClassificaCostruttori (
     anno INT NOT NULL,
     scuderia_nome VARCHAR(100) NOT NULL,
-    posizione INT,
     punti INT DEFAULT 0,
     PRIMARY KEY (anno, scuderia_nome),
     CONSTRAINT fk_scuderia_stand FOREIGN KEY (scuderia_nome) 
@@ -150,19 +147,18 @@ CREATE TABLE IF NOT EXISTS ClassificaCostruttori (
 ) ENGINE=InnoDB;
 
 INSERT INTO ClassificaCostruttori
-(anno, scuderia_nome, posizione, punti)
+(anno, scuderia_nome, punti)
 VALUES
-(2025, 'Red Bull Racing', 1, 860),
-(2025, 'Ferrari', 2, 720),
-(2025, 'Mercedes', 3, 680),
-(2025, 'McLaren', 4, 640),
-(2025, 'Aston Martin', 5, 420),
-(2025, 'Alpine', 6, 310),
-(2025, 'RB', 7, 260),
-(2025, 'Williams', 8, 190),
-(2025, 'Haas', 9, 140),
-(2025, 'Sauber', 10, 120);
-
+(2025, 'Red Bull Racing', 1203),
+(2025, 'Ferrari', 831),
+(2025, 'Mercedes', 168),
+(2025, 'McLaren', 444),
+(2025, 'Aston Martin', 152),
+(2025, 'Alpine', 67),
+(2025, 'SuperStar', 934),
+(2025, 'Williams', 190),
+(2025, 'Haas', 43),
+(2025, 'Sauber', 59);
 CREATE TABLE IF NOT EXISTS Gare (
     id INT NOT NULL AUTO_INCREMENT,
     circuito_id INT NOT NULL,

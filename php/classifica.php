@@ -19,7 +19,7 @@ if (empty($piloti_data)) {
     $pos = 1;
     foreach ($piloti_data as $p) {
         $piloti_html .= "<tr>
-            <th scope='row'>" . $p['posizione'] . "</th>
+            <th scope='row'>" . $pos . "</th>
             <td>" . htmlspecialchars($p['nome'] . " " . $p['cognome']) . "</td>
             <td>" . htmlspecialchars($p['nome_scuderia'] ?? 'N/D') . "</td>
             <td>" . $p['punti'] . "</td>
@@ -36,7 +36,7 @@ if (empty($costruttori_data)) {
     $pos = 1;
     foreach ($costruttori_data as $c) {
         $costruttori_html .= "<tr>
-            <th scope='row'>" . $c['posizione'] . "</th>
+            <th scope='row'>" . $pos . "</th>
             <td>" . htmlspecialchars($c['nome_scuderia']) . "</td>
             <td>" . $c['punti'] . "</td>
         </tr>";

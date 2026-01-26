@@ -406,7 +406,6 @@ class DBConnection {
         // Uniamo la tabella ClassificaPiloti con Piloti (per i nomi) 
         // e Scuderie (per trovare il team attuale del pilota)
         $query = "SELECT 
-                    cp.posizione, 
                     p.nome, 
                     p.cognome, 
                     s.nome AS nome_scuderia, 
@@ -415,7 +414,7 @@ class DBConnection {
                   JOIN Piloti p ON cp.pilota_id = p.id
                   LEFT JOIN Scuderie s ON (p.id = s.pilota_attuale1_id OR p.id = s.pilota_attuale2_id)
                   WHERE cp.anno = 2025
-                  ORDER BY cp.posizione ASC";
+                  ORDER BY cp.punti DESC";
 
         $stmt = $this->connection->prepare($query);
         if ($stmt === false) {
@@ -432,13 +431,11 @@ class DBConnection {
     // --- CLASSIFICA COSTRUTTORI 2025 ---
     public function get_constructors_standings() {
         // Query diretta sulla tabella ClassificaCostruttori
-        $query = "SELECT 
-                    posizione, 
-                    scuderia_nome AS nome_scuderia, 
+        $query = "SELECT scuderia_nome AS nome_scuderia, 
                     punti 
                   FROM ClassificaCostruttori 
                   WHERE anno = 2025
-                  ORDER BY posizione ASC";
+                  ORDER BY punti DESC";
 
         $stmt = $this->connection->prepare($query);
         if ($stmt === false) {

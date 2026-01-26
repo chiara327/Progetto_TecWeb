@@ -27,16 +27,12 @@ foreach ($scuderie_data as $team) {
     $team_straniero = (stripos($nome_team, 'Ferrari') === false && stripos($nome_team, 'Unipd') === false);
 
     $team_alt = "<a href=\"../php/informazioni_scuderia.php?team={$nome_team}\">
-                    <img src=\"../resources/{$slug_team}.jpg\" alt=\"Logo della scuderia {$nome_team}\">
+                    <img src=\"../resources/scuderie/{$slug_team}.jpg\" alt=\"Logo della scuderia {$nome_team}\">
                     <p id=\"{$slug_team}-desc\" class=\"visually-hidden\">
                     Logo della scuderia {$nome_team}.
                     </p>
                 </a>";
 
-    $p1_id = $team["p1_id"];
-    $p2_id = $team["p2_id"];
-    $pilota1_name = htmlspecialchars($team["p1_nome"] . " " . $team["p1_cognome"]);
-    $pilota2_name = htmlspecialchars($team["p2_nome"] . " " . $team["p2_cognome"]);
     $team_header = $team_straniero ? "<span lang=\"en\">{$nome_team}</span>" : $nome_team;
 
     $dynamic_content .= 
@@ -44,15 +40,6 @@ foreach ($scuderie_data as $team) {
         <article aria-labelledby="{$slug_team}-heading" class="team">
             <h2 id="{$slug_team}-heading">{$team_header}</h2>
             {$team_alt}
-            <h3>Piloti</h3>
-            <ul>
-                <li>
-                    <a href="informazioni_pilota.php?id={$p1_id}">{$pilota1_name}</a>
-                </li>
-                <li>
-                    <a href="informazioni_pilota.php?id={$p2_id}">{$pilota2_name}</a>
-                </li>
-            </ul>    
         </article>
     HTML;
 }
