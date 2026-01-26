@@ -630,9 +630,46 @@ class DBConnection {
     }
 
     public function get_commenti($id_gara) {
-        $query = "SELECT testo, data FROM Commento WHERE gara_id=? ORDER BY data DESC";
+        $query = "SELECT 
+                    C.username,
+                    C.testo, 
+                    C.data, 
+                    Ci.nome AS nome_gara 
+                FROM Commento C 
+                JOIN Gare G ON C.gara_id = G.id 
+                JOIN Circuiti Ci ON G.circuito_id = Ci.id 
+                WHERE C.gara_id = ? 
+                ORDER BY C.data DESC";
+        
+        $stmt = $this->connection->prepare($query);
+        $stmt->bind_param("i", $id_gara);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function get_gara_data($id_gara) {
+        $query = "SELECT 
+                    G.id, 
+                    G.data, 
+                    C.nome AS circuito_nome, 
+                    C.citta AS circuito_citta,
+                    C.nazione AS circuito_nazione,
+                    P1.nome AS p1_nome, P1.cognome AS p1_cognome, P1.id AS p1_id,
+                    P2.nome AS p2_nome, P2.cognome AS p2_cognome, P2.id AS p2_id,
+                    P3.nome AS p3_nome, P3.cognome AS p3_cognome, P3.id AS p3_id
+                FROM Gare G
+                JOIN Circuiti C ON G.circuito_id = C.id
+                LEFT JOIN Piloti P1 ON G.primo_posto = P1.id
+                LEFT JOIN Piloti P2 ON G.secondo_posto = P2.id
+                LEFT JOIN Piloti P3 ON G.terzo_posto = P3.id
+                WHERE G.id = ?";
 
         $stmt = $this->connection->prepare($query);
+        if ($stmt === false) {
+            die("Errore nella preparazione dello statement: " . $this->connection->error);
+        }
+
         $stmt->bind_param("s", $id_gara);
         if (!$stmt->execute()) {
             die("Errore durante l'esecuzione: " . $stmt->error);
@@ -640,7 +677,24 @@ class DBConnection {
 
         $result = $stmt->get_result();
 
-        return $result->fetch_all(MYSQLI_ASSOC);
+        return $result->fetch_assoc();
+    }
+
+    public function insert_commento($username, $gara_id, $testo, $data) {
+        $query = "INSERT INTO Commento (username, gara_id, testo, data) VALUES (?, ?, ?, ?)";
+        
+        $stmt = $this->connection->prepare($query);
+        if ($stmt === false) {
+            return false;
+        }
+
+        // "siss": string (user), integer (gara_id), string (testo), string (data)
+        $stmt->bind_param("siss", $username, $gara_id, $testo, $data);
+        
+        $result = $stmt->execute();
+        $stmt->close();
+        
+        return $result;
     }
 }
 ?>

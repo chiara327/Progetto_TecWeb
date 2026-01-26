@@ -4,55 +4,136 @@ use DB\DBConnection;
 
 session_start();
 
-// TODO: rimuovere questa linea una volta implementato il link da gara.php
-$_SESSION["id_gara"] = 1;
+// 1. GESTIONE ID GARA (Recupero da POST o da GET per il redirect)
+// Usiamo gara_id coerentemente con il form della pagina precedente
+$id_gara_attuale = null;
+if (isset($_POST['gara_id'])) {
+    $id_gara_attuale = intval($_POST['gara_id']);
+} elseif (isset($_GET['id_gara'])) {
+    $id_gara_attuale = intval($_GET['id_gara']);
+}
 
-/*if (!isset($_SESSION["user"])) {
-    header("location: login.php");
+// Se non abbiamo un ID, torniamo indietro
+if (!$id_gara_attuale) {
+    header("location: gare.php");
     exit();
-}*/
+}
 
-$gara = "";
 $commenti_errors = "";
 $success_msg = "";
+$err_aggiungi_commenti = "";
+$messaggio_successo_aggiunta_commento = "";
 
-// --- RECUPERO DATI E RENDERING ---
+// 2. LOGICA DI INVIO NUOVO COMMENTO (Prima del recupero dati)
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["invia_commento"])) {
+    if (isset($_SESSION["user"])) {
+        $testo = trim($_POST["testo_commento"]);
+        $username = $_SESSION["user"];
+        $data_oggi = date("Y-m-d H:i:s");
+
+        if (empty($testo)) {
+            $err_aggiungi_commenti = "<p class='error' aria-live='assertive'>Il commento non può essere vuoto.</p>";
+        } else {
+            $db = new DBConnection();
+            if ($db->insert_commento($username, $id_gara_attuale, $testo, $data_oggi)) {
+                $db->close_connection();
+                // Passiamo l'id_gara nel GET per non perderlo dopo il redirect
+                header("Location: commenti.php?status=ok&id_gara=" . $id_gara_attuale); 
+                exit();
+            } else {
+                $err_aggiungi_commenti = "<p class='error' aria-live='assertive'>Errore nella pubblicazione.</p>";
+            }
+            $db->close_connection();
+        }
+    }
+}
+
+if (isset($_GET['status']) && $_GET['status'] === 'ok') {
+    $messaggio_successo_aggiunta_commento = "<p class='success' aria-live='polite'>Commento pubblicato!</p>";
+}
+
+// 3. RECUPERO DATI PER RENDERING
 $db_connection = new DBConnection();
-$commenti_data = $db_connection->get_commenti($_SESSION["id_gara"]);
+$gara_data = $db_connection->get_gara_data($id_gara_attuale);
+$commenti_data = $db_connection->get_commenti($id_gara_attuale);
 $db_connection->close_connection();
+
+// Se per qualche motivo l'ID non esiste nel DB
+if (!$gara_data) {
+    header("location: gare.php");
+    exit();
+}
 
 $html_page = file_get_contents("../pages/commenti.html");
 
-// Sostituzioni segnaposto
-$html_page = str_replace("[err-commenti]", $commenti_errors, $html_page);
-$html_page = str_replace("[messaggio-successo]", $success_msg, $html_page);
+// 4. COSTRUZIONE INTERFACCIA
+$data_val = $gara_data['data'];
+$data_it = date("d/m/Y", strtotime($data_val));
+$nazione = htmlspecialchars($gara_data['circuito_nazione']);
+$anno = date("Y", strtotime($data_val));
+$titolo_gp = $nazione . ' <span lang="en">Grand Prix</span> ' . $anno;
 
-// Commenti
+$p1 = htmlspecialchars($gara_data['p1_nome'] . " " . $gara_data['p1_cognome']);
+$p2 = htmlspecialchars($gara_data['p2_nome'] . " " . $gara_data['p2_cognome']);
+$p3 = htmlspecialchars($gara_data['p3_nome'] . " " . $gara_data['p3_cognome']);
+
+$info_gara_html = "
+    <div class='gp-header'>
+        <h2>" . htmlspecialchars($gara_data['circuito_nome']) . "</h2>
+        <p class='gp-date'>" . htmlspecialchars($gara_data['circuito_citta']) . " - $data_it</p>
+        <div class='podium-summary'>
+            <div class='podium-item gold'><strong>1°</strong> $p1</div>
+            <div class='podium-item silver'><strong>2°</strong> $p2</div>
+            <div class='podium-item bronze'><strong>3°</strong> $p3</div>
+        </div>
+    </div>";
+
+// COSTRUZIONE FORM
+$form_commento = "";
+if (isset($_SESSION["user"])) {
+    $form_commento = '
+        <section aria-labelledby="aggiungi-commento-titolo">
+            <h2 id="aggiungi-commento-titolo">Aggiungi un Commento</h2>
+            <form id="form-commento" action="commenti.php" method="post">
+                <input type="hidden" name="gara_id" value="' . $id_gara_attuale . '">
+                <label for="testo-commento">Stai commentando come: <strong>' . htmlspecialchars($_SESSION["user"]) . '</strong></label>
+                <textarea id="testo-commento" name="testo_commento" rows="4" required aria-required="true"></textarea>
+                <button type="submit" name="invia_commento">Pubblica Commento</button>
+            </form>
+            ' . $err_aggiungi_commenti . '
+            ' . $messaggio_successo_aggiunta_commento . '
+        </section>';
+} else {
+    $form_commento = '<section class="avviso-login"><p><a href="login.php">Accedi</a> per commentare.</p></section>';
+}
+
+// 5. SOSTITUZIONI
+$html_page = str_replace("[form-commento]", $form_commento, $html_page);
+$html_page = str_replace("[dettagli-gara]", $info_gara_html, $html_page);
+$html_page = str_replace("[titolo-gp]", $titolo_gp, $html_page);
+$html_page = str_replace("[gara]", htmlspecialchars($gara_data['circuito_nome'] . " " . $anno), $html_page);
+
+// Generazione lista commenti
 $commenti_html = "";
 if (empty($commenti_data)) {
-    $commenti_html = "<li>Non hai ancora postato alcun commento.</li>";
+    $commenti_html = "<li>Non è ancora stato postato alcun commento.</li>";
 } else {
     foreach ($commenti_data as $comm) {
         $testo = htmlspecialchars($comm['testo']);
-        $gara = htmlspecialchars($comm['nome_gara']);
-        $data_iso = $comm['data'];
-        $data_it = date("d/m/Y", strtotime($comm['data']));
-
+        $utente = htmlspecialchars($comm['username']);
+        $data_it_comm = date("d/m/Y H:i", strtotime($comm['data']));
         $commenti_html .= "<li>
             <article class='commento-card'>
                 <header>
-                    <h3>Commento su: $gara</h3>
-                    <p class='comment-date'>Pubblicato il <time datetime='$data_iso'>$data_it</time></p>
+                    <h3>Commento di: $utente</h3>
+                    <p class='comment-date'>Pubblicato il $data_it_comm</p>
                 </header>
                 <p class='comment-content'>$testo</p>
             </article>
         </li>";
     }
 }
-
 $html_page = str_replace("[lista-commenti]", $commenti_html, $html_page);
-$html_page = str_replace("[gara]", $gara, $html_page);
-$html_page = str_replace("[dettagli-gara]", $gara, $html_page);
 
 echo $html_page;
 ?>

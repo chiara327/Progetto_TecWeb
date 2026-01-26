@@ -41,13 +41,20 @@
     </nav>
     
     <main id="gare">
-        <h1>[gara] Grand Prix</h1>
+        <h1>[titolo-gp]</h1>
+        
+        <section aria-labelledby="titolo-gara">
+            [dettagli-gara]
+        </section>
 
-        <!-- Grand Prix Templates -->
-        [dettagli-gara]
+        [form-commento]
 
-        <h2>Commenti</h2>
-        [lista-commenti]
+        <section class="area_utente_commenti">
+            <h2 id="titolo-commenti">Discussione della <span lang="en">Community</span></h2>
+            <ul class="comment-list">
+                [lista-commenti]
+            </ul>
+        </section>
     </main>
 
     <footer class="f1-footer">
