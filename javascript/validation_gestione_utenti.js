@@ -18,7 +18,7 @@ function validate_gestione_utenti() {
         }
 
         if (!validateDate()) {
-            err_messages += "<p>La data inserita non è valida, scegliere una data nel formato yyyy-mm-dd e che non sia nel futuro.</p>";
+            err_messages += "<p>La data inserita non è valida, inserisci una data che non sia nel futuro.</p>";
         }
 
         if (!validateUsername()) {

@@ -30,7 +30,7 @@ function check_invalid_input($nome, $cognome, $data, $username, $password) {
 
 	// Data non deve essere nel futuro e nel formato internazionale
 	if (strtotime($_POST["data"]) > strtotime(date("Y-m-d")) || !preg_match("/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/", $data)) {
-		$form_errors = $form_errors . "<p>La data inserita non è valida, scegliere una data nel formato dd-mm-yyyy e che non sia nel futuro.</p>";
+		$form_errors = $form_errors . "<p>La data inserita non è valida, inserisci una data che non sia nel futuro.</p>";
 	}
 
 	// Ammessi tutti i caratteri, controlliamo solo la lunghezza

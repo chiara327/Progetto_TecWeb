@@ -16,8 +16,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap"
         rel="stylesheet">
+    
+    <script src="../javascript/validation_utils.js" defer></script>
+    <script src="../javascript/validation_area_utente_admin.js" defer></script>
     <script src="../javascript/area_conferma_elimina.js" defer></script>
-
 </head>
 
 <body>
@@ -64,23 +66,23 @@
                     <legend>Dati anagrafici</legend>
                     <ul>
                         <li>
-                            <label for="signup_nome">Nome</label>
-                            <input type="text" name="nome" id="signup_nome" value="[nome]" placeholder="Il tuo nome">
+                            <label for="modifica_nome">Nome</label>
+                            <input type="text" name="nome" id="modifica_nome" value="[nome]" placeholder="Il tuo nome">
                         </li>
                         <li>
-                            <label for="signup_cognome">Cognome</label>
-                            <input type="text" name="cognome" id="signup_cognome" value="[cognome]" placeholder="Il tuo cognome">
+                            <label for="modifica_cognome">Cognome</label>
+                            <input type="text" name="cognome" id="modifica_cognome" value="[cognome]" placeholder="Il tuo cognome">
                         </li>
                         <li>
-                            <label for="signup_data">Data di nascita</label>
-                            <input type="date" name="data" id="signup_data" value="[data]">
+                            <label for="modifica_data">Data di nascita</label>
+                            <input type="date" name="data" id="modifica_data" value="[data]">
                         </li>
                         <li class="form-actions">
                             <input id="modifica-anagrafica-submit" name="salva_modifiche" type="submit" value="Salva Modifiche">
                         </li>
                     </ul>
                 </fieldset>
-                <div class="anagrafica_errors">
+                <div class="form_errors">
                     [err-anag]
                 </div>
             </form>
@@ -92,12 +94,12 @@
                 <legend>Modifica Username</legend>
                 <ul>
                     <li>
-                        <label for="nuovo-username">Nuovo Username:</label>
-                        <input type="text" id="nuovo-username" value="[username]" name="nuovo-username">
+                        <label for="nuovo_username">Nuovo Username:</label>
+                        <input type="text" id="nuovo_username" value="[username]" name="nuovo-username">
                     </li>
                     <li>
-                        <label for="password-attuale"><strong>Password Attuale (per confermare):</strong></label>
-                        <input type="password" id="password-attuale" name="password-attuale" required>
+                        <label for="password_attuale"><strong>Password Attuale (per confermare):</strong></label>
+                        <input type="password" id="password_attuale" name="password-attuale" required>
                     </li>
                     <li class="form-actions">
                         <input id="modifica-username-submit" name="modifica_username" type="submit" value="Aggiorna Username">
@@ -111,12 +113,12 @@
                 <legend>Modifica Password</legend>
                 <ul>
                     <li>
-                        <label for="nuova-password">Nuova Password:</label>
-                        <input type="password" id="nuova-password" name="nuova-password">
+                        <label for="nuova_password">Nuova Password:</label>
+                        <input type="password" id="nuova_password" name="nuova-password">
                     </li>
                     <li>
-                        <label for="password-attuale"><strong>Password Attuale (per confermare):</strong></label>
-                        <input type="password" id="password-attuale" name="password-attuale" required>
+                        <label for="password_attuale"><strong>Password Attuale (per confermare):</strong></label>
+                        <input type="password" id="password_attuale" name="password-attuale" required>
                     </li>
                     <li class="form-actions">
                         <input id="modifica-password-submit" name="modifica_password" type="submit" value="Aggiorna Password">
