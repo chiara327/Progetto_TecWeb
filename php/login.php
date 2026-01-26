@@ -30,7 +30,7 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
     if (empty($_POST["username"]) || empty($_POST["password"])) {
 		$form_errors = $form_errors . "<p>Devi compilare tutti i campi.</p>";
         $html_page = input_restore();
-		echo str_replace("[err]", $err, $html_page);
+		echo str_replace("[err]", $form_errors, $html_page);
 		exit();
 	} else {
         try {

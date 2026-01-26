@@ -28,9 +28,6 @@ foreach ($scuderie_data as $team) {
 
     $team_alt = "<a href=\"../php/informazioni_scuderia.php?team={$nome_team}\">
                     <img src=\"../resources/scuderie/{$slug_team}.jpg\" alt=\"Logo della scuderia {$nome_team}\">
-                    <p id=\"{$slug_team}-desc\" class=\"visually-hidden\">
-                    Logo della scuderia {$nome_team}.
-                    </p>
                 </a>";
 
     $team_header = $team_straniero ? "<span lang=\"en\">{$nome_team}</span>" : $nome_team;

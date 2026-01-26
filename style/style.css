@@ -29,16 +29,17 @@
 
     /*  COLORI DA USARE PER SCUDERIE/PILOTI */
 
-    --ferrari-color: #FF2800;
+    --ferrari-color: #C62000;
     --redbull-color: #0600EF;
-    --mclaren-color: #FF8700;
-    --mercedes-color: #00D4BE;
-    --alpine-color: #0082FA;
+    --mclaren-color: #A35600;
+    --mercedes-color: #007064;
+    --alpine-color: #0061BA;
     --astonmartin-color: #006A3A;
     --williams-color: #0082FA;
-    --haas-color: #E10600;
-    --racingbulls-color: #0066CC;
-    --sauber-color: #00FF00;
+    --haas-color: #212121;
+    --racingbulls-color: #0059B3;
+    --sauber-color: #007300;
+    --superstar-color: #A67C00
 }
 
 /* =========================
@@ -261,7 +262,6 @@ h1.hide {
     pointer-events: none;
     /* Disabilita i link */
     text-decoration-thickness: 0.15em;
-    /*TODO: DOVREMMO SEGNALARE NEL FOOTER SE LA PAGINA CORRENTE È QUELLA VISUALIZZATA?*/
 }
 
 .footer-col ul li a:visited {
@@ -484,23 +484,30 @@ h1.hide {
 .piloti h2#sauber-heading~ul article h3{
     background-color: var(--sauber-color);
 }
+
 .piloti h2#williams-heading~ul article h3{
     background-color: var(--williams-color);
+}
+
+.piloti h2#superstar-heading~ul article h3{
+    background-color: var(--superstar-color);
 }
 /* =========================
    SCUDERIE PAGE
    ========================= */
 
-#scuderie article{
+#scuderie article {
     position: relative;
     overflow: hidden;
     padding-top: 0em;
     padding-right: 2em;
     padding-left: 2em;
+    padding-bottom: 2em;
     background-color: var(--navbar-bg-color);
     border: 0.15em solid var(--footer-border-color);
     border-radius: 0.5em;
     margin: 0.5em;
+    margin-bottom: 1em;
 }
 
 #scuderie article img {
@@ -527,19 +534,6 @@ h1.hide {
 #scuderie article ul li{
   margin-right: auto;
   margin-left: auto;
-}
-
-
-#scuderie .visually-hidden {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
 }
 
 /* =========================
@@ -638,6 +632,25 @@ h1.hide {
 .gp dd a:hover {
     text-decoration: underline;
     color: var(--accent-color);
+}
+
+.gp button.btn-view-comments {
+    margin-top: 2em;
+    align-self: flex-start;
+    padding: 0.6em 1.2em;
+    background-color: transparent;
+    color: var(--accent-color);
+    border: 0.15em solid var(--accent-color);
+    border-radius: 0.3em;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.gp button.btn-view-comments:hover {
+    background-color: var(--accent-color);
+    color: var(--content-text-color);
 }
 
 /* =========================
@@ -993,9 +1006,9 @@ th {
 }
 
 .area_utente_modifica input:focus {
-    border-color: var(--accent-color);
     outline: none;
-    box-shadow: 0 0 5px var(--accent-color);
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 0.15em var(--accent-color);
 }
 
 .area_utente_modifica fieldset legend,
@@ -1073,7 +1086,6 @@ input[type="submit"] {
 .anagrafica_errors, .form_errors {
     margin-top: 1em;
     padding: 0.8em;
-    /*background-color: rgba(185, 28, 28, 0.1);*/
     color: #b91c1c;
     border-radius: 0.3em;
     font-weight: bold;
@@ -1257,6 +1269,474 @@ input[type="submit"] {
 }
 
 /* =========================
+   AZIONI ADMIN - UTENTI
+   ========================= */
+
+/* =========================
+   FORM UTENTI – STILI COMUNI
+   ========================= */
+
+/* Legend */
+#form-utenti-elimina legend,
+#form-utenti-aggiungi legend {
+    display: block;
+    width: 100%;
+    margin-bottom: 1em;
+
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: var(--content-text-color);
+}
+
+/* Fieldset */
+#form-utenti-elimina fieldset,
+#form-utenti-aggiungi fieldset {
+    border: none;
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+/* Lista */
+.crea-utente-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.crea-utente-section li {
+    margin-bottom: 1.2em;
+}
+
+/* Label */
+#form-utenti-elimina label,
+#form-utenti-aggiungi label {
+    margin-bottom: 0.3em;
+    font-weight: bold;
+    color: var(--content-text-color);
+}
+
+/* =========================
+   INPUT BASE
+   ========================= */
+
+#form-utenti-elimina input[type="text"],
+#form-utenti-aggiungi input[type="text"],
+#form-utenti-aggiungi input[type="email"],
+#form-utenti-aggiungi input[type="password"],
+#form-utenti-aggiungi select,
+#form-utenti-aggiungi input[type="date"] {
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 0.6em 0.8em;
+    font-size: 1em;
+
+    background-color: var(--content-bg-color);
+    color: var(--content-text-color);
+
+    border: 0.1em solid var(--footer-border-color);
+    border-radius: 0.3em;
+
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Focus (input + select) */
+#form-utenti-elimina input:focus,
+#form-utenti-aggiungi input:focus,
+#form-utenti-aggiungi select:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 0.15em var(--accent-color);
+}
+
+/* =========================
+   INPUT DATE – RAFFINAMENTI
+   ========================= */
+
+#form-utenti-aggiungi input[type="date"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+
+    padding-right: 1.5em;
+    cursor: pointer;
+    background-image: none;
+}
+
+/* Nascondiamo spin / clear (WebKit) */
+#form-utenti-elimina input[type="date"]::-webkit-clear-button,
+#form-utenti-elimina input[type="date"]::-webkit-inner-spin-button,
+#form-utenti-aggiungi input[type="date"]::-webkit-clear-button,
+#form-utenti-aggiungi input[type="date"]::-webkit-inner-spin-button {
+    display: none;
+}
+
+/* Calendar picker icon (WebKit) */
+#form-utenti-elimina input[type="date"]::-webkit-calendar-picker-indicator,
+#form-utenti-aggiungi input[type="date"]::-webkit-calendar-picker-indicator {
+    position: absolute;
+    right: 0.3em;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 1.2em;
+    height: 1.2em;
+
+    color: var(--accent-color);
+    filter: invert(1) sepia(1) saturate(5) hue-rotate(330deg);
+    background: none;
+    cursor: pointer;
+}
+
+/* =========================
+   SUBMIT BUTTON
+   ========================= */
+
+#form-utenti-elimina input[type="submit"],
+#form-utenti-aggiungi input[type="submit"] {
+    width: 100%;
+    padding: 0.8em;
+
+    font-size: 1em;
+    font-weight: bold;
+    text-transform: uppercase;
+
+    background: transparent;
+    color: var(--accent-color);
+
+    border: 0.15em solid var(--accent-color);
+    border-radius: 0.3em;
+
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#form-utenti-elimina input[type="submit"]:hover,
+#form-utenti-aggiungi input[type="submit"]:hover {
+    background-color: var(--accent-color);
+    color: #fff;
+}
+
+   /* =========================
+   AZIONI ADMIN - GARE
+   ========================= */
+
+/* =========================
+   FORM GARE – STILI COMUNI
+   ========================= */
+
+/* Legend */
+#form-gare-elimina legend,
+#form-gare-aggiungi legend {
+    display: block;
+    width: 100%;
+    margin-bottom: 1em;
+
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: var(--content-text-color);
+}
+
+/* Fieldset */
+#form-gare-elimina fieldset,
+#form-gare-aggiungi fieldset {
+    border: none;
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+/* Lista */
+.crea-gare-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.crea-gare-section li {
+    margin-bottom: 1.2em;
+}
+
+/* Label */
+#form-gare-elimina label,
+#form-gare-aggiungi label {
+    margin-bottom: 0.3em;
+    font-weight: bold;
+    color: var(--content-text-color);
+}
+
+/* =========================
+   INPUT BASE (text, email, password, select)
+   ========================= */
+
+#form-gare-elimina input[type="text"],
+#form-gare-aggiungi input[type="text"],
+#form-gare-aggiungi input[type="email"],
+#form-gare-aggiungi input[type="password"],
+#form-gare-aggiungi select,
+#form-gare-aggiungi input[type="date"] {
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 0.6em 0.8em;
+    font-size: 1em;
+
+    background-color: var(--content-bg-color);
+    color: var(--content-text-color);
+
+    border: 0.1em solid var(--footer-border-color);
+    border-radius: 0.3em;
+
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Focus (tutti gli input) */
+#form-gare-elimina input:focus,
+#form-gare-aggiungi input:focus,
+#form-gare-aggiungi select:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 0.15em var(--accent-color);
+}
+
+/* =========================
+   INPUT DATE (raffinamenti)
+   ========================= */
+
+#form-gare-aggiungi input[type="date"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+
+    padding-right: 1.5em;
+    cursor: pointer;
+    background-image: none;
+}
+
+/* Nascondiamo spin / clear (WebKit) */
+#form-gare-elimina input[type="date"]::-webkit-clear-button,
+#form-gare-elimina input[type="date"]::-webkit-inner-spin-button,
+#form-gare-aggiungi input[type="date"]::-webkit-clear-button,
+#form-gare-aggiungi input[type="date"]::-webkit-inner-spin-button {
+    display: none;
+}
+
+/* Calendar picker icon (WebKit) */
+#form-gare-elimina input[type="date"]::-webkit-calendar-picker-indicator,
+#form-gare-aggiungi input[type="date"]::-webkit-calendar-picker-indicator {
+    position: absolute;
+    right: 0.3em;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 1.2em;
+    height: 1.2em;
+
+    color: var(--accent-color);
+    filter: invert(1) sepia(1) saturate(5) hue-rotate(330deg);
+    background: none;
+    cursor: pointer;
+}
+
+/* =========================
+   SUBMIT BUTTON
+   ========================= */
+
+#form-gare-elimina input[type="submit"],
+#form-gare-aggiungi input[type="submit"] {
+    width: 100%;
+    padding: 0.8em;
+
+    font-size: 1em;
+    font-weight: bold;
+    text-transform: uppercase;
+
+    background: transparent;
+    color: var(--accent-color);
+
+    border: 0.15em solid var(--accent-color);
+    border-radius: 0.3em;
+
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#form-gare-elimina input[type="submit"]:hover,
+#form-gare-aggiungi input[type="submit"]:hover {
+    background-color: var(--accent-color);
+    color: #fff;
+}
+
+   /* =========================
+   AZIONI ADMIN - CLASSIFICHE
+   ========================= */
+
+/* =========================
+   FORM MODIFICA PUNTI PILOTA
+   ========================= */
+
+/* Legend */
+#form-modifica-punti-pilota legend {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 1em;
+
+    font-size: 1.5em;
+    font-weight: bold;
+    color: var(--content-text-color);
+}
+
+/* Fieldset */
+#form-modifica-punti-pilota fieldset {
+    border: none;
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+/* Lista */
+.crea-classifica-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.crea-classifica-section li {
+    margin-bottom: 1.2em;
+}
+
+/* Label */
+#form-modifica-punti-pilota label {
+    margin-bottom: 0.3em;
+    font-weight: bold;
+    color: var(--content-text-color);
+}
+
+/* Select + Number */
+#form-modifica-punti-pilota select,
+#form-modifica-punti-pilota input[type="number"] {
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 0.6em 0.8em;
+    font-size: 1em;
+
+    background-color: var(--content-bg-color);
+    color: var(--content-text-color);
+
+    border: 0.1em solid var(--footer-border-color);
+    border-radius: 0.3em;
+
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Focus (select + number) */
+#form-modifica-punti-pilota select:focus,
+#form-modifica-punti-pilota input[type="number"]:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 0.15em var(--accent-color);
+}
+
+/* =========================
+   RADIO BUTTONS – F1 STYLE
+   ========================= */
+
+#form-modifica-punti-pilota input[type="radio"] {
+    appearance: none;
+    position: relative;
+
+    width: 1.4em;
+    height: 1.4em;
+
+    border: 0.15em solid var(--accent-color);
+    border-radius: 50%;
+    background: transparent;
+
+    cursor: pointer;
+    transition: box-shadow 0.2s ease;
+}
+
+/* Contenitore radio */
+#form-modifica-punti-pilota li:nth-child(2) {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+/* Reset margini */
+#form-modifica-punti-pilota li:nth-child(2) input,
+#form-modifica-punti-pilota li:nth-child(2) label {
+    margin: 0;
+}
+
+/* Stato checked */
+#form-modifica-punti-pilota input[type="radio"]:checked::before {
+    content: "";
+    position: absolute;
+    inset: 0.25em;
+    background-color: var(--accent-color);
+    border-radius: 50%;
+}
+
+/* Hover / Focus */
+#form-modifica-punti-pilota input[type="radio"]:hover {
+    box-shadow: 0 0 0 0.2em rgba(225, 6, 0, 0.3);
+}
+
+#form-modifica-punti-pilota input[type="radio"]:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 0.25em rgba(225, 6, 0, 0.5);
+}
+
+/* Label radio */
+#form-modifica-punti-pilota input[type="radio"] + label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6em;
+
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* =========================
+   SUBMIT BUTTON
+   ========================= */
+
+#form-modifica-punti-pilota input[type="submit"] {
+    width: 100%;
+    padding: 0.8em;
+
+    font-size: 1em;
+    font-weight: bold;
+    text-transform: uppercase;
+
+    background: transparent;
+    color: var(--accent-color);
+
+    border: 0.15em solid var(--accent-color);
+    border-radius: 0.3em;
+
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#form-modifica-punti-pilota input[type="submit"]:hover {
+    background-color: var(--accent-color);
+    color: #fff;
+}   
+
+/* =========================
    CLASSIFICA - TABS STYLES
    ========================= */
 
@@ -1368,7 +1848,9 @@ input[type="submit"] {
     }
 }
 
-/* ===== Accessible native combobox ===== */
+/* =========================
+   ACCESSIBILITÀ COMBO-BOX
+   ========================= */
 
 select {
     background-color: var(--content-bg-color);   /* #15151E */
