@@ -1,6 +1,6 @@
-<html>
+<!DOCTYPE html>
 
-<head>
+<html lang="it">
     <title>Gestione Gare | F1 Fan Club</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../style/mini.css" media="screen and (max-width:800px)">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap"
         rel="stylesheet">
 
     <script src="../javascript/validation_utils.js" defer></script>
@@ -77,7 +77,7 @@
                         </li>
                         <li>
                             <label id="create_label_data" for="create_data">Data della gara</label>
-                            <input type="date" name="data" id="create_data" value="[data]" placeholder="Data della gara">
+                            <input type="date" name="data" id="create_data" value="[data]">
                         </li>
                         <li>
                             <label id="create_label_primo_posto" for="create_primo_posto">Pilota arrivato al primo posto</label>
@@ -160,7 +160,7 @@
                     </ul>
                         <input type="submit" value="Crea Gara" id="creazione_gare"
                             name="creazione_gare">
-                        <ul>
+                    
                 </fieldset>
                 <div class="form_errors">
                     [err_gare_creazione]
@@ -184,7 +184,7 @@
                     [err_gare_elimina]
                 </div>
             </form>
-            </sections>
+            </section>
     </main>
 
     <footer class="f1-footer">
