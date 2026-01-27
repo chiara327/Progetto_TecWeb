@@ -29,8 +29,8 @@ $sostituzioni = [
     "[presenze]"          => htmlspecialchars($scuderia['presenze']),
     "[punti_campionato]"  => htmlspecialchars($scuderia['punti_campionato']),
     "[titoli]"            => htmlspecialchars($scuderia['titoli']), 
-    "[pilota1_nome]"      => "<a href='information_driver.php?id=" . $scuderia["pilota_attuale1_id"] . "'>" . htmlspecialchars($pilota1["nome"]) . " " . htmlspecialchars($pilota1["cognome"]) . "</a>",
-    "[pilota2_nome]"      => "<a href='information_driver.php?id=" . $scuderia["pilota_attuale2_id"] . "'>" . htmlspecialchars($pilota2["nome"]) . " " . htmlspecialchars($pilota2["cognome"]) . "</a>",
+    "[pilota1_nome]"      => "<a href='informazioni_pilota.php?id=" . $scuderia["pilota_attuale1_id"] . "'>" . htmlspecialchars($pilota1["nome"]) . " " . htmlspecialchars($pilota1["cognome"]) . "</a>",
+    "[pilota2_nome]"      => "<a href='informazioni_pilota.php?id=" . $scuderia["pilota_attuale2_id"] . "'>" . htmlspecialchars($pilota2["nome"]) . " " . htmlspecialchars($pilota2["cognome"]) . "</a>",
 ];
 
 foreach ($sostituzioni as $placeholder => $valore) {

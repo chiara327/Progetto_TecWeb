@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 
 <html lang="it">
-    <title>Gestione Utenti | F1 Fan Club</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="formula 1, gare, circuiti, classifica, mondiali, qualifiche, piloti, team">
-    <meta name="description" content="Pagina dedicata alla home page di formula 1">
-    <link rel="stylesheet" href="../style/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="../style/mini.css" media="screen and (max-width:800px)">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap"
-        rel="stylesheet">
+<title>Gestione Utenti | F1 Fan Club</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="formula 1, gare, circuiti, classifica, mondiali, qualifiche, piloti, team">
+<meta name="description" content="Pagina dedicata alla home page di formula 1">
+<link rel="stylesheet" href="../style/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="../style/mini.css" media="screen and (max-width:800px)">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
 
-    <script src="../javascript/validation_utils.js" defer></script>
-    <script src="../javascript/validation_gestione_utenti.js" defer></script>
+<script src="../javascript/validation_utils.js" defer></script>
+<script src="../javascript/validation_gestione_utenti.js" defer></script>
 </head>
 
 <body>
@@ -78,8 +77,7 @@
                                 placeholder="Minimo 8 caratteri">
                         </li>
                     </ul>
-                    <input type="submit" value="Crea Utente" id="creazione_utente"
-                            name="creazione_utente">
+                    <input type="submit" value="Crea Utente" id="creazione_utente" name="creazione_utente">
                 </fieldset>
                 <div class="form_errors">
                     [err_utenti_creazione]
@@ -92,12 +90,14 @@
                 id="form-utenti-elimina">
                 <fieldset>
                     <legend><span lang="en">Elimina Utente</span></legend>
-
-                    <label for="username_delete">Username</label>
-                    <input type="text" name="username_delete" value="[username]" id="username_delete"
-                        placeholder="Utente da eliminare">
+                    <ul>
+                        <li>
+                            <label for="username_delete">Username</label>
+                            <input type="text" name="username_delete" value="[username]" id="username_delete"
+                                placeholder="Utente da eliminare">
+                        </li>
+                    </ul>
                     <input id="elimina_utente" type="submit" value="Conferma Elimina" name="elimina_utente">
-
                 </fieldset>
                 <div class="form_errors">
                     [err_utenti_elimina]

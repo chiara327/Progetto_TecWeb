@@ -1331,6 +1331,16 @@ input[type="submit"] {
    FORM UTENTI – STILI COMUNI
    ========================= */
 
+#form-utenti-elimina,
+#form-utenti-aggiungi {
+    background-color: var(--navbar-bg-color);
+    border: 0.15em solid var(--footer-border-color);
+    border-radius: 0.5em;
+    padding: 2em;
+    width: 50%;
+    margin: 2em auto;
+}
+
 /* Legend */
 #form-utenti-elimina legend,
 #form-utenti-aggiungi legend {
@@ -1357,12 +1367,14 @@ input[type="submit"] {
 }
 
 /* Lista */
-.crea-utente-section ul {
+.crea-utente-section ul,
+.elimina-utente-section ul {
     list-style: none;
     padding: 0;
 }
 
-.crea-utente-section li {
+.crea-utente-section li,
+.elimina-utente-section li {
     margin-bottom: 1.2em;
 }
 
@@ -1457,6 +1469,16 @@ input[type="submit"] {
    FORM GARE – STILI COMUNI
    ========================= */
 
+#form-gare-elimina,
+#form-gare-aggiungi {
+    background-color: var(--navbar-bg-color);
+    border: 0.15em solid var(--footer-border-color);
+    border-radius: 0.5em;
+    padding: 2em;
+    width: 50%;
+    margin: 2em auto;
+}
+
 /* Legend */
 #form-gare-elimina legend,
 #form-gare-aggiungi legend {
@@ -1483,12 +1505,14 @@ input[type="submit"] {
 }
 
 /* Lista */
-.crea-gare-section ul {
+.crea-gare-section ul,
+.elimina-gare-section ul {
     list-style: none;
     padding: 0;
 }
 
-.crea-gare-section li {
+.crea-gare-section li,
+.elimina-gare-section li {
     margin-bottom: 1.2em;
 }
 
@@ -1582,6 +1606,15 @@ input[type="submit"] {
 /* =========================
    FORM MODIFICA PUNTI PILOTA
    ========================= */
+
+#form-modifica-punti-pilota {
+    background-color: var(--navbar-bg-color);
+    border: 0.15em solid var(--footer-border-color);
+    border-radius: 0.5em;
+    padding: 2em;
+    width: 50%;
+    margin: 2em auto;
+}
 
 /* Legend */
 #form-modifica-punti-pilota legend {
