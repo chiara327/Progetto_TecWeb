@@ -5,9 +5,14 @@ use DB\DBConnection;
 $html_page = file_get_contents("../pages/circuiti.html");
 $dynamic_content = "";
 
-$db_connection = new DBConnection();
-$circuiti_data = $db_connection->get_circuiti_page_data();
-$db_connection->close_connection();
+try {
+    $db_connection = new DBConnection();
+    $circuiti_data = $db_connection->get_circuiti_page_data();
+    $db_connection->close_connection();
+} catch (Exception $e) {
+    header("location: ../pages/500.html");
+    exit();
+}
 
 function render_circuits($id, $nome, $citta, $nazione, $lunghezza, $curve) {
     $display_name = htmlspecialchars($nome);

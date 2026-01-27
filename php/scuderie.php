@@ -17,9 +17,14 @@ function create_slug($string) {
     return $string;
 }
 
-$db_connection = new DBConnection();
-$scuderie_data = $db_connection->get_scuderie_page_data();
-$db_connection->close_connection();
+try {
+    $db_connection = new DBConnection();
+    $scuderie_data = $db_connection->get_scuderie_page_data();
+    $db_connection->close_connection();
+} catch (Exception $e) {
+    header("location: ../pages/500.html");
+    exit();
+}
 
 foreach ($scuderie_data as $team) {
     $nome_team = htmlspecialchars($team["team_name"]);

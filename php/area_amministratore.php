@@ -43,78 +43,91 @@ if (isset($_POST["salva_modifiche"])) {
 
         // 3. Se non ci sono errori, procedo al database
         if (empty($anagrafica_errors)) {
-            $db_connection = new DBConnection();
-            if ($db_connection->update_user_info($_SESSION["user"], $nome, $cognome, $data)) {
-                $db_connection->close_connection();
-                header("Location: area_amministratore.php?status=ok_anag");
-                exit();
-            } else {
-                $anagrafica_errors .= "<p class='error'>Errore nel salvataggio dei dati.</p>";
-            }
-            $db_connection->close_connection();
-        }
-    }
-}
-
-$db_connection = new DBConnection();
-
-// --- BLOCCO 1: AGGIORNAMENTO USERNAME ---
-if (isset($_POST["modifica_username"])) {
-    $nuovo_user = trim($_POST["nuovo-username"]);
-    $pw_attuale = $_POST["password-attuale"];
-
-    // 1. Verifica password attuale
-    if ($db_connection->verify_password($_SESSION["user"], $pw_attuale)) {
-        if (!empty($nuovo_user) && $nuovo_user !== $_SESSION["user"]) {
-            if (strlen($nuovo_user) > 30) {
-                $username_errors = "<p class='error'>Lo username non può superare i 30 caratteri.</p>";
-            } else {
-                if ($db_connection->update_username($_SESSION["user"], $nuovo_user)) {
-                    $_SESSION["user"] = $nuovo_user;
-                    header("Location: area_amministratore.php?status=ok_user");
+            try {
+                $db_connection = new DBConnection();
+                if ($db_connection->update_user_info($_SESSION["user"], $nome, $cognome, $data)) {
+                    $db_connection->close_connection();
+                    header("Location: area_amministratore.php?status=ok_anag");
                     exit();
                 } else {
-                    $username_errors = "<p class='error'>Lo username scelto è già in uso.</p>";
+                    $anagrafica_errors .= "<p class='error'>Errore nel salvataggio dei dati.</p>";
                 }
+                $db_connection->close_connection();
+            } catch (Exception $e) {
+                header("location: ../pages/500.html");
+                exit();
             }
         }
-    } else {
-        $username_errors = "<p class='error'>Password attuale errata.</p>";
     }
 }
+try {
+    $db_connection = new DBConnection();
 
-// --- BLOCCO 2: AGGIORNAMENTO PASSWORD ---
-if (isset($_POST["modifica_password"])) {
-    $nuova_pw = $_POST["nuova-password"];
-    $pw_attuale = $_POST["password-attuale"];
+    // --- BLOCCO 1: AGGIORNAMENTO USERNAME ---
+    if (isset($_POST["modifica_username"])) {
+        $nuovo_user = trim($_POST["nuovo-username"]);
+        $pw_attuale = $_POST["password-attuale"];
 
-    // 1. Verifica password attuale
-    if ($db_connection->verify_password($_SESSION["user"], $pw_attuale)) {
-        if (!empty($nuova_pw)) {
-            // Regex: 8 car, 1 Maiusc, 1 minusc, 1 numero, 1 speciale
-            if (!preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/", $nuova_pw)) {
-                $password_errors = "<p class='error'>La password deve avere 8 caratteri, una maiuscola, un numero e un speciale.</p>";
-            } else {
-                $hash = password_hash($nuova_pw, PASSWORD_DEFAULT);
-                if ($db_connection->update_password($_SESSION["user"], $hash)) {
-                    header("Location: area_amministratore.php?status=ok_pass");
-                    exit();
+        // 1. Verifica password attuale
+        if ($db_connection->verify_password($_SESSION["user"], $pw_attuale)) {
+            if (!empty($nuovo_user) && $nuovo_user !== $_SESSION["user"]) {
+                if (strlen($nuovo_user) > 30) {
+                    $username_errors = "<p class='error'>Lo username non può superare i 30 caratteri.</p>";
+                } else {
+                    if ($db_connection->update_username($_SESSION["user"], $nuovo_user)) {
+                        $_SESSION["user"] = $nuovo_user;
+                        header("Location: area_amministratore.php?status=ok_user");
+                        exit();
+                    } else {
+                        $username_errors = "<p class='error'>Lo username scelto è già in uso.</p>";
+                    }
                 }
             }
+        } else {
+            $username_errors = "<p class='error'>Password attuale errata.</p>";
         }
-    } else {
-        $password_errors = "<p class='error'>Password attuale errata.</p>";
     }
-}
 
-$db_connection->close_connection();
+    // --- BLOCCO 2: AGGIORNAMENTO PASSWORD ---
+    if (isset($_POST["modifica_password"])) {
+        $nuova_pw = $_POST["nuova-password"];
+        $pw_attuale = $_POST["password-attuale"];
+
+        // 1. Verifica password attuale
+        if ($db_connection->verify_password($_SESSION["user"], $pw_attuale)) {
+            if (!empty($nuova_pw)) {
+                // Regex: 8 car, 1 Maiusc, 1 minusc, 1 numero, 1 speciale
+                if (!preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/", $nuova_pw)) {
+                    $password_errors = "<p class='error'>La password deve avere 8 caratteri, una maiuscola, un numero e un speciale.</p>";
+                } else {
+                    $hash = password_hash($nuova_pw, PASSWORD_DEFAULT);
+                    if ($db_connection->update_password($_SESSION["user"], $hash)) {
+                        header("Location: area_amministratore.php?status=ok_pass");
+                        exit();
+                    }
+                }
+            }
+        } else {
+            $password_errors = "<p class='error'>Password attuale errata.</p>";
+        }
+    }
+
+    $db_connection->close_connection();
+} catch (Exception $e) {
+    header("location: ../pages/500.html");
+    exit();
+}
 
 // --- RECUPERO DATI E RENDERING ---
-$db_connection = new DBConnection();
-$user_data = $db_connection->get_user_info($_SESSION["user"]);
-$commenti_data = $db_connection->get_user_comments($_SESSION["user"]);
-$db_connection->close_connection();
-
+try {
+    $db_connection = new DBConnection();
+    $user_data = $db_connection->get_user_info($_SESSION["user"]);
+    $commenti_data = $db_connection->get_user_comments($_SESSION["user"]);
+    $db_connection->close_connection();
+} catch (Exception $e) {
+    header("location: ../pages/500.html");
+    exit();
+}
 $html_page = file_get_contents("../pages/area_amministratore.html");
 
 // Sostituzioni segnaposto
@@ -163,23 +176,28 @@ $html_page = str_replace("[lista-commenti]", $commenti_html, $html_page);
 $delete_errors = "";
 // --- LOGICA DI ELIMINAZIONE ACCOUNT ---
 if (isset($_POST["conferma_eliminazione"])) {
-    $db_connection = new DBConnection();
-    
-    // Esegui la cancellazione (passando lo username dalla sessione)
-    if ($db_connection->delete_user($_SESSION["user"])) {
+    try {
+        $db_connection = new DBConnection();
+        
+        // Esegui la cancellazione (passando lo username dalla sessione)
+        if ($db_connection->delete_user($_SESSION["user"])) {
+            $db_connection->close_connection();
+            
+            // Pulizia sessione e redirect
+            session_unset();
+            session_destroy();
+            
+            // Reindirizziamo alla home o a una pagina di addio
+            header("Location: ../index.html");
+            exit();
+        } else {
+            $delete_errors .= "<p class='error'>Errore tecnico durante l'eliminazione dell'account.</p>";
+        }
         $db_connection->close_connection();
-        
-        // Pulizia sessione e redirect
-        session_unset();
-        session_destroy();
-        
-        // Reindirizziamo alla home o a una pagina di addio
-        header("Location: ../index.html");
+    } catch (Exception $e) {
+        header("location: ../pages/500.html");
         exit();
-    } else {
-        $delete_errors .= "<p class='error'>Errore tecnico durante l'eliminazione dell'account.</p>";
     }
-    $db_connection->close_connection();
 }
 $html_page = str_replace("[err-delete]", $delete_errors, $html_page);
 

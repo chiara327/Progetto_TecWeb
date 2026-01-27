@@ -6,10 +6,15 @@ use DB\DBConnection;
 $html_page = file_get_contents("../pages/classifica.html");
 
 // --- RECUPERO DATI DAL DB ---
-$db_connection = new DBConnection();
-$piloti_data = $db_connection->get_drivers_standings();
-$costruttori_data = $db_connection->get_constructors_standings();
-$db_connection->close_connection();
+try {
+    $db_connection = new DBConnection();
+    $piloti_data = $db_connection->get_drivers_standings();
+    $costruttori_data = $db_connection->get_constructors_standings();
+    $db_connection->close_connection();
+} catch (Exception $e) {
+    header("location: ../pages/500.html");
+    exit();
+}
 
 // --- GENERAZIONE HTML CLASSIFICA PILOTI ---
 $piloti_html = "";
