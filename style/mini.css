@@ -602,50 +602,77 @@ a:focus-visible {
     font-size: 0.9em;
 }
 
-/* =========================
-   CIRCUITI PAGE
-   ========================= */
+/* ==========================================================
+    SEZIONE CIRCUITI
+   ========================================================== */
 
-#circuiti {
+.circuiti {
+    /* Cambiamo da riga a colonna per evitare schiacciamenti */
+    flex-direction: column; 
+    align-items: center;
+    
+    /* Resettiamo margini e larghezze per occupare lo spazio disponibile */
+    margin: 1em auto;
+    width: 95%;
+    max-width: none; /* Rimuoviamo il limite del desktop */
+    border-left: 0.3em solid var(--accent-color); /* Leggermente più sottile per mobile */
+}
+
+/* Disabilitiamo l'effetto scale su mobile: al tocco (hover simulato) 
+   può causare lag o problemi di scroll */
+.circuiti:hover {
+    transform: none;
+    border-color: var(--footer-border-color);
+}
+
+.circuiti img {
+    /* L'immagine ora si adatta alla larghezza del telefono */
+    width: 100%;
+    max-width: 18em; /* Evita che l'immagine diventi troppo grande su smartphone larghi */
+    height: auto;
+    margin: 1.5em auto 0 auto; /* Centrata e distanziata */
+    flex-shrink: 1;
+}
+
+.circuiti > div {
     padding: 1em;
     width: 100%;
-}
-
-.circuito {
-    width: 100%;
-    margin: 1em 0;
-}
-
-.circuito img {
-    max-width: 100%;
-    width: 100%;
-    height: auto;
-    max-height: 10em;
-    object-fit: cover;
-    cursor: pointer;
-    display: block;
-}
-
-.circuito article {
-    position: relative;
-    overflow: hidden;
-    border: 0.4em solid var(--navbar-bg-color);
-}
-
-.circuito article h3 {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: auto;
-    margin: 0;
-    color: var(--content-text-color);
-    background-color: var(--footer-border-color);
-    padding: 1em;
-    text-align: center;
     box-sizing: border-box;
-    z-index: 2;
-    font-size: 0.95em;
+}
+
+.circuiti h2 {
+    text-align: center; /* Titolo centrato per il layout a colonna */
+    font-size: 1.4em;
+    padding: 0.5em 0;
+}
+
+.circuiti dl {
+    /* Passiamo da 2 colonne a 1 colonna singola */
+    grid-template-columns: 1fr; 
+    gap: 0.2em;
+    text-align: center;
+}
+
+
+
+.circuiti dt {
+    font-size: 0.75em;
+    align-self: center; /* Centra l'etichetta */
+    margin-top: 0.8em;
+    color: var(--accent-color); /* Colore più evidente per distinguere le voci */
+}
+
+.circuiti dd {
+    font-size: 1em;
+    font-weight: bold; /* Valore più leggibile */
+    line-height: 1.2;
+    padding-bottom: 0.5em;
+    border-bottom: 1px solid rgba(255,255,255,0.05); /* Separatore leggero tra le voci */
+}
+
+/* Rimuoviamo l'ultimo bordo inferiore per pulizia */
+.circuiti dd:last-of-type {
+    border-bottom: none;
 }
 
 /* =========================
@@ -657,8 +684,9 @@ main > h1 {
 }
 
 .classifica {
-    width: 100%;
-    margin: 1.5em 0;
+    display: table;
+    width: 95%;
+    margin: 1.5em auto;
     border-collapse: collapse;
     font-size: 0.9em;
     display: block;
@@ -720,6 +748,99 @@ main > h1 {
 .classifica td {
     background: var(--footer-border-color);
     font-size: 0.9em;
+}
+
+/* Centratura del titolo campionato nella pagina Classifica */
+.classifica caption, 
+#content h2 {
+    text-align: center; /* Centra il testo */
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content; /* Fa sì che i bordi si adattino alla lunghezza del testo */
+    padding: 0.5em 1em;
+    border-left: none; /* Rimuove il bordo laterale se presente */
+    border-right: none;
+}
+
+/* Centratura e ottimizzazione titoli campionati */
+.classifica caption, 
+#content h3 {
+    text-align: center; /* Centra il testo */
+    display: block;
+    width: 90%; /* Evita che tocchi i bordi dello schermo */
+    margin: 1em auto; /* Centra il blocco orizzontalmente */
+    
+    /* Rimuoviamo il bordo laterale che spinge il testo a destra */
+    border-left: none !important; 
+    
+    /* Aggiungiamo una linea sotto per coerenza stilistica F1 */
+    border-bottom: 0.15em solid var(--accent-color);
+    padding-bottom: 0.5em;
+    
+    /* Forza il testo su una riga se c'è spazio, o gestisce meglio l'andata a capo */
+    line-height: 1.4;
+    font-size: 1.1em;
+}
+
+/* ==========================================================
+   MOBILE CSS: Tab e Classifiche
+   ========================================================== */
+
+/* 1. NAVIGAZIONE TAB */
+.tabs-navigation {
+    flex-direction: column; /* Impila i bottoni verticalmente */
+    width: 95%;
+    margin: 1em auto;
+    gap: 0.5em; /* Distanzia i pulsanti per facilitare il tocco */
+}
+
+[role="tab"] {
+    width: 100%; /* I bottoni occupano tutta la larghezza */
+    padding: 1em; /* Aumenta l'area di tocco (touch target) */
+    text-align: center;
+    border-radius: 0.3em !important; /* Arrotonda tutti i bordi su mobile */
+    border-left: 0.15em solid var(--footer-border-color) !important; /* Ripristina il bordo sinistro */
+}
+
+/* Reset dei bordi arrotondati specifici per desktop */
+[role="tab"]:first-child,
+[role="tab"]:last-child {
+    border-radius: 0.3em !important;
+}
+
+/* 2. TABELLA CLASSIFICA */
+/* Per rendere la tabella leggibile senza rimpicciolire i testi,
+   usiamo un contenitore con scroll orizzontale */
+.classifica {
+    display: block; /* Permette alla tabella di comportarsi come un blocco */
+    width: 100%;
+    overflow-x: auto; /* Attiva lo scroll laterale se necessario */
+    -webkit-overflow-scrolling: touch; /* Rende lo scroll fluido su iOS */
+    margin: 1em 0;
+    border-spacing: 0 0.3em; /* Riduce leggermente lo spazio tra le righe */
+}
+
+/* Impediamo al testo di andare a capo per mantenere la tabella pulita */
+.classifica th,
+.classifica td {
+    white-space: nowrap; 
+    padding: 0.6em;
+    font-size: 0.85em; /* Leggera riduzione del font per risparmiare spazio */
+}
+
+/* Ottimizzazione colonna posizione */
+.classifica th[scope="row"] {
+    width: auto;
+    min-width: 2.5em;
+    padding: 0.5em;
+    font-size: 1.1em;
+}
+
+/* 3. ACCESSIBILITÀ E UX MOBILE */
+/* Rimuoviamo l'hover sulla riga perché sui touch screen 
+   l'effetto "rimane appiccicato" dopo il tocco */
+.classifica tbody tr:hover td {
+    background-color: var(--footer-border-color); 
 }
 
 /* =========================

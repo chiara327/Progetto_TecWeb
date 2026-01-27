@@ -44,6 +44,7 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
                 $form_errors = $form_errors . "<p>Lo <span lang='en'>username</span> o o la password che hai inserito non sono corretti.</p>";
                 $html_page = input_restore();
                 echo str_replace("[err]", $form_errors, $html_page);
+                exit();
             } else {
                 $_SESSION["user"] = $_POST["username"];
                 $_SESSION["admin"] = ($result[0]) ? true : false;
