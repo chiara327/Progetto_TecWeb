@@ -354,7 +354,7 @@ h1.hide {
     margin: 2em 0;
     min-height: 20em;
     position: relative;
-    background-color: #344621;
+    background-image: linear-gradient(to bottom right, var(--navbar-bg-color), var(--content-bg-color));
 }
 
 #content section > div {
@@ -541,10 +541,12 @@ h1.hide {
    ========================= */
 
 .gp {
+    border-radius: 0.5em;
     display: flex;
     background-color: var(--navbar-bg-color);
     border: 0.3em solid var(--footer-border-color);
-    border-left: 0.5em solid var(--accent-color); /* Riga rossa verticale distintiva */
+    border-left: 0.5em solid var(--accent-color); 
+    padding: 2em;
     margin: 2em auto;
     width: 95%;
     max-width: 55em;
@@ -1958,18 +1960,18 @@ label {
 }
 
 /* =========================
-   PILOTA DETAIL PAGE
+   PILOTA/SCUDERIE/GARE DETAIL PAGE
    ========================= */
 
 /* Centratura del contenuto principale */
-main {
+#info-piloti, #info-scuderie, #gare {
     max-width: 60em;
     margin: 0 auto;
     padding: 2em 1.25em;
 }
 
 /* Stile per le sezioni Informazioni e Statistiche */
-main section {
+#info-piloti section, #info-scuderie section, #gare section {
     background-color: var(--navbar-bg-color);
     border: 0.15em solid var(--footer-border-color);
     border-radius: 0.5em;
@@ -1980,7 +1982,7 @@ main section {
 }
 
 /* Titolo della sezione con la linea rossa distintiva */
-main section h2 {
+#info-piloti section h2, #info-scuderie section h2, #gare section h2 {
     text-align: left;
     color: var(--accent-color);
     text-transform: uppercase;
@@ -1991,13 +1993,13 @@ main section h2 {
 }
 
 /* Layout a griglia per le liste di dati (Nome, Cognome, Età...) */
-main dl {
+#info-piloti dl, #info-scuderie dl, #gare dl {
     display: grid;
     grid-template-columns: 15em 1fr; /* Colonna fissa per l'etichetta, resto al valore */
     gap: 1em;
 }
 
-main dt {
+#info-piloti dt, #info-scuderie dt, #gare dt {
     font-weight: bold;
     color: var(--footer-text-color);
     text-transform: uppercase;
@@ -2007,7 +2009,7 @@ main dt {
     align-items: center;
 }
 
-main dd {
+#info-piloti dd, #info-scuderie dd, #gare dd {
     margin: 0;
     font-size: 1.2em;
     font-weight: 600;
