@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="../style/mini.css" media="screen and (max-width:800px)">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
 
     <script src="../javascript/validation_utils.js" defer></script>
     <script src="../javascript/validation_area_utente_admin.js" defer></script>
@@ -89,6 +89,7 @@
         <section aria-labelledby="titolo-sicurezza" class="area_utente_modifica">
             <h2 id="titolo-sicurezza">Sicurezza Account</h2>
             <form id="modifica-username" action="../php/area_utente.php" method="POST">
+                <fieldset>
                 <legend>Modifica Username</legend>
                 <ul>
                     <li>
@@ -103,11 +104,13 @@
                         <input id="modifica-username-submit" name="modifica_username" type="submit" value="Aggiorna Username">
                     </li>
                 </ul>
+                </fieldset>
             </form>
             <div class="form_errors">
                 [err-username]
             </div>
             <form id="modifica-password" action="../php/area_utente.php" method="POST">
+                <fieldset>
                 <legend>Modifica Password</legend>
                 <ul>
                     <li>
@@ -122,6 +125,7 @@
                         <input id="modifica-password-submit" name="modifica_password" type="submit" value="Aggiorna Password">
                     </li>
                 </ul>
+                </fieldset>
             </form>
             <div class="form_errors">
                 [err-password]
