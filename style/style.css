@@ -236,7 +236,7 @@ h1.hide {
     margin-bottom: 1.25em;
 }
 
-.footer-heading {
+.footer-col h3 {
     color: var(--accent-color);
     font-size: 1.125em;
     margin-bottom: 1.25em;
@@ -273,28 +273,6 @@ h1.hide {
 .footer-col ul li a:hover,
 .footer-col ul li a:focus-visible {
     color: var(--link-color);
-}
-
-/* Assicurati che l'altezza occupi tutto lo schermo */
-html, body {
-    height: 100%;
-    margin: 0;
-}
-
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh; /* Altezza minima pari a tutto lo schermo */
-}
-
-/* Il tag main deve espandersi per occupare tutto lo spazio rimanente */
-main {
-    flex: 1 0 auto;
-}
-
-/* Il footer rimane alla base perché flex-direction è column */
-footer {
-    flex-shrink: 0;
 }
 
 /* =========================
@@ -873,6 +851,26 @@ th {
     box-shadow: 0 0 0 0.15em var(--accent-color);
 }
 
+/* Nascondiamo spin/clear buttons in WebKit */
+
+/* Stile per il “picker” calendar icon in WebKit */
+#login_form input[type="date"]::-webkit-calendar-picker-indicator,
+#signup_form input[type="date"]::-webkit-calendar-picker-indicator {
+    position: absolute;
+    right: 0.8em;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1.2em;
+    height: 1.2em;
+    right: 0.3em;
+    color: var(--accent-color);
+    /* imposta il colore dell’icona */
+    filter: invert(1) sepia(1) saturate(5) hue-rotate(330deg);
+    /* elimina il background default */
+    background: none;
+    cursor: pointer;
+}
+
 /* Focus sui campi */
 #login_form input:focus,
 #signup_form input:focus {
@@ -1420,6 +1418,25 @@ input[type="submit"] {
     background-image: none;
 }
 
+/* Nascondiamo spin / clear (WebKit) */
+
+/* Calendar picker icon (WebKit) */
+#form-utenti-elimina input[type="date"]::-webkit-calendar-picker-indicator,
+#form-utenti-aggiungi input[type="date"]::-webkit-calendar-picker-indicator {
+    position: absolute;
+    right: 0.3em;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 1.2em;
+    height: 1.2em;
+
+    color: var(--accent-color);
+    filter: invert(1) sepia(1) saturate(5) hue-rotate(330deg);
+    background: none;
+    cursor: pointer;
+}
+
 /* =========================
    SUBMIT BUTTON
    ========================= */
@@ -1544,6 +1561,25 @@ input[type="submit"] {
     padding-right: 1.5em;
     cursor: pointer;
     background-image: none;
+}
+
+/* Nascondiamo spin / clear (WebKit) */
+
+/* Calendar picker icon (WebKit) */
+#form-gare-elimina input[type="date"]::-webkit-calendar-picker-indicator,
+#form-gare-aggiungi input[type="date"]::-webkit-calendar-picker-indicator {
+    position: absolute;
+    right: 0.3em;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 1.2em;
+    height: 1.2em;
+
+    color: var(--accent-color);
+    filter: invert(1) sepia(1) saturate(5) hue-rotate(330deg);
+    background: none;
+    cursor: pointer;
 }
 
 /* =========================
@@ -1784,6 +1820,7 @@ input[type="submit"] {
 [role="tab"][aria-selected="true"] {
     background-color: var(--accent-color);
     color: white;
+    border-color: var(--accent-color);
 }
 
 /* Pannelli */
