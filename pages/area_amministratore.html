@@ -14,9 +14,8 @@
     <link rel="stylesheet" href="../style/mini.css" media="screen and (max-width:800px)">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap"
-        rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+
     <script src="../javascript/validation_utils.js" defer></script>
     <script src="../javascript/validation_area_utente_admin.js" defer></script>
     <script src="../javascript/area_conferma_elimina.js" defer></script>
@@ -43,16 +42,16 @@
 
     <main>
         <h1>Ciao, <span class="highlight">[nome]</span></h1>
-        
+
         <section aria-labelledby="titolo-info" class="area_utente_info">
             <h2 id="titolo-info">Informazioni Personali</h2>
             <dl>
                 <dt>Username:</dt>
                 <dd>[username]</dd>
-                
+
                 <dt>Nome Completo:</dt>
                 <dd>[nome] [cognome]</dd>
-                
+
                 <dt>Data di nascita:</dt>
                 <dd><time datetime="[data-formato-iso]">[data di nascita]</time></dd>
             </dl>
@@ -60,7 +59,7 @@
 
         <section aria-labelledby="titolo-modifica" class="area_utente_modifica">
             <h2 id="titolo-modifica">Modifica Informazioni Personali</h2>
-            
+
             <form id="modifica-anagrafica" method="post" action="area_amministratore.php">
                 <fieldset>
                     <legend>Dati anagrafici</legend>
@@ -71,14 +70,16 @@
                         </li>
                         <li>
                             <label for="modifica_cognome">Cognome</label>
-                            <input type="text" name="cognome" id="modifica_cognome" value="[cognome]" placeholder="Il tuo cognome">
+                            <input type="text" name="cognome" id="modifica_cognome" value="[cognome]"
+                                placeholder="Il tuo cognome">
                         </li>
                         <li>
                             <label for="modifica_data">Data di nascita</label>
                             <input type="date" name="data" id="modifica_data" value="[data]">
                         </li>
                         <li class="form-actions">
-                            <input id="modifica-anagrafica-submit" name="salva_modifiche" type="submit" value="Salva Modifiche">
+                            <input id="modifica-anagrafica-submit" name="salva_modifiche" type="submit"
+                                value="Salva Modifiche">
                         </li>
                     </ul>
                 </fieldset>
@@ -149,27 +150,21 @@
                 </form>
 
                 <div class="danger-zone">
-                    <button type="button" 
-                            id="open-delete-modal" 
-                            class="btn-delete" 
-                            aria-haspopup="dialog">
+                    <button type="button" id="open-delete-modal" class="btn-delete" aria-haspopup="dialog">
                         Elimina il tuo account
                     </button>
                 </div>
             </div>
         </section>
 
-        <div id="delete-modal" 
-            role="dialog" 
-            aria-labelledby="modal-title" 
-            aria-describedby="modal-desc" 
-            aria-modal="true" 
-            hidden>
+        <div id="delete-modal" role="dialog" aria-labelledby="modal-title" aria-describedby="modal-desc"
+            aria-modal="true" hidden>
             <div class="modal-overlay" tabindex="-1">
                 <div class="modal-content">
                     <h2 id="modal-title">Sei proprio sicuro?</h2>
-                    <p id="modal-desc">Eliminando l'account perderai l'accesso a tutti i contenuti esclusivi del F1 Fan Club e i tuoi dati saranno rimossi permanentemente.</p>
-                    
+                    <p id="modal-desc">Eliminando l'account perderai l'accesso a tutti i contenuti esclusivi del F1 Fan
+                        Club e i tuoi dati saranno rimossi permanentemente.</p>
+
                     <div class="modal-actions">
                         <button type="button" id="close-modal" class="btn-secondary">
                             No, mantieni account
@@ -190,9 +185,9 @@
 
         <section aria-labelledby="azioni-admin" class="azioni_admin">
             <h2 id="azioni-admin">Azioni Admin</h2>
-                <a href="../php/form_utenti_admin.php" class="btn-admin-action">Gestione Utenti</a>
-                <a href="../php/form_gare_admin.php" class="btn-admin-action">Gestione Gare</a>
-                <a href="../php/form_classifiche_admin.php" class="btn-admin-action">Gestione Classifiche</a>
+            <a href="../php/form_utenti_admin.php" class="btn-admin-action">Gestione Utenti</a>
+            <a href="../php/form_gare_admin.php" class="btn-admin-action">Gestione Gare</a>
+            <a href="../php/form_classifiche_admin.php" class="btn-admin-action">Gestione Classifiche</a>
         </section>
 
 
@@ -228,7 +223,8 @@
         <div class="footer-bottom">
             <p>&copy; 2025 F1 <span lang="en">Fan Club</span>. Sito non ufficiale.</p>
             <p class="disclaimer">Questo sito <span lang="en">web</span> non è associato in alcun modo al gruppo Formula
-                1. F1, <span lang="en">FORMULA ONE</span>, FORMULA 1 sono marchi di <span lang="en">Formula One Licensing B.V.</span></p>
+                1. F1, <span lang="en">FORMULA ONE</span>, FORMULA 1 sono marchi di <span lang="en">Formula One
+                    Licensing B.V.</span></p>
         </div>
     </footer>
 
