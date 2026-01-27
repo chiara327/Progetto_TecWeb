@@ -110,7 +110,9 @@ a:focus-visible {
 /* =========================
    NAVBAR
    ========================= */
-
+.hamburger{
+    display: none;
+}
 .navbar {
     background-color: var(--navbar-bg-color);
     color: var(--navbar-text-color);

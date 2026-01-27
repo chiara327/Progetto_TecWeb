@@ -62,54 +62,54 @@ h1.hide {
    MENU
    ========================= */
 
-#menu {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4em;
-    margin: 0;
-    padding: 0;
-    justify-content: center;
+.hamburger {
+    display: block;
+    margin-left: auto;
+    width: 44px;
+    height: 44px;
+    background: transparent;
+    border: 2px solid var(--content-text-color);
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+    padding: 6px;
+    box-sizing: border-box;
+}
+
+    
+.hamburger img {
     width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+#menu {
+    display: none;
+    width: 100%;
+    background-color: var(--navbar-bg-color);
+    padding: 0.5em;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+#menu.is-open {
+    display: flex;
+    flex-direction: column;
 }
 
 #menu li {
-    flex: 0 1 auto;
+    margin-bottom: 1em;
+    border-bottom: 1px solid var(--accent-color);
 }
 
-/* =========================
-   NAVBAR LINKS
-   ========================= */
+#menu li:last-child {
+    border-bottom: none;
+}
 
 #menu a {
-    display: inline-block;
-    text-decoration: underline;
-    text-decoration-thickness: 0.12em;
-    text-underline-offset: 0.25em;
-    text-decoration-color: currentColor;
-    font-weight: bold;
-    padding: 0.3em 0.5em;
-    border-radius: 0.3em;
-    font-size: 0.85em;
+    display: block;
+    text-decoration: none;
+    font-size: 1em;
 }
-
-#menu a[aria-current="page"] {
-    pointer-events: none;
-    text-decoration-thickness: 0.2em;
-    text-decoration-color: var(--accent-color);
-}
-
-#menu a:visited {
-    color: var(--link-visited-color);
-}
-
-.navbar a:hover,
-.navbar a:focus-visible {
-    background-color: var(--link-bg-color);
-    color: var(--link-color);
-    text-decoration-thickness: 0.18em;
-}
-
 /* =========================
    BREADCRUMB
    ========================= */
