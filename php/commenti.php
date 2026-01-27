@@ -34,16 +34,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["invia_commento"])) {
         if (empty($testo)) {
             $err_aggiungi_commenti = "<p class='error' aria-live='assertive'>Il commento non può essere vuoto.</p>";
         } else {
-            $db = new DBConnection();
-            if ($db->insert_commento($username, $id_gara_attuale, $testo, $data_oggi)) {
+            try {
+                $db = new DBConnection();
+                if ($db->insert_commento($username, $id_gara_attuale, $testo, $data_oggi)) {
+                    $db->close_connection();
+                    // Passiamo l'id_gara nel GET per non perderlo dopo il redirect
+                    header("Location: commenti.php?status=ok&id_gara=" . $id_gara_attuale); 
+                    exit();
+                } else {
+                    $err_aggiungi_commenti = "<p class='error' aria-live='assertive'>Errore nella pubblicazione.</p>";
+                }
                 $db->close_connection();
-                // Passiamo l'id_gara nel GET per non perderlo dopo il redirect
-                header("Location: commenti.php?status=ok&id_gara=" . $id_gara_attuale); 
+            } catch (Exception $e) {
+                header("location: ../pages/500.html");
                 exit();
-            } else {
-                $err_aggiungi_commenti = "<p class='error' aria-live='assertive'>Errore nella pubblicazione.</p>";
             }
-            $db->close_connection();
         }
     }
 }
@@ -53,10 +58,15 @@ if (isset($_GET['status']) && $_GET['status'] === 'ok') {
 }
 
 // 3. RECUPERO DATI PER RENDERING
-$db_connection = new DBConnection();
-$gara_data = $db_connection->get_gara_data($id_gara_attuale);
-$commenti_data = $db_connection->get_commenti($id_gara_attuale);
-$db_connection->close_connection();
+try {
+    $db_connection = new DBConnection();
+    $gara_data = $db_connection->get_gara_data($id_gara_attuale);
+    $commenti_data = $db_connection->get_commenti($id_gara_attuale);
+    $db_connection->close_connection();
+} catch (Exception $e) {
+    header("location: ../pages/500.html");
+    exit();
+}
 
 // Se per qualche motivo l'ID non esiste nel DB
 if (!$gara_data) {

@@ -20,6 +20,7 @@ try {
     $db_connection->close_connection();
 } catch (Exception) {
     header("location: ../pages/500.html");
+    exit();
 }
 
 $sostituzioni = [

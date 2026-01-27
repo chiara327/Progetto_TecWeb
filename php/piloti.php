@@ -44,9 +44,14 @@ function create_slug($string) {
     return $string;
 }
 
-$db_connection = new DBConnection();
-$piloti_data = $db_connection->get_piloti_page_data();
-$db_connection->close_connection();
+try {
+    $db_connection = new DBConnection();
+    $piloti_data = $db_connection->get_piloti_page_data();
+    $db_connection->close_connection();
+} catch (Exception $e) {
+    header("location: ../pages/500.html");
+    exit();
+}
 
 foreach ($piloti_data as $team) {
     $nome_team = htmlspecialchars($team["team_name"]);

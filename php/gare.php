@@ -4,9 +4,14 @@ use DB\DBConnection;
 
 $html_page = file_get_contents("../pages/gare.html");
 
-$db_connection = new DBConnection();
-$gare_data = $db_connection->get_gare_data();
-$db_connection->close_connection();
+try {
+    $db_connection = new DBConnection();
+    $gare_data = $db_connection->get_gare_data();
+    $db_connection->close_connection();
+} catch (Exception $e) {
+    header("location: ../pages/500.html");
+    exit();
+}
 
 $gare_html = "";
 
