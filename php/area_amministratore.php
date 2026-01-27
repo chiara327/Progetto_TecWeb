@@ -139,14 +139,18 @@ if (empty($commenti_data)) {
     foreach ($commenti_data as $comm) {
         $testo = htmlspecialchars($comm['testo']);
         $gara = htmlspecialchars($comm['nome_gara']);
-        $data_iso = $comm['data'];
-        $data_it = date("d/m/Y", strtotime($comm['data']));
+        $timestamp = strtotime($comm['data_ora']);
+        $data_iso = date("Y-m-d\TH:i:s", $timestamp);
+        $data_it = date("d/m/Y", $timestamp);
+        $ora_it = date("H:i", $timestamp);
 
         $commenti_html .= "<li>
             <article class='commento-card'>
                 <header>
                     <h3>Commento su: $gara</h3>
-                    <p class='comment-date'>Pubblicato il <time datetime='$data_iso'>$data_it</time></p>
+                    <p class='comment-date'>
+                        Pubblicato il <time datetime='$data_iso'>$data_it</time> alle $ora_it
+                    </p>
                 </header>
                 <p class='comment-content'>$testo</p>
             </article>

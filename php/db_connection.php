@@ -128,13 +128,13 @@ class DBConnection {
     public function get_user_comments($username) {
         $query = "SELECT 
                     C.testo, 
-                    C.data, 
+                    C.data_ora, 
                     Ci.nome AS nome_gara 
                   FROM Commento C 
                   LEFT JOIN Gare G ON C.gara_id = G.id 
                   LEFT JOIN Circuiti Ci ON G.circuito_id = Ci.id 
                   WHERE C.username = ? 
-                  ORDER BY C.data DESC 
+                  ORDER BY C.data_ora DESC 
                   LIMIT 5";
         
         $stmt = $this->connection->prepare($query);
@@ -630,19 +630,26 @@ class DBConnection {
         $query = "SELECT 
                     C.username,
                     C.testo, 
-                    C.data, 
+                    C.data_ora, 
                     Ci.nome AS nome_gara 
                 FROM Commento C 
-                JOIN Gare G ON C.gara_id = G.id 
-                JOIN Circuiti Ci ON G.circuito_id = Ci.id 
+                LEFT JOIN Gare G ON C.gara_id = G.id 
+                LEFT JOIN Circuiti Ci ON G.circuito_id = Ci.id 
                 WHERE C.gara_id = ? 
-                ORDER BY C.data DESC";
+                ORDER BY C.data_ora DESC"; 
         
         $stmt = $this->connection->prepare($query);
+        if ($stmt === false) {
+            return []; 
+        }
+
         $stmt->bind_param("i", $id_gara);
         $stmt->execute();
         $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
+        $data = $result->fetch_all(MYSQLI_ASSOC);
+        
+        $stmt->close();
+        return $data;
     }
 
     public function get_gara_data($id_gara) {
@@ -677,16 +684,15 @@ class DBConnection {
         return $result->fetch_assoc();
     }
 
-    public function insert_commento($username, $gara_id, $testo, $data) {
-        $query = "INSERT INTO Commento (username, gara_id, testo, data) VALUES (?, ?, ?, ?)";
+    public function insert_commento($username, $gara_id, $testo, $data_ora) {
+        $query = "INSERT INTO Commento (username, gara_id, testo, data_ora) VALUES (?, ?, ?, ?)";
         
         $stmt = $this->connection->prepare($query);
         if ($stmt === false) {
             return false;
         }
 
-        // "siss": string (user), integer (gara_id), string (testo), string (data)
-        $stmt->bind_param("siss", $username, $gara_id, $testo, $data);
+        $stmt->bind_param("siss", $username, $gara_id, $testo, $data_ora);
         
         $result = $stmt->execute();
         $stmt->close();

@@ -122,12 +122,17 @@ if (empty($commenti_data)) {
     foreach ($commenti_data as $comm) {
         $testo = htmlspecialchars($comm['testo']);
         $utente = htmlspecialchars($comm['username']);
-        $data_it_comm = date("d/m/Y H:i", strtotime($comm['data']));
+        $timestamp = strtotime($comm['data_ora']); 
+        $data_iso = date("Y-m-d\TH:i", $timestamp); 
+        $data_it = date("d/m/Y", $timestamp);       
+        $ora_it = date("H:i", $timestamp);
         $commenti_html .= "<li>
             <article class='commento-card'>
                 <header>
                     <h3>Commento di: $utente</h3>
-                    <p class='comment-date'>Pubblicato il $data_it_comm</p>
+                    <p class='comment-date'>
+                        Pubblicato il <time datetime='$data_iso'>$data_it</time> alle $ora_it
+                    </p>
                 </header>
                 <p class='comment-content'>$testo</p>
             </article>
