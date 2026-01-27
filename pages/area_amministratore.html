@@ -99,8 +99,8 @@
                         <input type="text" id="nuovo_username" value="[username]" name="nuovo-username">
                     </li>
                     <li>
-                        <label for="password_attuale"><strong>Password Attuale (per confermare):</strong></label>
-                        <input type="password" id="password_attuale" name="password-attuale" required>
+                        <label for="password_attuale_user"><strong>Password Attuale (per confermare):</strong></label>
+                        <input type="password" id="password_attuale_user" name="password-attuale-user" required>
                     </li>
                     <li class="form-actions">
                         <input id="modifica-username-submit" name="modifica_username" type="submit" value="Aggiorna Username">
@@ -120,8 +120,8 @@
                         <input type="password" id="nuova_password" name="nuova-password">
                     </li>
                     <li>
-                        <label for="password_attuale"><strong>Password Attuale (per confermare):</strong></label>
-                        <input type="password" id="password_attuale" name="password-attuale" required>
+                        <label for="password_attuale_psw"><strong>Password Attuale (per confermare):</strong></label>
+                        <input type="password" id="password_attuale_psw" name="password-attuale-psw" required>
                     </li>
                     <li class="form-actions">
                         <input id="modifica-password-submit" name="modifica_password" type="submit" value="Aggiorna Password">
@@ -201,26 +201,26 @@
     <footer class="f1-footer">
         <div class="footer-container">
             <div class="footer-col">
-                <h3>F1 <span lang="en">FAN CLUB</span></h3>
+                <p class="footer-heading">F1 <span lang="en">FAN CLUB</span></p>
                 <p>Il punto di riferimento per gli appassionati di velocità. <span lang="en">News</span>, classifiche e
                     analisi tecnica ogni settimana.</p>
             </div>
             <div class="footer-col">
-                <h3><span lang="en">Paddock</span></h3>
+                <p class="footer-heading"><span lang="en">Paddock</span></p>
                 <ul>
                     <li><a href="../php/classifica.php">Campionato</a></li>
                     <li><a href="../php/piloti.php">Piloti</a></li>
-                    <li><a href="../php/scuderie.php">Scuderie</a></li>
+                    <li><a href="../php/scuderie.php" aria-current="page">Scuderie</a></li>
                     <li><a href="../php/circuiti.php">Circuiti</a></li>
                 </ul>
             </div>
             <div class="footer-col">
-                <h3>Segui la F1</h3>
+                <p class="footer-heading">Segui la F1</p>
                 <div class="social-links">
-                    <a href="https://www.facebook.com/Formula1/"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/f1/"><i class="fab fa-instagram"></i></a>
-                    <a href="https://x.com/F1"><i class="fab fa-x-twitter"></i></a>
-                    <a href="https://www.youtube.com/@Formula1"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.facebook.com/Formula1/" aria-label="Seguici su Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/f1/" aria-label="Seguici su Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://x.com/F1" aria-label="Seguici su X"><i class="fab fa-x-twitter"></i></a>
+                    <a href="https://www.youtube.com/@Formula1" aria-label="Seguici su YouTube"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
         </div>

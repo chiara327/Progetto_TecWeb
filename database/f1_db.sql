@@ -234,7 +234,7 @@ CREATE TABLE IF NOT EXISTS Commento (
     username VARCHAR(30) NOT NULL,
     gara_id INT NOT NULL,
     testo TEXT NOT NULL,
-    data DATE NOT NULL,
+    data_ora DATETIME NOT NULL,
     PRIMARY KEY (id),
     CONSTRAINT fk_utente_commento FOREIGN KEY (username) 
         REFERENCES Utente(username) 
@@ -246,5 +246,7 @@ CREATE TABLE IF NOT EXISTS Commento (
         ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-INSERT INTO Commento (username, gara_id, testo, data) VALUES
-('Admin', 1, 'Grande gara di Verstappen, ha dominato dall''inizio alla fine!', '2025-09-08');
+INSERT INTO Commento (username, gara_id, testo, data_ora) VALUES
+('Admin', 1, 'Grande gara di Verstappen, ha dominato dall''inizio alla fine!', '2025-09-08 14:30:00'),
+('Admin', 2, 'Norris ha fatto un lavoro eccezionale in Cina, complimenti a lui!', '2025-09-09 10:15:00'),
+('Admin', 3, 'Hamilton ha mostrato ancora una volta la sua classe in Giappone.', '2025-09-10 18:45:00');

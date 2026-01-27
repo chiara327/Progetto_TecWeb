@@ -236,7 +236,7 @@ h1.hide {
     margin-bottom: 1.25em;
 }
 
-.footer-col h3 {
+.footer-heading {
     color: var(--accent-color);
     font-size: 1.125em;
     margin-bottom: 1.25em;
@@ -273,6 +273,28 @@ h1.hide {
 .footer-col ul li a:hover,
 .footer-col ul li a:focus-visible {
     color: var(--link-color);
+}
+
+/* Assicurati che l'altezza occupi tutto lo schermo */
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Altezza minima pari a tutto lo schermo */
+}
+
+/* Il tag main deve espandersi per occupare tutto lo spazio rimanente */
+main {
+    flex: 1 0 auto;
+}
+
+/* Il footer rimane alla base perché flex-direction è column */
+footer {
+    flex-shrink: 0;
 }
 
 /* =========================
