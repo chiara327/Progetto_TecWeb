@@ -825,8 +825,6 @@ th {
 
 #login_form input[type="date"],
 #signup_form input[type="date"] {
-    -webkit-appearance: none;
-    -moz-appearance: textfield;
     appearance: none;
     padding: 0.6em 1.5em 0.6em 0.8em;
     /* spazio a destra per l’icona */
@@ -851,32 +849,6 @@ th {
     outline: none;
     border-color: var(--accent-color);
     box-shadow: 0 0 0 0.15em var(--accent-color);
-}
-
-/* Nascondiamo spin/clear buttons in WebKit */
-#login_form input[type="date"]::-webkit-clear-button,
-#login_form input[type="date"]::-webkit-inner-spin-button,
-#signup_form input[type="date"]::-webkit-clear-button,
-#signup_form input[type="date"]::-webkit-inner-spin-button {
-    display: none;
-}
-
-/* Stile per il “picker” calendar icon in WebKit */
-#login_form input[type="date"]::-webkit-calendar-picker-indicator,
-#signup_form input[type="date"]::-webkit-calendar-picker-indicator {
-    position: absolute;
-    right: 0.8em;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 1.2em;
-    height: 1.2em;
-    right: 0.3em;
-    color: var(--accent-color);
-    /* imposta il colore dell’icona */
-    filter: invert(1) sepia(1) saturate(5) hue-rotate(330deg);
-    /* elimina il background default */
-    background: none;
-    cursor: pointer;
 }
 
 /* Focus sui campi */
@@ -1420,37 +1392,10 @@ input[type="submit"] {
 
 #form-utenti-aggiungi input[type="date"] {
     appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: textfield;
 
     padding-right: 1.5em;
     cursor: pointer;
     background-image: none;
-}
-
-/* Nascondiamo spin / clear (WebKit) */
-#form-utenti-elimina input[type="date"]::-webkit-clear-button,
-#form-utenti-elimina input[type="date"]::-webkit-inner-spin-button,
-#form-utenti-aggiungi input[type="date"]::-webkit-clear-button,
-#form-utenti-aggiungi input[type="date"]::-webkit-inner-spin-button {
-    display: none;
-}
-
-/* Calendar picker icon (WebKit) */
-#form-utenti-elimina input[type="date"]::-webkit-calendar-picker-indicator,
-#form-utenti-aggiungi input[type="date"]::-webkit-calendar-picker-indicator {
-    position: absolute;
-    right: 0.3em;
-    top: 50%;
-    transform: translateY(-50%);
-
-    width: 1.2em;
-    height: 1.2em;
-
-    color: var(--accent-color);
-    filter: invert(1) sepia(1) saturate(5) hue-rotate(330deg);
-    background: none;
-    cursor: pointer;
 }
 
 /* =========================
@@ -1573,37 +1518,10 @@ input[type="submit"] {
 
 #form-gare-aggiungi input[type="date"] {
     appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: textfield;
 
     padding-right: 1.5em;
     cursor: pointer;
     background-image: none;
-}
-
-/* Nascondiamo spin / clear (WebKit) */
-#form-gare-elimina input[type="date"]::-webkit-clear-button,
-#form-gare-elimina input[type="date"]::-webkit-inner-spin-button,
-#form-gare-aggiungi input[type="date"]::-webkit-clear-button,
-#form-gare-aggiungi input[type="date"]::-webkit-inner-spin-button {
-    display: none;
-}
-
-/* Calendar picker icon (WebKit) */
-#form-gare-elimina input[type="date"]::-webkit-calendar-picker-indicator,
-#form-gare-aggiungi input[type="date"]::-webkit-calendar-picker-indicator {
-    position: absolute;
-    right: 0.3em;
-    top: 50%;
-    transform: translateY(-50%);
-
-    width: 1.2em;
-    height: 1.2em;
-
-    color: var(--accent-color);
-    filter: invert(1) sepia(1) saturate(5) hue-rotate(330deg);
-    background: none;
-    cursor: pointer;
 }
 
 /* =========================
@@ -1844,7 +1762,6 @@ input[type="submit"] {
 [role="tab"][aria-selected="true"] {
     background-color: var(--accent-color);
     color: white;
-    border-color: var(--accent-color);
 }
 
 /* Pannelli */

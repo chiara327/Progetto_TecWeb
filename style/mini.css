@@ -6,6 +6,42 @@
     box-sizing: border-box;
 }
 
+:root {
+    --content-bg-color: #15151E;
+    --content-text-color: #F1F1F1;
+
+    --navbar-bg-color: #0B0B10;
+    --navbar-text-color: #FFFFFF;
+
+    --footer-bg-color: #0B0B10;
+    --footer-text-color: #CCCCCC;
+
+    --link-color: #F1F1F1;
+    --link-visited-color: #8AB4F8;
+    --link-bg-color: #E10600;
+
+    --accent-color: #E10600;
+    --footer-border-color: #333333;
+    --social-bg-color: #333333;
+
+    --quote-bg-color: #8B0000;
+    --quote-border-color: #E10600;
+
+    /*  COLORI DA USARE PER SCUDERIE/PILOTI */
+
+    --ferrari-color: #C62000;
+    --redbull-color: #0600EF;
+    --mclaren-color: #A35600;
+    --mercedes-color: #007064;
+    --alpine-color: #0061BA;
+    --astonmartin-color: #006A3A;
+    --williams-color: #0082FA;
+    --haas-color: #212121;
+    --racingbulls-color: #0059B3;
+    --sauber-color: #007300;
+    --superstar-color: #A67C00
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -124,7 +160,6 @@ h1.hide {
 #breadcrumb p {
     padding: 0.5em 0 0.5em 0.8em;
     font-size: 0.85em;
-    word-break: break-word;
     margin: 0;
 }
 
@@ -653,7 +688,6 @@ main > h1 {
     text-align: center;
     padding: 0.8em 0.5em;
     border: 0.15em solid var(--link-color);
-    word-break: break-word;
 }
 
 .classifica th:nth-child(1),
