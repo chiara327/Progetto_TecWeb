@@ -56,17 +56,29 @@ body {
     overflow-x: hidden;
 }
 
-.title-f1 {
-    /* 1. Altezza Automatica: Il box deve crescere se il testo va a capo */
-    height: auto !important; 
-    min-height: 1.2em;
-
-    /* 2. Interlinea (Line-height): Essenziale per distanziare le righe sovrapposte */
-    line-height: 1.3 !important; 
-    
+/* Sostituisci i blocchi h1 e h2 sparsi nel file con questo */
+main h1, 
+main h2, 
+.titolo-f1 {
     display: block !important;
     width: 100% !important;
-    box-sizing: border-box;
+    text-align: center !important;
+    margin: 1.2em 0 !important; /* Rimuove i margini laterali che stringono il testo */
+    
+    /* Risoluzione Sovraffollamento */
+    height: auto !important; /* Fondamentale per far crescere il box verticalmente */
+    line-height: 1.5 !important; /* Crea spazio tra le righe se il testo va a capo */
+    padding: 0.8em 0.4em !important; /* Protegge il testo dalle barre rosse */
+    
+    font-size: 1.5rem !important; /* Ridotto da 1.8em per evitare che singole parole escano dai bordi */
+    text-transform: uppercase;
+    box-sizing: border-box !important;
+
+    /* Barre Rosse */
+    border-top: 0.12em solid var(--accent-color) !important;
+    border-bottom: 0.12em solid var(--accent-color) !important;
+    border-left: none !important;
+    border-right: none !important;
 }
 
 /* =========================
@@ -190,7 +202,6 @@ main {
 }
 
 main h2 {
-    font-size: 1.8em;
     margin: 0.6em 0.5em;
     border-top: 0.07em solid var(--accent-color);
     border-bottom: 0.07em solid var(--accent-color);
@@ -206,7 +217,7 @@ h3 {
 
 h3 {
     font-size: 1.1em;
-    text-align: left;
+    text-align: center;
 }
 
 abbr {
@@ -1246,46 +1257,6 @@ a:focus-visible {
 /* 6. Liste della sezione Classifica */
 .crea-classifica-section li {
     margin-bottom: 1em !important;
-}
-
-/* =========================
-   RESPONSIVE TEXT
-   ========================= */
-
-@media (max-width: 600px) {
-    #menu {
-        gap: 0.3em;
-    }
-
-    #menu a {
-        font-size: 0.8em;
-        padding: 0.3em 0.4em;
-    }
-
-    main h1 {
-        font-size: 1.5em;
-    }
-
-    h2 {
-        font-size: 1.15em;
-    }
-
-    .gp dt {
-        font-size: 0.85em;
-    }
-
-    .gp dd {
-        font-size: 0.85em;
-    }
-
-    .classifica {
-        font-size: 0.8em;
-    }
-
-    .classifica th,
-    .classifica td {
-        padding: 0.6em 0.3em;
-    }
 }
 
 /* 1. Reset larghezza contenitori */
