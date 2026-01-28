@@ -2176,16 +2176,6 @@ label {
     SEZIONE AGGIUNGI COMMENTO
    ========================= */
 
-/* Contenitore principale della sezione */
-section[aria-labelledby="aggiungi-commento-titolo"] {
-    background-color: var(--navbar-bg-color);
-    border: 0.15em solid var(--footer-border-color);
-    border-radius: 0.5em;
-    padding: 2em;
-    margin: 2em auto;
-    max-width: 50em; /* Allineato con .area_utente_commenti */
-}
-
 /* Titolo della sezione */
 .commento-titolo {
     text-align: left;

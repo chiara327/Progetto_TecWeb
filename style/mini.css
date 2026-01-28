@@ -1118,8 +1118,7 @@ a:focus-visible {
 }
 
 /* 1. Reset larghezza contenitori */
-.area_commenti, 
-section[aria-labelledby="aggiungi-commento-titolo"] {
+.area_commenti {
     max-width: 100%;
     margin: 1em; /* Lascia un po' di respiro ai bordi dello schermo */
     padding: 1.2em; /* Riduce il padding interno per guadagnare spazio */
