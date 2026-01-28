@@ -41,10 +41,10 @@
     </nav>
 
     <main>
-        <h1>Ciao, <span class="highlight">[nome]</span></h1>
+        <h2 class="title-f1">Ciao, <span class="highlight">[nome]</span></h2>
 
         <section aria-labelledby="titolo-info" class="area_utente_info">
-            <h2 id="titolo-info">Informazioni Personali</h2>
+            <h3 id="titolo-info">Informazioni Personali</h3>
             <dl>
                 <dt>Username:</dt>
                 <dd>[username]</dd>
@@ -58,7 +58,7 @@
         </section>
 
         <section aria-labelledby="titolo-modifica" class="area_utente_modifica">
-            <h2 id="titolo-modifica">Modifica Informazioni Personali</h2>
+            <h3 id="titolo-modifica">Modifica Informazioni Personali</h3>
 
             <form id="modifica-anagrafica" method="post" action="area_utente.php">
                 <fieldset>
@@ -90,7 +90,7 @@
         </section>
 
         <section aria-labelledby="titolo-sicurezza" class="area_utente_modifica">
-            <h2 id="titolo-sicurezza">Sicurezza Account</h2>
+            <h3 id="titolo-sicurezza">Sicurezza Account</h3>
             <form id="modifica-username" action="../php/area_utente.php" method="POST">
                 <fieldset>
                 <legend>Modifica Username</legend>
@@ -136,14 +136,14 @@
         </section>
 
         <section aria-labelledby="titolo-commenti" class="area_utente_commenti">
-            <h2 id="titolo-commenti">I tuoi ultimi commenti</h2>
+            <h3 id="titolo-commenti">I tuoi ultimi commenti</h3>
             <ul class="comment-list">
                 [lista-commenti]
             </ul>
         </section>
 
         <section aria-labelledby="titolo-gestione" class="area_utente_logout">
-            <h2 id="titolo-gestione">Gestione Account</h2>
+            <h3 id="titolo-gestione">Gestione Account</h3>
 
             <div id="logout-container">
                 <form action="../php/logout.php" method="POST" id="logout-form">

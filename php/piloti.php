@@ -66,9 +66,9 @@ foreach ($piloti_data as $team) {
     $dynamic_content .= 
     <<<HTML
         <section aria-labelledby="{$slug_team}-heading" class="piloti">
-            <h2 id="{$slug_team}-heading">
+            <h3 id="{$slug_team}-heading">
                 $team_header
-            </h2>
+            </h3>
             <ul>
                 $driver1_html
                 $driver2_html

@@ -40,7 +40,7 @@ foreach ($scuderie_data as $team) {
     $dynamic_content .= 
     <<<HTML
         <article aria-labelledby="{$slug_team}-heading" class="team">
-            <h2 id="{$slug_team}-heading">{$team_header}</h2>
+            <h3 id="{$slug_team}-heading">{$team_header}</h3>
             {$team_alt}
         </article>
     HTML;

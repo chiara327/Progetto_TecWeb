@@ -88,7 +88,7 @@ $p2 = htmlspecialchars($gara_data['p2_nome'] . " " . $gara_data['p2_cognome']);
 $p3 = htmlspecialchars($gara_data['p3_nome'] . " " . $gara_data['p3_cognome']);
 
 $info_gara_html = "
-    <h2 class='commento-titolo'>" . htmlspecialchars($gara_data['circuito_nome']) . "</h2>
+    <h3 class='commento-titolo'>" . htmlspecialchars($gara_data['circuito_nome']) . "</h3>
     <dl class='gp-stats'>
         <dt>Città</dt>
         <dd>" . htmlspecialchars($gara_data['circuito_citta']) . "</dd>
@@ -120,7 +120,7 @@ $info_gara_html = "
 $form_commento = "";
 if (isset($_SESSION["user"])) {
     $form_commento = '
-        <h2 class="commento-titolo">Aggiungi un Commento</h2>
+        <h3 class="commento-titolo">Aggiungi un Commento</h3>
         <form id="form-commento" action="commenti.php" method="post">
             <input type="hidden" name="gara_id" value="' . $id_gara_attuale . '">
             <label for="testo-commento">Stai commentando come: <strong>' . htmlspecialchars($_SESSION["user"]) . '</strong></label>

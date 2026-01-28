@@ -73,7 +73,7 @@ h3 {
     text-align: center;
 }
 
-main h1 {
+main .title-f1 {
     font-size: 2.5em;
     margin-bottom: 0.4em;
     border-top: 0.07em solid var(--accent-color);
@@ -452,47 +452,91 @@ h1.hide {
     z-index: 2;
 }
 
-.piloti h2#alpine-heading~ul article h3{
+.piloti h3#alpine-heading{
+    font-size: 1.5em;
+}
+
+.piloti h3#astonmartin-heading{
+    font-size: 1.5em;
+}
+
+.piloti h3#ferrari-heading{
+    font-size: 1.5em;
+}
+
+.piloti h3#haas-heading{
+    font-size: 1.5em;
+}
+
+.piloti h3#mclaren-heading{
+    font-size: 1.5em;
+}
+
+.piloti h3#mercedes-heading{
+    font-size: 1.5em;
+}
+
+.piloti h3#rbheading{
+    font-size: 1.5em;
+}
+
+.piloti h3#redbullracing-heading{
+    font-size: 1.5em;
+}
+
+.piloti h3#sauber-heading{
+    font-size: 1.5em;
+}
+
+.piloti h3#superstar-heading{
+    font-size: 1.5em;
+}
+
+.piloti h3#williams-heading{
+    font-size: 1.5em;
+}
+
+.piloti h3#alpine-heading~ul article h3{
     background-color: var(--alpine-color);
 }
 
-.piloti h2#astonmartin-heading~ul article h3{
+.piloti h3#astonmartin-heading~ul article h3{
     background-color: var(--astonmartin-color);
 }
 
-.piloti h2#ferrari-heading~ul article h3{
+.piloti h3#ferrari-heading~ul article h3{
     background-color: var(--ferrari-color);
 }
 
-.piloti h2#haas-heading~ul article h3{
+.piloti h3#haas-heading~ul article h3{
     background-color: var(--haas-color);
 }
 
-.piloti h2#mclaren-heading~ul article h3{
+.piloti h3#mclaren-heading~ul article h3{
     background-color: var(--mclaren-color);
 }
 
-.piloti h2#mercedes-heading~ul article h3{
+.piloti h3#mercedes-heading~ul article h3{
     background-color: var(--mercedes-color);
 }
 
-.piloti h2#rbheading~ul article h3{
+.piloti h3#rbheading~ul article h3{
     background-color: var(--racingbulls-color);
 }
 
-.piloti h2#redbullracing-heading~ul article h3{
+.piloti h3#redbullracing-heading~ul article h3{
     background-color: var(--redbull-color);
 }
 
-.piloti h2#sauber-heading~ul article h3{
+.piloti h3#sauber-heading~ul article h3{
     background-color: var(--sauber-color);
 }
 
-.piloti h2#williams-heading~ul article h3{
+.piloti h3#williams-heading~ul article h3{
     background-color: var(--williams-color);
 }
 
-.piloti h2#superstar-heading~ul article h3{
+.piloti h3#superstar-heading~ul article h3{
     background-color: var(--superstar-color);
 }
 
@@ -506,7 +550,7 @@ h1.hide {
     align-items: center;
 }
 
-#scuderie h1 {
+#scuderie h2 {
     width: 100%;
     font-size: 2.5em;
     margin-bottom: 0.4em;
@@ -537,7 +581,8 @@ h1.hide {
     object-fit: cover;
 }
 
-#scuderie article h2 {
+#scuderie article h3 {
+    font-size: 1.5em;
     padding: 0.5em;
     color: var(--content-text-color);
     text-align: center;
@@ -978,10 +1023,11 @@ th,
     border-radius: 0.5em;
 }
 
-.area_utente_info h2, 
-.area_utente_modifica h2, 
-.area_utente_commenti h2, 
-.area_utente_logout h2 {
+.area_utente_info h3, 
+.area_utente_modifica h3, 
+.area_utente_commenti h3, 
+.area_utente_logout h3,
+.azioni_admin h3 {
     text-align: left;
     color: var(--accent-color);
     border-bottom: 0.1em solid var(--accent-color);
@@ -1303,16 +1349,6 @@ input[type="submit"] {
     background-color: var(--navbar-bg-color);
     border: 0.15em solid var(--footer-border-color);
     border-radius: 0.5em;
-}
-
-.azioni_admin h2 {
-    text-align: left;
-    color: var(--accent-color);
-    border-bottom: 0.1em solid var(--accent-color);
-    padding-bottom: 0.3em;
-    margin-bottom: 1em;
-    font-size: 1.5em;
-    text-transform: uppercase;
 }
 
 .azioni_admin a.btn-admin-action {
@@ -2003,7 +2039,7 @@ label {
 }
 
 /* Titolo della sezione con la linea rossa distintiva */
-#info-piloti section h2, #info-scuderie section h2, #gare section h2 {
+#info-piloti section h3, #info-scuderie section h3, #gare section h3 {
     text-align: left;
     color: var(--accent-color);
     text-transform: uppercase;

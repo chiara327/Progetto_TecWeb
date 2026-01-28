@@ -56,6 +56,19 @@ body {
     overflow-x: hidden;
 }
 
+.title-f1 {
+    /* 1. Altezza Automatica: Il box deve crescere se il testo va a capo */
+    height: auto !important; 
+    min-height: 1.2em;
+
+    /* 2. Interlinea (Line-height): Essenziale per distanziare le righe sovrapposte */
+    line-height: 1.3 !important; 
+    
+    display: block !important;
+    width: 100% !important;
+    box-sizing: border-box;
+}
+
 /* =========================
    NAVBAR
    ========================= */
@@ -176,7 +189,7 @@ main {
     width: 100%;
 }
 
-main h1 {
+main h2 {
     font-size: 1.8em;
     margin: 0.6em 0.5em;
     border-top: 0.07em solid var(--accent-color);
@@ -185,7 +198,7 @@ main h1 {
     text-align: center;
 }
 
-h2 {
+h3 {
     font-size: 1.3em;
     text-align: center;
     margin: 0.8em 0;
@@ -912,6 +925,164 @@ input:focus-visible,
 a:focus-visible {
     outline: 0.2em solid var(--accent-color);
     outline-offset: 0.15em;
+}
+
+/* =========================
+   REGISTRAZIONE & LOGIN
+   ========================= */
+
+/* 1. Contenitori Form */
+#login_form,
+#signup_form {
+    width: 92% !important; /* Quasi tutta la larghezza display */
+    max-width: none !important; /* Rimuoviamo il limite di 28em */
+    padding: 1.5em 1.2em !important; /* Riduzione padding interno */
+    margin: 1.5em auto !important;
+    box-sizing: border-box;
+}
+
+/* 2. Titolo (Legend) */
+#login_form legend,
+#signup_form legend {
+    font-size: 1.3em !important;
+    margin-bottom: 0.8em;
+}
+
+/* 3. Campi di Input (Testo, Email, Password, Data) */
+#login_form input[type="text"],
+#login_form input[type="email"],
+#login_form input[type="password"],
+#signup_form input[type="text"],
+#signup_form input[type="email"],
+#signup_form input[type="password"],
+#login_form input[type="date"],
+#signup_form input[type="date"] {
+    font-size: 1em !important; /* Fondamentale per bloccare lo zoom automatico su mobile */
+    padding: 0.8em !important; /* Più spazio per il tocco */
+    height: 3em; /* Altezza uniforme per tutti i campi */
+}
+
+/* 4. Checkbox Group */
+#login_form li.checkbox-group,
+#signup_form li.checkbox-group {
+    padding: 0.5em 0;
+    flex-direction: row !important; /* Manteniamo label e check sulla stessa riga */
+    align-items: center;
+}
+
+#login_form input[type="checkbox"],
+#signup_form input[type="checkbox"] {
+    width: 1.3em; /* Checkbox leggermente più grande */
+    height: 1.3em;
+}
+
+/* 5. Pulsante Submit */
+#login_form input[type="submit"],
+#signup_form input[type="submit"],
+#modifica-anagrafica input[type="submit"],
+#modifica-username input[type="submit"],
+#modifica-password input[type="submit"] {
+    width: 100% !important;
+    padding: 1em !important; /* Pulsante alto per il pollice */
+    font-size: 1.1em !important;
+    margin-top: 0.5em;
+}
+
+/* 6. Link di switch (Hai già un account? / Registrati) */
+#signup_form .switch-form,
+#login_form .switch-form {
+    margin-top: 1.5em;
+    font-size: 0.95em;
+    line-height: 1.5;
+}
+
+/* 7. Allineamento testi principali */
+#signup_main h1,
+#login_main h1 {
+    font-size: 1.8em !important;
+    padding: 0 0.5em;
+}
+
+/* =========================
+   AREA RISERVATA
+   ========================= */
+
+/* 1. Contenitori Principali */
+.area_utente_info, 
+.area_utente_modifica, 
+.area_utente_commenti, 
+.area_utente_logout {
+    width: 95% !important; /* Quasi tutta la larghezza display */
+    margin: 1em auto !important;
+    padding: 1em !important; /* Riduzione padding interno */
+    box-sizing: border-box;
+}
+
+/* 2. Info Personali: Trasformazione da Griglia a Lista Verticale */
+.area_utente_info dl {
+    display: block !important; /* Rimuove la griglia a due colonne */
+}
+
+.area_utente_info dt {
+    margin-top: 1em;
+    font-size: 0.9em;
+    text-transform: uppercase;
+}
+
+.area_utente_info dd {
+    font-size: 1.1em;
+    padding-bottom: 0.5em;
+    border-bottom: 0.05em solid var(--footer-border-color);
+}
+
+/* 3. Gestione Logout e Pulsanti */
+.area_utente_logout #logout-container {
+    flex-direction: column; /* Pulsanti uno sopra l'altro */
+    gap: 0.8em;
+}
+
+.btn-logout, .btn-admin, input[type="submit"], #open-delete-modal, 
+.area_utente_logout #logout-container .btn-logout,
+.area_utente_logout #logout-container .btn-delete {
+    width: 100% !important; /* Pulsanti a larghezza piena per il tocco */
+    display: block;
+    padding: 1em !important;
+    font-size: 1.1em !important;
+}
+
+/* 4. Form di Modifica */
+.area_utente_modifica input {
+    font-size: 16px !important; /* Previene lo zoom automatico su iOS/Android */
+    padding: 0.8em !important;
+}
+
+/* 5. Commenti (Card) */
+.commento-card {
+    padding: 1em !important;
+    margin-bottom: 1em !important;
+}
+
+.commento-card:hover {
+    transform: none !important; /* Rimuoviamo l'hover su mobile perché non esiste il mouse */
+}
+
+/* 6. Modale di Eliminazione (Delete Modal) */
+.modal-content {
+    width: 85% !important; /* Più stretto per non toccare i bordi fisici */
+    padding: 1.5em !important;
+}
+
+#modal-title {
+    font-size: 1.4em !important;
+}
+
+.modal-actions {
+    flex-direction: column; /* Azioni del modale in verticale */
+    gap: 1em;
+}
+
+.btn-secondary, .btn-confirm-delete {
+    width: 100% !important; /* Pulsanti modale giganti per evitare errori di tocco */
 }
 
 /* =========================
