@@ -2031,13 +2031,6 @@ label {
     color: var(--content-text-color);
 }
 
-/* Evidenzia i numeri nelle statistiche */
-[aria-labelledby="statistiche-pilota-heading"] dd {
-    color: var(--accent-color);
-    font-family: 'Lexend', sans-serif; /* Usiamo il font che hai caricato */
-    font-weight: 800;
-}
-
 /* =========================
    ERROR 403 PAGE
    ========================= */

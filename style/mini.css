@@ -537,6 +537,64 @@ a:focus-visible {
     font-size: 0.95em;
 }
 
+/* ==============================
+   DETTAGLIO PILOTA/SCUDERIE PAGE
+   ============================== */
+
+/* Reset forzato del contenitore DL */
+#info-piloti dl, 
+#info-scuderie dl, 
+#gare dl {
+    display: block !important;
+    width: 100% !important;
+    clear: both !important; /* Interrompe eventuali float */
+}
+
+/* Etichetta (DT) - Nome, Cognome, ecc. */
+#info-piloti dt, 
+#info-scuderie dt, 
+#gare dt {
+    display: block !important;
+    float: none !important; /* Fondamentale se nel file principale c'è un float */
+    text-align: left !important;
+    width: 100% !important;
+    font-size: 0.8em;
+    margin-top: 1.2em;
+    color: var(--footer-text-color); /* Grigio per etichetta */
+    text-transform: uppercase;
+}
+
+/* Valore (DD) - [nome], [cognome], ecc. */
+#info-piloti dd, 
+#info-scuderie dd, 
+#gare dd {
+    display: block !important;
+    float: none !important; /* Rimuove l'allineamento a destra se causato da float */
+    text-align: left !important; /* Forza l'allineamento a sinistra */
+    width: 100% !important;
+    margin-left: 0 !important; /* Rimuove il rientro */
+    font-size: 1.3em; /* Lo rendiamo più grande per risaltare */
+    font-weight: bold;
+    color: var(--content-text-color);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 0.2em;
+}
+
+/* Rimuove l'ultima linea */
+#info-piloti dd, 
+#info-scuderie dd, 
+#gare dd{
+    border-bottom: none !important;
+}
+
+/* Centratura Titolo Principale (H1) */
+#info-piloti h1 {
+    text-align: center;
+    font-size: 1.8em;
+    margin-bottom: 1em;
+    text-transform: uppercase;
+}
+
 /* =========================
    GARE PAGE
    ========================= */
