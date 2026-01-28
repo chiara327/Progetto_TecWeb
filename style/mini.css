@@ -1116,3 +1116,70 @@ a:focus-visible {
         padding: 0.6em 0.3em;
     }
 }
+
+/* 1. Reset larghezza contenitori */
+.area_commenti, 
+section[aria-labelledby="aggiungi-commento-titolo"] {
+    max-width: 100%;
+    margin: 1em; /* Lascia un po' di respiro ai bordi dello schermo */
+    padding: 1.2em; /* Riduce il padding interno per guadagnare spazio */
+}
+
+/* 2. Dettagli Gara (Griglia) */
+.gp-stats {
+    grid-template-columns: 1fr; /* Una sola colonna: Etichetta sopra, Valore sotto */
+    gap: 0.2em; /* Riduce lo spazio tra le righe */
+    padding: 0.8em 0;
+}
+
+.gp-stats dt {
+    font-size: 0.75em; /* Più piccolo per le etichette su mobile */
+    margin-top: 0.5em;
+}
+
+.gp-stats dd {
+    font-size: 1em;
+    margin-bottom: 0.5em;
+    padding-bottom: 0.3em;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* Linea sottile di separazione */
+}
+
+/* 3. Il Podio (Da orizzontale a verticale) */
+.podium-summary {
+    flex-direction: column; /* Incolonna i piloti */
+    gap: 0.8em;
+}
+
+.podium-item {
+    flex-direction: row; /* Numero e Nome sulla stessa riga */
+    justify-content: flex-start;
+    padding: 0.8em 1.2em;
+    gap: 1.5em;
+}
+
+.podium-item .rank {
+    font-size: 1.2em; /* Riduce leggermente la dimensione del numero */
+    margin-bottom: 0;
+    min-width: 1.5em; /* Allinea i nomi dei piloti */
+}
+
+.podium-item .driver {
+    font-size: 0.85em;
+    text-align: left;
+}
+
+/* 4. Form Commenti */
+#form-commento button[type="submit"] {
+    width: 100%; /* Il bottone diventa grande quanto lo schermo (più facile da tappare) */
+    padding: 1em;
+}
+
+#testo-commento {
+    font-size: 16px; /* Evita lo zoom automatico di iOS quando si clicca sulla textarea */
+}
+
+/* 5. Titoli */
+.commento-titolo {
+    font-size: 1.25em;
+    margin-bottom: 1em;
+}

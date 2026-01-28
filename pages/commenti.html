@@ -3,17 +3,12 @@
 <html lang="it">
 
 <head>
-    <!--PER ALE:
-        In commenti.php sostuituisci [GP] con il nome della gara (es. "Monaco Grand Prix")
-        Però il titolo del GP segue la logica nazione + " Grand Prix"
-        Quale vogliamo adottare per essere coerenti?
-    -->
-    <title>Commenti [GP] | F1 Fan Club</title>
+    <title>Commenti [titolo-gp] | F1 Fan Club</title>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="formula 1, gare, circuiti, classifica, mondiali, qualifiche, piloti, team">
-    <meta name="description" content="Pagina dedicata alla home page di formula 1">
+    <meta name="keywords" content="formula 1, home, piloti, scuderie, gare, circuiti, classifica, area riservata, aggiungi commento, discuissione della community">
+    <meta name="description" content="Pagina dedicata ai commenti degli utenti riguardanti le varie gare di Formula 1">
     <!-- DA METTERE NEL CONTENT : Pagina dedicata alla formula 1 con informazioni riguardanti le qualifiche e la classifica dei piloti e dei team alle varie gare nei circuiti dei mondiali-->
     <!-- Consigliato partire a riempire le keyword (riga sotto) e poi mettere nel content della description (riga sopra) -->
     <link rel="stylesheet" href="../style/style.css">
@@ -41,20 +36,22 @@
         </nav>
     </header>
     <nav id="breadcrumb">
-        <p>Ti trovi in: <span lang="en">Home</span>->Gare->Commenti [gara]</p>
+        <p>Ti trovi in: <span lang="en">Home</span>->Gare->Commenti [titolo-gp]</p>
     </nav>
 
-    <main id="gare">
+    <main class="commenti-main">
         <h1>[titolo-gp]</h1>
 
-        <section aria-labelledby="titolo-gara">
+        <section aria-labelledby="titolo-gara" class="area_commenti">
             [dettagli-gara]
         </section>
 
-        [form-commento]
+        <section aria-labelledby="aggiungi-commento-titolo" class="area_commenti">
+            [form-commento]
+        </section>
 
-        <section class="area_utente_commenti">
-            <h2 id="titolo-commenti">Discussione della <span lang="en">Community</span></h2>
+        <section aria-labelledby="commenti" class="area_commenti">
+            <h2 class="commento-titolo">Discussione della <span lang="en">Community</span></h2>
             <ul class="comment-list">
                 [lista-commenti]
             </ul>

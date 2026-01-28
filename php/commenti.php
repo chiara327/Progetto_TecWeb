@@ -88,41 +88,57 @@ $p2 = htmlspecialchars($gara_data['p2_nome'] . " " . $gara_data['p2_cognome']);
 $p3 = htmlspecialchars($gara_data['p3_nome'] . " " . $gara_data['p3_cognome']);
 
 $info_gara_html = "
-    <div class='gp-header'>
-        <h2>" . htmlspecialchars($gara_data['circuito_nome']) . "</h2>
-        <p class='gp-date'>" . htmlspecialchars($gara_data['circuito_citta']) . " - $data_it</p>
-        <div class='podium-summary'>
-            <div class='podium-item gold'><strong>1°</strong> $p1</div>
-            <div class='podium-item silver'><strong>2°</strong> $p2</div>
-            <div class='podium-item bronze'><strong>3°</strong> $p3</div>
-        </div>
-    </div>";
+    <h2 class='commento-titolo'>" . htmlspecialchars($gara_data['circuito_nome']) . "</h2>
+    <dl class='gp-stats'>
+        <dt>Città</dt>
+        <dd>" . htmlspecialchars($gara_data['circuito_citta']) . "</dd>
+        <dt>Nazione</dt>
+        <dd>" . htmlspecialchars($gara_data['circuito_nazione']) . "</dd>
+        <dt>Data</dt>
+        <dd>$data_it</dd>
+        <dt>Lunghezza</dt>
+        <dd>" . htmlspecialchars($gara_data['circuito_lunghezza']) . " m</dd>
+        <dt>Curve</dt>
+        <dd>" . htmlspecialchars($gara_data['circuito_curve']) . "</dd>
+    </dl>
+    <ol class='podium-summary' aria-label='Podio della gara'>
+        <li class='podium-item gold'>
+            <span class='rank' aria-hidden='true'>1</span>
+            <span class='driver'>$p1</span>
+        </li>
+        <li class='podium-item silver'>
+            <span class='rank' aria-hidden='true'>2</span>
+            <span class='driver'>$p2</span>
+        </li>
+        <li class='podium-item bronze'>
+            <span class='rank' aria-hidden='true'>3</span>
+            <span class='driver'>$p3</span>
+        </li>
+    </ol>";
 
 // COSTRUZIONE FORM
 $form_commento = "";
 if (isset($_SESSION["user"])) {
     $form_commento = '
-        <section aria-labelledby="aggiungi-commento-titolo">
-            <h2 id="aggiungi-commento-titolo">Aggiungi un Commento</h2>
-            <form id="form-commento" action="commenti.php" method="post">
-                <input type="hidden" name="gara_id" value="' . $id_gara_attuale . '">
-                <label for="testo-commento">Stai commentando come: <strong>' . htmlspecialchars($_SESSION["user"]) . '</strong></label>
-                <textarea id="testo-commento" name="testo_commento" rows="4" required aria-required="true"></textarea>
-                <button type="submit" name="invia_commento">Pubblica Commento</button>
-            </form>
-            ' . $err_aggiungi_commenti . '
-            ' . $messaggio_successo_aggiunta_commento . '
-        </section>';
+        <h2 class="commento-titolo">Aggiungi un Commento</h2>
+        <form id="form-commento" action="commenti.php" method="post">
+            <input type="hidden" name="gara_id" value="' . $id_gara_attuale . '">
+            <label for="testo-commento">Stai commentando come: <strong>' . htmlspecialchars($_SESSION["user"]) . '</strong></label>
+            <textarea id="testo-commento" name="testo_commento" rows="4" required aria-required="true"></textarea>
+            <button type="submit" name="invia_commento">Pubblica Commento</button>
+        </form>
+        ' . $err_aggiungi_commenti . '
+        ' . $messaggio_successo_aggiunta_commento . '';
 } else {
     $form_commento = '<section class="avviso-login"><p><a href="login.php">Accedi</a> per commentare.</p></section>';
 }
 
 // 5. SOSTITUZIONI
-$html_page = str_replace("[GP]", $gara_data['circuito_citta'] . " Grand Prix", $html_page);
+//$html_page = str_replace("[GP]", $gara_data['circuito_citta'] . " Grand Prix", $html_page);
 $html_page = str_replace("[form-commento]", $form_commento, $html_page);
 $html_page = str_replace("[dettagli-gara]", $info_gara_html, $html_page);
 $html_page = str_replace("[titolo-gp]", $titolo_gp, $html_page);
-$html_page = str_replace("[gara]", htmlspecialchars($gara_data['circuito_nome'] . " " . $anno), $html_page);
+//$html_page = str_replace("[gara]", htmlspecialchars($gara_data['circuito_nome'] . " " . $anno), $html_page);
 
 // Generazione lista commenti
 $commenti_html = "";

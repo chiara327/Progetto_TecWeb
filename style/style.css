@@ -2084,5 +2084,213 @@ label {
   100% { transform: translateY(0); opacity: 1; }
 }
 
+/* =========================
+   GP HEADER SECTION (PHP GENERATED)
+   ========================= */
 
+/* Dettagli Tecnici (Lunghezza, Curve) */
+.gp-stats {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.5em 1.5em;
+    margin: 1.5em 0;
+    padding: 1em 0;
+    border-top: 1px solid var(--footer-border-color);
+    border-bottom: 1px solid var(--footer-border-color);
+}
 
+.gp-stats dt {
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.85em;
+    color: var(--accent-color); /* Rosso F1 */
+    align-self: center;
+}
+
+.gp-stats dd {
+    margin: 0;
+    font-size: 1.1em;
+    font-weight: 600;
+    color: var(--content-text-color);
+}
+
+/* =========================
+   PODIUM SUMMARY 
+   ========================= */
+
+.podium-summary {
+    display: flex;
+    gap: 0.5em;
+    margin-top: 1.5em;
+    padding: 0;
+    list-style: none; /* Fondamentale per <ol> */
+}
+
+.podium-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--content-bg-color);
+    padding: 1em 0.5em;
+    border-radius: 0.2em;
+    /* Usiamo border-top per richiamare lo stile delle grafiche F1 */
+    border-top: 0.3em solid var(--footer-border-color); 
+    transition: transform 0.3s ease;
+}
+
+/* Colorazione dei bordi superiori */
+.podium-item.gold { border-top-color: #FFD700; }
+.podium-item.silver { border-top-color: #C0C0C0; }
+.podium-item.bronze { border-top-color: #CD7F32; }
+
+/* Stile per il numero della posizione (.rank) */
+.podium-item .rank {
+    font-size: 1.5em;
+    font-weight: 900;
+    margin-bottom: 0.2em;
+    display: block;
+}
+
+/* Applichiamo il colore anche ai numeri per massima chiarezza */
+.gold .rank { color: #FFD700; }
+.silver .rank { color: #C0C0C0; }
+.bronze .rank { color: #CD7F32; }
+
+/* Stile per il nome del pilota (.driver) */
+.podium-item .driver {
+    font-size: 0.9em;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    color: var(--content-text-color);
+}
+
+/* Feedback al passaggio del mouse */
+.podium-item:hover {
+    transform: translateY(-3px);
+    background-color: var(--navbar-bg-color);
+}
+
+/* =========================
+    SEZIONE AGGIUNGI COMMENTO
+   ========================= */
+
+/* Contenitore principale della sezione */
+section[aria-labelledby="aggiungi-commento-titolo"] {
+    background-color: var(--navbar-bg-color);
+    border: 0.15em solid var(--footer-border-color);
+    border-radius: 0.5em;
+    padding: 2em;
+    margin: 2em auto;
+    max-width: 50em; /* Allineato con .area_utente_commenti */
+}
+
+/* Titolo della sezione */
+.commento-titolo {
+    text-align: left;
+    color: var(--accent-color);
+    text-transform: uppercase;
+    font-size: 1.5em;
+    border-bottom: 0.1em solid var(--accent-color);
+    padding-bottom: 0.4em;
+    margin-bottom: 1.2em;
+}
+
+/* Layout del Form */
+#form-commento {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+/* Label con il nome utente */
+#form-commento label {
+    font-size: 0.95em;
+    color: var(--footer-text-color);
+}
+
+#form-commento label strong {
+    color: var(--content-text-color);
+}
+
+/* Textarea - Area di testo */
+#testo-commento {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 1em;
+    background-color: var(--content-bg-color);
+    color: var(--content-text-color);
+    border: 0.1em solid var(--footer-border-color);
+    border-radius: 0.3em;
+    font-family: inherit; /* Mantiene il font del sito */
+    font-size: 1em;
+    line-height: 1.5;
+    resize: vertical; /* Permette solo l'allungamento verticale per non rompere il layout */
+    min-height: 8em;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Focus sulla Textarea */
+#testo-commento:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 0.15em rgba(225, 6, 0, 0.3);
+}
+
+/* Bottone di invio */
+#form-commento button[type="submit"] {
+    align-self: flex-start; /* Bottone non a tutta larghezza, stile F1 */
+    padding: 0.8em 2em;
+    background-color: transparent;
+    color: var(--accent-color);
+    border: 0.15em solid var(--accent-color);
+    border-radius: 0.3em;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#form-commento button[type="submit"]:hover,
+#form-commento button[type="submit"]:focus {
+    background-color: var(--accent-color);
+    color: white;
+    outline: none;
+}
+
+/* Messaggi di Errore o Successo */
+/* Assicurati che le variabili PHP iniettino span o p con queste classi */
+.error-msg, .success-msg {
+    margin-top: 1em;
+    padding: 0.8em;
+    border-radius: 0.3em;
+    font-weight: bold;
+    text-align: center;
+}
+
+.error-msg {
+    background-color: rgba(185, 28, 28, 0.1);
+    color: #f87171;
+    border: 1px solid #b91c1c;
+}
+
+.success-msg {
+    background-color: rgba(21, 128, 61, 0.1);
+    color: #4ade80;
+    border: 1px solid #15803d;
+}
+
+.area_commenti {
+    max-width: 50em;
+    margin: 2em auto;
+    padding: 1.5em;
+    background-color: var(--navbar-bg-color);
+    border: 0.15em solid var(--footer-border-color);
+    border-radius: 0.5em;
+}
+
+.area_commenti .comment-list {
+    list-style: none;
+    padding: 0;
+}

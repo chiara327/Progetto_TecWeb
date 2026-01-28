@@ -659,6 +659,8 @@ class DBConnection {
                     C.nome AS circuito_nome, 
                     C.citta AS circuito_citta,
                     C.nazione AS circuito_nazione,
+                    C.lunghezza AS circuito_lunghezza,
+                    C.numero_curve AS circuito_curve,
                     P1.nome AS p1_nome, P1.cognome AS p1_cognome, P1.id AS p1_id,
                     P2.nome AS p2_nome, P2.cognome AS p2_cognome, P2.id AS p2_id,
                     P3.nome AS p3_nome, P3.cognome AS p3_cognome, P3.id AS p3_id
