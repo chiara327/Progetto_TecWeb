@@ -331,8 +331,7 @@ h1.hide {
     padding: 1em 2.5em;
 }
 
-#content h2,
-.classifica caption {
+#content h2 {
     border-top: 0.07em solid var(--accent-color);
     border-bottom: 0.07em solid var(--accent-color);
     padding-top: 0.3em;
@@ -720,7 +719,8 @@ h1.hide {
    CLASSIFICA PAGE
    ========================= */
 
-.classifica {
+.classifica_piloti,
+.classifica_costruttori {
     margin: 0 auto;
     line-height: 2em;
     width: calc(100% - 4em);
@@ -729,20 +729,32 @@ h1.hide {
     margin: 2em;
 }
 
-.classifica td,
-th {
+.classifica_piloti caption,
+.classifica_costruttori caption {
+    border-top: 0.07em solid var(--accent-color);
+    border-bottom: 0.07em solid var(--accent-color);
+    padding-top: 0.3em;
+    padding-bottom: 0.3em;
+    margin-top: 0.4em;
+}
+
+th,
+.classifica_piloti td, 
+.classifica_costruttori td {
     text-align: center;
     vertical-align: middle;
     border-radius: 0.2em;
     border: 0.2em solid var(--link-color);
 }
 
-.classifica tr {
+.classifica_piloti tr,
+.classifica_costruttori tr {
     padding: 1em;
     background: var(--footer-border-color);
 }
 
-.classifica th {
+.classifica_piloti th,
+.classifica_costruttori th {
     font-size: larger;
     background: var(--navbar-bg-color);
 }
@@ -1862,7 +1874,8 @@ input[type="submit"] {
 }
 
 /* Rifinitura Tabella .classifica */
-.classifica {
+.classifica_piloti,
+.classifica_costruttori {
     width: calc(100% - 2em);
     max-width: 60em;
     margin: 2em auto;
@@ -1870,7 +1883,8 @@ input[type="submit"] {
     border-spacing: 0 0.4em; /* Effetto righe staccate */
 }
 
-.classifica th {
+.classifica_piloti th,
+.classifica_costruttori th {
     background-color: var(--navbar-bg-color);
     color: var(--accent-color);
     text-transform: uppercase;
@@ -1881,15 +1895,18 @@ input[type="submit"] {
     border-bottom: 0.2em solid var(--accent-color);
 }
 
-.classifica td, 
-.classifica th[scope="row"] {
+.classifica_piloti td, 
+.classifica_piloti th[scope="row"],
+.classifica_costruttori td, 
+.classifica_costruttori th[scope="row"] {
     background-color: var(--footer-border-color);
     padding: 0.8em;
     border: none; /* Rimuoviamo i bordi interni per un look più pulito */
 }
 
 /* Stile per la posizione (colonna 1) */
-.classifica th[scope="row"] {
+.classifica_piloti th[scope="row"],
+.classifica_costruttori th[scope="row"] {
     font-weight: 900;
     font-size: 1.2em;
     color: var(--content-text-color);
@@ -1899,23 +1916,10 @@ input[type="submit"] {
 }
 
 /* Hover sulla riga per facilitare la lettura */
-.classifica tbody tr:hover td {
+.classifica_piloti tbody tr:hover td,
+.classifica_costruttori tbody tr:hover td {
     background-color: #444444;
     cursor: default;
-}
-
-/* Responsive per tabelle */
-@media screen and (max-width: 800px) {
-    .classifica {
-        font-size: 0.85em;
-        width: 100%;
-        margin: 1em 0;
-    }
-    
-    [role="tab"] {
-        padding: 0.6em 0.8em;
-        font-size: 0.9em;
-    }
 }
 
 /* =========================

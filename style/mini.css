@@ -682,8 +682,9 @@ a:focus-visible {
 main > h1 {
     margin-bottom: 1em;
 }
-
-.classifica {
+/* Struttura principale delle tabelle */
+.classifica_piloti, 
+.classifica_costruttori {
     display: table;
     width: 95%;
     margin: 1.5em auto;
@@ -693,95 +694,110 @@ main > h1 {
     overflow-x: auto;
 }
 
-.classifica thead {
+/* Gestione testata */
+.classifica_piloti thead, 
+.classifica_costruttori thead {
     display: table;
     width: 100%;
     background: var(--navbar-bg-color);
 }
 
-.classifica tbody {
+/* Gestione corpo tabella */
+.classifica_piloti tbody, 
+.classifica_costruttori tbody {
     display: block;
 }
 
-.classifica tr {
+/* Gestione righe */
+.classifica_piloti tr, 
+.classifica_costruttori tr {
     display: table;
     width: 100%;
     background: var(--footer-border-color);
     margin-bottom: 0.5em;
 }
 
-.classifica th,
-.classifica td {
+/* Celle (th e td) */
+.classifica_piloti th, .classifica_piloti td,
+.classifica_costruttori th, .classifica_costruttori td {
     display: table-cell;
     text-align: center;
     padding: 0.8em 0.5em;
     border: 0.15em solid var(--link-color);
 }
 
-.classifica th:nth-child(1),
-.classifica td:nth-child(1) {
+/* Larghezza Colonne */
+.classifica_piloti th:nth-child(1), .classifica_piloti td:nth-child(1) {
     width: 10%;
 }
 
-.classifica th:nth-child(2),
-.classifica td:nth-child(2) {
+.classifica_costruttori th:nth-child(1), .classifica_costruttori td:nth-child(1) {
+    width: 20%;
+}
+
+.classifica_piloti th:nth-child(2), .classifica_piloti td:nth-child(2) {
     width: 40%;
 }
 
-.classifica th:nth-child(3),
-.classifica td:nth-child(3) {
+.classifica_costruttori th:nth-child(2), .classifica_costruttori td:nth-child(2) {
+    width: 60%;
+}
+
+.classifica_piloti th:nth-child(3), .classifica_piloti td:nth-child(3) {
     width: 40%;
 }
 
-.classifica th:nth-child(4),
-.classifica td:nth-child(4) {
+.classifica_costruttori th:nth-child(3), .classifica_costruttori td:nth-child(3) {
+    width: 20%;
+}
+
+.classifica_piloti th:nth-child(4), .classifica_piloti td:nth-child(4) {
     width: 10%;
 }
 
-.classifica th {
+/* Stile intestazioni */
+.classifica_piloti th, 
+.classifica_costruttori th {
     font-size: 0.95em;
     font-weight: bold;
     background: var(--navbar-bg-color);
     color: var(--navbar-text-color);
 }
 
-.classifica td {
+/* Stile dati */
+.classifica_piloti td, 
+.classifica_costruttori td {
     background: var(--footer-border-color);
     font-size: 0.9em;
 }
 
-/* Centratura del titolo campionato nella pagina Classifica */
-.classifica caption, 
+/* Centratura titoli h2 e caption */
+.classifica_piloti caption, 
+.classifica_costruttori caption, 
 #content h2 {
-    text-align: center; /* Centra il testo */
+    text-align: center;
     margin-left: auto;
     margin-right: auto;
-    width: fit-content; /* Fa sì che i bordi si adattino alla lunghezza del testo */
+    width: fit-content;
     padding: 0.5em 1em;
-    border-left: none; /* Rimuove il bordo laterale se presente */
+    border-left: none;
     border-right: none;
 }
 
-/* Centratura e ottimizzazione titoli campionati */
-.classifica caption, 
+/* Ottimizzazione titoli h3 e caption */
+.classifica_piloti caption, 
+.classifica_costruttori caption, 
 #content h3 {
-    text-align: center; /* Centra il testo */
+    text-align: center;
     display: block;
-    width: 90%; /* Evita che tocchi i bordi dello schermo */
-    margin: 1em auto; /* Centra il blocco orizzontalmente */
-    
-    /* Rimuoviamo il bordo laterale che spinge il testo a destra */
+    width: 90%;
+    margin: 1em auto;
     border-left: none !important; 
-    
-    /* Aggiungiamo una linea sotto per coerenza stilistica F1 */
     border-bottom: 0.15em solid var(--accent-color);
     padding-bottom: 0.5em;
-    
-    /* Forza il testo su una riga se c'è spazio, o gestisce meglio l'andata a capo */
     line-height: 1.4;
     font-size: 1.1em;
 }
-
 /* ==========================================================
    MOBILE CSS: Tab e Classifiche
    ========================================================== */
