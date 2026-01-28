@@ -915,6 +915,169 @@ a:focus-visible {
 }
 
 /* =========================
+   AZIONI ADMIN - UTENTI
+   ========================= */
+   
+/* 1. Layout del Form */
+#form-utenti-elimina,
+#form-utenti-aggiungi {
+    width: 92% !important; /* Occupa quasi tutta la larghezza dello schermo */
+    max-width: none !important;
+    padding: 1.5em 1em !important; /* Riduciamo il padding per non sprecare spazio */
+    margin: 1.5em auto !important; /* Centra il form nella pagina */
+    box-sizing: border-box;
+}
+
+/* 2. Titolo del Form (Legend) */
+#form-utenti-elimina legend,
+#form-utenti-aggiungi legend {
+    font-size: 1.3em !important;
+    width: auto;
+    margin-bottom: 0.8em;
+}
+
+/* 3. Campi di Input e Select */
+#form-utenti-elimina input[type="text"],
+#form-utenti-aggiungi input[type="text"],
+#form-utenti-aggiungi input[type="email"],
+#form-utenti-aggiungi input[type="password"],
+#form-utenti-aggiungi select,
+#form-utenti-aggiungi input[type="date"] {
+    font-size: 1em !important; /* Previene lo zoom automatico fastidioso su mobile */
+    padding: 0.8em !important; /* Area di tocco più grande per le dita */
+    margin-bottom: 0.5em;
+}
+
+/* 4. Icona Calendario (Date Input) */
+#form-utenti-aggiungi input[type="date"]::-webkit-calendar-picker-indicator {
+    right: 0.5em; /* Posizionamento migliore su schermi stretti */
+}
+
+/* 5. Pulsante di Invio (Submit) */
+#form-utenti-elimina input[type="submit"],
+#form-utenti-aggiungi input[type="submit"] {
+    width: 100% !important;
+    padding: 1em !important; /* Facile da premere */
+    font-size: 1.1em !important;
+    margin-top: 1em;
+}
+
+/* 6. Liste interne */
+.crea-utente-section ul,
+.elimina-utente-section ul {
+    margin: 0;
+    padding: 0;
+}
+
+.crea-utente-section li,
+.elimina-utente-section li {
+    margin-bottom: 1em !important;
+}
+
+/* =========================
+   AZIONI ADMIN - UTENTI
+   ========================= */
+
+/* 1. Adattamento Contenitore Form */
+#form-gare-elimina,
+#form-gare-aggiungi {
+    width: 92% !important; /* Espansione per occupare lo spazio mobile */
+    max-width: none !important;
+    padding: 1.5em 1em !important; /* Riduzione padding per massimizzare l'area di input */
+    margin: 1.5em auto !important;
+    box-sizing: border-box;
+}
+
+/* 2. Titolo (Legend) */
+#form-gare-elimina legend,
+#form-gare-aggiungi legend {
+    font-size: 1.3em !important; /* Ridimensionamento per schermi piccoli */
+    margin-bottom: 0.8em;
+}
+
+/* 3. Input, Select e Date */
+#form-gare-elimina input[type="text"],
+#form-gare-aggiungi input[type="text"],
+#form-gare-aggiungi input[type="email"],
+#form-gare-aggiungi input[type="password"],
+#form-gare-aggiungi select,
+#form-gare-aggiungi input[type="date"] {
+    font-size: 16px !important; /* Impedisce lo zoom automatico su browser mobile */
+    padding: 0.8em !important; /* Migliora la precisione del tocco */
+}
+
+/* 4. Icona Calendario specifica per Gare */
+#form-gare-elimina input[type="date"]::-webkit-calendar-picker-indicator,
+#form-gare-aggiungi input[type="date"]::-webkit-calendar-picker-indicator {
+    right: 0.5em; /* Posizionamento corretto dell'icona */
+}
+
+/* 5. Pulsante Submit */
+#form-gare-elimina input[type="submit"],
+#form-gare-aggiungi input[type="submit"] {
+    width: 100% !important;
+    padding: 1em !important; /* Pulsante più grande per facilitare il click */
+    font-size: 1.1em !important;
+    margin-top: 1em;
+}
+
+/* 6. Liste della sezione Gare */
+.crea-gare-section li,
+.elimina-gare-section li {
+    margin-bottom: 1em !important;
+}
+
+/* =========================
+   AZIONI ADMIN - CLASSIFICA
+   ========================= */
+
+/* 1. Adattamento Contenitore */
+#form-modifica-punti-pilota {
+    width: 92% !important; /* Espansione per schermi piccoli */
+    max-width: none !important;
+    padding: 1.5em 1em !important; /* Riduzione padding per ottimizzare lo spazio */
+    margin: 1.5em auto !important;
+    box-sizing: border-box;
+}
+
+/* 2. Titolo (Legend) */
+#form-modifica-punti-pilota legend {
+    font-size: 1.3em !important; /* Scalabilità del titolo */
+    margin-bottom: 0.8em;
+}
+
+/* 3. Select e Input Numerici */
+#form-modifica-punti-pilota select,
+#form-modifica-punti-pilota input[type="number"] {
+    font-size: 16px !important; /* Previene lo zoom automatico sui browser mobile */
+    padding: 0.8em !important; /* Migliore area di tocco */
+}
+
+/* 4. Radio Buttons (F1 Style) */
+#form-modifica-punti-pilota input[type="radio"] {
+    width: 1.6em; /* Leggermente più grandi per facilitare la selezione */
+    height: 1.6em;
+}
+
+#form-modifica-punti-pilota li:nth-child(2) {
+    gap: 0.8em; /* Spazio ottimizzato tra le opzioni radio */
+    flex-wrap: wrap; /* Permette alle opzioni di andare a capo se necessario */
+}
+
+/* 5. Pulsante Submit */
+#form-modifica-punti-pilota input[type="submit"] {
+    width: 100% !important;
+    padding: 1em !important; /* Pulsante più alto per il click con il pollice */
+    font-size: 1.1em !important;
+    margin-top: 1em;
+}
+
+/* 6. Liste della sezione Classifica */
+.crea-classifica-section li {
+    margin-bottom: 1em !important;
+}
+
+/* =========================
    RESPONSIVE TEXT
    ========================= */
 
