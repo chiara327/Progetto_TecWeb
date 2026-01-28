@@ -2081,6 +2081,11 @@ label {
     text-align: center;
 }
 
+#E403 p{
+    padding: 2em;
+    margin: 0em 20em;
+}
+
 #E403 img{
     width: 20em;
     height: auto;
@@ -2093,12 +2098,23 @@ label {
     text-align: center;
 }
 
+#E404 p{
+    padding: 2em;
+    margin: 0em 20em;
+}
+
 #E404 img{
     width: 20em;
     height: auto;
     padding: 1em;
+    animation: guida 3s ease-in-out infinite;    
 }
 
+@keyframes guida {
+  0%   { transform: translateX(0); }
+  50%  { transform: translateX(-50px); }
+  100% { transform: translateX(0); }
+}
 /* =========================
    ERROR 500 PAGE
    ========================= */
@@ -2106,10 +2122,15 @@ label {
     text-align: center;
 }
 
+#E500 p{
+    padding: 2em;
+    margin: 0em 20em;
+}
+
 #E500 img{
     width: auto;
-    height: 10em;
-    padding: 1em;
+    height: 5em;
+    padding: 2em;
     animation: fluttua 3s ease-in-out infinite;
 }
 /*MANCA L'ANIMAZIONE, SE NON RIESCO A FARLA LA TOLGO (-chiara)*/
@@ -2119,6 +2140,21 @@ label {
   50%  { transform: translateY(-15px); opacity: 0.8; }
   100% { transform: translateY(0); opacity: 1; }
 }
+
+#stop, #start{
+    background-color: var(--navbar-bg-color);
+    color: var(--content-text-color);
+    padding: 0.8em 1.5em;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: 0.15em solid var(--accent-color);
+}
+
+#stop:hover, #start:hover{
+    background-color: var(--accent-color);
+}
+
 
 /* =========================
    GP HEADER SECTION (PHP GENERATED)
