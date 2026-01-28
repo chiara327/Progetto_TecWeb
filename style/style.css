@@ -110,9 +110,11 @@ a:focus-visible {
 /* =========================
    NAVBAR
    ========================= */
+
 .hamburger{
     display: none;
 }
+
 .navbar {
     background-color: var(--navbar-bg-color);
     color: var(--navbar-text-color);
@@ -236,7 +238,7 @@ h1.hide {
     margin-bottom: 1.25em;
 }
 
-.footer-col h3 {
+.footer-col .footer-heading {
     color: var(--accent-color);
     font-size: 1.125em;
     margin-bottom: 1.25em;
@@ -493,9 +495,27 @@ h1.hide {
 .piloti h2#superstar-heading~ul article h3{
     background-color: var(--superstar-color);
 }
+
 /* =========================
    SCUDERIE PAGE
    ========================= */
+
+#scuderie {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1em;
+}
+
+#scuderie h1 {
+    width: 100%;
+    font-size: 2.5em;
+    margin-bottom: 0.4em;
+    border-top: 0.07em solid var(--accent-color);
+    border-bottom: 0.07em solid var(--accent-color);
+    padding-top: 0.4em;
+    padding-bottom: 0.4em;
+}
 
 #scuderie article {
     position: relative;
@@ -509,11 +529,13 @@ h1.hide {
     border-radius: 0.5em;
     margin: 0.5em;
     margin-bottom: 1em;
+    max-width: 60em;
 }
 
 #scuderie article img {
+    display: block;
     width: 100%;
-    height: 40%;
+    height: auto;
     object-fit: cover;
 }
 
@@ -521,20 +543,6 @@ h1.hide {
     padding: 0.5em;
     color: var(--content-text-color);
     text-align: center;
-}
-
-#scuderie article ul {
-  display: flex;
-  justify-content: center;
-  list-style: none;
-  padding-top: 0;
-  margin-top: 0;
-  margin-bottom: 1em;
-}
-
-#scuderie article ul li{
-  margin-right: auto;
-  margin-left: auto;
 }
 
 /* =========================
@@ -709,7 +717,7 @@ h1.hide {
     width: 22em;
     height: auto;
     display: block;
-    background-color: white;
+    background-color: var(--navbar-text-color);
     object-fit: cover;
     flex-shrink: 0;
     margin: 2em; 
@@ -731,6 +739,7 @@ h1.hide {
 
 .classifica_piloti caption,
 .classifica_costruttori caption {
+    font-size: 1.5em;
     border-top: 0.07em solid var(--accent-color);
     border-bottom: 0.07em solid var(--accent-color);
     padding-top: 0.3em;

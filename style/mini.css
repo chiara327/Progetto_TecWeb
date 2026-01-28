@@ -471,70 +471,48 @@ a:focus-visible {
    ========================= */
 
 #scuderie {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 1em;
+}
+
+#scuderie h1 {
     width: 100%;
-}
-
-#scuderie .visually-hidden {
-    display: none;
-}
-
-#scuderie section {
-    margin-bottom: 2em;
-    padding: 1.2em;
-    background-color: var(--navbar-bg-color);
-    border: 0.15em solid var(--footer-border-color);
-    border-radius: 0.5em;
-}
-
-#scuderie h2 {
-    color: var(--accent-color);
-    font-size: 1.2em;
-    margin: 0 0 1em;
-    text-align: left;
-    border-bottom: 0.1em solid var(--accent-color);
-    padding-bottom: 0.5em;
-}
-
-#scuderie h3 {
-    font-size: 1em;
-    margin: 1em 0 0.6em;
-    border-left: none;
-    padding-left: 0;
+    font-size: 1.5em;
+    margin-bottom: 0.4em;
+    border-top: 0.07em solid var(--accent-color);
+    border-bottom: 0.07em solid var(--accent-color);
+    padding-top: 0.4em;
+    padding-bottom: 0.4em;
 }
 
 #scuderie article {
-    margin-bottom: 1.2em;
-    text-align: center;
+    position: relative;
+    overflow: hidden;
+    padding-top: 0em;
+    padding-right: 1em;
+    padding-left: 1em;
+    padding-bottom: 1em;
+    background-color: var(--navbar-bg-color);
+    border: 0.15em solid var(--footer-border-color);
+    border-radius: 0.5em;
+    margin: 0.5em;
+    margin-bottom: 1em;
+    max-width: 60em;
 }
 
 #scuderie article img {
-    max-width: 100%;
+    display: block;
+    width: 100%;
     height: auto;
-    max-height: 12em;
+    object-fit: cover;
 }
 
-#scuderie article a {
-    display: inline-block;
-}
-
-#scuderie ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-#scuderie ul li {
-    padding: 0.6em 0;
-    border-bottom: 0.08em solid var(--footer-border-color);
-}
-
-#scuderie ul li:last-child {
-    border-bottom: none;
-}
-
-#scuderie ul li a {
-    font-size: 0.95em;
+#scuderie article h2 {
+    padding: 0.5em;
+    color: var(--content-text-color);
+    text-align: center;
 }
 
 /* ==============================
@@ -711,8 +689,6 @@ a:focus-visible {
     text-align: center;
 }
 
-
-
 .circuiti dt {
     font-size: 0.75em;
     align-self: center; /* Centra l'etichetta */
@@ -740,10 +716,12 @@ a:focus-visible {
 main > h1 {
     margin-bottom: 1em;
 }
+
 /* Struttura principale delle tabelle */
 .classifica_piloti, 
 .classifica_costruttori {
     display: table;
+    table-layout: fixed;
     width: 95%;
     margin: 1.5em auto;
     border-collapse: collapse;
@@ -785,32 +763,39 @@ main > h1 {
 }
 
 /* Larghezza Colonne */
-.classifica_piloti th:nth-child(1), .classifica_piloti td:nth-child(1) {
-    width: 10%;
+.classifica_piloti th:nth-child(1), 
+.classifica_piloti td:nth-child(1) {
+    width: 15%;
 }
 
-.classifica_costruttori th:nth-child(1), .classifica_costruttori td:nth-child(1) {
+.classifica_piloti th:nth-child(2), 
+.classifica_piloti td:nth-child(2) {
+    width: 35%;
+}
+
+.classifica_piloti th:nth-child(3), 
+.classifica_piloti td:nth-child(3) {
+    width: 35%;
+}
+
+.classifica_piloti th:nth-child(4), 
+.classifica_piloti td:nth-child(4) {
+    width: 15%;
+}
+
+.classifica_costruttori th:nth-child(1), 
+.classifica_costruttori td:nth-child(1) {
     width: 20%;
 }
 
-.classifica_piloti th:nth-child(2), .classifica_piloti td:nth-child(2) {
-    width: 40%;
-}
-
-.classifica_costruttori th:nth-child(2), .classifica_costruttori td:nth-child(2) {
+.classifica_costruttori th:nth-child(2), 
+.classifica_costruttori td:nth-child(2) {
     width: 60%;
 }
 
-.classifica_piloti th:nth-child(3), .classifica_piloti td:nth-child(3) {
-    width: 40%;
-}
-
-.classifica_costruttori th:nth-child(3), .classifica_costruttori td:nth-child(3) {
+.classifica_costruttori th:nth-child(3), 
+.classifica_costruttori td:nth-child(3) {
     width: 20%;
-}
-
-.classifica_piloti th:nth-child(4), .classifica_piloti td:nth-child(4) {
-    width: 10%;
 }
 
 /* Stile intestazioni */
@@ -851,11 +836,12 @@ main > h1 {
     width: 90%;
     margin: 1em auto;
     border-left: none !important; 
-    border-bottom: 0.15em solid var(--accent-color);
+    border-bottom: 0.07em solid var(--accent-color);
     padding-bottom: 0.5em;
     line-height: 1.4;
     font-size: 1.1em;
 }
+
 /* ==========================================================
    MOBILE CSS: Tab e Classifiche
    ========================================================== */

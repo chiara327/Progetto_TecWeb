@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS Piloti (
 
 INSERT INTO Piloti (id, nome, cognome, numero, vittorie, n_pole, gran_premi, titoli_mondiali, eta) VALUES
 (1, 'Max', 'Verstappen', 1, 58, 36, 215, 3, 27),
-(2, 'Lee Faker', 'Sang-hyeok', 22, 1, 0, 85, 0, 24),
+(2, 'Lee', 'Faker', 22, 1, 0, 85, 0, 24),
 (3, 'Lewis', 'Hamilton', 44, 105, 69, 310, 7, 40),
 (4, 'Charles', 'Leclerc', 16, 9, 26, 150, 0, 27),
 (5, 'Lando', 'Norris', 4, 6, 7, 140, 0, 25),
