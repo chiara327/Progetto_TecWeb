@@ -27,6 +27,35 @@ function input_restore() {
     return $html_page;
 }
 
+function create_dropdown_menus() {
+    $db_connection = new DBConnection();
+    $circuiti_data = $db_connection->get_circuiti_page_data();
+    $piloti_data = $db_connection->get_all_piloti();
+    $db_connection->close_connection();
+
+    $piloti_list = "<option value=\"0\">Inserisci pilota</option>";
+    $circuiti_list = ""; 
+
+    foreach ($piloti_data as $pilota) {
+        $id = $pilota["id"];
+        $full_name = htmlspecialchars($pilota["nome"] . " " . $pilota["cognome"]);
+        $piloti_list .= "<option value=\"$id\">$full_name</option>";
+    }
+
+    foreach ($circuiti_data as $circuito) {
+        $id = $circuito["id"];
+        $circuito_name = htmlspecialchars($circuito["nome"]);
+        $circuiti_list .= "<option value=\"$id\">$circuito_name</option>";
+    }
+
+    return ['piloti' => $piloti_list, 'circuiti' => $circuiti_list];
+}
+
+// 2. Call the function and capture the output
+$menus = create_dropdown_menus();
+$dropdown_piloti = $menus['piloti'];
+$dropdown_circuiti = $menus['circuiti'];
+
 if (isset($_POST["creazione_gare"])) {
     if (empty($_POST["id_circuito"]) || empty($_POST["data"]) || empty($_POST["primo_posto"]) || empty($_POST["secondo_posto"]) || empty($_POST["terzo_posto"])) {
         $form_errors = "<p>Devi compilare tutti i campi.</p>";
@@ -81,5 +110,8 @@ if (isset($_GET['res'])) {
 }
 
 $html_page = input_restore();
-echo str_replace(["[err_gare_creazione]", "[err_gare_elimina]"], [$form_errors, $form_errors_delete], $html_page);
+$dropdown_menus = create_dropdown_menus();
+$dropdown_piloti = $dropdown_menus['piloti'];
+$dropdown_circuiti = $dropdown_menus['circuiti'];
+echo str_replace(["[err_gare_creazione]", "[err_gare_elimina]", "[piloti_dropdown]", "[circuiti_dropdown]"], [$form_errors, $form_errors_delete, $dropdown_piloti, $dropdown_circuiti], $html_page);
 ?>

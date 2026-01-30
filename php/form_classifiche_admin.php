@@ -3,6 +3,7 @@ require_once 'db_connection.php';
 use DB\DBConnection;
 
 $html_page = file_get_contents('../pages/form_classifiche_admin.html');
+$dropdown_piloti = "";
 $form_errors = "";
 
 function input_restore() {
@@ -17,6 +18,22 @@ function check_invalid_input($punti) {
     if (!is_numeric($punti) || intval($punti) < 0) {
         $form_errors .= "<p>I punti devono essere un numero intero positivo.</p>";
     }
+}
+
+function create_dropdown_menus() {
+    $db_connection = new DBConnection();
+    $piloti_data = $db_connection->get_all_piloti();
+    $db_connection->close_connection();
+
+    $piloti_list = "";
+
+    foreach ($piloti_data as $pilota) {
+        $id = $pilota["id"];
+        $full_name = htmlspecialchars($pilota["nome"] . " " . $pilota["cognome"]);
+        $piloti_list .= "<option value=\"$id\">$full_name</option>";
+    }
+
+    return $piloti_list;
 }
 
 if (isset($_POST["modifica_punti_pilota"])) {
@@ -74,14 +91,15 @@ if (isset($_POST["modifica_punti_pilota"])) {
     }
 } else {
     $html_page = input_restore();
+    $dropdown_piloti = create_dropdown_menus();
 
     // Mostra messaggio di successo se i punti sono stati modificati con successo
     if (isset($_GET['msg'])) {
         $message = "<p>Punti del pilota modificati con successo!</p>";
-        echo str_replace("[err_classifica_modifica]", $message, $html_page);
+        echo str_replace(["[err_classifica_modifica]", "[piloti_dropdown]"], [$message, $dropdown_piloti], $html_page);
         exit();
     } else {
-        echo str_replace("[err_classifica_modifica]", $form_errors, $html_page);
+        echo str_replace(["[err_classifica_modifica]", "[piloti_dropdown]"], [$form_errors, $dropdown_piloti], $html_page);
         exit();
     }
 }

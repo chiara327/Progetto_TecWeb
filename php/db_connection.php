@@ -270,6 +270,23 @@ class DBConnection {
         return $result->fetch_assoc();
     }
 
+    public function get_all_piloti() {
+        $query = "SELECT * FROM Piloti";
+
+        $stmt = $this->connection->prepare($query);
+
+        if ($stmt === false) {
+			die("Errore nella preparazione dello statement: " . $this->connection->error);
+		}
+        if (!$stmt->execute()) {
+            die("Errore durante l'esecuzione: " . $stmt->error);
+        }
+
+        $result = $stmt->get_result();
+        
+        return $result->fetch_all(MYSQLI_ASSOC);       
+    }
+
     public function get_piloti_page_data() {
         $query = "SELECT 
                     s.nome AS team_name,
