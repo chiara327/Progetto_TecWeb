@@ -647,7 +647,8 @@ class DBConnection {
         $query = "SELECT 
                     C.username,
                     C.testo, 
-                    C.data_ora, 
+                    C.data_ora,
+                    C.id, 
                     Ci.nome AS nome_gara 
                 FROM Commento C 
                 LEFT JOIN Gare G ON C.gara_id = G.id 
@@ -716,6 +717,22 @@ class DBConnection {
         $result = $stmt->execute();
         $stmt->close();
         
+        return $result;
+    }
+
+    public function delete_commento($id_commento, $username) {
+        $query = "DELETE FROM Commento WHERE id = ? AND username = ?";
+
+        $stmt = $this->connection->prepare($query);
+        if ($stmt === false) {
+            return false;
+        }
+
+        $stmt->bind_param("is", $id_commento, $username);
+        
+        $result = $stmt->execute();
+        $stmt->close();
+
         return $result;
     }
 }

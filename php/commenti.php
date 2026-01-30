@@ -53,6 +53,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["invia_commento"])) {
     }
 }
 
+// Controllo se è arrivata una richiesta di eliminazione
+$err_eliminazione = "";
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comment_id'])) {
+    
+    // Verifica che l'utente sia loggato
+    if (isset($_SESSION['user'])) {
+        $id_da_eliminare = $_POST['comment_id'];
+        $utente_attivo = $_SESSION['user'];
+
+        // 2. Chiamata alla funzione
+        try {
+            $db_connection = new DBConnection();
+            $err_eliminazione = $db_connection->delete_commento($id_da_eliminare, $utente_attivo);
+            $db_connection->close_connection();
+        } catch (Exception $e) {
+            header("location: ../pages/500.html");
+            exit();
+        }
+
+        if ($err_eliminazione === true) {
+            $err_eliminazione = "<p class='success'>Commento eliminato con successo.</p>";
+        } else {
+            $err_eliminazione = "<p class='error'>Errore: eliminazione non riuscita.</p>";
+        }
+    }
+}
+
 if (isset($_GET['status']) && $_GET['status'] === 'ok') {
     $messaggio_successo_aggiunta_commento = "<p class='success' aria-live='polite'>Commento pubblicato!</p>";
 }
@@ -130,7 +157,10 @@ if (isset($_SESSION["user"])) {
         ' . $err_aggiungi_commenti . '
         ' . $messaggio_successo_aggiunta_commento . '';
 } else {
-    $form_commento = '<section class="avviso-login"><p><a href="login.php">Accedi</a> per commentare.</p></section>';
+    $form_commento = '
+        <section class="avviso-login">
+            <p><a href="login.php">Accedi</a> per commentare.</p>
+        </section>';
 }
 
 // 5. SOSTITUZIONI
@@ -152,13 +182,25 @@ if (empty($commenti_data)) {
         $data_iso = date("Y-m-d\TH:i", $timestamp); 
         $data_it = date("d/m/Y", $timestamp);       
         $ora_it = date("H:i", $timestamp);
+        $id_commento = $comm['id'];
+        $bottone_elimina = "";
+        if (isset($_SESSION['user']) && $_SESSION['user'] == $utente) {
+            $bottone_elimina = "
+                <form action='commenti.php' method='POST'>
+                    <input type='hidden' name='comment_id' value='$id_commento'>
+                    <input type='hidden' name='gara_id' value='$id_gara_attuale'>
+                    <button type='submit' class='btn-delete'>Elimina</button>
+                </form>";
+        }
+
         $commenti_html .= "<li>
             <article class='commento-card'>
                 <header>
-                    <h3>Commento di: $utente</h3>
-                    <p class='comment-date'>
-                        Pubblicato il <time datetime='$data_iso'>$data_it</time> alle $ora_it
-                    </p>
+                    <div class='comment-meta'>
+                        <h3>Commento di: $utente</h3>
+                        <p class='comment-date'>Pubblicato il <time datetime='$data_iso'>$data_it</time> alle $ora_it</p>
+                    </div>
+                    $bottone_elimina
                 </header>
                 <p class='comment-content'>$testo</p>
             </article>
@@ -166,6 +208,7 @@ if (empty($commenti_data)) {
     }
 }
 $html_page = str_replace("[lista-commenti]", $commenti_html, $html_page);
+$html_page = str_replace("[err-eliminazione]", $err_eliminazione, $html_page);
 
 echo $html_page;
 ?>
