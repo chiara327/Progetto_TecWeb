@@ -1973,17 +1973,17 @@ input[type="submit"] {
 }
 
 .classifica_piloti td, 
-.classifica_piloti th[scope="row"],
+.classifica_piloti tbody th,
 .classifica_costruttori td, 
-.classifica_costruttori th[scope="row"] {
+.classifica_costruttori tbody th{
     background-color: var(--footer-border-color);
     padding: 0.8em;
     border: none; /* Rimuoviamo i bordi interni per un look più pulito */
 }
 
 /* Stile per la posizione (colonna 1) */
-.classifica_piloti th[scope="row"],
-.classifica_costruttori th[scope="row"] {
+.classifica_piloti tbody th,
+.classifica_costruttori tbody th {
     font-weight: 900;
     font-size: 1.2em;
     color: var(--content-text-color);
