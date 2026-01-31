@@ -18,14 +18,16 @@
 
     --link-color: #F1F1F1;
     --link-visited-color: #8AB4F8;
-    --link-bg-color: #E10600;
+    --link-bg-color: #630300;
 
-    --accent-color: #E10600;
+    --accent-color: #FF3333;
     --footer-border-color: #333333;
     --social-bg-color: #333333;
 
     --quote-bg-color: #8B0000;
     --quote-border-color: #E10600;
+
+    --buttons: #E62E2E;
 
     /*  COLORI DA USARE PER SCUDERIE/PILOTI */
 
@@ -35,11 +37,15 @@
     --mercedes-color: #007064;
     --alpine-color: #0061BA;
     --astonmartin-color: #006A3A;
-    --williams-color: #0082FA;
+    --williams-color: #0059B3;
     --haas-color: #212121;
     --racingbulls-color: #0059B3;
     --sauber-color: #007300;
-    --superstar-color: #A67C00
+    --superstar-color: #856404;
+
+    /* Font stack per dispositivi Windows, Android, Apple (MacOS, iOS), font di backup e font per la visualizzazione delle emoji */
+    --main-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    --base-font-size: 16px;
 }
 
 /* =========================
@@ -53,6 +59,8 @@
 
 html {
     scroll-behavior: smooth;
+    font-family: var(--main-font);
+    font-size: var(--base-font-size);
 }
 
 body {
@@ -78,8 +86,9 @@ main .title-f1 {
     margin-bottom: 0.4em;
     border-top: 0.07em solid var(--accent-color);
     border-bottom: 0.07em solid var(--accent-color);
-    padding-top: 0.4em;
-    padding-bottom: 0.4em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    margin-top: 0.4em;
 }
 
 abbr {
@@ -266,6 +275,7 @@ h1.hide {
     pointer-events: none;
     /* Disabilita i link */
     text-decoration-thickness: 0.15em;
+    text-decoration-color: var(--accent-color);
 }
 
 .footer-col ul li a:visited {
@@ -281,24 +291,50 @@ h1.hide {
    SOCIAL LINKS
    ========================= */
 
-.social-links a {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    width: 2.5em;
-    height: 2.5em;
-    background-color: var(--social-bg-color);
-    color: var(--navbar-text-color);
-    border-radius: 50%;
-    margin-right: 0.6em;
-    text-decoration: none;
+.social-links {
+    display: flex;
+    gap: 0.8em;
+    padding: 1em 0;
 }
 
+.social-links a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 2.5em;
+    height: 2.5em;
+    border-radius: 50%;
+
+    background-color: var(--social-bg-color, #333);
+    color: var(--navbar-text-color, #fff);
+    text-decoration: none;
+
+    padding: 0.5em;
+    border: 0.15em solid transparent;
+    box-sizing: border-box;
+    
+    transition: all 0.3s ease;
+}
+
+.social-links a img,
+.social-links a svg {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    /* Rende l'icona bianca se l'originale è nera */
+    filter: brightness(0) invert(1); 
+    transition: filter 0.3s ease;
+}
+
+/* --- 4. EFFETTI HOVER E TOUCH (MOBILE-FRIENDLY) --- */
 .social-links a:hover,
-.social-links a:focus-visible {
-    background-color: var(--accent-color);
-    outline: 0.15em solid var(--navbar-text-color);
-    outline-offset: 0.15em;
+.social-links a:focus-visible,
+.social-links a:active {
+    background-color: var(--accent-color); /* Sfondo Rosso */
+    border-color: #ffffff;                 /* Bordo Bianco */
+    transform: scale(1.1);
+    outline: none;
 }
 
 /* =========================
@@ -325,16 +361,16 @@ h1.hide {
    INDEX PAGE
    ========================= */
 
-#content p {
-    padding: 1em 2.5em;
-}
-
-#content h2 {
+main section h2, article.aboutus h2 {
     border-top: 0.07em solid var(--accent-color);
     border-bottom: 0.07em solid var(--accent-color);
     padding-top: 0.3em;
     padding-bottom: 0.3em;
     margin-top: 0.4em;
+}
+
+#content p {
+    padding: 1em 2.5em;
 }
 
 #content h3 {
@@ -552,7 +588,9 @@ h1.hide {
     margin-bottom: 0.4em;
     border-top: 0.07em solid var(--accent-color);
     border-bottom: 0.07em solid var(--accent-color);
-    padding-bottom: 0.4em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    margin-top: 0.4em;
 }
 
 #scuderie article {
@@ -1893,17 +1931,17 @@ input[type="submit"] {
 /* Stato Hover e Focus */
 [role="tab"]:hover, 
 [role="tab"]:focus-visible {
-    color: var(--accent-color);
-    border-color: var(--accent-color);
+    color: var(--buttons);
+    border-color: var(--buttons);
     outline: none;
     z-index: 1; /* Porta sopra il bordo in hover */
 }
 
 /* Stato Attivo (Tab Selezionato) */
 [role="tab"][aria-selected="true"] {
-    background-color: var(--accent-color);
+    background-color: var(--buttons);
     color: white;
-    border-color: var(--accent-color);
+    border-color: var(--buttons);
 }
 
 /* Pannelli */
@@ -1934,17 +1972,17 @@ input[type="submit"] {
 }
 
 .classifica_piloti td, 
-.classifica_piloti th[scope="row"],
+.classifica_piloti tbody th,
 .classifica_costruttori td, 
-.classifica_costruttori th[scope="row"] {
+.classifica_costruttori tbody th{
     background-color: var(--footer-border-color);
     padding: 0.8em;
     border: none; /* Rimuoviamo i bordi interni per un look più pulito */
 }
 
 /* Stile per la posizione (colonna 1) */
-.classifica_piloti th[scope="row"],
-.classifica_costruttori th[scope="row"] {
+.classifica_piloti tbody th,
+.classifica_costruttori tbody th {
     font-weight: 900;
     font-size: 1.2em;
     color: var(--content-text-color);
@@ -2067,6 +2105,117 @@ label {
     font-size: 1.2em;
     font-weight: 600;
     color: var(--content-text-color);
+}
+
+#info-scuderie section.piloti ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    justify-content: center;
+}
+
+#info-scuderie section.piloti li {
+    width: 30em;
+    padding: 2em;
+}
+
+#info-scuderie section.piloti article {
+    position: relative;
+    overflow: hidden;
+    border: 0.5em solid var(--navbar-bg-color);
+}
+
+#info-scuderie section.piloti article img {
+    width: 30em;
+    height: 20em;
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+#info-scuderie section.piloti article a:hover img {
+    transform: scale(1.05);
+}
+
+#info-scuderie section.piloti article a:hover h3 {
+    text-decoration: underline;
+}
+
+#info-scuderie section.piloti article h3 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3em;
+    margin: 0;
+
+    color: var(--content-text-color);
+    background-color: var(--footer-border-color);
+    padding: 1em;
+    text-align: center;
+    box-sizing: border-box;
+
+    z-index: 2;
+    border-bottom: none;
+}
+
+#info-scuderie section.piloti article.alpine-heading h3 {
+    background-color: var(--alpine-color);
+    text-transform: none;
+}
+
+#info-scuderie section.piloti article.astonmartin-heading h3 {
+    background-color: var(--astonmartin-color);
+    text-transform: none;
+}
+
+#info-scuderie section.piloti article.ferrari-heading h3 {
+    background-color: var(--ferrari-color);
+    text-transform: none;
+}
+
+#info-scuderie section.piloti article.haas-heading h3 {
+    background-color: var(--haas-color);
+    text-transform: none;
+}
+
+#info-scuderie section.piloti article.mclaren-heading h3 {
+    background-color: var(--mclaren-color);
+    text-transform: none;
+}
+
+#info-scuderie section.piloti article.mercedes-heading h3 {
+    background-color: var(--mercedes-color);
+    text-transform: none;
+}
+
+#info-scuderie section.piloti article.rb-heading h3 {
+    background-color: var(--racingbulls-color);
+    text-transform: none;
+}
+
+#info-scuderie section.piloti article.redbull-heading h3 {
+    background-color: var(--redbull-color);
+    text-transform: none;
+}
+
+#info-scuderie section.piloti article.sauber-heading h3 {
+    background-color: var(--sauber-color);
+    text-transform: none;
+}
+
+#info-scuderie section.piloti article.williams-heading h3 {
+    background-color: var(--williams-color);
+    text-transform: none;
+}
+
+#info-scuderie section.piloti article.superstar-heading h3 {
+    background-color: var(--superstar-color);
+    text-transform: none;
 }
 
 /* =========================

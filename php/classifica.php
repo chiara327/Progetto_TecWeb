@@ -24,10 +24,10 @@ if (empty($piloti_data)) {
     $pos = 1;
     foreach ($piloti_data as $p) {
         $piloti_html .= "<tr>
-            <th scope='row'>" . $pos . "</th>
-            <td>" . htmlspecialchars($p['nome'] . " " . $p['cognome']) . "</td>
-            <td>" . htmlspecialchars($p['nome_scuderia'] ?? 'N/D') . "</td>
-            <td>" . $p['punti'] . "</td>
+            <th data-title='Posizione'>" . $pos . "</th>
+            <td data-title='Pilota'>" . htmlspecialchars($p['nome'] . " " . $p['cognome']) . "</td>
+            <td data-title='Scuderia'>" . htmlspecialchars($p['nome_scuderia'] ?? 'N/D') . "</td>
+            <td data-title='Punti'>" . $p['punti'] . "</td>
         </tr>";
         $pos++;
     }
@@ -41,9 +41,9 @@ if (empty($costruttori_data)) {
     $pos = 1;
     foreach ($costruttori_data as $c) {
         $costruttori_html .= "<tr>
-            <th scope='row'>" . $pos . "</th>
-            <td>" . htmlspecialchars($c['nome_scuderia']) . "</td>
-            <td>" . $c['punti'] . "</td>
+            <th data-title='Posizione'>" . $pos . "</th>
+            <td data-title='Scuderia'>" . htmlspecialchars($c['nome_scuderia']) . "</td>
+            <td data-title='Punti'>" . $c['punti'] . "</td>
         </tr>";
         $pos++;
     }
