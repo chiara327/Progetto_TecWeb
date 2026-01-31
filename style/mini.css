@@ -39,11 +39,16 @@
     --haas-color: #212121;
     --racingbulls-color: #0059B3;
     --sauber-color: #007300;
-    --superstar-color: #A67C00
+    --superstar-color: #A67C00;
+
+    --main-font: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji';
+    --base-font-size: 16px;
 }
 
 html {
     scroll-behavior: smooth;
+    font-family: var(--main-font);
+    font-size: var(--base-font-size);
 }
 
 body {
@@ -56,21 +61,21 @@ body {
     overflow-x: hidden;
 }
 
-/* Sostituisci i blocchi h1 e h2 sparsi nel file con questo */
 main h1, 
 main h2, 
 .titolo-f1 {
     display: block !important;
     width: 100% !important;
     text-align: center !important;
-    margin: 1.2em 0 !important; /* Rimuove i margini laterali che stringono il testo */
-    
-    /* Risoluzione Sovraffollamento */
-    height: auto !important; /* Fondamentale per far crescere il box verticalmente */
-    line-height: 1.5 !important; /* Crea spazio tra le righe se il testo va a capo */
-    padding: 0.8em 0.4em !important; /* Protegge il testo dalle barre rosse */
-    
-    font-size: 1.5rem !important; /* Ridotto da 1.8em per evitare che singole parole escano dai bordi */
+    margin: 1.2em 0 !important; 
+
+    /* Risolto il sovraffollamento del testo su mobile */
+    height: auto !important; 
+    line-height: 1.5 !important; 
+    padding: 0.8em 0.4em !important; 
+
+    /* Font size adattato */ 
+    font-size: 1.5rem !important; 
     text-transform: uppercase;
     box-sizing: border-box !important;
 
@@ -309,29 +314,49 @@ a:focus-visible {
 
 .social-links {
     display: flex;
-    justify-content: center;
-    gap: 0.8em;
-    margin-top: 0.8em;
+    align-items: center;
+    justify-content: center; 
+    gap: 0.8em;     
+    width: 100%;             
 }
 
 .social-links a {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    width: 2em;
-    height: 2em;
-    background-color: var(--social-bg-color);
-    color: var(--navbar-text-color);
+    display: flex;
+    justify-content: center !important;
+    align-items: center !important;
+
+    width: 2.5em; 
+    height: 2.5em;
+    
+    background-color: var(--social-bg-color, #333);
     border-radius: 50%;
-    text-decoration: none;
-    font-size: 0.9em;
+    
+    padding: 0.5em; 
+    
+    border: 0.15em solid transparent;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+.social-links a img,
+.social-links a svg {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    
+    filter: brightness(0) invert(1);
+    transition: transform 0.3s ease;
 }
 
 .social-links a:hover,
-.social-links a:focus-visible {
-    background-color: var(--accent-color);
-    outline: 0.15em solid var(--navbar-text-color);
-    outline-offset: 0.15em;
+.social-links a:active {
+    background-color: #ff0000;
+    border-color: #ffffff;
+}
+
+.social-links a:hover img,
+.social-links a:active img {
+    transform: scale(1.1);
 }
 
 /* =========================
@@ -364,25 +389,17 @@ a:focus-visible {
     padding: 0;
     width: 100%;
 }
-
-main section h2 {
-    border-top: 0.07em solid var(--accent-color);
-    border-bottom: 0.07em solid var(--accent-color);
-    padding-top: 0.3em;
-    padding-bottom: 0.3em;
-    margin-top: 0.4em;
-}
-
 #content p {
     padding: 0.8em 1em;
     font-size: 0.95em;
 }
 
-#content h2 {
+main section h2, article.aboutus h2 {
     border-top: 0.07em solid var(--accent-color);
     border-bottom: 0.07em solid var(--accent-color);
-    padding: 0.3em 0;
-    margin: 1.2em 0.5em;
+    padding-top: 0.3em;
+    padding-bottom: 0.3em;
+    margin-top: 0.4em;
 }
 
 #content h3 {
@@ -537,53 +554,48 @@ main section h2 {
    DETTAGLIO PILOTA/SCUDERIE PAGE
    ============================== */
 
-/* Reset forzato del contenitore DL */
 #info-piloti dl, 
 #info-scuderie dl, 
 #gare dl {
     display: block !important;
     width: 100% !important;
-    clear: both !important; /* Interrompe eventuali float */
+    clear: both !important; 
 }
 
-/* Etichetta (DT) - Nome, Cognome, ecc. */
 #info-piloti dt, 
 #info-scuderie dt, 
 #gare dt {
     display: block !important;
-    float: none !important; /* Fondamentale se nel file principale c'è un float */
+    float: none !important; 
     text-align: left !important;
     width: 100% !important;
     font-size: 0.8em;
     margin-top: 1.2em;
-    color: var(--footer-text-color); /* Grigio per etichetta */
+    color: var(--footer-text-color); 
     text-transform: uppercase;
 }
 
-/* Valore (DD) - [nome], [cognome], ecc. */
 #info-piloti dd, 
 #info-scuderie dd, 
 #gare dd {
     display: block !important;
-    float: none !important; /* Rimuove l'allineamento a destra se causato da float */
-    text-align: left !important; /* Forza l'allineamento a sinistra */
+    float: none !important;
+    text-align: left !important; 
     width: 100% !important;
-    margin-left: 0 !important; /* Rimuove il rientro */
-    font-size: 1.3em; /* Lo rendiamo più grande per risaltare */
+    margin-left: 0 !important; 
+    font-size: 1.3em; 
     font-weight: bold;
     color: var(--content-text-color);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     padding-bottom: 0.2em;
 }
 
-/* Rimuove l'ultima linea */
 #info-piloti dd, 
 #info-scuderie dd, 
 #gare dd{
     border-bottom: none !important;
 }
 
-/* Centratura Titolo Principale (H1) */
 #info-piloti h1 {
     text-align: center;
     font-size: 1.8em;
@@ -598,38 +610,34 @@ main section h2 {
 
     display: flex;
     flex-wrap: wrap;
-    gap: 1.5em; /* Spazio leggermente aumentato per separare bene i blocchi */
+    gap: 1.5em;
     justify-content: center;
 }
 
 #info-scuderie section.piloti li {
-    /* Larghezza piena meno un margine minimo o adattabile */
     width: 100%; 
     max-width: 100%;
-    padding: 0.5em; /* Ridotto il padding esterno per non sprecare spazio su schermi stretti */
+    padding: 0.5em; 
     box-sizing: border-box;
 }
 
 #info-scuderie section.piloti article {
     position: relative;
     overflow: hidden;
-    border: 0.3em solid var(--navbar-bg-color); /* Bordo leggermente ridotto per mobile */
-    border-radius: 0.5em; /* Opzionale: rende il look più moderno su mobile */
+    border: 0.3em solid var(--navbar-bg-color);
+    border-radius: 0.5em; 
 }
 
 #info-scuderie section.piloti article img {
-    /* L'immagine ora occupa tutto lo spazio disponibile senza distorcersi */
     width: 100%;
     height: auto; 
-    aspect-ratio: 3 / 2; /* Mantiene la proporzione 30x20 originale */
+    aspect-ratio: 3 / 2;
     object-fit: cover;
     display: block;
     cursor: pointer;
-    /* Rimosso l'hover scale o mantenuto solo per feedback touch rapido */
     transition: transform 0.3s ease;
 }
 
-/* Disabilitiamo o limitiamo l'effetto hover che su mobile può risultare "appiccicoso" */
 #info-scuderie section.piloti article a:active img {
     transform: scale(1.02);
 }
@@ -639,7 +647,7 @@ main section h2 {
     bottom: 0;
     left: 0;
     width: 100%;
-    height: auto; /* Altezza automatica per gestire eventuali nomi lunghi su due righe */
+    height: auto; 
     min-height: 3em;
     margin: 0;
 
@@ -648,15 +656,13 @@ main section h2 {
     padding: 0.8em 0.5em;
     text-align: center;
     box-sizing: border-box;
-    font-size: 1.1rem; /* Dimensione ottimizzata per leggibilità */
+    font-size: 1.1rem; 
 
     z-index: 2;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-
-/* Gestione colori scuderie (rimaste invariate nella logica) */
 
 #info-scuderie section.piloti ul {
     list-style: none;
@@ -711,8 +717,6 @@ main section h2 {
     align-items: center;
     justify-content: center;
 }
-
-/* Regole Colori e Stile (Tutte con text-transform: none) */
 
 #info-scuderie section.piloti article#alpine-heading h3 {
     background-color: var(--alpine-color);
@@ -839,30 +843,25 @@ main section h2 {
    ========================================================== */
 
 .circuiti {
-    /* Cambiamo da riga a colonna per evitare schiacciamenti */
     flex-direction: column; 
     align-items: center;
     
-    /* Resettiamo margini e larghezze per occupare lo spazio disponibile */
     margin: 1em auto;
     width: 95%;
-    max-width: none; /* Rimuoviamo il limite del desktop */
-    border-left: 0.3em solid var(--accent-color); /* Leggermente più sottile per mobile */
+    max-width: none;
+    border-left: 0.3em solid var(--accent-color); 
 }
 
-/* Disabilitiamo l'effetto scale su mobile: al tocco (hover simulato) 
-   può causare lag o problemi di scroll */
 .circuiti:hover {
     transform: none;
     border-color: var(--footer-border-color);
 }
 
 .circuiti img {
-    /* L'immagine ora si adatta alla larghezza del telefono */
     width: 100%;
-    max-width: 18em; /* Evita che l'immagine diventi troppo grande su smartphone larghi */
+    max-width: 18em; 
     height: auto;
-    margin: 1.5em auto 0 auto; /* Centrata e distanziata */
+    margin: 1.5em auto 0 auto; 
     flex-shrink: 1;
 }
 
@@ -873,13 +872,12 @@ main section h2 {
 }
 
 .circuiti h2 {
-    text-align: center; /* Titolo centrato per il layout a colonna */
+    text-align: center; 
     font-size: 1.4em;
     padding: 0.5em 0;
 }
 
 .circuiti dl {
-    /* Passiamo da 2 colonne a 1 colonna singola */
     grid-template-columns: 1fr; 
     gap: 0.2em;
     text-align: center;
@@ -887,20 +885,19 @@ main section h2 {
 
 .circuiti dt {
     font-size: 0.75em;
-    align-self: center; /* Centra l'etichetta */
+    align-self: center; 
     margin-top: 0.8em;
-    color: var(--accent-color); /* Colore più evidente per distinguere le voci */
+    color: var(--accent-color); 
 }
 
 .circuiti dd {
     font-size: 1em;
-    font-weight: bold; /* Valore più leggibile */
+    font-weight: bold; 
     line-height: 1.2;
     padding-bottom: 0.5em;
-    border-bottom: 1px solid rgba(255,255,255,0.05); /* Separatore leggero tra le voci */
+    border-bottom: 1px solid rgba(255,255,255,0.05); 
 }
 
-/* Rimuoviamo l'ultimo bordo inferiore per pulizia */
 .circuiti dd:last-of-type {
     border-bottom: none;
 }
@@ -913,7 +910,6 @@ main > h1 {
     margin-bottom: 1em;
 }
 
-/* Struttura principale delle tabelle */
 .classifica_piloti, 
 .classifica_costruttori {
     display: table;
@@ -926,7 +922,6 @@ main > h1 {
     overflow-x: auto;
 }
 
-/* Gestione testata */
 .classifica_piloti thead, 
 .classifica_costruttori thead {
     display: table;
@@ -934,13 +929,11 @@ main > h1 {
     background: var(--navbar-bg-color);
 }
 
-/* Gestione corpo tabella */
 .classifica_piloti tbody, 
 .classifica_costruttori tbody {
     display: block;
 }
 
-/* Gestione righe */
 .classifica_piloti tr, 
 .classifica_costruttori tr {
     display: table;
@@ -949,7 +942,6 @@ main > h1 {
     margin-bottom: 0.5em;
 }
 
-/* Celle (th e td) */
 .classifica_piloti th, .classifica_piloti td,
 .classifica_costruttori th, .classifica_costruttori td {
     display: table-cell;
@@ -958,7 +950,6 @@ main > h1 {
     border: 0.15em solid var(--link-color);
 }
 
-/* Larghezza Colonne */
 .classifica_piloti th:nth-child(1), 
 .classifica_piloti td:nth-child(1) {
     width: 15%;
@@ -994,7 +985,6 @@ main > h1 {
     width: 20%;
 }
 
-/* Stile intestazioni */
 .classifica_piloti th, 
 .classifica_costruttori th {
     font-size: 0.95em;
@@ -1003,14 +993,12 @@ main > h1 {
     color: var(--navbar-text-color);
 }
 
-/* Stile dati */
 .classifica_piloti td, 
 .classifica_costruttori td {
     background: var(--footer-border-color);
     font-size: 0.9em;
 }
 
-/* Centratura titoli h2 e caption */
 .classifica_piloti caption, 
 .classifica_costruttori caption, 
 #content h2 {
@@ -1023,7 +1011,6 @@ main > h1 {
     border-right: none;
 }
 
-/* Ottimizzazione titoli h3 e caption */
 .classifica_piloti caption, 
 .classifica_costruttori caption, 
 #content h3 {
@@ -1042,49 +1029,42 @@ main > h1 {
    MOBILE CSS: Tab e Classifiche
    ========================================================== */
 
-/* 1. NAVIGAZIONE TAB */
 .tabs-navigation {
-    flex-direction: column; /* Impila i bottoni verticalmente */
+    flex-direction: column;
     width: 95%;
     margin: 1em auto;
-    gap: 0.5em; /* Distanzia i pulsanti per facilitare il tocco */
+    gap: 0.5em; 
 }
 
 [role="tab"] {
-    width: 100%; /* I bottoni occupano tutta la larghezza */
-    padding: 1em; /* Aumenta l'area di tocco (touch target) */
+    width: 100%; 
+    padding: 1em; 
     text-align: center;
-    border-radius: 0.3em !important; /* Arrotonda tutti i bordi su mobile */
-    border-left: 0.15em solid var(--footer-border-color) !important; /* Ripristina il bordo sinistro */
+    border-radius: 0.3em !important;
+    border-left: 0.15em solid var(--footer-border-color) !important; 
 }
 
-/* Reset dei bordi arrotondati specifici per desktop */
 [role="tab"]:first-child,
 [role="tab"]:last-child {
     border-radius: 0.3em !important;
 }
 
-/* 2. TABELLA CLASSIFICA */
-/* Per rendere la tabella leggibile senza rimpicciolire i testi,
-   usiamo un contenitore con scroll orizzontale */
 .classifica {
-    display: block; /* Permette alla tabella di comportarsi come un blocco */
+    display: block; 
     width: 100%;
-    overflow-x: auto; /* Attiva lo scroll laterale se necessario */
-    -webkit-overflow-scrolling: touch; /* Rende lo scroll fluido su iOS */
+    overflow-x: auto; 
+    -webkit-overflow-scrolling: touch;
     margin: 1em 0;
-    border-spacing: 0 0.3em; /* Riduce leggermente lo spazio tra le righe */
+    border-spacing: 0 0.3em;
 }
 
-/* Impediamo al testo di andare a capo per mantenere la tabella pulita */
 .classifica th,
 .classifica td {
     white-space: nowrap; 
     padding: 0.6em;
-    font-size: 0.85em; /* Leggera riduzione del font per risparmiare spazio */
+    font-size: 0.85em; 
 }
 
-/* Ottimizzazione colonna posizione */
 .classifica th[scope="row"] {
     width: auto;
     min-width: 2.5em;
@@ -1092,9 +1072,6 @@ main > h1 {
     font-size: 1.1em;
 }
 
-/* 3. ACCESSIBILITÀ E UX MOBILE */
-/* Rimuoviamo l'hover sulla riga perché sui touch screen 
-   l'effetto "rimane appiccicato" dopo il tocco */
 .classifica tbody tr:hover td {
     background-color: var(--footer-border-color); 
 }
@@ -1114,24 +1091,21 @@ a:focus-visible {
    REGISTRAZIONE & LOGIN
    ========================= */
 
-/* 1. Contenitori Form */
 #login_form,
 #signup_form {
-    width: 92% !important; /* Quasi tutta la larghezza display */
-    max-width: none !important; /* Rimuoviamo il limite di 28em */
-    padding: 1.5em 1.2em !important; /* Riduzione padding interno */
+    width: 92% !important; 
+    max-width: none !important;
+    padding: 1.5em 1.2em !important;
     margin: 1.5em auto !important;
     box-sizing: border-box;
 }
 
-/* 2. Titolo (Legend) */
 #login_form legend,
 #signup_form legend {
     font-size: 1.3em !important;
     margin-bottom: 0.8em;
 }
 
-/* 3. Campi di Input (Testo, Email, Password, Data) */
 #login_form input[type="text"],
 #login_form input[type="email"],
 #login_form input[type="password"],
@@ -1140,38 +1114,35 @@ a:focus-visible {
 #signup_form input[type="password"],
 #login_form input[type="date"],
 #signup_form input[type="date"] {
-    font-size: 1em !important; /* Fondamentale per bloccare lo zoom automatico su mobile */
-    padding: 0.8em !important; /* Più spazio per il tocco */
-    height: 3em; /* Altezza uniforme per tutti i campi */
+    font-size: 1em !important; 
+    padding: 0.8em !important; 
+    height: 3em; 
 }
 
-/* 4. Checkbox Group */
 #login_form li.checkbox-group,
 #signup_form li.checkbox-group {
     padding: 0.5em 0;
-    flex-direction: row !important; /* Manteniamo label e check sulla stessa riga */
+    flex-direction: row !important;
     align-items: center;
 }
 
 #login_form input[type="checkbox"],
 #signup_form input[type="checkbox"] {
-    width: 1.3em; /* Checkbox leggermente più grande */
+    width: 1.3em;
     height: 1.3em;
 }
 
-/* 5. Pulsante Submit */
 #login_form input[type="submit"],
 #signup_form input[type="submit"],
 #modifica-anagrafica input[type="submit"],
 #modifica-username input[type="submit"],
 #modifica-password input[type="submit"] {
     width: 100% !important;
-    padding: 1em !important; /* Pulsante alto per il pollice */
+    padding: 1em !important;
     font-size: 1.1em !important;
     margin-top: 0.5em;
 }
 
-/* 6. Link di switch (Hai già un account? / Registrati) */
 #signup_form .switch-form,
 #login_form .switch-form {
     margin-top: 1.5em;
@@ -1179,7 +1150,6 @@ a:focus-visible {
     line-height: 1.5;
 }
 
-/* 7. Allineamento testi principali */
 #signup_main h1,
 #login_main h1 {
     font-size: 1.8em !important;
@@ -1190,20 +1160,18 @@ a:focus-visible {
    AREA RISERVATA
    ========================= */
 
-/* 1. Contenitori Principali */
 .area_utente_info, 
 .area_utente_modifica, 
 .area_utente_commenti, 
 .area_utente_logout {
-    width: 95% !important; /* Quasi tutta la larghezza display */
+    width: 95% !important; 
     margin: 1em auto !important;
-    padding: 1em !important; /* Riduzione padding interno */
+    padding: 1em !important;
     box-sizing: border-box;
 }
 
-/* 2. Info Personali: Trasformazione da Griglia a Lista Verticale */
 .area_utente_info dl {
-    display: block !important; /* Rimuove la griglia a due colonne */
+    display: block !important;
 }
 
 .area_utente_info dt {
@@ -1218,24 +1186,22 @@ a:focus-visible {
     border-bottom: 0.05em solid var(--footer-border-color);
 }
 
-/* 3. Gestione Logout e Pulsanti */
 .area_utente_logout #logout-container {
-    flex-direction: column; /* Pulsanti uno sopra l'altro */
+    flex-direction: column;
     gap: 0.8em;
 }
 
 .btn-logout, .btn-admin, input[type="submit"], #open-delete-modal, 
 .area_utente_logout #logout-container .btn-logout,
 .area_utente_logout #logout-container .btn-delete {
-    width: 100% !important; /* Pulsanti a larghezza piena per il tocco */
+    width: 100% !important;
     display: block;
     padding: 1em !important;
     font-size: 1.1em !important;
 }
 
-/* 4. Form di Modifica */
 .area_utente_modifica input {
-    font-size: 16px !important; /* Previene lo zoom automatico su iOS/Android */
+    font-size: 16px !important;
     padding: 0.8em !important;
 }
 
@@ -1246,12 +1212,11 @@ a:focus-visible {
 }
 
 .commento-card:hover {
-    transform: none !important; /* Rimuoviamo l'hover su mobile perché non esiste il mouse */
+    transform: none !important;
 }
 
-/* 6. Modale di Eliminazione (Delete Modal) */
 .modal-content {
-    width: 85% !important; /* Più stretto per non toccare i bordi fisici */
+    width: 85% !important;
     padding: 1.5em !important;
 }
 
@@ -1260,29 +1225,27 @@ a:focus-visible {
 }
 
 .modal-actions {
-    flex-direction: column; /* Azioni del modale in verticale */
+    flex-direction: column;
     gap: 1em;
 }
 
 .btn-secondary, .btn-confirm-delete {
-    width: 100% !important; /* Pulsanti modale giganti per evitare errori di tocco */
+    width: 100% !important; 
 }
 
 /* =========================
    AZIONI ADMIN - UTENTI
    ========================= */
-   
-/* 1. Layout del Form */
+
 #form-utenti-elimina,
 #form-utenti-aggiungi {
-    width: 92% !important; /* Occupa quasi tutta la larghezza dello schermo */
+    width: 92% !important; 
     max-width: none !important;
-    padding: 1.5em 1em !important; /* Riduciamo il padding per non sprecare spazio */
-    margin: 1.5em auto !important; /* Centra il form nella pagina */
+    padding: 1.5em 1em !important; 
+    margin: 1.5em auto !important; 
     box-sizing: border-box;
 }
 
-/* 2. Titolo del Form (Legend) */
 #form-utenti-elimina legend,
 #form-utenti-aggiungi legend {
     font-size: 1.3em !important;
@@ -1290,33 +1253,29 @@ a:focus-visible {
     margin-bottom: 0.8em;
 }
 
-/* 3. Campi di Input e Select */
 #form-utenti-elimina input[type="text"],
 #form-utenti-aggiungi input[type="text"],
 #form-utenti-aggiungi input[type="email"],
 #form-utenti-aggiungi input[type="password"],
 #form-utenti-aggiungi select,
 #form-utenti-aggiungi input[type="date"] {
-    font-size: 1em !important; /* Previene lo zoom automatico fastidioso su mobile */
-    padding: 0.8em !important; /* Area di tocco più grande per le dita */
+    font-size: 1em !important; 
+    padding: 0.8em !important;
     margin-bottom: 0.5em;
 }
 
-/* 4. Icona Calendario (Date Input) */
 #form-utenti-aggiungi input[type="date"]::-webkit-calendar-picker-indicator {
-    right: 0.5em; /* Posizionamento migliore su schermi stretti */
+    right: 0.5em; 
 }
 
-/* 5. Pulsante di Invio (Submit) */
 #form-utenti-elimina input[type="submit"],
 #form-utenti-aggiungi input[type="submit"] {
     width: 100% !important;
-    padding: 1em !important; /* Facile da premere */
+    padding: 1em !important;
     font-size: 1.1em !important;
     margin-top: 1em;
 }
 
-/* 6. Liste interne */
 .crea-utente-section ul,
 .elimina-utente-section ul {
     margin: 0;
@@ -1332,50 +1291,44 @@ a:focus-visible {
    AZIONI ADMIN - UTENTI
    ========================= */
 
-/* 1. Adattamento Contenitore Form */
 #form-gare-elimina,
 #form-gare-aggiungi {
-    width: 92% !important; /* Espansione per occupare lo spazio mobile */
+    width: 92% !important; 
     max-width: none !important;
-    padding: 1.5em 1em !important; /* Riduzione padding per massimizzare l'area di input */
+    padding: 1.5em 1em !important; 
     margin: 1.5em auto !important;
     box-sizing: border-box;
 }
 
-/* 2. Titolo (Legend) */
 #form-gare-elimina legend,
 #form-gare-aggiungi legend {
-    font-size: 1.3em !important; /* Ridimensionamento per schermi piccoli */
+    font-size: 1.3em !important; 
     margin-bottom: 0.8em;
 }
 
-/* 3. Input, Select e Date */
 #form-gare-elimina input[type="text"],
 #form-gare-aggiungi input[type="text"],
 #form-gare-aggiungi input[type="email"],
 #form-gare-aggiungi input[type="password"],
 #form-gare-aggiungi select,
 #form-gare-aggiungi input[type="date"] {
-    font-size: 16px !important; /* Impedisce lo zoom automatico su browser mobile */
-    padding: 0.8em !important; /* Migliora la precisione del tocco */
+    font-size: 16px !important;
+    padding: 0.8em !important; 
 }
 
-/* 4. Icona Calendario specifica per Gare */
 #form-gare-elimina input[type="date"]::-webkit-calendar-picker-indicator,
 #form-gare-aggiungi input[type="date"]::-webkit-calendar-picker-indicator {
-    right: 0.5em; /* Posizionamento corretto dell'icona */
+    right: 0.5em; 
 }
 
-/* 5. Pulsante Submit */
 #form-gare-elimina input[type="submit"],
 #form-gare-aggiungi input[type="submit"] {
     width: 100% !important;
-    padding: 1em !important; /* Pulsante più grande per facilitare il click */
+    padding: 1em !important;
     font-size: 1.1em !important;
     margin-top: 1em;
 }
 
-/* 6. Liste della sezione Gare */
 .crea-gare-section li,
 .elimina-gare-section li {
     margin-bottom: 1em !important;
@@ -1385,68 +1338,60 @@ a:focus-visible {
    AZIONI ADMIN - CLASSIFICA
    ========================= */
 
-/* 1. Adattamento Contenitore */
 #form-modifica-punti-pilota {
-    width: 92% !important; /* Espansione per schermi piccoli */
+    width: 92% !important; 
     max-width: none !important;
-    padding: 1.5em 1em !important; /* Riduzione padding per ottimizzare lo spazio */
+    padding: 1.5em 1em !important; 
     margin: 1.5em auto !important;
     box-sizing: border-box;
 }
 
-/* 2. Titolo (Legend) */
 #form-modifica-punti-pilota legend {
-    font-size: 1.3em !important; /* Scalabilità del titolo */
+    font-size: 1.3em !important; 
     margin-bottom: 0.8em;
 }
 
-/* 3. Select e Input Numerici */
 #form-modifica-punti-pilota select,
 #form-modifica-punti-pilota input[type="number"] {
-    font-size: 16px !important; /* Previene lo zoom automatico sui browser mobile */
-    padding: 0.8em !important; /* Migliore area di tocco */
+    font-size: 16px !important; 
+    padding: 0.8em !important; 
 }
 
-/* 4. Radio Buttons (F1 Style) */
 #form-modifica-punti-pilota input[type="radio"] {
-    width: 1.6em; /* Leggermente più grandi per facilitare la selezione */
+    width: 1.6em;
     height: 1.6em;
 }
 
 #form-modifica-punti-pilota li:nth-child(2) {
-    gap: 0.8em; /* Spazio ottimizzato tra le opzioni radio */
-    flex-wrap: wrap; /* Permette alle opzioni di andare a capo se necessario */
+    gap: 0.8em; 
+    flex-wrap: wrap;
 }
 
-/* 5. Pulsante Submit */
 #form-modifica-punti-pilota input[type="submit"] {
     width: 100% !important;
-    padding: 1em !important; /* Pulsante più alto per il click con il pollice */
+    padding: 1em !important; 
     font-size: 1.1em !important;
     margin-top: 1em;
 }
 
-/* 6. Liste della sezione Classifica */
 .crea-classifica-section li {
     margin-bottom: 1em !important;
 }
 
-/* 1. Reset larghezza contenitori */
 .area_commenti {
     max-width: 100%;
-    margin: 1em; /* Lascia un po' di respiro ai bordi dello schermo */
-    padding: 1.2em; /* Riduce il padding interno per guadagnare spazio */
+    margin: 1em;
+    padding: 1.2em;
 }
 
-/* 2. Dettagli Gara (Griglia) */
 .gp-stats {
-    grid-template-columns: 1fr; /* Una sola colonna: Etichetta sopra, Valore sotto */
-    gap: 0.2em; /* Riduce lo spazio tra le righe */
+    grid-template-columns: 1fr;
+    gap: 0.2em; 
     padding: 0.8em 0;
 }
 
 .gp-stats dt {
-    font-size: 0.75em; /* Più piccolo per le etichette su mobile */
+    font-size: 0.75em; 
     margin-top: 0.5em;
 }
 
@@ -1454,26 +1399,25 @@ a:focus-visible {
     font-size: 1em;
     margin-bottom: 0.5em;
     padding-bottom: 0.3em;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* Linea sottile di separazione */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05); 
 }
 
-/* 3. Il Podio (Da orizzontale a verticale) */
 .podium-summary {
-    flex-direction: column; /* Incolonna i piloti */
+    flex-direction: column;
     gap: 0.8em;
 }
 
 .podium-item {
-    flex-direction: row; /* Numero e Nome sulla stessa riga */
+    flex-direction: row;
     justify-content: flex-start;
     padding: 0.8em 1.2em;
     gap: 1.5em;
 }
 
 .podium-item .rank {
-    font-size: 1.2em; /* Riduce leggermente la dimensione del numero */
+    font-size: 1.2em; 
     margin-bottom: 0;
-    min-width: 1.5em; /* Allinea i nomi dei piloti */
+    min-width: 1.5em; 
 }
 
 .podium-item .driver {
@@ -1481,17 +1425,15 @@ a:focus-visible {
     text-align: left;
 }
 
-/* 4. Form Commenti */
 #form-commento button[type="submit"] {
-    width: 100%; /* Il bottone diventa grande quanto lo schermo (più facile da tappare) */
+    width: 100%;
     padding: 1em;
 }
 
 #testo-commento {
-    font-size: 16px; /* Evita lo zoom automatico di iOS quando si clicca sulla textarea */
+    font-size: 1em; 
 }
 
-/* 5. Titoli */
 .commento-titolo {
     font-size: 1.25em;
     margin-bottom: 1em;
