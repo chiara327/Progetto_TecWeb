@@ -365,6 +365,14 @@ a:focus-visible {
     width: 100%;
 }
 
+main section h2 {
+    border-top: 0.07em solid var(--accent-color);
+    border-bottom: 0.07em solid var(--accent-color);
+    padding-top: 0.3em;
+    padding-bottom: 0.3em;
+    margin-top: 0.4em;
+}
+
 #content p {
     padding: 0.8em 1em;
     font-size: 0.95em;
