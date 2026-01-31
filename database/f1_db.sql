@@ -45,7 +45,15 @@ CREATE TABLE IF NOT EXISTS Scuderie (
     pilota_attuale2_id INT DEFAULT NULL,
     punti_campionato INT DEFAULT 0,
     titoli INT DEFAULT 0,
-    PRIMARY KEY (nome)
+    PRIMARY KEY (nome),
+    CONSTRAINT fk_pilota1 FOREIGN KEY (pilota_attuale1_id)
+        REFERENCES Piloti(id) 
+        ON DELETE SET NULL 
+        ON UPDATE CASCADE,
+    CONSTRAINT fk_pilota2 FOREIGN KEY (pilota_attuale2_id)
+        REFERENCES Piloti(id) 
+        ON DELETE SET NULL 
+        ON UPDATE CASCADE
 ) ENGINE=InnoDB;
 
 INSERT INTO Scuderie (nome, presenze, pilota_attuale1_id, pilota_attuale2_id, punti_campionato, titoli) VALUES

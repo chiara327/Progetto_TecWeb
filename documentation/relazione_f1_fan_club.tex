@@ -74,7 +74,7 @@
             Alessandro Frison      & 2111932 & alessandro.frison.13@studenti.unipd.it \\
             Riccardo Graziani      & ------- & riccardo.graziani.1@studenti.unipd.it \\
             Chiara Grossele        & ------- & chiara.grossele@studenti.unipd.it \\
-            Mattia Oliva Medin     & ------- & mattia.olivamedin@studenti.unipd.it \\
+            Mattia Oliva Medin     & 2103471 & mattia.olivamedin@studenti.unipd.it \\
         \end{tabular}
     \end{table}
 
@@ -99,15 +99,58 @@ Chi sono i visitatori? Tifosi occasionali e appassionati di F1.
 Strategie per migliorare la visibilità sui motori di ricerca (parole chiave, meta tag, contenuti di qualità).
 
 \section{Progettazione}
-Descrizione dell'architettura del sito, delle tecnologie utilizzate e della struttura del database.
 \subsection{Schema organizzativo}
-Schema organizzativo del sito, inclusi i principali moduli e le interazioni tra essi.
+Abbiamo adottato un approccio di progettazione dando priorità alla facilità di comprensione dei contenuti, con particolare attenzione all'usabilità e all'accessibilità. 
+Il sito permette di visualizzare diverse informazioni riguardanti il mondo della Formula 1 come i piloti, le scuderie, la classifica sia dei piloti che delle scuderie, le varie gare effettuate e la lista di circuiti.
+Gli utenti registrati possono inoltre commentare le varie gare, esprimendo le proprie opinioni e interagendo con altri appassionati. L'amministratore del sito ha la possibilità di gestire gli utenti, aggiungendone di nuovi o rimuovendo account in caso di commenti inappropriati,
+L'amministratore potrà inoltre aggiungere o rimuovere le gare quando queste vengono effettuate utilizzando qualunque circuito disponibile, inoltre dovrà anche occuparsi di aggiornare la classifica aggiungendo o rimuovendo punti ai diversi piloti.
 \subsection{Tipi di utente}
-Descrizione dei diversi tipi di utenti (es. utente normale, amministratore) e i permessi associati.
+Durante la fase di progettazione sono stati identificati di seguenti tipi di utente:
+\begin{itemize}
+    \item \textbf{Utente non registrato:} Può visualizzare le informazioni generali sul sito, i piloti, le scuderie, le classifiche, le gare ed i circuiti, ma non può commentare diverse gare o accedere all'area riservata.
+    \item \textbf{Utente registrato:} L'utente registrato può accedere a tutte le funzionalità del sito, inclusa la possibilità di commentare le gare e accedere alla propria area riservata dove potrà modificare le diverse informazioni riguardanti il suo account.
+    \item \textbf{Amministratore:} L'utente amministratore ha accesso a tutte le funzionalità del sito e può inoltre aggiungere o rimuovere utenti, eliminando i commenti del'utente rimosso, potrà anche aggiungere nuove gare o rimuovere gare esistenti e potrà infine aggiornare le classifiche aggiungendo o rimuovendo punti ai diversi piloti.
+\end{itemize}
 \subsection{Funzionalità}
+Elenco delle funzionalità del sito:
+\begin{itemize}
+    \item Registrazione utente;
+    \item login utente/amministratore;
+    \item visualizzazione home page;
+    \item visualizzazione piloti;
+    \item visualizzazione informazioni pilota;
+    \item visualizzazione scuderie;
+    \item visualizzazione informazioni scuderia;
+    \item visualizzazione classifica piloti;
+    \item visualizzazione classifica costruttori;
+    \item visualizzazione gare effettuate;
+    \item visualizzazione commenti gara;
+    \item visualizzazione circuiti;
+    \item inserimento commenti (utente registrato);
+    \item rimozione propri commenti (utente registrato);
+    \item accesso all'area riservata (utente registrato);
+    \item modifica informazioni account (utente registrato);
+    \item visualizzare propri commenti (utente registrato);
+    \item aggiunta utenti (amministratore);
+    \item rimozione utenti e relativi commenti (amministratore);
+    \item aggiunta gare (amministratore);
+    \item rimozione gare (amministratore);
+    \item aggiunta punti al pilota nella classifica (amministratore);
+    \item rimozione punti al pilota nella classifica (amministratore).
+\end{itemize}
 \subsection{Convenzioni interne}
+Elenco delle convenzioni interne del sito:
+\begin{itemize}
+    \item i \textbf{link} sono tutti sottolineati. I link non visitati sono di colore bianco, mentre i link visitati sono di colore blu, sono stati scelti questi colori per garantire un buon contrasto con lo sfondo scuro del sito;
+    \item i \textbf{form} hanno uno sfondo scuro, testo di colore bianco e il pulsante di invio di colore rosso.
+    \item i \textbf{link circolari} sono disabilitati e vengono mostrati sottolineati di rosso per fai capire che ci si trova in quella pagina;
+\end{itemize}
 \subsection{Schema del Database}
-Descrizione delle tabelle (Utenti, Commenti, Piloti, Classifiche, ...).
+Schema relazionale del database:
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{../resources/databaseschema.png}
+\end{figure}
 
 \newpage
 
@@ -117,6 +160,8 @@ Descrizione delle fasi di sviluppo, delle difficoltà incontrate e delle soluzio
 Descrizione delle pagine principali del sito e delle loro funzionalità.
 \subsubsection{HTML}
 \subsubsection{Popolamento database}
+Per popolare il database abbiamo deciso di farlo manualmente, inserendo i dati tramite comandi SQL e senza quindi generare una grande quantità di dati. Alcuni dei dati inseriti sono dati reali ma ci sono alcune eccezioni inventate per moltre categorie.
+Ad esempio sono presenti alcuni piloti inventati ed una scuderia fittizia. Le immagini dei piloti, delle scuderie e delle gare sono tutte generate tramite strumenti di intelligenza artificiale mentre le immagini dei circuiti sono immagini reali libere dal copyright.
 \subsection{Presentazione}
 Descrizione dell'aspetto grafico del sito, del layout e delle scelte di design.
 \subsubsection{CSS}
@@ -129,6 +174,11 @@ Descrizione delle funzionalità interattive del sito.
 \subsubsection{JavaScript}
 \subsubsection{Validazione dell'Input}
 \subsubsection{Sicurezza}
+Per quanto riguarda la sicurezza del sito, sono state adottate le diverse precauzioni:
+\begin{itemize}
+    \item le \textbf{query SQL} sono state realizzate utilizzando le prepared statements per prevenire attacchi di tipo SQL Injection;
+    \item le \textbf{password} degli utenti presenti nel database sono state cifrate tramite l'algoritmo bcrypt per prevenire accessi non autorizzati in caso di compromissione del database, inoltre gli utenti dovranno avere precauzioni nella scelta della password, infatti dovrà avere almeno 8 caratteri tra cui almeno una lettera maiuscola, una lettera minuscola, un numero e un carattere speciale;
+\end{itemize}
 \subsubsection{Errori di navigazione o del server}
 \subsection{Accessibilità e Usabilità}
 Misure adottate per garantire l'accessibilità (es. contrasto colori, navigazione da tastiera) e l'usabilità (es. layout intuitivo, tempi di caricamento rapidi).
@@ -141,12 +191,61 @@ Uso di Git per il controllo delle versioni e la collaborazione tra i membri del 
 Descrizione dei test effettuati per verificare il corretto funzionamento del sito e la conformità ai requisiti iniziali.
 \subsection{Navigabilità ed accessibilità}
 \subsection{Falsi positivi}
+A seguito dell'utilizzo di Total Validor e W3C Validator sono stati riscontranti i seguenti falsi positivi:
+\begin{itemize}
+    \item tutte le pagine sono soggette a segnalazioni riguardanti errori di ortografia; 
+    \item molte pagine presentano errori dovuti all'inserimento di un valore [value], questo è stato fatto per sostiuire il valore tra parentesi quadre tramite php;
+\end{itemize}
 \subsection{Screen reader}
 
 \newpage
 
 \section{Suddivisione del lavoro}
-Breve descrizione dei compiti svolti da ciascun membro del gruppo.
+Abbiamo deciso di dividerci i compiti per garantire una buona organizzazione del lavoro e per sfruttare al meglio le competenze di ogni membro del gruppo garantendo a ciascuno di implementare i diversi aspetti del sito.
+Ogni membro del gruppo ha però collaborato in caso di dubbi o difficoltà durante l'implementazione delle varie funzionalità aiutandoci a vicenda.
+\subsection{Divisione generale dei compiti}
+\begin{itemize}
+    \item Banchieri Giuliano: 
+    \begin{itemize}
+        \item HTML e CSS di area utente, area amministratore, classifica, home page;
+        \item PHP delle stesse pagine;
+        \item JS: menu;
+        \item Relazione.
+    \end{itemize}
+    \item Frison Alessandro:
+    \begin{itemize}
+        \item HTML e CSS di commenti, gare, circuiti;
+        \item PHP delle stesse pagine;
+        \item JS: classifica, area conferma elimina;
+        \item Database: creazione, query e popolamento
+        \item Relazione
+    \end{itemize}
+    \item Graziani Riccardo: 
+    \begin{itemize}
+        \item HTML e CSS piloti di piloti, informazioni pilota, scuderie, informazioni scuderia;
+        \item PHP delle stesse pagine;
+        \item JS: validazione input;
+        \item Testing;
+        \item Database: connessione;
+        \item Relazione.
+    \end{itemize}
+    \item Grossele Chiara: 
+    \begin{itemize}
+        \item HTML e CSS di pagine d'errore, classifica, home page;
+        \item PHP delle stesse pagine;
+        \item JS: animazioni;
+        \item Relazione.
+    \end{itemize}
+    \item Oliva Medin Mattia: 
+    \begin{itemize}
+        \item HTML e CSS di login, registrazione, pagine dei vari form admin;
+        \item PHP delle stesse pagine;
+        \item JS: validazione input;
+        \item Database: creazione, query e popolamento;
+        \item Relazione.
+    \end{itemize}
+    
+\end{itemize}
 
 \section{Note}
 
