@@ -2573,3 +2573,30 @@ label {
 .area_commenti p.error {
     color: #f87171;
 }
+
+/* =========================
+   VALIDATORI HTML5
+   ========================= */
+.validators-group {
+    position: relative;
+    text-align: right;   
+    width: 100%;          
+    margin-top: 1em;
+    display: block;      
+}
+
+.validators-group a {
+    display: inline-block; 
+    margin-left: 0.5em;   
+    position: relative;  
+}
+
+.validators-group img {
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+    vertical-align: middle;
+}
+
+.validators-group img:hover {
+    opacity: 1;
+}
