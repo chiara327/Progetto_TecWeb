@@ -906,123 +906,41 @@ main section h2, article.aboutus h2 {
    CLASSIFICA PAGE
    ========================= */
 
-main > h1 {
-    margin-bottom: 1em;
+.classifica_piloti thead,
+.classifica_costruttori thead{
+    display: none;
 }
 
-.classifica_piloti, 
-.classifica_costruttori {
-    display: table;
-    table-layout: fixed;
-    width: 95%;
-    margin: 1.5em auto;
-    border-collapse: collapse;
-    font-size: 0.9em;
-    display: block;
-    overflow-x: auto;
-}
-
-.classifica_piloti thead, 
-.classifica_costruttori thead {
-    display: table;
-    width: 100%;
-    background: var(--navbar-bg-color);
-}
-
-.classifica_piloti tbody, 
-.classifica_costruttori tbody {
-    display: block;
-}
-
-.classifica_piloti tr, 
-.classifica_costruttori tr {
-    display: table;
-    width: 100%;
-    background: var(--footer-border-color);
-    margin-bottom: 0.5em;
-}
-
-.classifica_piloti th, .classifica_piloti td,
-.classifica_costruttori th, .classifica_costruttori td {
-    display: table-cell;
-    text-align: center;
-    padding: 0.8em 0.5em;
-    border: 0.15em solid var(--link-color);
-}
-
-.classifica_piloti th:nth-child(1), 
-.classifica_piloti td:nth-child(1) {
-    width: 15%;
-}
-
-.classifica_piloti th:nth-child(2), 
-.classifica_piloti td:nth-child(2) {
-    width: 35%;
-}
-
-.classifica_piloti th:nth-child(3), 
-.classifica_piloti td:nth-child(3) {
-    width: 35%;
-}
-
-.classifica_piloti th:nth-child(4), 
-.classifica_piloti td:nth-child(4) {
-    width: 15%;
-}
-
-.classifica_costruttori th:nth-child(1), 
-.classifica_costruttori td:nth-child(1) {
-    width: 20%;
-}
-
-.classifica_costruttori th:nth-child(2), 
-.classifica_costruttori td:nth-child(2) {
-    width: 60%;
-}
-
-.classifica_costruttori th:nth-child(3), 
-.classifica_costruttori td:nth-child(3) {
-    width: 20%;
-}
-
-.classifica_piloti th, 
-.classifica_costruttori th {
-    font-size: 0.95em;
-    font-weight: bold;
-    background: var(--navbar-bg-color);
-    color: var(--navbar-text-color);
-}
-
-.classifica_piloti td, 
+.classifica_piloti tr,
+.classifica_piloti th,
+.classifica_piloti td,
+.classifica_costruttori tr,
+.classifica_costruttori th,
 .classifica_costruttori td {
-    background: var(--footer-border-color);
-    font-size: 0.9em;
-}
-
-.classifica_piloti caption, 
-.classifica_costruttori caption, 
-#content h2 {
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    width: fit-content;
-    padding: 0.5em 1em;
-    border-left: none;
-    border-right: none;
-}
-
-.classifica_piloti caption, 
-.classifica_costruttori caption, 
-#content h3 {
-    text-align: center;
     display: block;
-    width: 90%;
-    margin: 1em auto;
-    border-left: none !important; 
-    border-bottom: 0.07em solid var(--accent-color);
-    padding-bottom: 0.5em;
-    line-height: 1.4;
-    font-size: 1.1em;
+    padding: 0;
+    white-space: normal;
+}
+
+.classifica_costruttori tbody th,
+.classifica_piloti tbody th {
+    font-size: 1em;
+    color: var(--accent-color);
+    width: 100%;
+    border-left: none;
+}
+
+.classifica_piloti th[data-title]:before,
+.classifica_piloti td[data-title]:before,
+.classifica_costruttori th[data-title]:before,
+.classifica_costruttori td[data-title]:before {
+    content: attr(data-title) ":\00A0";
+    font-weight: bold;
+}
+
+.classifica_costruttori tr:first-child,
+.classifica_piloti tr:first-child {
+    border-top: 1px solid var(--accent-color);
 }
 
 /* ==========================================================
@@ -1047,33 +965,6 @@ main > h1 {
 [role="tab"]:first-child,
 [role="tab"]:last-child {
     border-radius: 0.3em !important;
-}
-
-.classifica {
-    display: block; 
-    width: 100%;
-    overflow-x: auto; 
-    -webkit-overflow-scrolling: touch;
-    margin: 1em 0;
-    border-spacing: 0 0.3em;
-}
-
-.classifica th,
-.classifica td {
-    white-space: nowrap; 
-    padding: 0.6em;
-    font-size: 0.85em; 
-}
-
-.classifica th[scope="row"] {
-    width: auto;
-    min-width: 2.5em;
-    padding: 0.5em;
-    font-size: 1.1em;
-}
-
-.classifica tbody tr:hover td {
-    background-color: var(--footer-border-color); 
 }
 
 /* =========================
