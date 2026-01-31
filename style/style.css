@@ -78,8 +78,9 @@ main .title-f1 {
     margin-bottom: 0.4em;
     border-top: 0.07em solid var(--accent-color);
     border-bottom: 0.07em solid var(--accent-color);
-    padding-top: 0.4em;
-    padding-bottom: 0.4em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    margin-top: 0.4em;
 }
 
 abbr {
@@ -333,14 +334,6 @@ h1.hide {
     padding: 1em 2.5em;
 }
 
-#content h2 {
-    border-top: 0.07em solid var(--accent-color);
-    border-bottom: 0.07em solid var(--accent-color);
-    padding-top: 0.3em;
-    padding-bottom: 0.3em;
-    margin-top: 0.4em;
-}
-
 #content h3 {
     text-align: left;
     border-left: 0.2em solid var(--accent-color);
@@ -556,7 +549,9 @@ h1.hide {
     margin-bottom: 0.4em;
     border-top: 0.07em solid var(--accent-color);
     border-bottom: 0.07em solid var(--accent-color);
-    padding-bottom: 0.4em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    margin-top: 0.4em;
 }
 
 #scuderie article {

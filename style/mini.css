@@ -494,24 +494,10 @@ a:focus-visible {
    SCUDERIE PAGE
    ========================= */
 
-#scuderie {
+#scuderie article {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 1em;
-}
-
-#scuderie h1 {
-    width: 100%;
-    font-size: 1.5em;
-    margin-bottom: 0.4em;
-    border-top: 0.07em solid var(--accent-color);
-    border-bottom: 0.07em solid var(--accent-color);
-    padding-top: 0.4em;
-    padding-bottom: 0.4em;
-}
-
-#scuderie article {
     position: relative;
     overflow: hidden;
     padding-top: 0em;
@@ -533,7 +519,7 @@ a:focus-visible {
     object-fit: cover;
 }
 
-#scuderie article h2 {
+#scuderie article h3 {
     padding: 0.5em;
     color: var(--content-text-color);
     text-align: center;
