@@ -1,0 +1,154 @@
+/* =========================
+   RESET & GLOBAL
+   ========================= */
+
+* {
+    margin: 0;
+    border: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    color: var(--content-text-color);
+    font-size: 100%;
+    line-height: 1.5em;
+    margin: 0 auto;
+}
+
+header {
+    padding: 0;
+}
+
+h1,
+h2,
+h3 {
+    text-align: center;
+    
+}
+
+main .title-f1 {
+    font-size: 2em;
+    margin-bottom: 0.4em;
+    border-top: 0.07em solid var(--accent-color);
+    border-bottom: 0.07em solid var(--accent-color);
+    padding-top: 0.4em;
+    padding-bottom: 0.4em;
+}
+
+/* =========================
+   GLOBAL COLORS
+   ========================= */
+
+:root {
+    --content-text-color: #000000;
+    --footer-text-color: #000000;
+    --accent-color: #E10600;
+    --quote-border-color: #E10600;
+
+    /*  COLORI DA USARE PER SCUDERIE/PILOTI */
+
+    --ferrari-color: #C62000;
+    --redbull-color: #0600EF;
+    --mclaren-color: #A35600;
+    --mercedes-color: #007064;
+    --alpine-color: #0061BA;
+    --astonmartin-color: #006A3A;
+    --williams-color: #0082FA;
+    --haas-color: #212121;
+    --racingbulls-color: #0059B3;
+    --sauber-color: #007300;
+    --superstar-color: #A67C00
+}
+
+/* =========================
+   BREADCRUMB
+   ========================= */
+#breadcrumb {
+    color: var(--content-text-color);
+    width: 100%;
+}
+
+/* =========================
+   MENU
+   ========================= */
+#menu {
+    display: none;
+}
+/* =========================
+   FOOTER
+   ========================= */
+.footer-container{
+    display: none;
+}
+
+/* =========================
+   FOOTER BOTTOM
+   ========================= */
+.footer-bottom {
+    text-align: center;
+    padding: 1.25em;
+    color: var(--footer-text-color);
+}
+
+.disclaimer {
+    font-style: italic;
+    font-size: 0.75em;
+    margin-top: 0.4em;
+}
+
+/* =========================
+   INDEX PAGE
+   ========================= */
+#content{
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+
+#content h2 {
+    border-top: 0.07em solid var(--accent-color);
+    border-bottom: 0.07em solid var(--accent-color);
+    padding-top: 0.3em;
+    padding-bottom: 0.3em;
+    margin-top: 0.4em;
+}
+
+#content h3 {
+    text-align: left;
+    border-left: 0.2em solid var(--accent-color);
+    padding-left: 0.2em;
+    padding-right: 0.2em;
+    border-right: 0.2em;
+
+}
+#content img{
+    display: none;
+}
+
+/* =========================
+   PILOTI PAGE
+   ========================= */
+
+/* =========================
+   SCUDERIE PAGE
+   ========================= */
+
+/* =========================
+   CLASSIFICA PAGE
+   ========================= */
+
+/* =========================
+   GARE PAGE
+   ========================= */
+
+/* =========================
+   CIRCUITI PAGE
+   ========================= */
+
+/* =========================
+   LOGIN & REGISTRAZIONE PAGES
+   ========================= */
+
+
