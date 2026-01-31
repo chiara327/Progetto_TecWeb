@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 
 <html lang="it">
-    <title>Gestione Gare | F1 <span lang="en">Fan Club</span></title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="formula 1, home, piloti, scuderie, gare, circuiti, classifica, area riservata, crea gare, elimina gare">
-    <meta name="description" content="Pagina admin dedicata alla gestione delle gare di Formula 1, con la possibilità di creare ed eliminare gare.">
-    <link rel="stylesheet" href="../style/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="../style/mini.css" media="screen and (max-width:800px)">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap"
-        rel="stylesheet">
+<title>Gestione Gare | F1 Fan Club</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords"
+    content="formula 1, home, piloti, scuderie, gare, circuiti, classifica, area riservata, crea gare, elimina gare">
+<meta name="description"
+    content="Pagina admin dedicata alla gestione delle gare di Formula 1, con la possibilità di creare ed eliminare gare.">
+<link rel="stylesheet" href="../style/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="../style/mini.css" media="screen and (max-width:800px)">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
 
-    <script src="../javascript/validation_utils.js" defer></script>
-    <script src="../javascript/validation_gestione_gare.js" defer></script>
+<script src="../javascript/validation_utils.js" defer></script>
+<script src="../javascript/validation_gestione_gare.js" defer></script>
 </head>
 
 <body>
@@ -46,7 +47,8 @@
                     <legend><span lang="en">Crea Gare</span></legend>
                     <ul>
                         <li>
-                            <label id="create_label_id_circuito" for="create_id_circuito">Circuito in cui si effettua la gara</label>
+                            <label id="create_label_id_circuito" for="create_id_circuito">Circuito in cui si effettua la
+                                gara</label>
                             <select name="id_circuito" id="create_id_circuito">
                                 [circuiti_dropdown]
                             </select>
@@ -56,19 +58,22 @@
                             <input type="date" name="data" id="create_data" value="[data]">
                         </li>
                         <li>
-                            <label id="create_label_primo_posto" for="create_primo_posto">Pilota arrivato al primo posto</label>
+                            <label id="create_label_primo_posto" for="create_primo_posto">Pilota arrivato al primo
+                                posto</label>
                             <select name="primo_posto" id="create_primo_posto">
                                 [piloti_dropdown]
                             </select>
                         </li>
                         <li>
-                            <label id="create_label_secondo_posto" for="create_secondo_posto">Pilota arrivato al secondo posto</label>
+                            <label id="create_label_secondo_posto" for="create_secondo_posto">Pilota arrivato al secondo
+                                posto</label>
                             <select name="secondo_posto" id="create_secondo_posto">
                                 [piloti_dropdown]
                             </select>
                         </li>
                         <li>
-                            <label id="create_label_terzo_posto" for="create_terzo_posto">Pilota arrivato al terzo posto</label>
+                            <label id="create_label_terzo_posto" for="create_terzo_posto">Pilota arrivato al terzo
+                                posto</label>
                             <select name="terzo_posto" id="create_terzo_posto">
                                 [piloti_dropdown]
                             </select>
@@ -99,14 +104,15 @@
                     [err_gare_elimina]
                 </div>
             </form>
-            </section>
+        </section>
     </main>
 
     <footer class="f1-footer">
         <div class="footer-container">
             <div class="footer-col">
                 <p class="footer-heading">F1 <span lang="en">FAN CLUB</span></p>
-                <p>Il punto di riferimento per gli appassionati di velocit&agrave;. <span lang="en">News</span>, classifiche e
+                <p>Il punto di riferimento per gli appassionati di velocit&agrave;. <span lang="en">News</span>,
+                    classifiche e
                     analisi tecnica ogni settimana.</p>
             </div>
             <div class="footer-col">
@@ -121,18 +127,23 @@
             <div class="footer-col">
                 <p class="footer-heading">Segui la F1</p>
                 <div class="social-links">
-                    <a href="https://www.facebook.com/Formula1/" aria-label="Seguici su Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/f1/" aria-label="Seguici su Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/Formula1/" aria-label="Seguici su Facebook"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/f1/" aria-label="Seguici su Instagram"><i
+                            class="fab fa-instagram"></i></a>
                     <a href="https://x.com/F1" aria-label="Seguici su X"><i class="fab fa-x-twitter"></i></a>
-                    <a href="https://www.youtube.com/@Formula1" aria-label="Seguici su YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.youtube.com/@Formula1" aria-label="Seguici su YouTube"><i
+                            class="fab fa-youtube"></i></a>
                 </div>
             </div>
         </div>
 
         <div class="footer-bottom">
             <p>&copy; 2025 F1 <span lang="en">Fan Club</span>. Sito non ufficiale.</p>
-            <p class="disclaimer">Questo sito <span lang="en">web</span> non &egrave; associato in alcun modo al gruppo Formula
-                1. F1, <span lang="en">FORMULA ONE</span>, FORMULA 1 sono marchi di <span lang="en">Formula One Licensing B.V.</span></p>
+            <p class="disclaimer">Questo sito <span lang="en">web</span> non &egrave; associato in alcun modo al gruppo
+                Formula
+                1. F1, <span lang="en">FORMULA ONE</span>, FORMULA 1 sono marchi di <span lang="en">Formula One
+                    Licensing B.V.</span></p>
         </div>
     </footer>
 </body>
