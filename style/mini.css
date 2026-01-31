@@ -18,14 +18,16 @@
 
     --link-color: #F1F1F1;
     --link-visited-color: #8AB4F8;
-    --link-bg-color: #E10600;
+    --link-bg-color: #630300;
 
-    --accent-color: #E10600;
+    --accent-color: #FF3333;
     --footer-border-color: #333333;
     --social-bg-color: #333333;
 
     --quote-bg-color: #8B0000;
     --quote-border-color: #E10600;
+
+    --table-buttons: #E62E2E;
 
     /*  COLORI DA USARE PER SCUDERIE/PILOTI */
 
@@ -35,11 +37,11 @@
     --mercedes-color: #007064;
     --alpine-color: #0061BA;
     --astonmartin-color: #006A3A;
-    --williams-color: #0082FA;
+    --williams-color: #0059B3;
     --haas-color: #212121;
     --racingbulls-color: #0059B3;
     --sauber-color: #007300;
-    --superstar-color: #A67C00;
+    --superstar-color: #856404;
 
     /* Font stack per dispositivi Windows, Android, Apple (MacOS, iOS), font di backup e font per la visualizzazione delle emoji */
     --main-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
