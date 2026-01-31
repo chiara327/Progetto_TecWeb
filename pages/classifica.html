@@ -3,18 +3,17 @@
 <html lang="it">
 
 <head>
-    <title>Classifica | F1 <span lang="en">Fan Club</span></title>
+    <title>Classifica | F1 Fan Club</title>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="formula 1, home, piloti, scuderie, gare, circuiti, classifica, area riservata, classifica piloti, classifica costruttori, posizione, punti">
-    <meta name="description" content="Pagina dedicata alle classifiche di Formula 1, con la classifica piloti e la classifica costruttori aggiornate.">
+    <meta name="keywords"
+        content="formula 1, home, piloti, scuderie, gare, circuiti, classifica, area riservata, classifica piloti, classifica costruttori, posizione, punti">
+    <meta name="description"
+        content="Pagina dedicata alle classifiche di Formula 1, con la classifica piloti e la classifica costruttori aggiornate.">
+    <link rel="icon" href="../resources/logo.svg" type="image/x-icon">
     <link rel="stylesheet" href="../style/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../style/mini.css" media="screen and (max-width:800px)">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
     <script src="../javascript/classifica.js" defer></script>
 
 </head>
@@ -52,15 +51,17 @@
 
         <div id="panel-piloti" role="tabpanel" aria-labelledby="tab-piloti">
             <!--TODO: CONTROLLARE CHE I DUE SUMMARY VADANO BENE!!!-->
-            <span id="summary_piloti" class="hide">Tabella che mostra la classifica dei piloti di Formula 1 per la stagione 2025, organizzata per righe con le posizioni, il pilota, la scuderia ed i punti accumulati.</span>
+            <span id="summary_piloti" class="hide">Tabella che mostra la classifica dei piloti di Formula 1 per la
+                stagione 2025, organizzata per righe con le posizioni, il pilota, la scuderia ed i punti
+                accumulati.</span>
             <table aria-describedby="summary_piloti" class="classifica_piloti">
                 <caption>Campionato Mondiale Piloti 2025</caption>
                 <thead>
                     <tr>
-                        <th scope="col" abbr="Posizione">Pos.</th>
-                        <th scope="col">Pilota</th>
-                        <th scope="col">Scuderia</th>
-                        <th scope="col" abbr="Punti">Pt.</th>
+                        <th abbr="Posizione">Pos.</th>
+                        <th>Pilota</th>
+                        <th>Scuderia</th>
+                        <th abbr="Punti">Pt.</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -70,14 +71,15 @@
         </div>
 
         <div id="panel-costruttori" role="tabpanel" aria-labelledby="tab-costruttori" hidden>
-            <span id="summary_scuderie" class="hide">Tabella che mostra la classifica dei costruttori di Formula 1 per la stagione 2025, organizzata per righe con le posizioni, la scuderia ed i punti accumulati.</span>
+            <span id="summary_scuderie" class="hide">Tabella che mostra la classifica dei costruttori di Formula 1 per
+                la stagione 2025, organizzata per righe con le posizioni, la scuderia ed i punti accumulati.</span>
             <table aria-describedby="summary_scuderie" class="classifica_costruttori">
                 <caption>Campionato Mondiale Costruttori 2025</caption>
                 <thead>
                     <tr>
-                        <th scope="col" abbr="Posizione">Pos.</th>
-                        <th scope="col">Scuderia</th>
-                        <th scope="col" abbr="Punti">Pt.</th>
+                        <th abbr="Posizione">Pos.</th>
+                        <th>Scuderia</th>
+                        <th abbr="Punti">Pt.</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -91,7 +93,8 @@
         <div class="footer-container">
             <div class="footer-col">
                 <p class="footer-heading">F1 <span lang="en">FAN CLUB</span></p>
-                <p>Il punto di riferimento per gli appassionati di velocit&agrave;. <span lang="en">News</span>, classifiche e
+                <p>Il punto di riferimento per gli appassionati di velocit&agrave;. <span lang="en">News</span>,
+                    classifiche e
                     analisi tecnica ogni settimana.</p>
             </div>
             <div class="footer-col">
@@ -106,18 +109,28 @@
             <div class="footer-col">
                 <p class="footer-heading">Segui la F1</p>
                 <div class="social-links">
-                    <a href="https://www.facebook.com/Formula1/" aria-label="Seguici su Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/f1/" aria-label="Seguici su Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="https://x.com/F1" aria-label="Seguici su X"><i class="fab fa-x-twitter"></i></a>
-                    <a href="https://www.youtube.com/@Formula1" aria-label="Seguici su YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.facebook.com/Formula1/" aria-label="Seguici su Facebook" class="social-icon">
+                        <img src="../resources/icons/facebook.svg" alt="" aria-hidden="true">
+                    </a>
+                    <a href="https://www.instagram.com/f1/" aria-label="Seguici su Instagram" class="social-icon">
+                        <img src="../resources/icons/instagram.svg" alt="" aria-hidden="true">
+                    </a>
+                    <a href="https://x.com/F1" aria-label="Seguici su X" class="social-icon">
+                        <img src="../resources/icons/x-twitter.svg" alt="" aria-hidden="true">
+                    </a>
+                    <a href="https://www.youtube.com/@Formula1" aria-label="Seguici su YouTube" class="social-icon">
+                        <img src="../resources/icons/youtube.svg" alt="" aria-hidden="true">
+                    </a>
                 </div>
             </div>
         </div>
 
         <div class="footer-bottom">
             <p>&copy; 2025 F1 <span lang="en">Fan Club</span>. Sito non ufficiale.</p>
-            <p class="disclaimer">Questo sito <span lang="en">web</span> non &egrave; associato in alcun modo al gruppo Formula
-                1. F1, <span lang="en">FORMULA ONE</span>, FORMULA 1 sono marchi di <span lang="en">Formula One Licensing B.V.</span></p>
+            <p class="disclaimer">Questo sito <span lang="en">web</span> non &egrave; associato in alcun modo al gruppo
+                Formula
+                1. F1, <span lang="en">FORMULA ONE</span>, FORMULA 1 sono marchi di <span lang="en">Formula One
+                    Licensing B.V.</span></p>
         </div>
     </footer>
 </body>

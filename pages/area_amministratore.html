@@ -3,18 +3,18 @@
 <html lang="it">
 
 <head>
-    <title>Area Amministratore | F1 <span lang="en">Fan Club</span></title>
+    <title>Area Amministratore | F1 Fan Club</title>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="formula 1, home, piloti, scuderie, gare, circuiti, classifica, area riservata, informazioni personali, modifica, sicurezza account, aggiorna username, commenti, gestione account, azioni admin">
-    <meta name="description" content="Pagina dedicata alla area riservata dell'amministratore del F1 Fan Club, con informazioni personali, modifica dati e azioni admin come gestione di utenti, gare o classifiche.">
+    <meta name="keywords"
+        content="formula 1, home, piloti, scuderie, gare, circuiti, classifica, area riservata, informazioni personali, modifica, sicurezza account, aggiorna username, commenti, gestione account, azioni admin">
+    <meta name="description"
+        content="Pagina dedicata alla area riservata dell'amministratore del F1 Fan Club, con informazioni personali, modifica dati e azioni admin come gestione di utenti, gare o classifiche.">
+    <link rel="icon" href="../resources/logo.svg" type="image/x-icon">
     <link rel="stylesheet" href="../style/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../style/mini.css" media="screen and (max-width:800px)">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+    
 
     <script src="../javascript/validation_utils.js" defer></script>
     <script src="../javascript/validation_area_utente_admin.js" defer></script>
@@ -93,20 +93,22 @@
             <h3 id="titolo-sicurezza">Sicurezza Account</h3>
             <form id="modifica-username" action="../php/area_amministratore.php" method="POST">
                 <fieldset>
-                <legend>Modifica Username</legend>
-                <ul>
-                    <li>
-                        <label for="nuovo_username">Nuovo Username:</label>
-                        <input type="text" id="nuovo_username" value="[username]" name="nuovo-username">
-                    </li>
-                    <li>
-                        <label for="password_attuale_user"><strong>Password Attuale (per confermare):</strong></label>
-                        <input type="password" id="password_attuale_user" name="password-attuale-user" required>
-                    </li>
-                    <li class="form-actions">
-                        <input id="modifica-username-submit" name="modifica_username" type="submit" value="Aggiorna Username">
-                    </li>
-                </ul>
+                    <legend>Modifica Username</legend>
+                    <ul>
+                        <li>
+                            <label for="nuovo_username">Nuovo Username:</label>
+                            <input type="text" id="nuovo_username" value="[username]" name="nuovo-username">
+                        </li>
+                        <li>
+                            <label for="password_attuale_user"><strong>Password Attuale (per
+                                    confermare):</strong></label>
+                            <input type="password" id="password_attuale_user" name="password-attuale-user" required>
+                        </li>
+                        <li class="form-actions">
+                            <input id="modifica-username-submit" name="modifica_username" type="submit"
+                                value="Aggiorna Username">
+                        </li>
+                    </ul>
                 </fieldset>
             </form>
             <div class="form_errors">
@@ -114,20 +116,22 @@
             </div>
             <form id="modifica-password" action="../php/area_amministratore.php" method="POST">
                 <fieldset>
-                <legend>Modifica Password</legend>
-                <ul>
-                    <li>
-                        <label for="nuova_password">Nuova Password:</label>
-                        <input type="password" id="nuova_password" name="nuova-password">
-                    </li>
-                    <li>
-                        <label for="password_attuale_psw"><strong>Password Attuale (per confermare):</strong></label>
-                        <input type="password" id="password_attuale_psw" name="password-attuale-psw" required>
-                    </li>
-                    <li class="form-actions">
-                        <input id="modifica-password-submit" name="modifica_password" type="submit" value="Aggiorna Password">
-                    </li>
-                </ul>
+                    <legend>Modifica Password</legend>
+                    <ul>
+                        <li>
+                            <label for="nuova_password">Nuova Password:</label>
+                            <input type="password" id="nuova_password" name="nuova-password">
+                        </li>
+                        <li>
+                            <label for="password_attuale_psw"><strong>Password Attuale (per
+                                    confermare):</strong></label>
+                            <input type="password" id="password_attuale_psw" name="password-attuale-psw" required>
+                        </li>
+                        <li class="form-actions">
+                            <input id="modifica-password-submit" name="modifica_password" type="submit"
+                                value="Aggiorna Password">
+                        </li>
+                    </ul>
                 </fieldset>
             </form>
             <div class="form_errors">
@@ -185,9 +189,9 @@
 
         <section aria-labelledby="azioni-admin" class="azioni_admin">
             <h3 id="azioni-admin">Azioni Admin</h3>
-            <a href="../php/form_utenti_admin.php" class="btn-admin-action">Gestione Utenti</a>
-            <a href="../php/form_gare_admin.php" class="btn-admin-action">Gestione Gare</a>
-            <a href="../php/form_classifiche_admin.php" class="btn-admin-action">Gestione Classifiche</a>
+            <a href="../php/form_utenti_admin.php" class="btn-admin-action" role="button">Gestione Utenti</a>
+            <a href="../php/form_gare_admin.php" class="btn-admin-action" role="button">Gestione Gare</a>
+            <a href="../php/form_classifiche_admin.php" class="btn-admin-action" role="button">Gestione Classifiche</a>
         </section>
 
 
@@ -197,7 +201,8 @@
         <div class="footer-container">
             <div class="footer-col">
                 <p class="footer-heading">F1 <span lang="en">FAN CLUB</span></p>
-                <p>Il punto di riferimento per gli appassionati di velocit&agrave;. <span lang="en">News</span>, classifiche e
+                <p>Il punto di riferimento per gli appassionati di velocit&agrave;. <span lang="en">News</span>,
+                    classifiche e
                     analisi tecnica ogni settimana.</p>
             </div>
             <div class="footer-col">
@@ -212,17 +217,26 @@
             <div class="footer-col">
                 <p class="footer-heading">Segui la F1</p>
                 <div class="social-links">
-                    <a href="https://www.facebook.com/Formula1/" aria-label="Seguici su Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/f1/" aria-label="Seguici su Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="https://x.com/F1" aria-label="Seguici su X"><i class="fab fa-x-twitter"></i></a>
-                    <a href="https://www.youtube.com/@Formula1" aria-label="Seguici su YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.facebook.com/Formula1/" aria-label="Seguici su Facebook" class="social-icon">
+                        <img src="../resources/icons/facebook.svg" alt="" aria-hidden="true">
+                    </a>
+                    <a href="https://www.instagram.com/f1/" aria-label="Seguici su Instagram" class="social-icon">
+                        <img src="../resources/icons/instagram.svg" alt="" aria-hidden="true">
+                    </a>
+                    <a href="https://x.com/F1" aria-label="Seguici su X" class="social-icon">
+                        <img src="../resources/icons/x-twitter.svg" alt="" aria-hidden="true">
+                    </a>
+                    <a href="https://www.youtube.com/@Formula1" aria-label="Seguici su YouTube" class="social-icon">
+                        <img src="../resources/icons/youtube.svg" alt="" aria-hidden="true">
+                    </a>
                 </div>
             </div>
         </div>
 
         <div class="footer-bottom">
             <p>&copy; 2025 F1 <span lang="en">Fan Club</span>. Sito non ufficiale.</p>
-            <p class="disclaimer">Questo sito <span lang="en">web</span> non &egrave; associato in alcun modo al gruppo Formula
+            <p class="disclaimer">Questo sito <span lang="en">web</span> non &egrave; associato in alcun modo al gruppo
+                Formula
                 1. F1, <span lang="en">FORMULA ONE</span>, FORMULA 1 sono marchi di <span lang="en">Formula One
                     Licensing B.V.</span></p>
         </div>
