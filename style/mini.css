@@ -151,31 +151,45 @@ h1.hide {
 
 #menu {
     display: none;
-    width: 100%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 80vh;
+    max-width: 320px;
+    height:100vh;
     background-color: var(--navbar-bg-color);
-    padding: 0.5em;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    padding: 2em 1em;
+    box-shadow: -2px 0 15px rgba(0, 0, 0, 0.2);
+
+    transform: translateX(100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-y: auto;
+    z-index: 200;
 }
 
 #menu.is-open {
     display: flex;
     flex-direction: column;
+    transform: translateX(0);
 }
 
 #menu li {
-    margin-bottom: 1em;
-    border-bottom: 1px solid var(--accent-color);
-}
-
-#menu li:last-child {
-    border-bottom: none;
+    margin-bottom: 1.5em;
 }
 
 #menu a {
     display: block;
     text-decoration: none;
     font-size: 1em;
+    color: var(--content-text-color);
+    padding: 0.75em;
+    border-right: 3px solid transparent;
+    transition: all 0.3s ease;
 }
+ #menu a[aria-current="page"]{
+    border-right-color: var(--accent-color);
+    color: var(--accent-color);
+ }
 /* =========================
    BREADCRUMB
    ========================= */
