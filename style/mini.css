@@ -597,6 +597,184 @@ a:focus-visible {
     text-transform: uppercase;
 }
 
+#info-scuderie section.piloti ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5em; /* Spazio leggermente aumentato per separare bene i blocchi */
+    justify-content: center;
+}
+
+#info-scuderie section.piloti li {
+    /* Larghezza piena meno un margine minimo o adattabile */
+    width: 100%; 
+    max-width: 100%;
+    padding: 0.5em; /* Ridotto il padding esterno per non sprecare spazio su schermi stretti */
+    box-sizing: border-box;
+}
+
+#info-scuderie section.piloti article {
+    position: relative;
+    overflow: hidden;
+    border: 0.3em solid var(--navbar-bg-color); /* Bordo leggermente ridotto per mobile */
+    border-radius: 0.5em; /* Opzionale: rende il look più moderno su mobile */
+}
+
+#info-scuderie section.piloti article img {
+    /* L'immagine ora occupa tutto lo spazio disponibile senza distorcersi */
+    width: 100%;
+    height: auto; 
+    aspect-ratio: 3 / 2; /* Mantiene la proporzione 30x20 originale */
+    object-fit: cover;
+    display: block;
+    cursor: pointer;
+    /* Rimosso l'hover scale o mantenuto solo per feedback touch rapido */
+    transition: transform 0.3s ease;
+}
+
+/* Disabilitiamo o limitiamo l'effetto hover che su mobile può risultare "appiccicoso" */
+#info-scuderie section.piloti article a:active img {
+    transform: scale(1.02);
+}
+
+#info-scuderie section.piloti article h3 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: auto; /* Altezza automatica per gestire eventuali nomi lunghi su due righe */
+    min-height: 3em;
+    margin: 0;
+
+    color: var(--content-text-color);
+    background-color: var(--footer-border-color);
+    padding: 0.8em 0.5em;
+    text-align: center;
+    box-sizing: border-box;
+    font-size: 1.1rem; /* Dimensione ottimizzata per leggibilità */
+
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Gestione colori scuderie (rimaste invariate nella logica) */
+
+#info-scuderie section.piloti ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5em;
+    justify-content: center;
+}
+
+#info-scuderie section.piloti li {
+    width: 100%; 
+    max-width: 100%;
+    padding: 0.5em;
+    box-sizing: border-box;
+}
+
+#info-scuderie section.piloti article {
+    position: relative;
+    overflow: hidden;
+    border: 0.3em solid var(--navbar-bg-color);
+    border-radius: 0.5em;
+}
+
+#info-scuderie section.piloti article img {
+    width: 100%;
+    height: auto; 
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+#info-scuderie section.piloti article h3 {
+    position: absolute;
+    bottom: 0;
+    border-bottom: none;
+    left: 0;
+    width: 100%;
+    height: auto;
+    min-height: 3em;
+    margin: 0;
+    color: var(--content-text-color);
+    background-color: var(--footer-border-color);
+    padding: 0.8em 0.5em;
+    text-align: center;
+    box-sizing: border-box;
+    font-size: 1.1rem;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Regole Colori e Stile (Tutte con text-transform: none) */
+
+#info-scuderie section.piloti article#alpine-heading h3 {
+    background-color: var(--alpine-color);
+    text-transform: none;
+}
+
+#info-scuderie section.piloti article#astonmartin-heading h3 {
+    background-color: var(--astonmartin-color);
+    text-transform: none;
+}
+
+#info-scuderie section.piloti article#ferrari-heading h3 {
+    background-color: var(--ferrari-color);
+    text-transform: none;
+}
+
+#info-scuderie section.piloti article#haas-heading h3 {
+    background-color: var(--haas-color);
+    text-transform: none;
+}
+
+#info-scuderie section.piloti article#mclaren-heading h3 {
+    background-color: var(--mclaren-color);
+    text-transform: none;
+}
+
+#info-scuderie section.piloti article#mercedes-heading h3 {
+    background-color: var(--mercedes-color);
+    text-transform: none;
+}
+
+#info-scuderie section.piloti article#rb-heading h3 {
+    background-color: var(--racingbulls-color);
+    text-transform: none;
+}
+
+#info-scuderie section.piloti article#redbull-heading h3 {
+    background-color: var(--redbull-color);
+    text-transform: none;
+}
+
+#info-scuderie section.piloti article#sauber-heading h3 {
+    background-color: var(--sauber-color);
+    text-transform: none;
+}
+
+#info-scuderie section.piloti article#williams-heading h3 {
+    background-color: var(--williams-color);
+    text-transform: none;
+}
+
+#info-scuderie section.piloti article#superstar-heading h3 {
+    background-color: var(--superstar-color);
+    text-transform: none;
+}
+
 /* =========================
    GARE PAGE
    ========================= */

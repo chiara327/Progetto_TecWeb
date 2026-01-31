@@ -2073,6 +2073,117 @@ label {
     color: var(--content-text-color);
 }
 
+#info-scuderie section.piloti ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    justify-content: center;
+}
+
+#info-scuderie section.piloti li {
+    width: 30em;
+    padding: 2em;
+}
+
+#info-scuderie section.piloti article {
+    position: relative;
+    overflow: hidden;
+    border: 0.5em solid var(--navbar-bg-color);
+}
+
+#info-scuderie section.piloti article img {
+    width: 30em;
+    height: 20em;
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+#info-scuderie section.piloti article a:hover img {
+    transform: scale(1.05);
+}
+
+#info-scuderie section.piloti article a:hover h3 {
+    text-decoration: underline;
+}
+
+#info-scuderie section.piloti article h3 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3em;
+    margin: 0;
+
+    color: var(--content-text-color);
+    background-color: var(--footer-border-color);
+    padding: 1em;
+    text-align: center;
+    box-sizing: border-box;
+
+    z-index: 2;
+    border-bottom: none;
+}
+
+#info-scuderie section.piloti article.alpine-heading h3 {
+    background-color: var(--alpine-color);
+    text-transform: none;
+}
+
+#info-scuderie section.piloti article.astonmartin-heading h3 {
+    background-color: var(--astonmartin-color);
+    text-transform: none;
+}
+
+#info-scuderie section.piloti article.ferrari-heading h3 {
+    background-color: var(--ferrari-color);
+    text-transform: none;
+}
+
+#info-scuderie section.piloti article.haas-heading h3 {
+    background-color: var(--haas-color);
+    text-transform: none;
+}
+
+#info-scuderie section.piloti article.mclaren-heading h3 {
+    background-color: var(--mclaren-color);
+    text-transform: none;
+}
+
+#info-scuderie section.piloti article.mercedes-heading h3 {
+    background-color: var(--mercedes-color);
+    text-transform: none;
+}
+
+#info-scuderie section.piloti article.rb-heading h3 {
+    background-color: var(--racingbulls-color);
+    text-transform: none;
+}
+
+#info-scuderie section.piloti article.redbull-heading h3 {
+    background-color: var(--redbull-color);
+    text-transform: none;
+}
+
+#info-scuderie section.piloti article.sauber-heading h3 {
+    background-color: var(--sauber-color);
+    text-transform: none;
+}
+
+#info-scuderie section.piloti article.williams-heading h3 {
+    background-color: var(--williams-color);
+    text-transform: none;
+}
+
+#info-scuderie section.piloti article.superstar-heading h3 {
+    background-color: var(--superstar-color);
+    text-transform: none;
+}
+
 /* =========================
    ERROR 403 PAGE
    ========================= */
