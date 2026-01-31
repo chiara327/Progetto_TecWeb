@@ -41,7 +41,8 @@
     --sauber-color: #007300;
     --superstar-color: #A67C00;
 
-    --main-font: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji';
+    /* Font stack per dispositivi Windows, Android, Apple (MacOS, iOS), font di backup e font per la visualizzazione delle emoji */
+    --main-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
     --base-font-size: 16px;
 }
 
