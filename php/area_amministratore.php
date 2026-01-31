@@ -9,6 +9,11 @@ if (!isset($_SESSION["user"])) {
     exit();
 }
 
+if (!isset($_SESSION["admin"]) || !$_SESSION["admin"]) {
+    header("location: area_utente.php");
+    exit();
+}
+
 $anagrafica_errors = "";
 $password_errors = "";
 $username_errors = "";
