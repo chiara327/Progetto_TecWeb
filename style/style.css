@@ -1818,35 +1818,33 @@ button[type="submit"] {
    RADIO BUTTONS – F1 STYLE
    ========================= */
 
-#form-modifica-punti-pilota input[type="radio"] {
-    appearance: none;
-    position: relative;
-
-    width: 1.4em;
-    height: 1.4em;
-
-    border: 0.15em solid var(--accent-color);
-    border-radius: 50%;
-    background: transparent;
-
-    cursor: pointer;
-    transition: box-shadow 0.2s ease;
-}
-
-/* Contenitore radio */
-#form-modifica-punti-pilota li:nth-child(2) {
+#form-modifica-punti-pilota fieldset {
     display: flex;
-    align-items: center;
+    flex-direction: column;
     gap: 1em;
 }
 
-/* Reset margini */
-#form-modifica-punti-pilota li:nth-child(2) input,
-#form-modifica-punti-pilota li:nth-child(2) label {
+[aria-label="Aggiungi o diminuisci punti"] {
+    display: flex;
+    align-items: center;
+    flex-direction: row; 
+    gap: 1.5em;          
+    margin-top: 0.5em;
+}
+
+#form-modifica-punti-pilota input[type="radio"] {
+    appearance: none;
+    position: relative;
+    width: 1.4em;
+    height: 1.4em;
+    border: 0.15em solid var(--accent-color);
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
+    transition: box-shadow 0.2s ease;
     margin: 0;
 }
 
-/* Stato checked */
 #form-modifica-punti-pilota input[type="radio"]:checked::before {
     content: "";
     position: absolute;
@@ -1855,7 +1853,6 @@ button[type="submit"] {
     border-radius: 50%;
 }
 
-/* Hover / Focus */
 #form-modifica-punti-pilota input[type="radio"]:hover {
     box-shadow: 0 0 0 0.2em rgba(225, 6, 0, 0.3);
 }
@@ -1865,14 +1862,13 @@ button[type="submit"] {
     box-shadow: 0 0 0 0.25em rgba(225, 6, 0, 0.5);
 }
 
-/* Label radio */
 #form-modifica-punti-pilota input[type="radio"] + label {
     display: inline-flex;
     align-items: center;
-    gap: 0.6em;
-
+    gap: 0.4em; 
     font-weight: bold;
     cursor: pointer;
+    margin: 0;
 }
 
 /* =========================
