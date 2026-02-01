@@ -18,7 +18,7 @@
 
 <body>
     <header>
-        <nav class="navbar">
+        <nav class="navbar" aria-label="Menu di navigazione del sito">
             <h1 class="hide">F1 <span lang="en">FAN CLUB</span></h1>
             <ul id="menu">
                 <li><a href="../index.html"><span lang="en">Home</span></a></li>
@@ -32,12 +32,12 @@
         </nav>
     </header>
 
-    <nav id="breadcrumb">
+    <nav id="breadcrumb" aria-label="Percorso attuale">
         <p>Ti trovi in: Gestione Utenti</p>
     </nav>
 
     <main id="form_utenti_admin">
-        <section class="crea-utente-section">
+        <section aria-label="Registrazione Utente" class="crea-utente-section">
             <form class="admin-form" action="../php/form_utenti_admin.php#creazione_utente" method="post"
                 id="form-utenti-aggiungi">
                 <fieldset>
@@ -84,7 +84,7 @@
             </form>
         </section>
 
-        <section class="elimina-utente-section">
+        <section aria-label="Elimina Utente" class="elimina-utente-section">
             <form class="admin-form" action="../php/form_utenti_admin.php#elimina_utente" method="post"
                 id="form-utenti-elimina">
                 <fieldset>
@@ -115,7 +115,7 @@
             </div>
             <div class="footer-col">
                 <p class="footer-heading"><span lang="en">Paddock</span></p>
-                <ul>
+                <ul aria-label="Menu navigazione campionato corrente">
                     <li><a href="../php/classifica.php">Campionato</a></li>
                     <li><a href="../php/piloti.php">Piloti</a></li>
                     <li><a href="../php/scuderie.php">Scuderie</a></li>

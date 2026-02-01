@@ -293,10 +293,12 @@ class DBConnection {
                     p1.id AS p1_id,
                     p1.nome AS p1_nome,
                     p1.cognome AS p1_cognome,
+                    p1.nazionalita AS p1_nazionalita,
 
                     p2.id AS p2_id,
                     p2.nome AS p2_nome,
-                    p2.cognome AS p2_cognome
+                    p2.cognome AS p2_cognome,
+                    p2.nazionalita AS p2_nazionalita
 
                     FROM Scuderie s
                     JOIN Piloti p1 ON s.pilota_attuale1_id = p1.id

@@ -19,7 +19,7 @@
 
 <body>
     <header>
-        <nav class="navbar">
+        <nav class="navbar" aria-label="Menu di navigazione del sito">
             <h1 class="hide">F1 <span lang="en">FAN CLUB</span></h1>
             <ul id="menu">
                 <li><a href="../index.html"><span lang="en">Home</span></a></li>
@@ -33,13 +33,12 @@
         </nav>
     </header>
 
-    <nav id="breadcrumb">
+    <nav id="breadcrumb" aria-label="Percorso attuale">
         <p>Ti trovi in: Gestione Gare</p>
     </nav>
 
-    <span hidden id="titolo-crea-gare">Gestione Gare</span>
     <main id="form_gare_admin">
-        <section aria-labelledby="titolo-crea-gare" class="crea-gare-section">
+        <section aria-label="Gestione gare" class="crea-gare-section">
             <form class="admin-form" action="../php/form_gare_admin.php#creazione_gare" method="post"
                 id="form-gare-aggiungi">
                 <fieldset>
@@ -86,8 +85,7 @@
             </form>
         </section>
 
-        <span hidden id="titolo-elimina-gare">Elimina Gare</span>
-        <section aria-labelledby="titolo-elimina-gare" class="elimina-gare-section">
+        <section aria-label="Elimina Gare" class="elimina-gare-section">
             <form class="admin-form" action="../php/form_gare_admin.php#elimina_gare" method="post"
                 id="form-gare-elimina">
                 <fieldset>
@@ -117,7 +115,7 @@
             </div>
             <div class="footer-col">
                 <p class="footer-heading"><span lang="en">Paddock</span></p>
-                <ul>
+                <ul aria-label="Menu navigazione campionato corrente">
                     <li><a href="../php/classifica.php">Campionato</a></li>
                     <li><a href="../php/piloti.php">Piloti</a></li>
                     <li><a href="../php/scuderie.php">Scuderie</a></li>
