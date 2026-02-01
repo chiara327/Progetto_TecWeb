@@ -44,27 +44,21 @@
                 id="form-modifica-punti-pilota">
                 <fieldset>
                     <legend>Modifica punti pilota</legend>
-                    <ul>
-                        <li>
-                            <label id="select_pilota_label" for="select_pilota">Pilota</label>
-                            <select name="pilota_to_increase" id="select_pilota">
-                                [piloti_dropdown]
-                            </select>
-                        </li>
 
-                        <li>
-                            <input type="radio" name="azione" value="aumenta" id="aumenta" checked>
-                            <label for="aumenta">Aumenta Punti</label>
-                            <input type="radio" name="azione" value="diminuisci" id="diminuisci">
-                            <label for="diminuisci">Diminuisci Punti</label>
-                        </li>
+                    <label id="select_pilota_label" for="select_pilota">Pilota</label>
+                    <select name="pilota_to_increase" id="select_pilota">
+                        [piloti_dropdown]
+                    </select>
 
-                        <li>
-                            <label for="punti">Punti:</label>
-                            <input type="number" name="punti" id="punti" placeholder="Inserisci i punti"
-                                value="[punti]">
-                        </li>
-                    </ul>
+                    <input type="radio" name="azione" value="aumenta" id="aumenta" checked>
+                    <label for="aumenta">Aumenta Punti</label>
+
+                    <input type="radio" name="azione" value="diminuisci" id="diminuisci">
+                    <label for="diminuisci">Diminuisci Punti</label>
+
+                    <label for="punti">Punti:</label>
+                    <input type="number" name="punti" id="punti" placeholder="Inserisci i punti" value="[punti]">
+
                     <input type="submit" value="Modifica Punti" name="modifica_punti_pilota" id="modifica_punti_pilota">
                 </fieldset>
                 <div class="form_errors">

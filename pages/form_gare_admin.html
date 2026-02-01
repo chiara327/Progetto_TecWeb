@@ -43,40 +43,32 @@
                 id="form-gare-aggiungi">
                 <fieldset>
                     <legend><span lang="en">Crea Gare</span></legend>
-                    <ul>
-                        <li>
-                            <label id="create_label_id_circuito" for="create_id_circuito">Circuito in cui si effettua la
-                                gara</label>
-                            <select name="id_circuito" id="create_id_circuito">
-                                [circuiti_dropdown]
-                            </select>
-                        </li>
-                        <li>
-                            <label id="create_label_data" for="create_data">Data della gara</label>
-                            <input type="date" name="data" id="create_data" value="[data]">
-                        </li>
-                        <li>
-                            <label id="create_label_primo_posto" for="create_primo_posto">Pilota arrivato al primo
-                                posto</label>
-                            <select name="primo_posto" id="create_primo_posto">
-                                [piloti_dropdown]
-                            </select>
-                        </li>
-                        <li>
-                            <label id="create_label_secondo_posto" for="create_secondo_posto">Pilota arrivato al secondo
-                                posto</label>
-                            <select name="secondo_posto" id="create_secondo_posto">
-                                [piloti_dropdown]
-                            </select>
-                        </li>
-                        <li>
-                            <label id="create_label_terzo_posto" for="create_terzo_posto">Pilota arrivato al terzo
-                                posto</label>
-                            <select name="terzo_posto" id="create_terzo_posto">
-                                [piloti_dropdown]
-                            </select>
-                        </li>
-                    </ul>
+
+                    <label id="create_label_id_circuito" for="create_id_circuito">Circuito in cui si effettua la
+                        gara</label>
+                    <select name="id_circuito" id="create_id_circuito">
+                        [circuiti_dropdown]
+                    </select>
+
+                    <label id="create_label_data" for="create_data">Data della gara</label>
+                    <input type="date" name="data" id="create_data" value="[data]">
+
+                    <label id="create_label_primo_posto" for="create_primo_posto">Pilota arrivato al primo posto</label>
+                    <select name="primo_posto" id="create_primo_posto">
+                        [piloti_dropdown]
+                    </select>
+
+                    <label id="create_label_secondo_posto" for="create_secondo_posto">Pilota arrivato al secondo
+                        posto</label>
+                    <select name="secondo_posto" id="create_secondo_posto">
+                        [piloti_dropdown]
+                    </select>
+
+                    <label id="create_label_terzo_posto" for="create_terzo_posto">Pilota arrivato al terzo posto</label>
+                    <select name="terzo_posto" id="create_terzo_posto">
+                        [piloti_dropdown]
+                    </select>
+
                     <input type="submit" value="Crea Gara" id="creazione_gare" name="creazione_gare">
                 </fieldset>
                 <div class="form_errors">
@@ -90,12 +82,8 @@
                 id="form-gare-elimina">
                 <fieldset>
                     <legend><span lang="en">Elimina Gare</span></legend>
-                    <ul>
-                        <li>
-                            <label for="id_delete">ID Gara</label>
-                            <input type="text" name="id_delete" id="id_delete" placeholder="Gara da eliminare">
-                        </li>
-                    </ul>
+                    <label for="id_delete">ID Gara</label>
+                    <input type="text" name="id_delete" id="id_delete" placeholder="Gara da eliminare">
                     <input id="elimina_gare" type="submit" value="Conferma Elimina" name="elimina_gare">
                 </fieldset>
                 <div class="form_errors">

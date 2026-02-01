@@ -8,15 +8,8 @@ $html_page = file_get_contents("../pages/piloti.html");
 $dynamic_content = "";
 
 
-function render_drivers($id, $nome, $cognome, $nazionalita) {
+function render_drivers($id, $nome, $cognome) {
     $display_name =  htmlspecialchars($nome . " " . $cognome);
-
-    $span_name = "";
-    if ($nazionalita === "Italiana") {
-        $span_name =  htmlspecialchars($nome . " " . $cognome);
-    } else {
-        $span_name = "<span lang=\"en\">" . htmlspecialchars($nome . " " . $cognome) . "</span>";
-    }
 
     $filename = strtolower($nome . "_" . $cognome . ".jpg");
     $base_path = "../resources/piloti/";
@@ -33,7 +26,7 @@ function render_drivers($id, $nome, $cognome, $nazionalita) {
             <article>
                 <a href="informazioni_pilota.php?id={$id}">
                     <img src="{$img_src}" alt="Ritratto di {$display_name}">
-                    <h3>{$span_name}</h3>
+                    <h3>{$display_name}</h3>
                 </a>
             </article>
         </li>
@@ -67,8 +60,8 @@ foreach ($piloti_data as $team) {
 
     $team_header = $team_straniero ? "<span lang=\"en\">{$nome_team}</span>" : $nome_team;
 
-    $driver1_html = render_drivers($team["p1_id"], $team["p1_nome"], $team["p1_cognome"], $team["p1_nazionalita"]);
-    $driver2_html = render_drivers($team["p2_id"], $team["p2_nome"], $team["p2_cognome"], $team["p2_nazionalita"]);
+    $driver1_html = render_drivers($team["p1_id"], $team["p1_nome"], $team["p1_cognome"]);
+    $driver2_html = render_drivers($team["p2_id"], $team["p2_nome"], $team["p2_cognome"]);
 
     $dynamic_content .= 
     <<<HTML
