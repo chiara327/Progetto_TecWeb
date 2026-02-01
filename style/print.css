@@ -45,12 +45,17 @@ main .title-f1 {
     padding-bottom: 0.4em;
 }
 
+a {
+    color: var(--content-text-color);
+    text-decoration: underline;
+}
+/* non serve
 a:link:after, a:visited:after {
     content: "[" attr(href) "]";
     font-size: 90%;
     color: var(--content-text-color);
 }
-
+*/
 /* =========================
    GLOBAL COLORS
    ========================= */
@@ -272,12 +277,191 @@ a:link:after, a:visited:after {
    GARE PAGE
    ========================= */
 
+.gp {
+    display: flex;
+    border: 1pt solid var(--content-text-color);
+    margin: 12pt;
+    break-inside: avoid;
+}
+
+.gp h2 {
+    text-align: center;
+    border-bottom: 0.07em solid var(--accent-color);
+    padding-top: 0.4em;
+    padding-bottom: 0.4em;
+}
+
+.gp div{
+    margin-right: 1em;
+    margin-left: 1em;
+    padding-bottom: 0.4em;
+}
+
+.gp p{
+    text-align: center;
+    padding-bottom: 0.4em;
+}
+
+.gp form{
+    display: none;
+}
+
+.gp img {
+    max-width: 20%;
+    height: auto;
+}
+
+.gp dl {
+    display: block;
+}
+
+.gp dt, .gp dd{
+    display: inline-block;
+    vertical-align: top;
+}
+
+.gp dt {
+    width: 30%;
+    font-weight: bold;
+}
+
+.gp dd, .gp dd a {
+    width: 65%;
+    text-decoration: none;
+}
+
 /* =========================
    CIRCUITI PAGE
    ========================= */
+
+.circuiti {
+    display: flex;
+    margin: 12pt;
+    break-inside: avoid;
+    border: 1pt solid var(--content-text-color);
+}
+
+.circuiti h2 {
+    text-align: center;
+    border-bottom: 0.07em solid var(--accent-color);
+    padding-top: 0.4em;
+    padding-bottom: 0.4em;
+}
+
+.circuiti div{
+    width: 75%;
+    margin-right: 1em;
+    margin-left: 1em;
+    padding-bottom: 0.4em;
+}
+
+.circuiti img {
+    max-width: 20%;
+    height: auto;
+}
+
+.circuiti dl {
+    display: block;
+}
+
+.circuiti dt, .circuiti dd{
+    display: inline-block;
+    vertical-align: top;
+}
+
+.circuiti dt {
+    width: 30%;
+    font-weight: bold;
+}
+
+.circuiti dd{
+    width: 65%;
+}
 
 /* =========================
    LOGIN & REGISTRAZIONE PAGES
    ========================= */
 
+#login_form,
+#signup_form {
+    border: 1pt solid var(--content-text-color);
+    border-radius: 0.5em;
+    padding: 2em;
+    max-width: 28em;
+    margin: 2em auto;
+    box-sizing: border-box;
+}
+
+#signup_main h1,
+#signup_main p,
+#login_main h1,
+#login_main p {
+    text-align: center;
+}
+
+#login_form legend,
+#signup_form legend {
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: var(--content-text-color);
+  margin-bottom: 1em;
+}
+
+
+#login_form ul,
+#signup_form ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#login_form li,
+#signup_form li {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5em;
+}
+
+#login_form label,
+#signup_form label {
+    font-weight: bold;
+    margin-bottom: 0.5em;
+    color: var(--content-text-color);
+}
+
+#login_form input[type="text"],
+#login_form input[type="email"],
+#login_form input[type="password"],
+#signup_form input[type="text"],
+#signup_form input[type="email"],
+#signup_form input[type="password"],
+#login_form input[type="date"],
+#signup_form input[type="date"]  {
+    padding: 0.6em 0.8em;
+    font-size: 1em;
+    border: 1pt solid var(--breadcrumb-border-color);
+    border-radius: 0.3em;
+    color: var(--content-text-color);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#login_form input[type="submit"],
+#signup_form input[type="submit"],
+#modifica-anagrafica input[type="submit"],
+#modifica-username input[type="submit"],
+#modifica-password input[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 0.8em;
+  font-size: 1em;
+  font-weight: bold;
+  color: var(--accent-color);
+  border: 1pt solid var(--accent-color);
+  border-radius: 0.3em;
+  margin-top: 1em;
+}
 
