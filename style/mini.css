@@ -571,6 +571,13 @@ main section h2, article.aboutus h2 {
    DETTAGLIO PILOTA/SCUDERIE PAGE
    ============================== */
 
+#info-piloti, #info-scuderie, #gare {
+    width: 95%;      
+    box-sizing: border-box; 
+    margin: 0 auto;
+    padding: 1.5em 1em;   
+}
+
 #info-piloti dl, 
 #info-scuderie dl, 
 #gare dl {

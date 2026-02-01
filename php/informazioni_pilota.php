@@ -37,7 +37,8 @@ $sostituzioni = [
     "[n_pole]" => htmlspecialchars($pilota['n_pole']),
     "[gran_premi]" => htmlspecialchars($pilota['gran_premi']),
     "[titoli_mondiali]" => htmlspecialchars($pilota['titoli_mondiali']),
-    "[Pilota]" => $nome_html . " " . $cognome_html, // Riutilizza le variabili sopra
+    "[Pilota]" => $nome_html . " " . $cognome_html, 
+    "[Pilota_NoSpan]" => htmlspecialchars($pilota['nome']) . " " . htmlspecialchars($pilota['cognome'])
 ];
 
 foreach ($sostituzioni as $placeholder => $valore) {

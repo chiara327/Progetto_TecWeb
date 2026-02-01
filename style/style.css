@@ -24,7 +24,7 @@
     --quote-border-color: #E10600;
 
     /* Magari trovare un rosso diverso */
-    --buttons: #E62E2E;
+    --buttons: #A60006;
 
     /*  COLORI DA USARE PER SCUDERIE/PILOTI */
 
@@ -724,7 +724,9 @@ main section h2, article.aboutus h2 {
 }
 
 .gp button.btn-view-comments:hover {
-    background-color: var(--accent-color);
+    color: var(--buttons);
+    border: 0.15em solid var(--buttons);
+    background-color: var(--buttons);
     color: var(--content-text-color);
 }
 
@@ -999,7 +1001,9 @@ th,
 #modifica-username button[type="submit"]:focus,
 #modifica-password button[type="submit"]:hover,
 #modifica-password button[type="submit"]:focus {
-  background-color: var(--accent-color);
+  color: var(--buttons);
+  border: 0.15em solid var(--buttons);
+  background-color: var(--buttons);
   color: var(--content-text-color);
   outline: none;
 }
@@ -1078,7 +1082,9 @@ th,
 
 .area_utente_logout #logout-container .btn-logout:hover,
 .area_utente_logout #logout-container .btn-delete:hover {
-    background-color: var(--accent-color);
+    color: var(--buttons);
+    border: 0.15em solid var(--buttons);
+    background-color: var(--buttons);
     color: var(--content-text-color);
 }
 
@@ -1194,17 +1200,12 @@ th,
     font-weight: bold;
     cursor: pointer;
     border-radius: 0.3em;
-    transition: all 0.3s ease;
     text-transform: uppercase;
     border: 0.15em solid var(--accent-color);
     background-color: transparent;
+    transition: background-color 0.3s ease, color 0.3s ease;
     color: var(--accent-color);
     margin-top: 1em;
-}
-
-.btn-logout:hover, .btn-admin:hover, button[type="submit"]:hover, #open-delete-modal:hover {
-    background-color: var(--accent-color);
-    color: white;
 }
 
 .anagrafica_errors, .form_errors {
@@ -1368,7 +1369,9 @@ th,
 }
 
 .azioni_admin a.btn-admin-action:hover {
-    background-color: var(--accent-color);
+    color: var(--buttons);
+    border: 0.15em solid var(--buttons);
+    background-color: var(--buttons);
     color: white;
 }
 
@@ -1496,32 +1499,15 @@ th,
    SUBMIT BUTTON
    ========================= */
 
-#form-utenti-elimina input[type="submit"],
-#form-utenti-aggiungi input[type="submit"] {
-    width: 100%;
-    padding: 0.8em;
-
-    font-size: 1em;
-    font-weight: bold;
-    text-transform: uppercase;
-
-    background: transparent;
-    color: var(--accent-color);
-
-    border: 0.15em solid var(--accent-color);
-    border-radius: 0.3em;
-
-    cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
+#form-utenti-elimina button[type="submit"]:hover,
+#form-utenti-aggiungi button[type="submit"]:hover {
+    color: var(--buttons);
+    border: 0.15em solid var(--buttons);
+    background-color: var(--buttons);
+    color: white;
 }
 
-#form-utenti-elimina input[type="submit"]:hover,
-#form-utenti-aggiungi input[type="submit"]:hover {
-    background-color: var(--accent-color);
-    color: #fff;
-}
-
-   /* =========================
+/* =========================
    AZIONI ADMIN - GARE
    ========================= */
 
@@ -1645,29 +1631,12 @@ th,
    SUBMIT BUTTON
    ========================= */
 
-#form-gare-elimina input[type="submit"],
-#form-gare-aggiungi input[type="submit"] {
-    width: 100%;
-    padding: 0.8em;
-
-    font-size: 1em;
-    font-weight: bold;
-    text-transform: uppercase;
-
-    background: transparent;
-    color: var(--accent-color);
-
-    border: 0.15em solid var(--accent-color);
-    border-radius: 0.3em;
-
-    cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-#form-gare-elimina input[type="submit"]:hover,
-#form-gare-aggiungi input[type="submit"]:hover {
-    background-color: var(--accent-color);
-    color: #fff;
+#form-gare-elimina button[type="submit"]:hover,
+#form-gare-aggiungi button[type="submit"]:hover {
+    color: var(--buttons);
+    border: 0.15em solid var(--buttons);
+    background-color: var(--buttons);
+    color: white;
 }
 
 /* =========================
@@ -1808,28 +1777,12 @@ th,
    SUBMIT BUTTON
    ========================= */
 
-#form-modifica-punti-pilota input[type="submit"] {
-    width: 100%;
-    padding: 0.8em;
-
-    font-size: 1em;
-    font-weight: bold;
-    text-transform: uppercase;
-
-    background: transparent;
-    color: var(--accent-color);
-
-    border: 0.15em solid var(--accent-color);
-    border-radius: 0.3em;
-
-    cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-#form-modifica-punti-pilota input[type="submit"]:hover {
-    background-color: var(--accent-color);
-    color: #fff;
-}   
+#form-modifica-punti-pilota button[type="submit"]:hover{
+    color: var(--buttons);
+    border: 0.15em solid var(--buttons);
+    background-color: var(--buttons);
+    color: white;
+} 
 
 /* =========================
    CLASSIFICA - TABS STYLES
@@ -1978,7 +1931,7 @@ label {
    ========================= */
 
 #info-piloti, #info-scuderie, #gare {
-    max-width: 60em;
+    width: 40%;
     margin: 0 auto;
     padding: 2em 1.25em;
 }
@@ -2369,7 +2322,9 @@ label {
 
 #form-commento button[type="submit"]:hover,
 #form-commento button[type="submit"]:focus {
-    background-color: var(--accent-color);
+    color: var(--buttons);
+    border: 0.15em solid var(--buttons);
+    background-color: var(--buttons);
     color: white;
     outline: none;
 }
@@ -2447,7 +2402,9 @@ label {
 
 .btn-delete:hover,
 .btn-delete:focus-visible {
-    background-color: var(--accent-color);
+    color: var(--buttons);
+    border: 0.15em solid var(--buttons);
+    background-color: var(--buttons);
     color: white;
     outline: none;
     transform: scale(1.05);
