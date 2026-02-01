@@ -37,70 +37,47 @@ function create_dropdown_menus() {
 }
 
 if (isset($_POST["modifica_punti_pilota"])) {
-    if (empty($_POST["pilota_to_increase"]) || empty($_POST["azione"]) || empty($_POST["punti"])) {
+    if (empty($_POST["pilota_to_increase"]) || !isset($_POST["azione"]) || !isset($_POST["punti"])) {
         $form_errors = "<p>Devi compilare tutti i campi.</p>";
-        $html_page = input_restore();
-        echo str_replace("[err_classifica_modifica]", $form_errors, $html_page);
-        exit();
     } else {
         check_invalid_input($_POST["punti"]);
+        
+        if (empty($form_errors)) {
+            $id_pilota = $_POST["pilota_to_increase"];
+            $azione = $_POST["azione"];
+            $punti = intval($_POST["punti"]);
 
-        if (!empty($form_errors)) {
-            $html_page = input_restore();
-            echo str_replace("[err_classifica_modifica]", $form_errors, $html_page);
-            exit();
-        }
+            try {
+                $db_connection = new DBConnection();
 
-        $id_pilota = $_POST["pilota_to_increase"];
-        $azione = $_POST["azione"];
-        $punti = intval($_POST["punti"]);
-
-        try {
-            $db_connection = new DBConnection();
-            $pilotExist = $db_connection->check_for_existing_pilot($id_pilota);
-            if ($pilotExist) {
+                if ($azione === "diminuisci" && !$db_connection->check_for_enough_points($id_pilota, $punti)) {
+                    $form_errors = "<p>Non puoi togliere più punti di quelli che il pilota ha.</p>";
+                } else {
+                    if ($azione === "aumenta") {
+                        $db_connection->admin_increase_pilot_points($id_pilota, $punti);
+                    } else if ($azione === "diminuisci") {
+                        $db_connection->admin_decrease_pilot_points($id_pilota, $punti);
+                    }
+                    
+                    $db_connection->close_connection();
+                    header("Location: " . $_SERVER['PHP_SELF'] . "?msg=ok");
+                    exit();
+                }
                 $db_connection->close_connection();
-                $form_errors = "<p>Il pilota inserito non esiste.</p>";
-                $html_page = input_restore();
-                echo str_replace("[err_classifica_modifica]", $form_errors, $html_page);
+            } catch (Exception $e) {
+                header("location: ../pages/500.html");
                 exit();
             }
-
-            if ($azione === "aumenta") {
-                $result = $db_connection->admin_increase_pilot_points($id_pilota, $punti);
-            } else if ($azione === "diminuisci") {
-                $result = $db_connection->admin_decrease_pilot_points($id_pilota, $punti);
-            } else {
-                $db_connection->close_connection();
-                $form_errors = "<p>Azione non valida.</p>";
-                $html_page = input_restore();
-                echo str_replace("[err_classifica_modifica]", $form_errors, $html_page);
-                exit();
-            }
-
-            $db_connection->close_connection();
-
-            // Se refresh pagina non re invia il comando già fatto (qui es. non aumenta di nuovo i punti)
-            header("Location: " . $_SERVER['PHP_SELF'] . "?msg=ok");
-            exit();
-        } catch (Exception) {
-            header("location: ../pages/500.html");
-            exit();
         }
-        $html_page = input_restore();
-    }
-} else {
-    $html_page = input_restore();
-    $dropdown_piloti = create_dropdown_menus();
-
-    // Mostra messaggio di successo se i punti sono stati modificati con successo
-    if (isset($_GET['msg'])) {
-        $message = "<p>Punti del pilota modificati con successo!</p>";
-        echo str_replace(["[err_classifica_modifica]", "[piloti_dropdown]"], [$message, $dropdown_piloti], $html_page);
-        exit();
-    } else {
-        echo str_replace(["[err_classifica_modifica]", "[piloti_dropdown]"], [$form_errors, $dropdown_piloti], $html_page);
-        exit();
     }
 }
+
+$html_page = input_restore();
+$dropdown_piloti = create_dropdown_menus();
+
+if (isset($_GET['msg']) && $_GET['msg'] === 'ok') {
+    $form_errors = "<p>Punti del pilota modificati con successo!</p>";
+}
+
+echo str_replace(["[err_classifica_modifica]", "[piloti_dropdown]"], [$form_errors, $dropdown_piloti], $html_page);
 ?>
