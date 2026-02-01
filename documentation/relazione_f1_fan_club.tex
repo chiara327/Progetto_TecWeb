@@ -96,7 +96,7 @@ La seguente relazione serve ad illustrare la progettazione e lo sviluppo del sit
             \textbf{Nome e Cognome} & \textbf{Matricola} & \textbf{Email (studenti.unipd.it)} \\ \midrule
             Giuliano Banchieri     & 2101081 & giuliano.banchieri@studenti.unipd.it \\
             Alessandro Frison      & 2111932 & alessandro.frison.13@studenti.unipd.it \\
-            Riccardo Graziani      & ------- & riccardo.graziani.1@studenti.unipd.it \\
+            Riccardo Graziani      & 2101054 & riccardo.graziani.1@studenti.unipd.it \\
             Chiara Grossele        & 2101063 & chiara.grossele@studenti.unipd.it \\
             Mattia Oliva Medin     & 2103471 & mattia.olivamedin@studenti.unipd.it \\
         \end{tabular}
@@ -107,10 +107,31 @@ Il gruppo ha deciso di sviluppare un sito fan club della Formula 1 in cui sono p
 \newpage
 
 \section{Analisi dei Requisiti}
+Innanzi a tutto abbiamo analizzato diversi siti web relativi alla Formula 1 per capire quali funzionalità fossero più utili e interessanti per gli utenti. Abbiamo inoltre discusso tra di noi per definire le funzionalità principali del sito e le caratteristiche che volevamo implementare.
+Il nostro obiettivo principale era quello di creare un sito web che fosse facile da usare, accessibile e che fornisse informazioni accurate e aggiornate sul mondo della Formula 1. 
+Abbiamo inoltre prestato una particolare attenzione alla vista mobile del sito, per garantire una buona esperienza di navigazione anche su dispositivi mobili.
 \subsection{Target di utenza}
-Chi sono i visitatori? Tifosi occasionali e appassionati di F1.    
+F1 Fan Club è rivolto principalmente agli appassionati di Formula 1 che vogliono condividere la loro passione, sia a coloro che seguono regolarmente le gare sia a chi è interessato a conoscere meglio questo sport. Il sito è progettato per essere accessibile a un pubblico ampio, includendo sia utenti esperti che principianti.
+Inoltre il nostro sito è pensato per essere utilizzato da utenti di tutte le età, con un'interfaccia intuitiva e facile da navigare, in particolare il sito si rivolge ad un'utenza con età compresa tra i 16 e i 65 anni.
+
 \subsection{SEO}
-Strategie per migliorare la visibilità sui motori di ricerca (parole chiave, meta tag, contenuti di qualità).
+Per migliorare la visibilità del sito sui motori di ricerca, sono state adottate le seguenti strategie SEO:
+\begin{itemize}
+    \item Ogni pagina è provvista di tag "title" che descrivono accuratamente il contenuto della pagina dal particolare al generale;
+    \item Vengono utilizzate parole chiave pertinenti nel contenuto del sito, come "Formula 1", "piloti", "scuderie", "classifica", "gare" e "circuiti";
+    \item Tutte le pagine hanno meta tag descrittivi per ogni pagina del sito, includendo le parole chiave principali;
+    \item In tutte le parti del sito è stata prevista la separazione tra contenuto e presentazione, utilizzando CSS per lo stile e HTML per la struttura;
+    \item Tutto il sito è soggetto alla separazione tra contenuto e comportamento, utilizzando JavaScript per le funzionalità interattive e PHP per la logica di backend; 
+\end{itemize}
+
+In particolare F1 Fan Club vuole rispondere alle seguenti query di ricerca:
+\begin{itemize}
+    \item "Fan Club Formula 1" o simili;
+    \item qualsiasi contenga nomi di scuderie o piloti di F1 presenti nel sito;
+    \item qualsiasi contenga nomi di gare o circuiti di F1 presenti nel sito;
+    \item qualsiasi contenga termini relativi alla classifica di F1;
+    \item qualsiasi contenga commenti o opinioni su gare di F1;
+\end{itemize}
 
 \section{Progettazione}
 \subsection{Schema organizzativo}
@@ -199,7 +220,11 @@ Misure adottate per garantire l'accessibilità (es. contrasto colori, navigazion
 \subsubsection{Aiuti per lo screen reader}
 \subsubsection{Compatibilità}
 \subsection{Versionamento del codice}
-Uso di Git per il controllo delle versioni e la collaborazione tra i membri del team.
+Fin dall'inizio del progetto abbiamo utilizzato Git per il versionamento del codice sorgente. Abbiamo creato un repository su GitHub dove ogni membro del gruppo ha potuto caricare le proprie modifiche e collaborare con gli altri membri.
+Questo ci ha permesso di tenere traccia delle modifiche apportate al codice, facilitando la collaborazione e la risoluzione di conflitti.
+Inoltre ci ha permesso di organizzare meglio la struttura delle componenti del sito suddividendo ogni tipo di componente in sottodirectory adeguate. Questo inoltre permette di avere una chiara separazione tra i diversi linguaggi utilizzati (HTML, CSS, JavaScript, PHP) e di mantenere il codice più ordinato e facile da gestire.
+
+\newpage
 
 \section{Test e Validazione}
 Descrizione dei test effettuati per verificare il corretto funzionamento del sito e la conformità ai requisiti iniziali.
@@ -260,6 +285,8 @@ Ogni membro del gruppo ha però collaborato in caso di dubbi o difficoltà duran
     \end{itemize}
     
 \end{itemize}
+
+\newpage
 
 \section{Note}
 

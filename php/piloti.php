@@ -69,7 +69,7 @@ foreach ($piloti_data as $team) {
             <h3 id="{$slug_team}-heading">
                 $team_header
             </h3>
-            <ul>
+            <ul aria-label="Piloti della scuderia {$slug_team}">
                 $driver1_html
                 $driver2_html
             </ul>

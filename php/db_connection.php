@@ -600,7 +600,7 @@ class DBConnection {
         }
     }
 
-    public function admin_increase_pilot_points($id_pilota, $punti){
+    public function admin_increase_pilot_points($id_pilota, $punti) {
         $query = "UPDATE ClassificaPiloti SET punti = punti + ? WHERE pilota_id = ?";
 
         $stmt = $this->connection->prepare($query);
@@ -621,7 +621,27 @@ class DBConnection {
         }
     }
 
-    public function admin_decrease_pilot_points($id_pilota, $punti){
+    public function check_for_enough_points($id_pilota, $punti_compare) {
+        $query = "SELECT punti FROM ClassificaPiloti WHERE id = ?";
+
+        $stmt = $this->connection->prepare($query);
+        if ($stmt === false) {
+			die("Errore nella preparazione dello statement: " . $this->connection->error);
+		}
+
+        $stmt->bind_param("i", $id_pilota);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+
+        if ($row = $result->fetch_assoc()) {
+            return $row["punti"] >= $punti_compare;
+        }
+
+        return false;
+    }
+
+    public function admin_decrease_pilot_points($id_pilota, $punti) {
         $query = "UPDATE ClassificaPiloti SET punti = punti - ? WHERE pilota_id = ?";
 
         $stmt = $this->connection->prepare($query);

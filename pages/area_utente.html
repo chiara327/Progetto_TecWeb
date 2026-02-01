@@ -63,25 +63,19 @@
             <form id="modifica-anagrafica" method="post" action="area_utente.php">
                 <fieldset>
                     <legend>Dati anagrafici</legend>
-                    <ul>
-                        <li>
-                            <label for="modifica_nome">Nome</label>
-                            <input type="text" name="nome" id="modifica_nome" value="[nome]" placeholder="Il tuo nome">
-                        </li>
-                        <li>
-                            <label for="modifica_cognome">Cognome</label>
-                            <input type="text" name="cognome" id="modifica_cognome" value="[cognome]"
-                                placeholder="Il tuo cognome">
-                        </li>
-                        <li>
-                            <label for="modifica_data">Data di nascita</label>
-                            <input type="date" name="data" id="modifica_data" value="[data]">
-                        </li>
-                        <li class="form-actions">
-                            <input id="modifica-anagrafica-submit" name="salva_modifiche" type="submit"
-                                value="Salva Modifiche">
-                        </li>
-                    </ul>
+                    
+                    <label for="modifica_nome">Nome</label>
+                    <input type="text" name="nome" id="modifica_nome" value="[nome]" placeholder="Il tuo nome">
+                
+                    <label for="modifica_cognome">Cognome</label>
+                    <input type="text" name="cognome" id="modifica_cognome" value="[cognome]"
+                        placeholder="Il tuo cognome">
+                
+                    <label for="modifica_data">Data di nascita</label>
+                    <input type="date" name="data" id="modifica_data" value="[data]">
+                
+                    <button type="submit" name="salva_modifiche">Salva Modifiche</button>
+                        
                 </fieldset>
                 <div class="form_errors">
                     [err-anag]
@@ -94,21 +88,16 @@
             <form id="modifica-username" action="../php/area_utente.php" method="POST">
                 <fieldset>
                     <legend>Modifica Username</legend>
-                    <ul>
-                        <li>
-                            <label for="nuovo_username">Nuovo Username:</label>
-                            <input type="text" id="nuovo_username" value="[username]" name="nuovo-username">
-                        </li>
-                        <li>
-                            <label for="password_attuale_user"><strong>Password Attuale (per
-                                    confermare):</strong></label>
-                            <input type="password" id="password_attuale_user" name="password-attuale-user" placeholder="Password attuale" required>
-                        </li>
-                        <li class="form-actions">
-                            <input id="modifica-username-submit" name="modifica_username" type="submit"
-                                value="Aggiorna Username">
-                        </li>
-                    </ul>
+                    
+                    <label for="nuovo_username">Nuovo Username:</label>
+                    <input type="text" id="nuovo_username" value="[username]" name="nuovo-username" required>
+            
+                    <label for="password_attuale_user"><strong>Password Attuale (per
+                            confermare):</strong></label>
+                    <input type="password" id="password_attuale_user" name="password-attuale-user" placeholder="Password attuale" required>
+            
+                    <button type="submit" name="modifica_username">Aggiorna Username</button>
+                    
                 </fieldset>
             </form>
             <div class="form_errors">
@@ -117,21 +106,15 @@
             <form id="modifica-password" action="../php/area_utente.php" method="POST">
                 <fieldset>
                     <legend>Modifica Password</legend>
-                    <ul>
-                        <li>
-                            <label for="nuova_password">Nuova Password:</label>
-                            <input type="password" id="nuova_password" name="nuova-password" placeholder="Minimo 8 caratteri">
-                        </li>
-                        <li>
-                            <label for="password_attuale_psw"><strong>Password Attuale (per
-                                    confermare):</strong></label>
-                            <input type="password" id="password_attuale_psw" name="password-attuale-psw" placeholder="Password attuale" required>
-                        </li>
-                        <li class="form-actions">
-                            <input id="modifica-password-submit" name="modifica_password" type="submit"
-                                value="Aggiorna Password">
-                        </li>
-                    </ul>
+                    
+                    <label for="nuova_password">Nuova Password:</label>
+                    <input type="password" id="nuova_password" name="nuova-password" placeholder="Minimo 8 caratteri" required>
+            
+                    <label for="password_attuale_psw"><strong>Password Attuale (per confermare):</strong></label>
+                    <input type="password" id="password_attuale_psw" name="password-attuale-psw" placeholder="Password attuale" required>
+            
+                    <button type="submit" name="modifica_password">Aggiorna Password</button>
+        
                 </fieldset>
             </form>
             <div class="form_errors">
@@ -199,7 +182,7 @@
             </div>
             <div class="footer-col">
                 <p class="footer-heading"><span lang="en">Paddock</span></p>
-                <ul>
+                <ul aria-label="Menu navigazione campionato corrente">
                     <li><a href="../php/classifica.php">Campionato</a></li>
                     <li><a href="../php/piloti.php">Piloti</a></li>
                     <li><a href="../php/scuderie.php">Scuderie</a></li>

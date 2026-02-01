@@ -196,7 +196,6 @@ h1.hide {
     text-decoration-color: var(--accent-color);
 }
 
-/* Prevent visited color in navbar */
 #menu a:visited {
     color: var(--link-visited-color);
 }
@@ -273,7 +272,6 @@ h1.hide {
     margin-bottom: 0.6em;
 }
 
-/* Footer link overrides */
 .footer-col ul li a {
     color: var(--footer-text-color);
 }
@@ -334,12 +332,11 @@ h1.hide {
     transition: filter 0.3s ease;
 }
 
-/* --- 4. EFFETTI HOVER E TOUCH (MOBILE-FRIENDLY) --- */
 .social-links a:hover,
 .social-links a:focus-visible,
 .social-links a:active {
-    background-color: var(--accent-color); /* Sfondo Rosso */
-    border-color: #ffffff;                 /* Bordo Bianco */
+    background-color: var(--accent-color); 
+    border-color: #ffffff;                 
     transform: scale(1.1);
     outline: none;
 }
@@ -655,11 +652,9 @@ main section h2, article.aboutus h2 {
     width: 22em;
     height: auto;
     object-fit: cover;
-    /* Evita che l'immagine si rimpicciolisca se il testo è lungo */
     flex-shrink: 0; 
 }
 
-/* Container testuale (il tuo <div> generato da PHP) */
 .gp > div {
     padding: 1.5em;
     flex-grow: 1;
@@ -667,28 +662,25 @@ main section h2, article.aboutus h2 {
     flex-direction: column;
 }
 
-/* Titolo della card */
 .gp h2 {
     text-align: left;
     color: var(--accent-color);
     margin: 0 0 0.2em 0;
     text-transform: uppercase;
     font-size: 1.6em;
-    border: none; /* Rimuove bordi ereditati da main h1/h2 */
+    border: none; 
     padding: 0;
 }
 
-/* Paragrafo della data */
 .gp p {
     margin: 0 0 1em 0;
     font-size: 0.9em;
     color: var(--footer-text-color);
 }
 
-/* Lista di descrizione (Dettagli gara) */
 .gp dl {
     display: grid;
-    grid-template-columns: 9em 1fr; /* Colonna fissa per i DT, flessibile per DD */
+    grid-template-columns: 9em 1fr;
     gap: 0.4em 0.5em;
     margin: 0;
 }
@@ -697,7 +689,7 @@ main section h2, article.aboutus h2 {
     font-weight: bold;
     text-transform: uppercase;
     font-size: 0.8em;
-    color: var(--accent-color); /* Oppure un grigio chiaro se preferisci meno rosso */
+    color: var(--accent-color); 
     align-self: start;
 }
 
@@ -707,7 +699,6 @@ main section h2, article.aboutus h2 {
     line-height: 1.3;
 }
 
-/* Link ai piloti nel podio */
 .gp dd a {
     text-decoration: underline;
     font-weight: bold;
@@ -796,7 +787,7 @@ main section h2, article.aboutus h2 {
     line-height: 1.3;
 }
 
-.circuiti img {    /* MODIFICATE COME VOLETE, se preferite jpg vi tocca modificare l'estensione di tutte le immagini */
+.circuiti img {    
     width: 22em;
     height: auto;
     display: block;
@@ -884,8 +875,6 @@ th,
   margin-bottom: 1em;
 }
 
-
-/* Rimuoviamo eventuali marker della lista e mettiamo tutto in verticale */
 #login_form ul,
 #signup_form ul {
     list-style: none;
@@ -893,7 +882,6 @@ th,
     padding: 0;
 }
 
-/* Ogni riga (label + input/checkbox) in colonna */
 #login_form li,
 #signup_form li {
     display: flex;
@@ -901,7 +889,6 @@ th,
     margin-bottom: 1.5em;
 }
 
-/* Label ben visibili */
 #login_form label,
 #signup_form label {
     font-weight: bold;
@@ -909,7 +896,6 @@ th,
     color: var(--content-text-color);
 }
 
-/* Campi di testo, email e password */
 #login_form input[type="text"],
 #login_form input[type="email"],
 #login_form input[type="password"],
@@ -931,14 +917,12 @@ th,
 #signup_form input[type="date"] {
     appearance: none;
     padding: 0.6em 1.5em 0.6em 0.8em;
-    /* spazio a destra per l’icona */
     font-size: 1em;
     border: 0.1em solid var(--footer-border-color);
     border-radius: 0.3em;
     background-color: var(--content-bg-color);
     color: var(--content-text-color);
     background-image: none;
-    /* rimuoviamo qualunque iconcina di default */
     background-repeat: no-repeat;
     background-position: right 0.8em center;
     cursor: pointer;
@@ -947,7 +931,6 @@ th,
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Focus ring coerente */
 #login_form input[type="date"]:focus,
 #signup_form input[type="date"]:focus {
     outline: none;
@@ -955,9 +938,6 @@ th,
     box-shadow: 0 0 0 0.15em var(--accent-color);
 }
 
-/* Nascondiamo spin/clear buttons in WebKit */
-
-/* Stile per il “picker” calendar icon in WebKit */
 #login_form input[type="date"]::-webkit-calendar-picker-indicator,
 #signup_form input[type="date"]::-webkit-calendar-picker-indicator {
     position: absolute;
@@ -968,14 +948,11 @@ th,
     height: 1.2em;
     right: 0.3em;
     color: var(--accent-color);
-    /* imposta il colore dell’icona */
     filter: invert(1) sepia(1) saturate(5) hue-rotate(330deg);
-    /* elimina il background default */
     background: none;
     cursor: pointer;
 }
 
-/* Focus sui campi */
 #login_form input:focus,
 #signup_form input:focus {
     outline: none;
@@ -983,7 +960,6 @@ th,
     box-shadow: 0 0 0 0.1em var(--accent-color);
 }
 
-/* Checkbox + label orizzontale */
 #login_form input[type="checkbox"],
 #signup_form input[type="checkbox"] {
     margin-right: 0.5em;
@@ -995,12 +971,11 @@ th,
     align-items: center;
 }
 
-/* Pulsante di invio */
-#login_form input[type="submit"],
-#signup_form input[type="submit"],
-#modifica-anagrafica input[type="submit"],
-#modifica-username input[type="submit"],
-#modifica-password input[type="submit"] {
+#login_form button[type="submit"],
+#signup_form button[type="submit"],
+#modifica-anagrafica button[type="submit"],
+#modifica-username button[type="submit"],
+#modifica-password button[type="submit"] {
   display: block;
   width: 100%;
   padding: 0.8em;
@@ -1014,23 +989,21 @@ th,
   transition: background-color 0.3s ease, color 0.3s ease;
 }
  
-/* Hover/Focus sul pulsante */
-#login_form input[type="submit"]:hover,
-#login_form input[type="submit"]:focus,
-#signup_form input[type="submit"]:hover,
-#signup_form input[type="submit"]:focus,
-#modifica-anagrafica input[type="submit"]:hover,
-#modifica-anagrafica input[type="submit"]:focus,
-#modifica-username input[type="submit"]:hover,
-#modifica-username input[type="submit"]:focus,
-#modifica-password input[type="submit"]:hover,
-#modifica-password input[type="submit"]:focus {
+#login_form button[type="submit"]:hover,
+#login_form button[type="submit"]:focus,
+#signup_form button[type="submit"]:hover,
+#signup_form button[type="submit"]:focus,
+#modifica-anagrafica button[type="submit"]:hover,
+#modifica-anagrafica button[type="submit"]:focus,
+#modifica-username button[type="submit"]:hover,
+#modifica-username button[type="submit"]:focus,
+#modifica-password button[type="submit"]:hover,
+#modifica-password button[type="submit"]:focus {
   background-color: var(--accent-color);
   color: var(--content-text-color);
   outline: none;
 }
 
-/* Per i link “Hai già un account?” o “Torna al login” */
 #signup_form .switch-form,
 #login_form .switch-form {
     text-align: center;
@@ -1134,7 +1107,7 @@ th,
 }
 
 #modifica-anagrafica legend {
-    display: none; /* Titolo già presente nell'H2 */
+    display: none; 
 }
 
 .area_utente_modifica ul {
@@ -1170,7 +1143,6 @@ th,
 
 .area_utente_modifica fieldset legend,
 .area_utente_modifica form legend {
-    /* Titoli delle sezioni */
     text-align: left;
     color: var(--accent-color);
     border-bottom: 0.1em solid var(--accent-color);
@@ -1179,7 +1151,6 @@ th,
     font-size: 1em;
 }
 
-/* --- Nuova Sezione Commenti (Card) --- */
 .area_utente_commenti .comment-list {
     list-style: none;
     padding: 0;
@@ -1213,11 +1184,11 @@ th,
 .comment-content {
     margin: 0;
     line-height: 1.5;
-    font-style: italic; /* Manteniamo lo stile citazione per il testo */
+    font-style: italic;
 }
 
 /* --- Bottoni ed Errori --- */
-.btn-logout, .btn-admin, input[type="submit"], #open-delete-modal {
+.btn-logout, .btn-admin, button[type="submit"], #open-delete-modal {
     display: inline-block;
     padding: 0.8em 1.5em;
     font-weight: bold;
@@ -1228,14 +1199,15 @@ th,
     border: 0.15em solid var(--accent-color);
     background-color: transparent;
     color: var(--accent-color);
+    margin-top: 1em;
 }
 
-input[type="submit"] {
+button[type="submit"] {
     background-color: var(--accent-color);
     color: white;
 }
 
-.btn-logout:hover, .btn-admin:hover, input[type="submit"]:hover, #open-delete-modal:hover {
+.btn-logout:hover, .btn-admin:hover, button[type="submit"]:hover, #open-delete-modal:hover {
     background-color: var(--accent-color);
     color: white;
 }
@@ -1253,26 +1225,23 @@ input[type="submit"] {
     display: none;
 }
 
-/* Nasconde il modale quando ha l'attributo hidden */
 #delete-modal[hidden] {
     display: none;
 }
 
-/* Overlay che copre tutta la pagina */
 .modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.7); /* Sfondo scuro semitrasparente */
+    background: rgba(0, 0, 0, 0.7); 
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 9999; /* Assicura che sia sopra a tutto */
+    z-index: 9999
 }
 
-/* Scatola del contenuto */
 .modal-content {
     background: white;
     padding: 2rem;
@@ -1282,25 +1251,23 @@ input[type="submit"] {
     color: #333;
 }
 
-/* Overlay: Oscura lo sfondo e mette in risalto il modale */
 .modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.85); /* Sfondo molto scuro per focus massimo */
+    background-color: rgba(0, 0, 0, 0.85);
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 10000; /* Sopra a tutto il resto */
-    backdrop-filter: blur(3px); /* Effetto sfocatura moderno */
+    z-index: 10000; 
+    backdrop-filter: blur(3px);
 }
 
-/* Box centrale del modale */
 .modal-content {
-    background-color: var(--navbar-bg-color); /* #0B0B10 */
-    border: 0.2em solid var(--accent-color);   /* Bordo rosso F1 */
+    background-color: var(--navbar-bg-color); 
+    border: 0.2em solid var(--accent-color);  
     border-radius: 0.5em;
     padding: 2.5em;
     max-width: 30em;
@@ -1309,7 +1276,6 @@ input[type="submit"] {
     box-shadow: 0 0 2em rgba(0, 0, 0, 0.5);
 }
 
-/* Titolo dentro il modale */
 #modal-title {
     color: var(--accent-color);
     text-transform: uppercase;
@@ -1319,7 +1285,6 @@ input[type="submit"] {
     padding-bottom: 0.4em;
 }
 
-/* Descrizione del pericolo */
 #modal-desc {
     color: var(--content-text-color);
     margin-bottom: 2em;
@@ -1327,7 +1292,6 @@ input[type="submit"] {
     line-height: 1.6;
 }
 
-/* Allineamento pulsanti */
 .modal-actions {
     display: flex;
     justify-content: center;
@@ -1335,7 +1299,6 @@ input[type="submit"] {
     flex-wrap: wrap;
 }
 
-/* Pulsante "No, mantieni" (Stile neutro) */
 .btn-secondary {
     background-color: transparent;
     color: var(--content-text-color);
@@ -1354,7 +1317,6 @@ input[type="submit"] {
     outline: none;
 }
 
-/* Pulsante "Sì, elimina" (Stile distruttivo/F1) */
 .btn-confirm-delete {
     background-color: var(--accent-color);
     color: white;
@@ -1369,12 +1331,11 @@ input[type="submit"] {
 
 .btn-confirm-delete:hover,
 .btn-confirm-delete:focus-visible {
-    background-color: #b91c1c; /* Rosso più scuro per pericolo */
-    transform: scale(1.05); /* Leggero zoom per feedback visivo */
+    background-color: #b91c1c; 
+    transform: scale(1.05); 
     outline: none;
 }
 
-/* Nasconde il modale quando non attivo */
 #delete-modal[hidden] {
     display: none;
 }
@@ -1434,7 +1395,6 @@ input[type="submit"] {
     margin: 2em auto;
 }
 
-/* Legend */
 #form-utenti-elimina legend,
 #form-utenti-aggiungi legend {
     display: block;
@@ -1447,7 +1407,6 @@ input[type="submit"] {
     color: var(--content-text-color);
 }
 
-/* Fieldset */
 #form-utenti-elimina fieldset,
 #form-utenti-aggiungi fieldset {
     border: none;
@@ -1459,7 +1418,6 @@ input[type="submit"] {
     gap: 1em;
 }
 
-/* Lista */
 .crea-utente-section ul,
 .elimina-utente-section ul {
     list-style: none;
@@ -1471,7 +1429,6 @@ input[type="submit"] {
     margin-bottom: 1.2em;
 }
 
-/* Label */
 #form-utenti-elimina label,
 #form-utenti-aggiungi label {
     margin-bottom: 0.3em;
@@ -1504,7 +1461,6 @@ input[type="submit"] {
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Focus (input + select) */
 #form-utenti-elimina input:focus,
 #form-utenti-aggiungi input:focus,
 #form-utenti-aggiungi select:focus {
@@ -1525,9 +1481,6 @@ input[type="submit"] {
     background-image: none;
 }
 
-/* Nascondiamo spin / clear (WebKit) */
-
-/* Calendar picker icon (WebKit) */
 #form-utenti-elimina input[type="date"]::-webkit-calendar-picker-indicator,
 #form-utenti-aggiungi input[type="date"]::-webkit-calendar-picker-indicator {
     position: absolute;
@@ -1591,7 +1544,6 @@ input[type="submit"] {
     margin: 2em auto;
 }
 
-/* Legend */
 #form-gare-elimina legend,
 #form-gare-aggiungi legend {
     display: block;
@@ -1604,7 +1556,6 @@ input[type="submit"] {
     color: var(--content-text-color);
 }
 
-/* Fieldset */
 #form-gare-elimina fieldset,
 #form-gare-aggiungi fieldset {
     border: none;
@@ -1616,7 +1567,6 @@ input[type="submit"] {
     gap: 1em;
 }
 
-/* Lista */
 .crea-gare-section ul,
 .elimina-gare-section ul {
     list-style: none;
@@ -1628,7 +1578,6 @@ input[type="submit"] {
     margin-bottom: 1.2em;
 }
 
-/* Label */
 #form-gare-elimina label,
 #form-gare-aggiungi label {
     margin-bottom: 0.3em;
@@ -1661,7 +1610,6 @@ input[type="submit"] {
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Focus (tutti gli input) */
 #form-gare-elimina input:focus,
 #form-gare-aggiungi input:focus,
 #form-gare-aggiungi select:focus {
@@ -1682,9 +1630,6 @@ input[type="submit"] {
     background-image: none;
 }
 
-/* Nascondiamo spin / clear (WebKit) */
-
-/* Calendar picker icon (WebKit) */
 #form-gare-elimina input[type="date"]::-webkit-calendar-picker-indicator,
 #form-gare-aggiungi input[type="date"]::-webkit-calendar-picker-indicator {
     position: absolute;
@@ -1747,7 +1692,6 @@ input[type="submit"] {
     margin: 2em auto;
 }
 
-/* Legend */
 #form-modifica-punti-pilota legend {
     display: block;
     width: 100%;
@@ -1759,7 +1703,6 @@ input[type="submit"] {
     color: var(--content-text-color);
 }
 
-/* Fieldset */
 #form-modifica-punti-pilota fieldset {
     border: none;
     margin: 0;
@@ -1770,7 +1713,6 @@ input[type="submit"] {
     gap: 1em;
 }
 
-/* Lista */
 .crea-classifica-section ul {
     list-style: none;
     padding: 0;
@@ -1780,14 +1722,12 @@ input[type="submit"] {
     margin-bottom: 1.2em;
 }
 
-/* Label */
 #form-modifica-punti-pilota label {
     margin-bottom: 0.3em;
     font-weight: bold;
     color: var(--content-text-color);
 }
 
-/* Select + Number */
 #form-modifica-punti-pilota select,
 #form-modifica-punti-pilota input[type="number"] {
     width: 100%;
@@ -1805,7 +1745,6 @@ input[type="submit"] {
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Focus (select + number) */
 #form-modifica-punti-pilota select:focus,
 #form-modifica-punti-pilota input[type="number"]:focus {
     outline: none;
@@ -1817,35 +1756,33 @@ input[type="submit"] {
    RADIO BUTTONS – F1 STYLE
    ========================= */
 
-#form-modifica-punti-pilota input[type="radio"] {
-    appearance: none;
-    position: relative;
-
-    width: 1.4em;
-    height: 1.4em;
-
-    border: 0.15em solid var(--accent-color);
-    border-radius: 50%;
-    background: transparent;
-
-    cursor: pointer;
-    transition: box-shadow 0.2s ease;
-}
-
-/* Contenitore radio */
-#form-modifica-punti-pilota li:nth-child(2) {
+#form-modifica-punti-pilota fieldset {
     display: flex;
-    align-items: center;
+    flex-direction: column;
     gap: 1em;
 }
 
-/* Reset margini */
-#form-modifica-punti-pilota li:nth-child(2) input,
-#form-modifica-punti-pilota li:nth-child(2) label {
+[aria-label="Aggiungi o diminuisci punti"] {
+    display: flex;
+    align-items: center;
+    flex-direction: row; 
+    gap: 1.5em;          
+    margin-top: 0.5em;
+}
+
+#form-modifica-punti-pilota input[type="radio"] {
+    appearance: none;
+    position: relative;
+    width: 1.4em;
+    height: 1.4em;
+    border: 0.15em solid var(--accent-color);
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
+    transition: box-shadow 0.2s ease;
     margin: 0;
 }
 
-/* Stato checked */
 #form-modifica-punti-pilota input[type="radio"]:checked::before {
     content: "";
     position: absolute;
@@ -1854,7 +1791,6 @@ input[type="submit"] {
     border-radius: 50%;
 }
 
-/* Hover / Focus */
 #form-modifica-punti-pilota input[type="radio"]:hover {
     box-shadow: 0 0 0 0.2em rgba(225, 6, 0, 0.3);
 }
@@ -1864,14 +1800,13 @@ input[type="submit"] {
     box-shadow: 0 0 0 0.25em rgba(225, 6, 0, 0.5);
 }
 
-/* Label radio */
 #form-modifica-punti-pilota input[type="radio"] + label {
     display: inline-flex;
     align-items: center;
-    gap: 0.6em;
-
+    gap: 0.4em; 
     font-weight: bold;
     cursor: pointer;
+    margin: 0;
 }
 
 /* =========================
@@ -1905,11 +1840,10 @@ input[type="submit"] {
    CLASSIFICA - TABS STYLES
    ========================= */
 
-/* Navigazione Tab */
 .tabs-navigation {
     display: flex;
     justify-content: center;
-    gap: 0; /* Uniamo i bottoni per un look a "scheda" */
+    gap: 0; 
     margin: 2em auto;
     max-width: 50em;
 }
@@ -1926,44 +1860,39 @@ input[type="submit"] {
     font-family: inherit;
 }
 
-/* Arrotondiamo solo i bordi esterni della coppia di tasti */
 [role="tab"]:first-child {
     border-radius: 0.5em 0 0 0.5em;
 }
 [role="tab"]:last-child {
     border-radius: 0 0.5em 0.5em 0;
-    border-left: none; /* Evita il doppio bordo al centro */
+    border-left: none;
 }
 
-/* Stato Hover e Focus */
 [role="tab"]:hover, 
 [role="tab"]:focus-visible {
     color: var(--buttons);
     border-color: var(--buttons);
     outline: none;
-    z-index: 1; /* Porta sopra il bordo in hover */
+    z-index: 1;
 }
 
-/* Stato Attivo (Tab Selezionato) */
 [role="tab"][aria-selected="true"] {
     background-color: var(--buttons);
     color: white;
     border-color: var(--buttons);
 }
 
-/* Pannelli */
 [role="tabpanel"][hidden] {
     display: none;
 }
 
-/* Rifinitura Tabella .classifica */
 .classifica_piloti,
 .classifica_costruttori {
     width: calc(100% - 2em);
     max-width: 60em;
     margin: 2em auto;
     border-collapse: separate;
-    border-spacing: 0 0.4em; /* Effetto righe staccate */
+    border-spacing: 0 0.4em; 
 }
 
 .classifica_piloti th,
@@ -1984,10 +1913,9 @@ input[type="submit"] {
 .classifica_costruttori tbody th{
     background-color: var(--footer-border-color);
     padding: 0.8em;
-    border: none; /* Rimuoviamo i bordi interni per un look più pulito */
+    border: none; 
 }
 
-/* Stile per la posizione (colonna 1) */
 .classifica_piloti tbody th,
 .classifica_costruttori tbody th {
     font-weight: 900;
@@ -1998,7 +1926,6 @@ input[type="submit"] {
     border-left: 0.3em solid var(--accent-color);
 }
 
-/* Hover sulla riga per facilitare la lettura */
 .classifica_piloti tbody tr:hover td,
 .classifica_costruttori tbody tr:hover td {
     background-color: #444444;
@@ -2010,46 +1937,40 @@ input[type="submit"] {
    ========================= */
 
 select {
-    background-color: var(--content-bg-color);   /* #15151E */
-    color: var(--content-text-color);             /* #F1F1F1 */
+    background-color: var(--content-bg-color);  
+    color: var(--content-text-color);             
 
-    border: 2px solid var(--footer-border-color); /* #333333 */
+    border: 2px solid var(--footer-border-color); 
     border-radius: 4px;
 
     font-size: 1rem;
     line-height: 1.4;
     padding: 0.6rem 0.75rem;
 
-    min-height: 44px; /* Touch-friendly */
+    min-height: 44px; 
 
-    /* Preserve native behavior */
     appearance: auto;
 }
 
-/* Hover state (non-essential, safe) */
 select:hover {
-    border-color: var(--accent-color); /* #E10600 */
+    border-color: var(--accent-color); 
 }
 
-/* Focus state — REQUIRED for WCAG 2.4.7 */
 select:focus {
-    outline: 3px solid var(--accent-color); /* #E10600 */
+    outline: 3px solid var(--accent-color);
     outline-offset: 2px;
     border-color: var(--accent-color);
 }
 
-/* Disabled state */
 select:disabled {
     opacity: 0.6;
     cursor: not-allowed;
 }
 
-/* Error state (optional, accessible) */
 select[aria-invalid="true"] {
     border-color: var(--accent-color);
 }
 
-/* Label styling (keeps association intact) */
 label {
     display: block;
     margin-bottom: 0.4rem;
@@ -2061,14 +1982,12 @@ label {
    PILOTA/SCUDERIE/GARE DETAIL PAGE
    ========================= */
 
-/* Centratura del contenuto principale */
 #info-piloti, #info-scuderie, #gare {
     max-width: 60em;
     margin: 0 auto;
     padding: 2em 1.25em;
 }
 
-/* Stile per le sezioni Informazioni e Statistiche */
 #info-piloti section, #info-scuderie section, #gare section {
     background-color: var(--navbar-bg-color);
     border: 0.15em solid var(--footer-border-color);
@@ -2079,7 +1998,6 @@ label {
     overflow: hidden;
 }
 
-/* Titolo della sezione con la linea rossa distintiva */
 #info-piloti section h3, #info-scuderie section h3, #gare section h3 {
     text-align: left;
     color: var(--accent-color);
@@ -2090,10 +2008,9 @@ label {
     padding-bottom: 0.4em;
 }
 
-/* Layout a griglia per le liste di dati (Nome, Cognome, Età...) */
 #info-piloti dl, #info-scuderie dl, #gare dl {
     display: grid;
-    grid-template-columns: 15em 1fr; /* Colonna fissa per l'etichetta, resto al valore */
+    grid-template-columns: 15em 1fr;
     gap: 1em;
 }
 
@@ -2267,9 +2184,11 @@ label {
   50%  { transform: translateX(-50px); }
   100% { transform: translateX(0); }
 }
+
 /* =========================
    ERROR 500 PAGE
    ========================= */
+
 #E500 {
     text-align: center;
 }
@@ -2312,7 +2231,6 @@ label {
    GP HEADER SECTION (PHP GENERATED)
    ========================= */
 
-/* Dettagli Tecnici (Lunghezza, Curve) */
 .gp-stats {
     display: grid;
     grid-template-columns: auto 1fr;
@@ -2327,7 +2245,7 @@ label {
     font-weight: bold;
     text-transform: uppercase;
     font-size: 0.85em;
-    color: var(--accent-color); /* Rosso F1 */
+    color: var(--accent-color); 
     align-self: center;
 }
 
@@ -2347,7 +2265,7 @@ label {
     gap: 0.5em;
     margin-top: 1.5em;
     padding: 0;
-    list-style: none; /* Fondamentale per <ol> */
+    list-style: none; 
 }
 
 .podium-item {
@@ -2358,17 +2276,14 @@ label {
     background-color: var(--content-bg-color);
     padding: 1em 0.5em;
     border-radius: 0.2em;
-    /* Usiamo border-top per richiamare lo stile delle grafiche F1 */
     border-top: 0.3em solid var(--footer-border-color); 
     transition: transform 0.3s ease;
 }
 
-/* Colorazione dei bordi superiori */
 .podium-item.gold { border-top-color: #FFD700; }
 .podium-item.silver { border-top-color: #C0C0C0; }
 .podium-item.bronze { border-top-color: #CD7F32; }
 
-/* Stile per il numero della posizione (.rank) */
 .podium-item .rank {
     font-size: 1.5em;
     font-weight: 900;
@@ -2376,12 +2291,10 @@ label {
     display: block;
 }
 
-/* Applichiamo il colore anche ai numeri per massima chiarezza */
 .gold .rank { color: #FFD700; }
 .silver .rank { color: #C0C0C0; }
 .bronze .rank { color: #CD7F32; }
 
-/* Stile per il nome del pilota (.driver) */
 .podium-item .driver {
     font-size: 0.9em;
     font-weight: bold;
@@ -2390,7 +2303,6 @@ label {
     color: var(--content-text-color);
 }
 
-/* Feedback al passaggio del mouse */
 .podium-item:hover {
     transform: translateY(-3px);
     background-color: var(--navbar-bg-color);
@@ -2400,7 +2312,6 @@ label {
     SEZIONE AGGIUNGI COMMENTO
    ========================= */
 
-/* Titolo della sezione */
 .commento-titolo {
     text-align: left;
     color: var(--accent-color);
@@ -2411,14 +2322,12 @@ label {
     margin-bottom: 1.2em;
 }
 
-/* Layout del Form */
 #form-commento {
     display: flex;
     flex-direction: column;
     gap: 1em;
 }
 
-/* Label con il nome utente */
 #form-commento label {
     font-size: 0.95em;
     color: var(--footer-text-color);
@@ -2428,7 +2337,6 @@ label {
     color: var(--content-text-color);
 }
 
-/* Textarea - Area di testo */
 #testo-commento {
     width: 100%;
     box-sizing: border-box;
@@ -2437,24 +2345,22 @@ label {
     color: var(--content-text-color);
     border: 0.1em solid var(--footer-border-color);
     border-radius: 0.3em;
-    font-family: inherit; /* Mantiene il font del sito */
+    font-family: inherit;
     font-size: 1em;
     line-height: 1.5;
-    resize: vertical; /* Permette solo l'allungamento verticale per non rompere il layout */
+    resize: vertical;
     min-height: 8em;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Focus sulla Textarea */
 #testo-commento:focus {
     outline: none;
     border-color: var(--accent-color);
     box-shadow: 0 0 0 0.15em rgba(225, 6, 0, 0.3);
 }
 
-/* Bottone di invio */
 #form-commento button[type="submit"] {
-    align-self: flex-start; /* Bottone non a tutta larghezza, stile F1 */
+    align-self: flex-start;
     padding: 0.8em 2em;
     background-color: transparent;
     color: var(--accent-color);
@@ -2473,8 +2379,6 @@ label {
     outline: none;
 }
 
-/* Messaggi di Errore o Successo */
-/* Assicurati che le variabili PHP iniettino span o p con queste classi */
 .error-msg, .success-msg {
     margin-top: 1em;
     padding: 0.8em;
@@ -2513,21 +2417,18 @@ label {
    PULSANTE ELIMINA COMMENTO
    ========================= */
 
-/* Allineamento orizzontale: info commento a sinistra, bottone a destra */
 .commento-card header {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start; /* Allinea in alto per gestire commenti lunghi */
+    align-items: flex-start; 
     gap: 1em;
     margin-bottom: 0.8em;
 }
 
-/* Contenitore dei metadati (Nome e Data) */
 .comment-meta {
     flex-grow: 1;
 }
 
-/* Reset margini dei titoli nel commento per allineamento perfetto */
 .comment-meta h3 {
     text-align: left;
     margin: 0;
@@ -2535,7 +2436,6 @@ label {
     color: var(--accent-color);
 }
 
-/* Stile del pulsante Elimina */
 .btn-delete {
     background-color: transparent;
     color: var(--accent-color);
@@ -2547,7 +2447,7 @@ label {
     text-transform: uppercase;
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
-    white-space: nowrap; /* Impedisce al testo del bottone di andare a capo */
+    white-space: nowrap; 
 }
 
 .btn-delete:hover,
@@ -2558,7 +2458,6 @@ label {
     transform: scale(1.05);
 }
 
-/* Messaggio di conferma eliminazione ([err-eliminazione]) */
 .area_commenti p.success, 
 .area_commenti p.error {
     margin-bottom: 0.5em;
@@ -2578,6 +2477,7 @@ label {
 /* =========================
    VALIDATORI HTML5
    ========================= */
+   
 .validators-group {
     position: relative;
     text-align: right;   

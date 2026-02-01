@@ -50,16 +50,21 @@
                         [piloti_dropdown]
                     </select>
 
-                    <input type="radio" name="azione" value="aumenta" id="aumenta" checked>
-                    <label for="aumenta">Aumenta Punti</label>
-
-                    <input type="radio" name="azione" value="diminuisci" id="diminuisci">
-                    <label for="diminuisci">Diminuisci Punti</label>
+                    <ul aria-label="Aggiungi o diminuisci punti">
+                        <li>
+                            <input type="radio" name="azione" value="aumenta" id="aumenta" checked>
+                            <label for="aumenta">Aumenta Punti</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="azione" value="diminuisci" id="diminuisci">
+                            <label for="diminuisci">Diminuisci Punti</label>
+                        </li>
+                    </ul>
 
                     <label for="punti">Punti:</label>
                     <input type="number" name="punti" id="punti" placeholder="Inserisci i punti" value="[punti]">
 
-                    <input type="submit" value="Modifica Punti" name="modifica_punti_pilota" id="modifica_punti_pilota">
+                    <button type="submit" name="modifica_punti_pilota" id="modifica_punti_pilota">Modifica Punti</button>
                 </fieldset>
                 <div class="form_errors">
                     [err_classifica_modifica]

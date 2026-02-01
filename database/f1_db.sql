@@ -167,6 +167,7 @@ VALUES
 (2025, 'Williams', 190),
 (2025, 'Haas', 43),
 (2025, 'Sauber', 59);
+
 CREATE TABLE IF NOT EXISTS Gare (
     id INT NOT NULL AUTO_INCREMENT,
     circuito_id INT NOT NULL,
@@ -234,8 +235,8 @@ CREATE TABLE IF NOT EXISTS Utente (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO Utente (username, password, adminPower, nome, cognome, dataNascita) VALUES
-('Admin', '$2y$10$3nBJqkuPFy9aHA8pMCOyZegRUQbGCvGN56aFPdX/qhgW6Ju6b45j2', 1, 'Mario', 'Rossi', '2000-01-01');
-('admin', '$2y$10$pCJ47BCvSKy9vmycaN0ODOkiqd7RW4XlFK.sK27MoCDL83dow027u', 1, 'admin', 'admin', '2000-01-01');
+('admin', '$2y$10$pCJ47BCvSKy9vmycaN0ODOkiqd7RW4XlFK.sK27MoCDL83dow027u', 1, 'admin', 'admin', '2000-01-01'),
+('user', '$2y$10$h28Mv8HyuDKn9r4SYlNSQe3a2HQ19TTZP/n1syeX4LlubYxXdurkm', 0, 'user', 'user', '2000-01-01');
 
 
 CREATE TABLE IF NOT EXISTS Commento (
@@ -256,6 +257,6 @@ CREATE TABLE IF NOT EXISTS Commento (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO Commento (username, gara_id, testo, data_ora) VALUES
-('Admin', 1, 'Grande gara di Verstappen, ha dominato dall''inizio alla fine!', '2025-09-08 14:30:00'),
-('Admin', 2, 'Norris ha fatto un lavoro eccezionale in Cina, complimenti a lui!', '2025-09-09 10:15:00'),
-('Admin', 3, 'Hamilton ha mostrato ancora una volta la sua classe in Giappone.', '2025-09-10 18:45:00');
+('admin', 1, 'Grande gara di Verstappen, ha dominato dall''inizio alla fine!', '2025-09-08 14:30:00'),
+('admin', 2, 'Norris ha fatto un lavoro eccezionale in Cina, complimenti a lui!', '2025-09-09 10:15:00'),
+('admin', 3, 'Hamilton ha mostrato ancora una volta la sua classe in Giappone.', '2025-09-10 18:45:00');
