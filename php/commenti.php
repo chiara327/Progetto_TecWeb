@@ -5,7 +5,6 @@ use DB\DBConnection;
 session_start();
 
 // 1. GESTIONE ID GARA (Recupero da POST o da GET per il redirect)
-// Usiamo gara_id coerentemente con il form della pagina precedente
 $id_gara_attuale = null;
 if (isset($_POST['gara_id'])) {
     $id_gara_attuale = intval($_POST['gara_id']);
@@ -13,7 +12,7 @@ if (isset($_POST['gara_id'])) {
     $id_gara_attuale = intval($_GET['id_gara']);
 }
 
-// Se non abbiamo un ID, torniamo indietro
+// Se non abbiamo un ID, torniamo alla pagina delle gare
 if (!$id_gara_attuale) {
     header("location: gare.php");
     exit();
@@ -23,8 +22,9 @@ $commenti_errors = "";
 $success_msg = "";
 $err_aggiungi_commenti = "";
 $messaggio_successo_aggiunta_commento = "";
+$err_eliminazione = "";
 
-// 2. LOGICA DI INVIO NUOVO COMMENTO (Prima del recupero dati)
+// 2. LOGICA DI INVIO NUOVO COMMENTO
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["invia_commento"])) {
     if (isset($_SESSION["user"])) {
         $testo = trim($_POST["testo_commento"]);
@@ -38,7 +38,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["invia_commento"])) {
                 $db = new DBConnection();
                 if ($db->insert_commento($username, $id_gara_attuale, $testo, $data_oggi)) {
                     $db->close_connection();
-                    // Passiamo l'id_gara nel GET per non perderlo dopo il redirect
                     header("Location: commenti.php?status=ok&id_gara=" . $id_gara_attuale); 
                     exit();
                 } else {
@@ -53,29 +52,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["invia_commento"])) {
     }
 }
 
-// Controllo se è arrivata una richiesta di eliminazione
-$err_eliminazione = "";
+// 3. LOGICA DI ELIMINAZIONE COMMENTO
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comment_id'])) {
-    
-    // Verifica che l'utente sia loggato
     if (isset($_SESSION['user'])) {
         $id_da_eliminare = $_POST['comment_id'];
         $utente_attivo = $_SESSION['user'];
 
-        // 2. Chiamata alla funzione
         try {
             $db_connection = new DBConnection();
-            $err_eliminazione = $db_connection->delete_commento($id_da_eliminare, $utente_attivo);
+            $risultato_eliminazione = $db_connection->delete_commento($id_da_eliminare, $utente_attivo);
             $db_connection->close_connection();
+            
+            if ($risultato_eliminazione === true) {
+                $err_eliminazione = "<p class='success'>Commento eliminato con successo.</p>";
+            } else {
+                $err_eliminazione = "<p class='error'>Errore: eliminazione non riuscita.</p>";
+            }
         } catch (Exception $e) {
             header("location: ../pages/500.html");
             exit();
-        }
-
-        if ($err_eliminazione === true) {
-            $err_eliminazione = "<p class='success'>Commento eliminato con successo.</p>";
-        } else {
-            $err_eliminazione = "<p class='error'>Errore: eliminazione non riuscita.</p>";
         }
     }
 }
@@ -84,7 +79,7 @@ if (isset($_GET['status']) && $_GET['status'] === 'ok') {
     $messaggio_successo_aggiunta_commento = "<p class='success' aria-live='polite'>Commento pubblicato!</p>";
 }
 
-// 3. RECUPERO DATI PER RENDERING
+// 4. RECUPERO DATI PER RENDERING
 try {
     $db_connection = new DBConnection();
     $gara_data = $db_connection->get_gara_data($id_gara_attuale);
@@ -95,24 +90,31 @@ try {
     exit();
 }
 
-// Se per qualche motivo l'ID non esiste nel DB
 if (!$gara_data) {
     header("location: gare.php");
     exit();
 }
 
+$format_driver = function($nome, $cognome, $nazionalita) {
+    $full_name = htmlspecialchars($nome . " " . $cognome);
+    if ($nazionalita && $nazionalita !== 'it') {
+        return '<span lang="' . htmlspecialchars($nazionalita) . '">' . $full_name . '</span>';
+    }
+    return $full_name;
+};
+
 $html_page = file_get_contents("../pages/commenti.html");
 
-// 4. COSTRUZIONE INTERFACCIA
+// 5. COSTRUZIONE INTERFACCIA DETTAGLI GARA
 $data_val = $gara_data['data'];
 $data_it = date("d/m/Y", strtotime($data_val));
 $nazione = htmlspecialchars($gara_data['circuito_nazione']);
 $anno = date("Y", strtotime($data_val));
 $titolo_gp = $nazione . ' <span lang="en">Grand Prix</span> ' . $anno;
 
-$p1 = htmlspecialchars($gara_data['p1_nome'] . " " . $gara_data['p1_cognome']);
-$p2 = htmlspecialchars($gara_data['p2_nome'] . " " . $gara_data['p2_cognome']);
-$p3 = htmlspecialchars($gara_data['p3_nome'] . " " . $gara_data['p3_cognome']);
+$p1_display = $format_driver($gara_data['p1_nome'], $gara_data['p1_cognome'], $gara_data['p1_nazionalita']);
+$p2_display = $format_driver($gara_data['p2_nome'], $gara_data['p2_cognome'], $gara_data['p2_nazionalita']);
+$p3_display = $format_driver($gara_data['p3_nome'], $gara_data['p3_cognome'], $gara_data['p3_nazionalita']);
 
 $info_gara_html = "
     <h3 class='titolo-commento'>" . htmlspecialchars($gara_data['circuito_nome']) . "</h3>
@@ -131,19 +133,19 @@ $info_gara_html = "
     <ol class='podium-summary' aria-label='Podio della gara'>
         <li class='podium-item gold'>
             <span class='rank' aria-hidden='true'>1</span>
-            <span class='driver'>$p1</span>
+            <span class='driver'>$p1_display</span>
         </li>
         <li class='podium-item silver'>
             <span class='rank' aria-hidden='true'>2</span>
-            <span class='driver'>$p2</span>
+            <span class='driver'>$p2_display</span>
         </li>
         <li class='podium-item bronze'>
             <span class='rank' aria-hidden='true'>3</span>
-            <span class='driver'>$p3</span>
+            <span class='driver'>$p3_display</span>
         </li>
     </ol>";
 
-// COSTRUZIONE FORM
+// 6. COSTRUZIONE FORM COMMENTI
 $form_commento = "";
 if (isset($_SESSION["user"])) {
     $form_commento = '
@@ -163,14 +165,7 @@ if (isset($_SESSION["user"])) {
         </section>';
 }
 
-// 5. SOSTITUZIONI
-//$html_page = str_replace("[GP]", $gara_data['circuito_citta'] . " Grand Prix", $html_page);
-$html_page = str_replace("[form-commento]", $form_commento, $html_page);
-$html_page = str_replace("[dettagli-gara]", $info_gara_html, $html_page);
-$html_page = str_replace("[titolo-gp]", $titolo_gp, $html_page);
-//$html_page = str_replace("[gara]", htmlspecialchars($gara_data['circuito_nome'] . " " . $anno), $html_page);
-
-// Generazione lista commenti
+// 7. GENERAZIONE LISTA COMMENTI
 $commenti_html = "";
 if (empty($commenti_data)) {
     $commenti_html = "<li>Non è ancora stato postato alcun commento.</li>";
@@ -184,6 +179,7 @@ if (empty($commenti_data)) {
         $ora_it = date("H:i", $timestamp);
         $id_commento = $comm['id'];
         $bottone_elimina = "";
+
         if (isset($_SESSION['user']) && $_SESSION['user'] == $utente) {
             $bottone_elimina = "
                 <form action='commenti.php' method='POST'>
@@ -207,6 +203,11 @@ if (empty($commenti_data)) {
         </li>";
     }
 }
+
+// 8. SOSTITUZIONI FINALI E OUTPUT
+$html_page = str_replace("[form-commento]", $form_commento, $html_page);
+$html_page = str_replace("[dettagli-gara]", $info_gara_html, $html_page);
+$html_page = str_replace("[titolo-gp]", $titolo_gp, $html_page);
 $html_page = str_replace("[lista-commenti]", $commenti_html, $html_page);
 $html_page = str_replace("[err-eliminazione]", $err_eliminazione, $html_page);
 

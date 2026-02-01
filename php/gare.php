@@ -9,6 +9,7 @@ try {
     $gare_data = $db_connection->get_gare_data();
     $db_connection->close_connection();
 } catch (Exception $e) {
+    echo $e;
     header("location: ../pages/500.html");
     exit();
 }
@@ -18,25 +19,31 @@ $gare_html = "";
 if (empty($gare_data)) {
     $gare_html = "<p>Nessuna gara registrata nel database.</p>";
 } else {
-    // Array dei mesi in italiano
     $mesi = array(1=>'Gennaio', 2=>'Febbraio', 3=>'Marzo', 4=>'Aprile',
                   5=>'Maggio', 6=>'Giugno', 7=>'Luglio', 8=>'Agosto',
                   9=>'Settembre',10=>'Ottobre',11=>'Novembre',12=>'Dicembre');
     
     foreach ($gare_data as $g) {
-        // Formattazione data (es: 07 Settembre 2025)
         $timestamp = strtotime($g['data']);
         $giorno = date('d', $timestamp);
         $mese_num = date('n', $timestamp);
         $anno = date('Y', $timestamp);
         $data_formattata = $giorno . ' ' . $mesi[$mese_num] . ' ' . $anno;
         $data_iso = date("Y-m-d", $timestamp);
-        
-        // Prepariamo un ID unico per l'accessibilità (aria-labelledby)
         $card_id = "gp-" . $g['id'];
-        
-        // Immagine: usiamo il nome del circuito o della città (pulito da spazi)
         $img_name = strtolower(str_replace(' ', '_', $g['circuito_citta']));
+
+        $format_pilot = function($nome, $cognome, $nazionalita) {
+            $full_name = htmlspecialchars($nome . " " . $cognome);
+            if ($nazionalita && $nazionalita !== 'it') {
+                return '<span lang="' . htmlspecialchars($nazionalita) . '">' . $full_name . '</span>';
+            }
+            return $full_name;
+        };
+
+        $p1_display = $format_pilot($g['p1_nome'], $g['p1_cognome'], $g['p1_nazionalita']);
+        $p2_display = $format_pilot($g['p2_nome'], $g['p2_cognome'], $g['p2_nazionalita']);
+        $p3_display = $format_pilot($g['p3_nome'], $g['p3_cognome'], $g['p3_nazionalita']);
 
         $gare_html .= "
             <section class=\"gp\" aria-labelledby=\"$card_id\">
@@ -54,13 +61,13 @@ if (empty($gare_data)) {
                         <dt>1° classificato</dt>
                         <dd>
                             <a href=\"informazioni_pilota.php?id={$g['p1_id']}\" aria-label=\"Profilo di {$g['p1_nome']} {$g['p1_cognome']}\">
-                                {$g['p1_nome']} {$g['p1_cognome']}
+                                $p1_display
                             </a>
                         </dd>
                         <dt>2° classificato</dt>
-                        <dd><a href=\"informazioni_pilota.php?id={$g['p2_id']}\">{$g['p2_nome']} {$g['p2_cognome']}</a></dd>
+                        <dd><a href=\"informazioni_pilota.php?id={$g['p2_id']}\">$p2_display</a></dd>
                         <dt>3° classificato</dt>
-                        <dd><a href=\"informazioni_pilota.php?id={$g['p3_id']}\">{$g['p3_nome']} {$g['p3_cognome']}</a></dd>
+                        <dd><a href=\"informazioni_pilota.php?id={$g['p3_id']}\">$p3_display</a></dd>
                     </dl>
                     <form action=\"commenti.php\" method=\"POST\" class=\"form-commenti-link\">
                         <input type=\"hidden\" name=\"gara_id\" value=\"{$g['id']}\">

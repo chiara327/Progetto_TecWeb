@@ -8,8 +8,14 @@ $html_page = file_get_contents("../pages/piloti.html");
 $dynamic_content = "";
 
 
-function render_drivers($id, $nome, $cognome) {
-    $display_name =  htmlspecialchars($nome . " " . $cognome);
+function render_drivers($id, $nome, $cognome, $nazionalita) {
+    $full_name = $nome . " " . $cognome;
+
+    if ($nazionalita !== 'it') {
+        $display_name = '<span lang="' . htmlspecialchars($nazionalita) . '">' . htmlspecialchars($full_name) . '</span>';
+    } else {
+        $display_name = htmlspecialchars($full_name);
+    }
 
     $filename = strtolower($nome . "_" . $cognome . ".jpg");
     $base_path = "../resources/piloti/";
@@ -25,12 +31,12 @@ function render_drivers($id, $nome, $cognome) {
         <li>
             <article>
                 <a href="informazioni_pilota.php?id={$id}">
-                    <img src="{$img_src}" alt="Ritratto di {$display_name}">
+                    <img src="{$img_src}" alt="Ritratto di {$full_name}">
                     <h3>{$display_name}</h3>
                 </a>
             </article>
         </li>
-    HTML;
+HTML;
 }
 
 function create_slug($string) {
@@ -60,8 +66,8 @@ foreach ($piloti_data as $team) {
 
     $team_header = $team_straniero ? "<span lang=\"en\">{$nome_team}</span>" : $nome_team;
 
-    $driver1_html = render_drivers($team["p1_id"], $team["p1_nome"], $team["p1_cognome"]);
-    $driver2_html = render_drivers($team["p2_id"], $team["p2_nome"], $team["p2_cognome"]);
+    $driver1_html = render_drivers($team["p1_id"], $team["p1_nome"], $team["p1_cognome"], $team["p1_nazionalita"]);
+    $driver2_html = render_drivers($team["p2_id"], $team["p2_nome"], $team["p2_cognome"], $team["p2_nazionalita"]);
 
     $dynamic_content .= 
     <<<HTML

@@ -23,16 +23,21 @@ try {
     exit();
 }
 
+$lang_attr = htmlspecialchars($pilota['nazionalita']);
+
+$nome_html = ($pilota['nazionalita'] === 'it') ? htmlspecialchars($pilota['nome']) : "<span lang=\"$lang_attr\">" . htmlspecialchars($pilota['nome']) . "</span>";
+$cognome_html = ($pilota['nazionalita'] === 'it') ? htmlspecialchars($pilota['cognome']) : "<span lang=\"$lang_attr\">" . htmlspecialchars($pilota['cognome']) . "</span>";
+
 $sostituzioni = [
-    "[nome]" => htmlspecialchars($pilota['nome']),
-    "[cognome]" => htmlspecialchars($pilota['cognome']),
+    "[nome]" => $nome_html,
+    "[cognome]" => $cognome_html,
     "[numero]" => htmlspecialchars($pilota['numero']),
     "[eta]" => htmlspecialchars($pilota['eta']),
     "[vittorie]" => htmlspecialchars($pilota['vittorie']),
     "[n_pole]" => htmlspecialchars($pilota['n_pole']),
     "[gran_premi]" => htmlspecialchars($pilota['gran_premi']),
     "[titoli_mondiali]" => htmlspecialchars($pilota['titoli_mondiali']),
-    "[Pilota]" => htmlspecialchars($pilota['nome']) . " " . htmlspecialchars($pilota['cognome']),
+    "[Pilota]" => $nome_html . " " . $cognome_html, // Riutilizza le variabili sopra
 ];
 
 foreach ($sostituzioni as $placeholder => $valore) {

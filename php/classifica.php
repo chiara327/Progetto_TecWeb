@@ -23,9 +23,18 @@ if (empty($piloti_data)) {
 } else {
     $pos = 1;
     foreach ($piloti_data as $p) {
+        $full_name = $p['nome'] . " " . $p['cognome'];
+        $nazionalita = $p['nazionalita'] ?? 'it';
+
+        if ($nazionalita !== 'it') {
+            $pilota_display = '<span lang="' . htmlspecialchars($nazionalita) . '">' . htmlspecialchars($full_name) . '</span>';
+        } else {
+            $pilota_display = htmlspecialchars($full_name);
+        }
+
         $piloti_html .= "<tr>
             <th data-title='Posizione' scope='row'>" . $pos . "</th>
-            <td data-title='Pilota'>" . htmlspecialchars($p['nome'] . " " . $p['cognome']) . "</td>
+            <td data-title='Pilota'>" . $pilota_display . "</td>
             <td data-title='Scuderia'>" . htmlspecialchars($p['nome_scuderia'] ?? 'N/D') . "</td>
             <td data-title='Punti'>" . $p['punti'] . "</td>
         </tr>";

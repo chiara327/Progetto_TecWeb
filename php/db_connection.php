@@ -293,10 +293,12 @@ class DBConnection {
                     p1.id AS p1_id,
                     p1.nome AS p1_nome,
                     p1.cognome AS p1_cognome,
+                    p1.nazionalita AS p1_nazionalita,
 
                     p2.id AS p2_id,
                     p2.nome AS p2_nome,
-                    p2.cognome AS p2_cognome
+                    p2.cognome AS p2_cognome,
+                    p2.nazionalita AS p2_nazionalita
 
                     FROM Scuderie s
                     JOIN Piloti p1 ON s.pilota_attuale1_id = p1.id
@@ -424,7 +426,8 @@ class DBConnection {
         // e Scuderie (per trovare il team attuale del pilota)
         $query = "SELECT 
                     p.nome, 
-                    p.cognome, 
+                    p.cognome,
+                    p.nazionalita, 
                     s.nome AS nome_scuderia, 
                     cp.punti 
                   FROM ClassificaPiloti cp
@@ -473,9 +476,9 @@ class DBConnection {
                     G.data, 
                     C.nome AS circuito_nome, 
                     C.citta AS circuito_citta,
-                    P1.nome AS p1_nome, P1.cognome AS p1_cognome, P1.id AS p1_id,
-                    P2.nome AS p2_nome, P2.cognome AS p2_cognome, P2.id AS p2_id,
-                    P3.nome AS p3_nome, P3.cognome AS p3_cognome, P3.id AS p3_id
+                    P1.nome AS p1_nome, P1.cognome AS p1_cognome, P1.id AS p1_id, P1.nazionalita AS p1_nazionalita,
+                    P2.nome AS p2_nome, P2.cognome AS p2_cognome, P2.id AS p2_id, P2.nazionalita AS p2_nazionalita,
+                    P3.nome AS p3_nome, P3.cognome AS p3_cognome, P3.id AS p3_id, P3.nazionalita AS p3_nazionalita
                 FROM Gare G
                 JOIN Circuiti C ON G.circuito_id = C.id
                 LEFT JOIN Piloti P1 ON G.primo_posto = P1.id
@@ -699,9 +702,9 @@ class DBConnection {
                     C.nazione AS circuito_nazione,
                     C.lunghezza AS circuito_lunghezza,
                     C.numero_curve AS circuito_curve,
-                    P1.nome AS p1_nome, P1.cognome AS p1_cognome, P1.id AS p1_id,
-                    P2.nome AS p2_nome, P2.cognome AS p2_cognome, P2.id AS p2_id,
-                    P3.nome AS p3_nome, P3.cognome AS p3_cognome, P3.id AS p3_id
+                    P1.nome AS p1_nome, P1.cognome AS p1_cognome, P1.id AS p1_id, P1.nazionalita AS p1_nazionalita,
+                    P2.nome AS p2_nome, P2.cognome AS p2_cognome, P2.id AS p2_id, P2.nazionalita AS p2_nazionalita,
+                    P3.nome AS p3_nome, P3.cognome AS p3_cognome, P3.id AS p3_id, P3.nazionalita AS p3_nazionalita
                 FROM Gare G
                 JOIN Circuiti C ON G.circuito_id = C.id
                 LEFT JOIN Piloti P1 ON G.primo_posto = P1.id
