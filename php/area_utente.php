@@ -47,7 +47,7 @@ if (isset($_POST["salva_modifiche"])) {
                 $db_connection = new DBConnection();
                 if ($db_connection->update_user_info($_SESSION["user"], $nome, $cognome, $data)) {
                     $db_connection->close_connection();
-                    header("Location: area_utente.php?status=ok_anag");
+                    header("Location: area_utente.php");
                     exit();
                 } else {
                     $anagrafica_errors .= "<p class='error'>Errore nel salvataggio dei dati.</p>";
