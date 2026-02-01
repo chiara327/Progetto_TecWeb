@@ -20,12 +20,19 @@
         <script src="../javascript/validation_utils.js" defer></script>
         <script src="../javascript/validation_area_utente_admin.js" defer></script>
         <script src="../javascript/area_conferma_elimina.js" defer></script>
+        <script src="../javascript/tornaSu.js" defer></script>
+        <script src="../javascript/menu.js" defer></script>
 </head>
 
 <body>
     <header>
         <nav class="navbar" aria-label="Menu di navigazione del sito">
             <h1 class="hide">F1 <span lang="en">FAN CLUB</span></h1>
+            
+            <button class="hamburger" aria-label="Apri menu" aria-controls="menu" aria-expanded="false">
+                <img src="../resources/menu.svg" alt ="" aria-hidden="true">
+            </button>
+
             <ul id="menu">
                 <li><a href="../index.html"><span lang="en">Home</span></a></li>
                 <li><a href="../php/piloti.php">Piloti</a></li>
@@ -225,5 +232,10 @@
                     Licensing B.V.</span></p>
         </div>
     </footer>
+
+    <button id="backToTop" aria-label="Torna all'inizio della pagina">
+        <img id="backToTopIcon" src="../resources/tornaSu.svg" alt="" aria-hidden="true">
+        <img src="../resources/frecciaSu.svg" alt="" aria-hidden="true">
+    </button>
 
 </body>

@@ -13,6 +13,9 @@
     <link rel="icon" href="../resources/logo.svg" type="image/x-icon">
     <link rel="stylesheet" href="../style/style.css">
     <link rel="stylesheet" href="../style/mini.css" media="screen and (max-width:800px)">
+    <link rel="stylesheet" href="../style/print.css" media="print">
+    <script src="../javascript/menu.js" defer></script>
+    <script src="../javascript/tornaSu.js" defer></script>
 
 </head>
 
@@ -20,6 +23,11 @@
     <header>
         <nav class="navbar" aria-label="Menu di navigazione del sito">
             <h1 class="hide">F1 <span lang="en">FAN CLUB</span></h1>
+            
+            <button class="hamburger" aria-label="Apri menu" aria-controls="menu" aria-expanded="false">
+                <img src="../resources/menu.svg" alt ="" aria-hidden="true">
+            </button>
+
             <ul id="menu">
                 <li><a href="../index.html"><span lang="en">Home</span></a></li>
                 <li><a href="../php/piloti.php">Piloti</a></li>
@@ -131,6 +139,11 @@
                     Licensing B.V.</span></p>
         </div>
     </footer>
+
+    <button id="backToTop" aria-label="Torna all'inizio della pagina">
+        <img id="backToTopIcon" src="../resources/tornaSu.svg" alt="" aria-hidden="true">
+        <img src="../resources/frecciaSu.svg" alt="" aria-hidden="true">
+    </button>
 </body>
 
 </html>

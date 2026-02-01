@@ -22,6 +22,7 @@
 
     --quote-bg-color: #8B0000;
     --quote-border-color: #E10600;
+    --backUp-button-color: 40, 40, 40;
 
     /* Magari trovare un rosso diverso */
     --buttons: #A60006;
@@ -225,6 +226,50 @@ h1.hide {
 #breadcrumb p {
     padding: 0.5em 0 0.5em 1em;
 }
+
+/* =========================
+   PULSANTE TORNA SU
+   ========================= */
+
+#backToTop {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  border: none;
+  border-radius: 50%;
+  background-color: rgba(var(--backUp-button-color), 0.7);
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding-left: 4px;
+  z-index: 100;
+}
+
+#backToTop img {
+  width: 36px;
+  height: 36px;
+}
+
+#backToTop:focus {
+  outline: 3px solid var(--accent-color);
+  outline-offset: 1px;
+}
+
+#backToTopIcon {
+  width: 80%;
+  height: auto;
+  transition: transform 0.4s ease-out, opacity 0.4s ease-out;
+}
+
+#backToTop.clicked #backToTopIcon {
+  transform: translateX(-50px);
+  opacity: 0; 
+}
+
+
 
 /* =========================
    FOOTER

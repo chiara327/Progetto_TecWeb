@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 200 60"
+     aria-hidden="true"
+     class="f1-car">
+
+  <!-- Corpo -->
+  <path d="M20 38
+           L45 38
+           L60 28
+           L110 28
+           L130 20
+           L150 20
+           L165 28
+           L180 28
+           L180 34
+           L160 34
+           L155 38
+           L120 38
+           L115 34
+           L65 34
+           L60 38
+           L20 38 Z"
+        fill="#e10600"/>
+
+  <!-- Halo -->
+  <rect x="95" y="20" width="4" height="12" fill="#1c1c1c"/>
+
+  <!-- Ruote -->
+  <circle cx="55" cy="42" r="8" fill="#1c1c1c"/>
+  <circle cx="140" cy="42" r="8" fill="#1c1c1c"/>
+</svg>
