@@ -19,7 +19,7 @@
 
 <body>
     <header>
-        <nav class="navbar">
+        <nav class="navbar" aria-label="Menu di navigazione del sito">
             <h1 class="hide">F1 <span lang="en">FAN CLUB</span></h1>
             <ul id="menu">
                 <li><a href="../index.html"><span lang="en">Home</span></a></li>
@@ -33,13 +33,12 @@
         </nav>
     </header>
 
-    <nav id="breadcrumb">
+    <nav id="breadcrumb" aria-label="Percorso attuale">
         <p>Ti trovi in: Gestione Gare</p>
     </nav>
 
-    <span hidden id="titolo-crea-gare">Gestione Gare</span>
     <main id="form_gare_admin">
-        <section aria-labelledby="titolo-crea-gare" class="crea-gare-section">
+        <section aria-label="Gestione gare" class="crea-gare-section">
             <form class="admin-form" action="../php/form_gare_admin.php#creazione_gare" method="post"
                 id="form-gare-aggiungi">
                 <fieldset>
@@ -86,8 +85,7 @@
             </form>
         </section>
 
-        <span hidden id="titolo-elimina-gare">Elimina Gare</span>
-        <section aria-labelledby="titolo-elimina-gare" class="elimina-gare-section">
+        <section aria-label="Elimina Gare" class="elimina-gare-section">
             <form class="admin-form" action="../php/form_gare_admin.php#elimina_gare" method="post"
                 id="form-gare-elimina">
                 <fieldset>
@@ -127,16 +125,16 @@
             <div class="footer-col">
                 <p class="footer-heading">Segui la F1</p>
                 <div class="social-links">
-                    <a href="https://www.facebook.com/Formula1/" aria-label="Seguici su Facebook" class="social-icon">
+                    <a href="https://www.facebook.com/Formula1/" aria-label="Segui la Formula 1 su Facebook" class="social-icon">
                         <img src="../resources/icons/facebook.svg" alt="" aria-hidden="true">
                     </a>
-                    <a href="https://www.instagram.com/f1/" aria-label="Seguici su Instagram" class="social-icon">
+                    <a href="https://www.instagram.com/f1/" aria-label="Segui la Formula 1 su Instagram" class="social-icon">
                         <img src="../resources/icons/instagram.svg" alt="" aria-hidden="true">
                     </a>
-                    <a href="https://x.com/F1" aria-label="Seguici su X" class="social-icon">
+                    <a href="https://x.com/F1" aria-label="Segui la Formula 1 su X" class="social-icon">
                         <img src="../resources/icons/x-twitter.svg" alt="" aria-hidden="true">
                     </a>
-                    <a href="https://www.youtube.com/@Formula1" aria-label="Seguici su YouTube" class="social-icon">
+                    <a href="https://www.youtube.com/@Formula1" aria-label="Segui la Formula 1 YouTube" class="social-icon">
                         <img src="../resources/icons/youtube.svg" alt="" aria-hidden="true">
                     </a>
                 </div>

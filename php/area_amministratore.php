@@ -71,7 +71,7 @@ try {
     // --- BLOCCO 1: AGGIORNAMENTO USERNAME ---
     if (isset($_POST["modifica_username"])) {
         $nuovo_user = trim($_POST["nuovo-username"]);
-        $pw_attuale = $_POST["password-attuale"];
+        $pw_attuale = $_POST["password-attuale-user"];
 
         // 1. Verifica password attuale
         if ($db_connection->verify_password($_SESSION["user"], $pw_attuale)) {
@@ -96,7 +96,7 @@ try {
     // --- BLOCCO 2: AGGIORNAMENTO PASSWORD ---
     if (isset($_POST["modifica_password"])) {
         $nuova_pw = $_POST["nuova-password"];
-        $pw_attuale = $_POST["password-attuale"];
+        $pw_attuale = $_POST["password-attuale-psw"];
 
         // 1. Verifica password attuale
         if ($db_connection->verify_password($_SESSION["user"], $pw_attuale)) {

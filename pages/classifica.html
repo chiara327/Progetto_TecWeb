@@ -20,7 +20,7 @@
 
 <body>
     <header>
-        <nav class="navbar">
+        <nav class="navbar" aria-label="Menu di navigazione del sito">
             <h1 class="hide">F1 <span lang="en">FAN CLUB</span></h1>
             <ul id="menu">
                 <li><a href="../index.html"><span lang="en">Home</span></a></li>
@@ -33,7 +33,7 @@
             </ul>
         </nav>
     </header>
-    <nav id="breadcrumb">
+    <nav id="breadcrumb" aria-label="Percorso attuale">
         <p>Ti trovi in: Classifica</p>
     </nav>
     <main>
@@ -49,7 +49,7 @@
             </button>
         </div>
 
-        <div id="panel-piloti" role="tabpanel" aria-labelledby="tab-piloti">
+        <div id="panel-piloti" role="tabpanel">
             <!--TODO: CONTROLLARE CHE I DUE SUMMARY VADANO BENE!!!-->
             <span id="summary_piloti" class="hide">Tabella che mostra la classifica dei piloti di Formula 1 per la
                 stagione 2025, organizzata per righe con le posizioni, il pilota, la scuderia ed i punti
@@ -70,7 +70,7 @@
             </table>
         </div>
 
-        <div id="panel-costruttori" role="tabpanel" aria-labelledby="tab-costruttori" hidden>
+        <div id="panel-costruttori" role="tabpanel" hidden>
             <span id="summary_scuderie" class="hide">Tabella che mostra la classifica dei costruttori di Formula 1 per
                 la stagione 2025, organizzata per righe con le posizioni, la scuderia ed i punti accumulati.</span>
             <table aria-describedby="summary_scuderie" class="classifica_costruttori">
@@ -100,7 +100,7 @@
             <div class="footer-col">
                 <p class="footer-heading"><span lang="en">Paddock</span></p>
                 <ul>
-                    <li><a href="../php/classifica.php" aria-current="page">Campionato</a></li>
+                    <li><a href="../php/classifica.php">Campionato</a></li>
                     <li><a href="../php/piloti.php">Piloti</a></li>
                     <li><a href="../php/scuderie.php">Scuderie</a></li>
                     <li><a href="../php/circuiti.php">Circuiti</a></li>
@@ -109,16 +109,16 @@
             <div class="footer-col">
                 <p class="footer-heading">Segui la F1</p>
                 <div class="social-links">
-                    <a href="https://www.facebook.com/Formula1/" aria-label="Seguici su Facebook" class="social-icon">
+                    <a href="https://www.facebook.com/Formula1/" aria-label="Segui la Formula 1 su Facebook" class="social-icon">
                         <img src="../resources/icons/facebook.svg" alt="" aria-hidden="true">
                     </a>
-                    <a href="https://www.instagram.com/f1/" aria-label="Seguici su Instagram" class="social-icon">
+                    <a href="https://www.instagram.com/f1/" aria-label="Segui la Formula 1 su Instagram" class="social-icon">
                         <img src="../resources/icons/instagram.svg" alt="" aria-hidden="true">
                     </a>
-                    <a href="https://x.com/F1" aria-label="Seguici su X" class="social-icon">
+                    <a href="https://x.com/F1" aria-label="Segui la Formula 1 su X" class="social-icon">
                         <img src="../resources/icons/x-twitter.svg" alt="" aria-hidden="true">
                     </a>
-                    <a href="https://www.youtube.com/@Formula1" aria-label="Seguici su YouTube" class="social-icon">
+                    <a href="https://www.youtube.com/@Formula1" aria-label="Segui la Formula 1 YouTube" class="social-icon">
                         <img src="../resources/icons/youtube.svg" alt="" aria-hidden="true">
                     </a>
                 </div>

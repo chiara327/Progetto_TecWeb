@@ -10,7 +10,7 @@ function validate_gestione_gare() {
         var err_messages = "";
 
         if (!validate_data_gara()) {
-            err_messages += "<p>La data della gara non è valida, scegliere una data nel formato yyyy-mm-dd, che non sia nel futuro e che appartenga agli anni 2025 o 2026.</p>";
+            err_messages += "<p>La data della gara non è valida, scegliere una data che non sia nel futuro e che appartenga agli anni 2025 o 2026.</p>";
         }
 
         if (!validate_piloti_selezionati()) {
