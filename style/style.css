@@ -626,6 +626,11 @@ main section h2, article.aboutus h2 {
     text-align: center;
 }
 
+#scuderie article:hover {
+    transform: scale(1.01);
+    border-color: var(--accent-color);
+}
+
 /* =========================
    GARE PAGE - CARD DESIGN
    ========================= */
