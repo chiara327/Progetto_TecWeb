@@ -1202,11 +1202,6 @@ th,
     margin-top: 1em;
 }
 
-button[type="submit"] {
-    background-color: var(--accent-color);
-    color: white;
-}
-
 .btn-logout:hover, .btn-admin:hover, button[type="submit"]:hover, #open-delete-modal:hover {
     background-color: var(--accent-color);
     color: white;

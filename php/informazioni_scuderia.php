@@ -13,8 +13,14 @@ $html_page = file_get_contents("../pages/informazioni_scuderia.html");
 
 $scuderia = "";
 
-function render_drivers($id, $nome, $cognome, $scuderia) {
-    $display_name =  htmlspecialchars($nome . " " . $cognome);
+function render_drivers($id, $nome, $cognome, $scuderia, $nazionalita) {
+    $full_name = $nome . " " . $cognome;
+
+    if ($nazionalita !== 'it') {
+        $display_name = '<span lang="' . htmlspecialchars($nazionalita) . '">' . htmlspecialchars($full_name) . '</span>';
+    } else {
+        $display_name = htmlspecialchars($full_name);
+    }
 
     $filename = strtolower($nome . "_" . $cognome . ".jpg");
     $base_path = "../resources/piloti/";
@@ -65,8 +71,8 @@ $sostituzioni = [
     "[presenze]"          => htmlspecialchars($scuderia['presenze']),
     "[punti_campionato]"  => htmlspecialchars($scuderia['punti_campionato']),
     "[titoli]"            => htmlspecialchars($scuderia['titoli']), 
-    "[pilota1_nome]"      => render_drivers($pilota1["id"], $pilota1["nome"], $pilota1["cognome"], create_slug($scuderia["nome"])),
-    "[pilota2_nome]"      => render_drivers($pilota2["id"], $pilota2["nome"], $pilota2["cognome"], create_slug($scuderia["nome"]))
+    "[pilota1_nome]"      => render_drivers($pilota1["id"], $pilota1["nome"], $pilota1["cognome"], create_slug($scuderia["nome"]), $pilota1["nazionalita"]),
+    "[pilota2_nome]"      => render_drivers($pilota2["id"], $pilota2["nome"], $pilota2["cognome"], create_slug($scuderia["nome"]), $pilota2["nazionalita"])
 ];
 
 foreach ($sostituzioni as $placeholder => $valore) {

@@ -7,6 +7,7 @@ CREATE TABLE IF NOT EXISTS Piloti (
     id INT NOT NULL,
     nome VARCHAR(50) NOT NULL,
     cognome VARCHAR(50) NOT NULL,
+    nazionalita VARCHAR(50) DEFAULT NULL,
     numero INT DEFAULT NULL,
     vittorie INT DEFAULT 0,
     n_pole INT DEFAULT 0,
@@ -16,27 +17,27 @@ CREATE TABLE IF NOT EXISTS Piloti (
     PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-INSERT INTO Piloti (id, nome, cognome, numero, vittorie, n_pole, gran_premi, titoli_mondiali, eta) VALUES
-(1, 'Max', 'Verstappen', 1, 58, 36, 215, 3, 27),
-(2, 'Lee', 'Faker', 22, 1, 0, 85, 0, 24),
-(3, 'Lewis', 'Hamilton', 44, 105, 69, 310, 7, 40),
-(4, 'Charles', 'Leclerc', 16, 9, 26, 150, 0, 27),
-(5, 'Lando', 'Norris', 4, 6, 7, 140, 0, 25),
-(6, 'Oscar', 'Piastri', 81, 4, 3, 90, 0, 24),
-(7, 'Fernando', 'Alonso', 14, 32, 22, 385, 2, 43),
-(8, 'Lance', 'Stroll', 18, 1, 1, 150, 0, 27),
-(9, 'George', 'Russell', 63, 5, 4, 120, 0, 27),
-(10, 'Mario', 'Mario', 12, 0, 0, 22, 0, 18),
-(11, 'Carlos', 'Sainz', 55, 6, 4, 190, 0, 30),
-(12, 'Alex', 'Albon', 23, 2, 2, 115, 0, 29),
-(13, 'Esteban', 'Ocon', 31, 2, 0, 145, 0, 28),
-(14, 'Oliver', 'Bearman', 10, 3, 2, 155, 0, 29),
-(15, 'Liam', 'Lawson', 77, 10, 20, 240, 0, 35),
-(16, 'Luigi', 'Mario', 24, 0, 0, 65, 0, 26),
-(17, 'Pierre', 'Gasly', 10, 3, 2, 155, 0, 29),
-(18, 'Franco', 'Colapinto', 3, 8, 3, 240, 0, 35),
-(19, 'Nico', 'Hulkenberg', 27, 0, 1, 210, 0, 37),
-(20, 'Gabriel', 'Bortoleto', 88, 0, 1, 210, 0, 37);
+INSERT INTO Piloti (id, nome, cognome, nazionalita, numero, vittorie, n_pole, gran_premi, titoli_mondiali, eta) VALUES
+(1, 'Max', 'Verstappen', 'nl', 1, 58, 36, 215, 3, 27),
+(2, 'Lee', 'Faker', 'ko', 22, 1, 0, 85, 0, 24),
+(3, 'Lewis', 'Hamilton', 'en-GB', 44, 105, 69, 310, 7, 40),
+(4, 'Charles', 'Leclerc', 'fr-MC', 16, 9, 26, 150, 0, 27),
+(5, 'Lando', 'Norris', 'en-GB', 4, 6, 7, 140, 0, 25),
+(6, 'Oscar', 'Piastri', 'en-AU', 81, 4, 3, 90, 0, 24),
+(7, 'Fernando', 'Alonso', 'es', 14, 32, 22, 385, 2, 43),
+(8, 'Lance', 'Stroll', 'en-CA', 18, 1, 1, 150, 0, 27),
+(9, 'George', 'Russell', 'en-GB', 63, 5, 4, 120, 0, 27),
+(10, 'Mario', 'Mario', 'it', 12, 0, 0, 22, 0, 18),
+(11, 'Carlos', 'Sainz', 'es', 55, 6, 4, 190, 0, 30),
+(12, 'Alex', 'Albon', 'th', 23, 2, 2, 115, 0, 29),
+(13, 'Esteban', 'Ocon', 'fr', 31, 2, 0, 145, 0, 28),
+(14, 'Oliver', 'Bearman', 'en-GB', 10, 3, 2, 155, 0, 29),
+(15, 'Liam', 'Lawson', 'en-NZ', 77, 10, 20, 240, 0, 35),
+(16, 'Luigi', 'Mario', 'it', 24, 0, 0, 65, 0, 26),
+(17, 'Pierre', 'Gasly', 'fr', 10, 3, 2, 155, 0, 29),
+(18, 'Franco', 'Colapinto', 'es-AR', 3, 8, 3, 240, 0, 35),
+(19, 'Nico', 'Hulkenberg', 'de', 27, 0, 1, 210, 0, 37),
+(20, 'Gabriel', 'Bortoleto', 'pt-BR', 88, 0, 1, 210, 0, 37);
 
 CREATE TABLE IF NOT EXISTS Scuderie (
     nome VARCHAR(100) NOT NULL,

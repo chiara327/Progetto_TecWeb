@@ -39,7 +39,10 @@ function create_dropdown_menus() {
     foreach ($piloti_data as $pilota) {
         $id = $pilota["id"];
         $full_name = htmlspecialchars($pilota["nome"] . " " . $pilota["cognome"]);
-        $piloti_list .= "<option value=\"$id\">$full_name</option>";
+        
+        $lang_code = htmlspecialchars($pilota["nazionalita"]);
+        
+        $piloti_list .= "<option value=\"$id\" lang=\"$lang_code\">$full_name</option>";
     }
 
     foreach ($circuiti_data as $circuito) {
