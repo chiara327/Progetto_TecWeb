@@ -236,7 +236,7 @@ CREATE TABLE IF NOT EXISTS Utente (
 
 INSERT INTO Utente (username, password, adminPower, nome, cognome, dataNascita) VALUES
 ('admin', '$2y$10$pCJ47BCvSKy9vmycaN0ODOkiqd7RW4XlFK.sK27MoCDL83dow027u', 1, 'admin', 'admin', '2000-01-01'),
-('user', '$2y$10$3nBJqkuPFy9aHA8pMCOyZegRUQbGCvGN56aFPdX/qhgW6Ju6b45j2', 1, 'Mario', 'Rossi', '2000-01-01');
+('user', '$2y$10$h28Mv8HyuDKn9r4SYlNSQe3a2HQ19TTZP/n1syeX4LlubYxXdurkm', 0, 'user', 'user', '2000-01-01');
 
 
 CREATE TABLE IF NOT EXISTS Commento (
