@@ -13,8 +13,15 @@ $html_page = file_get_contents("../pages/informazioni_scuderia.html");
 
 $scuderia = "";
 
-function render_drivers($id, $nome, $cognome, $scuderia) {
-    $display_name = htmlspecialchars($nome . " " . $cognome);
+function render_drivers($id, $nome, $cognome, $scuderia, $nazionalita) {
+    $display_name =  htmlspecialchars($nome . " " . $cognome);
+
+    $span_name = "";
+    if ($nazionalita === "Italiana") {
+        $span_name =  htmlspecialchars($nome . " " . $cognome);
+    } else {
+        $span_name = "<span lang=\"en\">" . htmlspecialchars($nome . " " . $cognome) . "</span>";
+    }
 
     $filename = strtolower($nome . "_" . $cognome . ".jpg");
     $base_path = "../resources/piloti/";
@@ -31,7 +38,7 @@ function render_drivers($id, $nome, $cognome, $scuderia) {
             <article class="{$scuderia}-heading">
                 <a href="informazioni_pilota.php?id={$id}">
                     <img src="{$img_src}" alt="Ritratto di {$display_name}">
-                    <h3>{$display_name}</h3>
+                    <h3>{$span_name}</h3>
                 </a>
             </article>
         </li>
@@ -60,13 +67,13 @@ try {
 }
 
 $sostituzioni = [
-    "[nome_scuderia]"     => htmlspecialchars($scuderia['nome']),
+    "[nome_scuderia]"     => (stripos($scuderia["nome"], 'Ferrari') === true ? htmlspecialchars($scuderia['nome']) : "<span lang=\"en\">" . htmlspecialchars($scuderia['nome']) . "</span>"),
     "[Scuderia]"          => htmlspecialchars($scuderia['nome']),
     "[presenze]"          => htmlspecialchars($scuderia['presenze']),
     "[punti_campionato]"  => htmlspecialchars($scuderia['punti_campionato']),
     "[titoli]"            => htmlspecialchars($scuderia['titoli']), 
-    "[pilota1_nome]"      => render_drivers($pilota1["id"], $pilota1["nome"], $pilota1["cognome"], create_slug($scuderia["nome"])),
-    "[pilota2_nome]"      => render_drivers($pilota2["id"], $pilota2["nome"], $pilota2["cognome"], create_slug($scuderia["nome"]))
+    "[pilota1_nome]"      => render_drivers($pilota1["id"], $pilota1["nome"], $pilota1["cognome"], create_slug($scuderia["nome"]), $pilota1["nazionalita"]),
+    "[pilota2_nome]"      => render_drivers($pilota2["id"], $pilota2["nome"], $pilota2["cognome"], create_slug($scuderia["nome"]), $pilota2["nazionalita"])
 ];
 
 foreach ($sostituzioni as $placeholder => $valore) {
