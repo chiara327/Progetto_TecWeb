@@ -996,11 +996,11 @@ th,
 }
 
 /* Pulsante di invio */
-#login_form input[type="submit"],
-#signup_form input[type="submit"],
-#modifica-anagrafica input[type="submit"],
-#modifica-username input[type="submit"],
-#modifica-password input[type="submit"] {
+#login_form button[type="submit"],
+#signup_form button[type="submit"],
+#modifica-anagrafica button[type="submit"],
+#modifica-username button[type="submit"],
+#modifica-password button[type="submit"] {
   display: block;
   width: 100%;
   padding: 0.8em;
@@ -1015,16 +1015,16 @@ th,
 }
  
 /* Hover/Focus sul pulsante */
-#login_form input[type="submit"]:hover,
-#login_form input[type="submit"]:focus,
-#signup_form input[type="submit"]:hover,
-#signup_form input[type="submit"]:focus,
-#modifica-anagrafica input[type="submit"]:hover,
-#modifica-anagrafica input[type="submit"]:focus,
-#modifica-username input[type="submit"]:hover,
-#modifica-username input[type="submit"]:focus,
-#modifica-password input[type="submit"]:hover,
-#modifica-password input[type="submit"]:focus {
+#login_form button[type="submit"]:hover,
+#login_form button[type="submit"]:focus,
+#signup_form button[type="submit"]:hover,
+#signup_form button[type="submit"]:focus,
+#modifica-anagrafica button[type="submit"]:hover,
+#modifica-anagrafica button[type="submit"]:focus,
+#modifica-username button[type="submit"]:hover,
+#modifica-username button[type="submit"]:focus,
+#modifica-password button[type="submit"]:hover,
+#modifica-password button[type="submit"]:focus {
   background-color: var(--accent-color);
   color: var(--content-text-color);
   outline: none;
@@ -1217,7 +1217,7 @@ th,
 }
 
 /* --- Bottoni ed Errori --- */
-.btn-logout, .btn-admin, input[type="submit"], #open-delete-modal {
+.btn-logout, .btn-admin, button[type="submit"], #open-delete-modal {
     display: inline-block;
     padding: 0.8em 1.5em;
     font-weight: bold;
@@ -1228,14 +1228,15 @@ th,
     border: 0.15em solid var(--accent-color);
     background-color: transparent;
     color: var(--accent-color);
+    margin-top: 1em;
 }
 
-input[type="submit"] {
+button[type="submit"] {
     background-color: var(--accent-color);
     color: white;
 }
 
-.btn-logout:hover, .btn-admin:hover, input[type="submit"]:hover, #open-delete-modal:hover {
+.btn-logout:hover, .btn-admin:hover, button[type="submit"]:hover, #open-delete-modal:hover {
     background-color: var(--accent-color);
     color: white;
 }
