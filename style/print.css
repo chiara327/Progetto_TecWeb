@@ -49,6 +49,10 @@ a {
     color: var(--content-text-color);
     text-decoration: underline;
 }
+
+section {
+    break-inside: avoid;
+}
 /* non serve
 a:link:after, a:visited:after {
     content: "[" attr(href) "]";
@@ -465,3 +469,193 @@ a:link:after, a:visited:after {
   margin-top: 1em;
 }
 
+
+/* =========================
+   AREA RISERVATA PAGE
+   ========================= */
+
+   .area_utente_info, 
+.area_utente_modifica, 
+.area_utente_commenti, 
+.area_utente_logout {
+    width: auto;
+    margin: 2em auto;
+    padding: 1.5em;
+    border: 0.1em solid var(--content-text-color);
+    border-radius: 0.5em;
+}
+
+.area_utente_info h3, 
+.area_utente_modifica h3, 
+.area_utente_commenti h3, 
+.area_utente_logout h3,
+.azioni_admin h3 {
+    text-align: left;
+    color: var(--accent-color);
+    border-bottom: 0.1em solid var(--accent-color);
+    padding-bottom: 0.3em;
+    margin-bottom: 1em;
+    font-size: 1.5em;
+    text-transform: uppercase;
+}
+
+.area_utente_logout #logout-container {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+.area_utente_logout #logout-container .btn-logout,
+.area_utente_logout #logout-container .btn-delete {
+    display: inline-block;
+    width: 100%;
+    padding: 0.8em;
+    font-size: 1em;
+    font-weight: bold;
+    color: var(--accent-color);
+    border: 0.15em solid var(--accent-color);
+    border-radius: 0.3em;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 1em;
+    text-decoration: none;
+}
+
+/* --- Info Personali --- */
+.area_utente_info dl {
+    display: block;
+    grid-template-columns: 12em 1fr;
+    gap: 0.8em;
+}
+
+.area_utente_info dt, .area_utente_info dd {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.area_utente_info dt {
+    font-weight: bold;
+    color: var(--accent-color);
+    width: 30%;
+}
+
+.area_utente_info dd {
+    color: var(--content-text-color);
+    width: 65%;
+}
+
+/* --- Modifica Dati Personali --- */
+
+.area_utente_modifica fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+#modifica-anagrafica legend {
+    display: none; 
+}
+
+.area_utente_modifica ul {
+    list-style: none;
+    padding: 0;
+}
+
+.area_utente_modifica li {
+    margin-bottom: 1.2em;
+}
+
+.area_utente_modifica label {
+    display: block;
+    margin-bottom: 0.4em;
+    font-weight: bold;
+}
+
+.area_utente_modifica input {
+    width: 100%;
+    padding: 0.7em;
+    border: 0.1em solid var(--breadcrumb-border-color);
+    border-radius: 0.3em;
+    color: var(--content-text-color);
+    box-sizing: border-box;
+}
+
+/* --- Modifica user/password --- */
+
+.area_utente_modifica fieldset legend,
+.area_utente_modifica form legend {
+    text-align: left;
+    color: var(--accent-color);
+    text-decoration: underline;
+    text-decoration-color: var(--accent-color);
+    padding-bottom: 0.3em;
+    margin-bottom: 1em;
+    font-size: 1em;
+}
+
+/* --- Commenti --- */
+
+.area_utente_commenti .comment-list {
+    list-style: none;
+}
+
+.commento-card {
+    border: 1pt solid var(--content-text-color);
+    border-radius: 0.5em;
+    padding: 1em;
+    margin-bottom: 1em;
+}
+
+.commento-card h3 {
+    font-size: 0.9em;
+    color: var(--accent-color);
+}
+
+.comment-date {
+    font-size: 0.85em;
+    color: var(--footer-text-color);
+    margin-bottom: 0.8em;
+}
+
+.comment-content {
+    font-size: 12pt;
+    font-style: italic;
+}
+
+/* --- Bottoni --- */
+
+.btn-logout, .btn-admin, button[type="submit"], #open-delete-modal {
+    display: inline-block;
+    padding: 0.8em 1.5em;
+    font-weight: bold;
+    border-radius: 0.3em;
+    text-transform: uppercase;
+    border: 0.1em solid var(--accent-color);
+    color: var(--accent-color);
+    margin-top: 1em;
+}
+
+/* =========================
+   AREA ADMIN PAGE
+   ========================= */
+
+.azioni_admin {
+    padding: 1.5em;
+    border: 0.11em solid var(--content-text-color);
+    border-radius: 0.5em;
+}
+
+.azioni_admin a.btn-admin-action {
+    display: inline-block;
+    width: 50%;
+    padding: 0.8em;
+    font-size: 1em;
+    font-weight: bold;
+    color: var(--accent-color);
+    border: 0.1em solid var(--accent-color);
+    border-radius: 0.3em;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 1em;
+    text-decoration: none;
+}
