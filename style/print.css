@@ -53,6 +53,11 @@ a {
 section {
     break-inside: avoid;
 }
+
+#backToTop {
+    display: none;
+}
+
 /* non serve
 a:link:after, a:visited:after {
     content: "[" attr(href) "]";
@@ -102,6 +107,9 @@ a:link:after, a:visited:after {
 #menu {
     display: none;
 }
+
+
+
 /* =========================
    FOOTER
    ========================= */
@@ -203,6 +211,7 @@ a:link:after, a:visited:after {
     border: 1pt solid var(--content-text-color);
     z-index: 2;
 }
+
 /* =========================
    SCUDERIE PAGE
    ========================= */
@@ -234,6 +243,84 @@ a:link:after, a:visited:after {
     margin-bottom: 0.5em;
 }
 
+/* =========================
+   PILOTA/SCUDERIE/GARE DETAIL PAGE
+   ========================= */
+#info-piloti, #info-scuderie, #gare {
+    width: 60%;
+    margin: 0 auto;
+    padding: 2em 1.25em;
+}
+
+#info-piloti section, #info-scuderie section, #gare section {
+    border: 0.15em solid var(--content-text-color);
+    border-radius: 0.5em;
+    padding: 2em;
+    margin-bottom: 2em;
+    position: relative;
+    overflow: hidden;
+}
+
+#info-piloti section h3, #info-scuderie section h3, #gare section h3 {
+    text-align: left;
+    color: var(--content-text-color);
+    text-transform: uppercase;
+    font-size: 1.4em;
+    margin-bottom: 1.5em;
+    border-bottom: 0.1em solid var(--accent-color);
+    padding-bottom: 0.4em;
+}
+
+#info-piloti dl, #info-scuderie dl, #gare dl {
+    display: grid;
+    grid-template-columns: 15em 1fr;
+    gap: 1em;
+}
+
+#info-piloti dt, #info-scuderie dt, #gare dt {
+    font-weight: bold;
+    color: var(--footer-text-color);
+    text-transform: uppercase;
+    font-size: 0.9em;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+}
+
+#info-piloti dd, #info-scuderie dd, #gare dd {
+    margin: 0;
+    font-size: 1.2em;
+    font-weight: 600;
+    color: var(--content-text-color);
+}
+
+#info-scuderie section.piloti ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    justify-content: center;
+}
+#info-scuderie section.piloti li {
+    width: 30em;
+    padding: 1em;
+}
+
+#info-scuderie section.piloti article {
+    position: relative;
+    overflow: hidden;
+}
+
+#info-scuderie section.piloti article img {
+    width: 10em;
+    height: 10em;
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
 
 /* =========================
    CLASSIFICA PAGE
