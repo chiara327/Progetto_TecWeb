@@ -446,7 +446,7 @@ a:link:after, a:visited:after {
 #signup_form input[type="date"]  {
     padding: 0.6em 0.8em;
     font-size: 1em;
-    border: 1pt solid var(--breadcrumb-border-color);
+    border: 1pt solid var(--content-text-color);
     border-radius: 0.3em;
     color: var(--content-text-color);
     width: 100%;
@@ -478,7 +478,7 @@ a:link:after, a:visited:after {
 .area_utente_modifica, 
 .area_utente_commenti, 
 .area_utente_logout {
-    width: auto;
+    width: 80%;
     margin: 2em auto;
     padding: 1.5em;
     border: 0.1em solid var(--content-text-color);
@@ -574,7 +574,7 @@ a:link:after, a:visited:after {
 .area_utente_modifica input {
     width: 100%;
     padding: 0.7em;
-    border: 0.1em solid var(--breadcrumb-border-color);
+    border: 0.1em solid var(--content-text-color);
     border-radius: 0.3em;
     color: var(--content-text-color);
     box-sizing: border-box;
@@ -640,8 +640,10 @@ a:link:after, a:visited:after {
    ========================= */
 
 .azioni_admin {
+    width: 80%;
     padding: 1.5em;
-    border: 0.11em solid var(--content-text-color);
+    margin: 2em auto;
+    border: 0.1em solid var(--content-text-color);
     border-radius: 0.5em;
 }
 
@@ -658,4 +660,121 @@ a:link:after, a:visited:after {
     text-transform: uppercase;
     margin-bottom: 1em;
     text-decoration: none;
+}
+
+/* =========================
+   FORM PAGES
+   ========================= */
+
+/* --- Form Gestione Utenti --- */
+
+#form-utenti-elimina,
+#form-utenti-aggiungi,
+.crea-gare-section,
+.elimina-gare-section,
+.crea-classifica-section {
+    border: 0.1em solid var(--content-text-color);
+    border-radius: 0.5em;
+    padding: 2em;
+    width: 80%;
+    margin: 2em auto;
+}
+
+#form-utenti-elimina legend,
+#form-utenti-aggiungi legend,
+.crea-gare-section legend,
+.elimina-gare-section legend,
+.crea-classifica-section legend {
+    display: block;
+    width: 100%;
+    margin-bottom: 1em;
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: var(--accent-color);
+    text-decoration: underline;
+}
+
+#form-utenti-elimina label,
+#form-utenti-aggiungi label,
+.crea-gare-section label,
+.elimina-gare-section label,
+.crea-classifica-section label {
+    font-weight: bold;
+    margin-bottom: 0.5em;
+    display: block;
+    color: var(--content-text-color);
+}
+
+#form-utenti-elimina input,
+#form-utenti-aggiungi input,
+.crea-gare-section input,
+.elimina-gare-section input,
+.crea-classifica-section input {
+    width: 100%;
+    padding: 0.6em;
+    font-size: 1em;
+    border: 1pt solid var(--content-text-color);
+    border-radius: 0.3em;
+    color: var(--content-text-color);
+    box-sizing: border-box;
+}
+
+#form-utenti-aggiungi select,
+.crea-classifica-section select,
+.crea-gare-section select {
+    border: 0.1em solid var(--content-text-color);
+    border-radius: 0.3em;
+}
+
+.crea-classifica-section select,
+.crea-gare-section select{
+    width: 100%;
+}
+
+#form-utenti-aggiungi button,
+#form-utenti-elimina button,
+.crea-gare-section button,
+.elimina-gare-section button,
+.crea-classifica-section button {
+    display: block;
+    width: 100%;
+    padding: 0.8em;
+    font-size: 1em;
+    font-weight: bold;
+    color: var(--accent-color);
+    border: 0.1em solid var(--accent-color);
+    border-radius: 0.3em;
+    margin-top: 1em;
+}
+
+.crea-classifica-section  ul{
+    list-style: none;
+}
+
+[aria-label="Aggiungi o diminuisci punti"] {
+    display: flex;
+    align-items: center;
+    flex-direction: row; 
+    gap: 1.5em;          
+    margin-top: 0.5em;
+}
+
+.crea-classifica-section li {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+.crea-classifica-section li label {
+    margin-top: 0.5em;
+}
+#form-modifica-punti-pilota input[type="radio"] {
+    appearance: none;
+    position: relative;
+    width: 1.4em;
+    height: 1.4em;
+    border: 0.15em solid var(--accent-color);
+    border-radius: 50%;
+    margin: 0;
 }
