@@ -57,10 +57,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comment_id'])) {
     if (isset($_SESSION['user'])) {
         $id_da_eliminare = $_POST['comment_id'];
         $utente_attivo = $_SESSION['user'];
+        $admin_bypass = isset($_SESSION['admin']) && $_SESSION['admin'] === true;
 
         try {
             $db_connection = new DBConnection();
-            $risultato_eliminazione = $db_connection->delete_commento($id_da_eliminare, $utente_attivo);
+            $risultato_eliminazione = $db_connection->delete_commento($id_da_eliminare, $utente_attivo, $admin_bypass);
             $db_connection->close_connection();
             
             if ($risultato_eliminazione === true) {
@@ -180,7 +181,7 @@ if (empty($commenti_data)) {
         $id_commento = $comm['id'];
         $bottone_elimina = "";
 
-        if (isset($_SESSION['user']) && $_SESSION['user'] == $utente) {
+        if ((isset($_SESSION['user']) && $_SESSION['user'] == $utente) || (isset($_SESSION['admin']) && $_SESSION['admin'] === true)) {
             $bottone_elimina = "
                 <form action='commenti.php' method='POST'>
                     <input type='hidden' name='comment_id' value='$id_commento'>
