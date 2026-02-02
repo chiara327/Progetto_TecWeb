@@ -74,7 +74,7 @@
 
     \vspace{1.5cm}
     
-    \textbf{Sito web:} \texttt{AGGIUNGERE INDIRIZZO WEB} \\
+    \textbf{Sito web:} \url{http://tecweb.studenti.math.unipd.it/rgrazian} \\
     \textbf{Mail del referente:} riccardo.graziani.1@studenti.unipd.it
     
     \vspace{1cm}
@@ -132,14 +132,14 @@ In particolare F1 Fan Club vuole rispondere alle seguenti query di ricerca:
 \subsection{Schema organizzativo}
 Abbiamo adottato un approccio di progettazione dando priorità alla facilità di comprensione dei contenuti, con particolare attenzione all'usabilità e all'accessibilità. 
 Il sito permette di visualizzare diverse informazioni riguardanti il mondo della Formula 1 come i piloti, le scuderie, la classifica sia dei piloti che delle scuderie, le varie gare effettuate e la lista di circuiti.
-Gli utenti registrati possono inoltre commentare le varie gare, esprimendo le proprie opinioni e interagendo con altri appassionati. L'amministratore del sito ha la possibilità di gestire gli utenti, aggiungendone di nuovi o rimuovendo account in caso di commenti inappropriati,
+Gli utenti registrati possono inoltre commentare le varie gare, esprimendo le proprie opinioni e interagendo con altri appassionati. L'amministratore del sito ha la possibilità di gestire gli utenti, aggiungendone di nuovi o rimuovendo account in caso di commenti inappropriati.
 L'amministratore potrà inoltre aggiungere o rimuovere le gare quando queste vengono effettuate utilizzando qualunque circuito disponibile, inoltre dovrà anche occuparsi di aggiornare la classifica aggiungendo o rimuovendo punti ai diversi piloti.
 \subsection{Tipi di utente}
-Durante la fase di progettazione sono stati identificati di seguenti tipi di utente:
+Durante la fase di progettazione sono stati identificati i seguenti tipi di utente:
 \begin{itemize}
     \item \textbf{Utente non registrato:} Può visualizzare le informazioni generali sul sito, i piloti, le scuderie, le classifiche, le gare ed i circuiti, ma non può commentare diverse gare o accedere all'area riservata.
     \item \textbf{Utente registrato:} L'utente registrato può accedere a tutte le funzionalità del sito, inclusa la possibilità di commentare le gare e accedere alla propria area riservata dove potrà modificare le diverse informazioni riguardanti il suo account.
-    \item \textbf{Amministratore:} L'utente amministratore ha accesso a tutte le funzionalità del sito e può inoltre aggiungere o rimuovere utenti, eliminando i commenti del'utente rimosso, potrà anche aggiungere nuove gare o rimuovere gare esistenti e potrà infine aggiornare le classifiche aggiungendo o rimuovendo punti ai diversi piloti.
+    \item \textbf{Amministratore:} L'utente amministratore ha accesso a tutte le funzionalità del sito e può inoltre aggiungere o rimuovere utenti, eliminando i commenti del'utente rimosso, può eliminare commenti di altri utenti, potrà anche aggiungere nuove gare o rimuovere gare esistenti e potrà infine aggiornare le classifiche aggiungendo o rimuovendo punti ai diversi piloti.
 \end{itemize}
 \subsection{Funzionalità}
 Elenco delle funzionalità del sito:
@@ -163,6 +163,7 @@ Elenco delle funzionalità del sito:
     \item visualizzare propri commenti (utente registrato);
     \item aggiunta utenti (amministratore);
     \item rimozione utenti e relativi commenti (amministratore);
+    \item rimozione commenti di altri utenti (amministratore);
     \item aggiunta gare (amministratore);
     \item rimozione gare (amministratore);
     \item aggiunta punti al pilota nella classifica (amministratore);
@@ -171,7 +172,7 @@ Elenco delle funzionalità del sito:
 \subsection{Convenzioni interne}
 Elenco delle convenzioni interne del sito:
 \begin{itemize}
-    \item i \textbf{link} sono tutti sottolineati. I link non visitati sono di colore bianco, mentre i link visitati sono di colore blu, sono stati scelti questi colori per garantire un buon contrasto con lo sfondo scuro del sito;
+    \item i \textbf{link} sono tutti sottolineati. I link non visitati sono di colore bianco, mentre i link visitati sono di colore celeste, sono stati scelti questi colori per garantire un buon contrasto con lo sfondo scuro del sito;
     \item i \textbf{form} hanno uno sfondo scuro, testo di colore bianco e il pulsante di invio di colore rosso.
     \item i \textbf{link circolari} sono disabilitati e vengono mostrati sottolineati di rosso per fai capire che ci si trova in quella pagina;
 \end{itemize}
@@ -250,7 +251,7 @@ Infine nell'area utente/admin quando si clicca il pulsante di eliminazione accou
 \subsubsection{Validazione dell'Input}
 La validazione degli input è stata effettuata sia lato \textbf{client} sia lato \textbf{server}, attraverso l'utilizzo di espressioni regolari per validarne il contenuto. I rispettivi messaggi di errore che vengono ritornati all'utente sono stati scritti per essere brevi e informativi. 
 \subsubsection{Sicurezza}
-Per quanto riguarda la sicurezza del sito, sono state adottate le diverse precauzioni:
+Per quanto riguarda la sicurezza del sito, sono state adottate le seguenti precauzioni:
 \begin{itemize}
     \item le \textbf{query SQL} sono state realizzate utilizzando le prepared statements per prevenire attacchi di tipo SQL Injection;
     \item le \textbf{password} degli utenti presenti nel database sono state cifrate tramite l'algoritmo bcrypt per prevenire accessi non autorizzati in caso di compromissione del database, inoltre gli utenti dovranno avere precauzioni nella scelta della password, infatti dovrà avere almeno 8 caratteri tra cui almeno una lettera maiuscola, una lettera minuscola, un numero e un carattere speciale;
@@ -292,13 +293,13 @@ Questo ci ha permesso di tenere traccia delle modifiche apportate al codice, fac
 Inoltre ci ha permesso di organizzare meglio la struttura delle componenti del sito suddividendo ogni tipo di componente in sottodirectory adeguate. Questo inoltre permette di avere una chiara separazione tra i diversi linguaggi utilizzati (HTML, CSS, JavaScript, PHP) e di mantenere il codice più ordinato e facile da gestire.
 
 \section{Test e Validazione}
-Descrizione dei test effettuati per verificare il corretto funzionamento del sito e la conformità ai requisiti iniziali.
 \subsection{Navigabilità ed accessibilità}
 I test sono stati effettuati mediante l'utilizzo di alcuni tool, tra cui citiamo:
 \begin{itemize}
     \item \textbf{Total Validator}: strumento che permette di verificare l'accessibilità del sito web secondo le linee guida WCAG 2.1;
     \item \textbf{W3C Validator}: strumento che permette di verificare la validità del codice HTML e CSS secondo gli standard del W3C; questo ci ha fornito un esito positivo per l'html e il css;   
     \item \textbf{WCAG Contrast Checker}: strumento che permette di controllare i rapporti di contrasto tra gli elementi della pagina; ha fornito un esito positivo per quanto riguarda tutti i contrasti all'interno del sito;
+    \item \textbf{Silktide}: strumento che permette di analizzare l'accessibilità del sito web e di individuare eventuali problemi; il tool non ha rilevato problemi;
     \item \textbf{Wave powered by WebAIM}: strumento che permette di analizzare l'accessibilità del sito web e di individuare eventuali problemi; il tool non ha rilevato problemi significativi;
     \item \textbf{Lighthouse}: strumento di Google che permette di analizzare le prestazioni, l'accessibilità e le best practice del sito web;
     \item \textbf{Browser diversi}: sono stati effettuati test di navigazione su diversi browser (Brave, Chrome, Firefox, Edge) per verificare la compatibilità e l'usabilità del sito su diverse piattaforme;
@@ -309,8 +310,8 @@ Tutti i test effettuati hanno dato esito positivo, con alcune segnalazioni di fa
 \subsection{Falsi positivi}
 A seguito dell'utilizzo di Total Validor e W3C Validator sono stati riscontranti i seguenti falsi positivi:
 \begin{itemize}
-    \item tutte le pagine sono soggette a segnalazioni riguardanti errori di ortografia; 
-    \item molte pagine presentano errori dovuti all'inserimento di un valore [value], questo è stato fatto per sostiuire il valore tra parentesi quadre tramite php;
+    \item tutte le pagine sono soggette a segnalazioni riguardanti errori di ortografia, in particolare Total Validator segnala come errate parole inglesi fornendo dei suggerimenti in italiano, oltre a segnalare parole italiane fornendo suggerimenti non corretti; 
+    \item molte pagine presentano errori dovuti all'inserimento di un valore tra parentesi quadre utilizzate come placeholder per le sostituzioni dinamiche effettuate tramite PHP; questi errori non sono effettivi in quanto i placeholder vengono sostituiti con valori validi prima della visualizzazione della pagina;
 \end{itemize}
 \subsection{Screen reader}
 Sono stati svolti dei test utilizzando screen reader (come quello integrato con Silktide) per verificare che il sito fosse accessibile anche per utenti con disabilità visive. I test hanno mostrato che il sito è navigabile e che le informazioni sono accessibili tramite gli screen reader. Anche se ci siamo accorti che vengono saltati alcuni tag "\textit{abbr}" nella descrizioni delle tabelle.
@@ -361,7 +362,5 @@ Ogni membro del gruppo ha però collaborato in caso di dubbi o difficoltà duran
     \end{itemize}
     
 \end{itemize}
-
-\section{Note}
 
 \end{document}
