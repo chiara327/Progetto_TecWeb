@@ -1377,7 +1377,9 @@ th,
 
 .btn-confirm-delete:hover,
 .btn-confirm-delete:focus-visible {
-    background-color: #b91c1c; 
+    color: var(--navbar-text-color);
+    border: 0.15em solid var(--buttons);
+    background-color: var(--buttons);
     transform: scale(1.05); 
     outline: none;
 }
