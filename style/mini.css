@@ -66,7 +66,7 @@ body {
 
 main h1, 
 main h2, 
-.titolo-f1 {
+.title-f1 {
     display: block !important;
     width: 100% !important;
     text-align: center !important;
@@ -412,6 +412,7 @@ a:focus-visible {
 #content p {
     padding: 0.8em 1em;
     font-size: 0.95em;
+    max-width: 100%;
 }
 
 main section h2, article.aboutus h2 {
@@ -434,8 +435,8 @@ main section h2, article.aboutus h2 {
     padding: 0;
     margin: 1.5em 0;
     min-height: auto;
-    background-color: #344621;
     width: 100%;
+    max-width: 100%;
 }
 
 #content section > div {
@@ -444,37 +445,8 @@ main section h2, article.aboutus h2 {
 }
 
 #content section img {
-    display: none !important;
-    width: 0 !important;
-    height: 0 !important;
-    margin: 0 !important;
-    padding: 0 !important;
+    display: none;
 }
-
-.sponsors {
-    list-style: none;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.6em;
-    padding: 0.8em;
-    margin: 0 auto;
-    width: 100%;
-}
-
-.sponsors li {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 5em;
-}
-
-.sponsors img {
-    max-width: 100%;
-    height: auto;
-    max-height: 4em;
-    object-fit: contain;
-}
-
 /* =========================
    PILOTI PAGE
    ========================= */
@@ -584,18 +556,18 @@ main section h2, article.aboutus h2 {
 #info-piloti dl, 
 #info-scuderie dl, 
 #gare dl {
-    display: block !important;
-    width: 100% !important;
-    clear: both !important; 
+    display: block;
+    width: 100%;
+    clear: both; 
 }
 
 #info-piloti dt, 
 #info-scuderie dt, 
 #gare dt {
-    display: block !important;
-    float: none !important; 
-    text-align: left !important;
-    width: 100% !important;
+    display: block;
+    float: none; 
+    text-align: left;
+    width: 100%;
     font-size: 0.8em;
     margin-top: 1.2em;
     color: var(--footer-text-color); 
@@ -605,11 +577,11 @@ main section h2, article.aboutus h2 {
 #info-piloti dd, 
 #info-scuderie dd, 
 #gare dd {
-    display: block !important;
-    float: none !important;
-    text-align: left !important; 
-    width: 100% !important;
-    margin-left: 0 !important; 
+    display: block;
+    float: none;
+    text-align: left; 
+    width: 100%;
+    margin-left: 0; 
     font-size: 1.3em; 
     font-weight: bold;
     color: var(--content-text-color);
@@ -620,7 +592,7 @@ main section h2, article.aboutus h2 {
 #info-piloti dd, 
 #info-scuderie dd, 
 #gare dd{
-    border-bottom: none !important;
+    border-bottom: none;
 }
 
 #info-piloti h1 {
@@ -991,13 +963,13 @@ main section h2, article.aboutus h2 {
     width: 100%; 
     padding: 1em; 
     text-align: center;
-    border-radius: 0.3em !important;
-    border-left: 0.15em solid var(--footer-border-color) !important; 
+    border-radius: 0.3em;
+    border-left: 0.15em solid var(--footer-border-color); 
 }
 
 [role="tab"]:first-child,
 [role="tab"]:last-child {
-    border-radius: 0.3em !important;
+    border-radius: 0.3em;
 }
 
 /* =========================
@@ -1017,16 +989,16 @@ a:focus-visible {
 
 #login_form,
 #signup_form {
-    width: 92% !important; 
-    max-width: none !important;
-    padding: 1.5em 1.2em !important;
-    margin: 1.5em auto !important;
+    width: 92%; 
+    max-width: none;
+    padding: 1.5em 1.2em;
+    margin: 1.5em auto;
     box-sizing: border-box;
 }
 
 #login_form legend,
 #signup_form legend {
-    font-size: 1.3em !important;
+    font-size: 1.3em;
     margin-bottom: 0.8em;
 }
 
@@ -1038,15 +1010,15 @@ a:focus-visible {
 #signup_form input[type="password"],
 #login_form input[type="date"],
 #signup_form input[type="date"] {
-    font-size: 1em !important; 
-    padding: 0.8em !important; 
+    font-size: 1em; 
+    padding: 0.8em; 
     height: 3em; 
 }
 
 #login_form li.checkbox-group,
 #signup_form li.checkbox-group {
     padding: 0.5em 0;
-    flex-direction: row !important;
+    flex-direction: row;
     align-items: center;
 }
 
@@ -1056,28 +1028,11 @@ a:focus-visible {
     height: 1.3em;
 }
 
-#login_form input[type="submit"],
-#signup_form input[type="submit"],
-#modifica-anagrafica input[type="submit"],
-#modifica-username input[type="submit"],
-#modifica-password input[type="submit"] {
-    width: 100% !important;
-    padding: 1em !important;
-    font-size: 1.1em !important;
-    margin-top: 0.5em;
-}
-
 #signup_form .switch-form,
 #login_form .switch-form {
     margin-top: 1.5em;
     font-size: 0.95em;
     line-height: 1.5;
-}
-
-#signup_main h1,
-#login_main h1 {
-    font-size: 1.8em !important;
-    padding: 0 0.5em;
 }
 
 /* =========================
@@ -1088,14 +1043,14 @@ a:focus-visible {
 .area_utente_modifica, 
 .area_utente_commenti, 
 .area_utente_logout {
-    width: 95% !important; 
-    margin: 1em auto !important;
-    padding: 1em !important;
+    width: 95%; 
+    margin: 1em auto;
+    padding: 1em;
     box-sizing: border-box;
 }
 
 .area_utente_info dl {
-    display: block !important;
+    display: block;
 }
 
 .area_utente_info dt {
@@ -1118,30 +1073,30 @@ a:focus-visible {
 .btn-logout, .btn-admin, input[type="submit"], #open-delete-modal, 
 .area_utente_logout #logout-container .btn-logout,
 .area_utente_logout #logout-container .btn-delete {
-    width: 100% !important;
+    width: 100%;
     display: block;
-    padding: 1em !important;
-    font-size: 1.1em !important;
+    padding: 1em;
+    font-size: 1.1em;
 }
 
 .area_utente_modifica input {
-    font-size: 16px !important;
-    padding: 0.8em !important;
+    font-size: 16px;
+    padding: 0.8em;
 }
 
 /* 5. Commenti (Card) */
 .commento-card {
-    padding: 1em !important;
-    margin-bottom: 1em !important;
+    padding: 1em;
+    margin-bottom: 1em;
 }
 
 .commento-card:hover {
-    transform: none !important;
+    transform: none;
 }
 
 .modal-content {
-    width: 85% !important;
-    padding: 1.5em !important;
+    width: 85%;
+    padding: 1.5em;
 }
 
 #modal-title {
@@ -1154,7 +1109,7 @@ a:focus-visible {
 }
 
 .btn-secondary, .btn-confirm-delete {
-    width: 100% !important; 
+    width: 100%; 
 }
 
 /* =========================
@@ -1163,16 +1118,16 @@ a:focus-visible {
 
 #form-utenti-elimina,
 #form-utenti-aggiungi {
-    width: 92% !important; 
-    max-width: none !important;
-    padding: 1.5em 1em !important; 
-    margin: 1.5em auto !important; 
+    width: 92%; 
+    max-width: none;
+    padding: 1.5em 1em; 
+    margin: 1.5em auto; 
     box-sizing: border-box;
 }
 
 #form-utenti-elimina legend,
 #form-utenti-aggiungi legend {
-    font-size: 1.3em !important;
+    font-size: 1.3em;
     width: auto;
     margin-bottom: 0.8em;
 }
@@ -1183,32 +1138,13 @@ a:focus-visible {
 #form-utenti-aggiungi input[type="password"],
 #form-utenti-aggiungi select,
 #form-utenti-aggiungi input[type="date"] {
-    font-size: 1em !important; 
-    padding: 0.8em !important;
+    font-size: 1em; 
+    padding: 0.8em;
     margin-bottom: 0.5em;
 }
 
 #form-utenti-aggiungi input[type="date"]::-webkit-calendar-picker-indicator {
     right: 0.5em; 
-}
-
-#form-utenti-elimina input[type="submit"],
-#form-utenti-aggiungi input[type="submit"] {
-    width: 100% !important;
-    padding: 1em !important;
-    font-size: 1.1em !important;
-    margin-top: 1em;
-}
-
-.crea-utente-section ul,
-.elimina-utente-section ul {
-    margin: 0;
-    padding: 0;
-}
-
-.crea-utente-section li,
-.elimina-utente-section li {
-    margin-bottom: 1em !important;
 }
 
 /* =========================
@@ -1217,68 +1153,51 @@ a:focus-visible {
 
 #form-gare-elimina,
 #form-gare-aggiungi {
-    width: 92% !important; 
-    max-width: none !important;
-    padding: 1.5em 1em !important; 
-    margin: 1.5em auto !important;
+    width: 92%; 
+    max-width: none;
+    padding: 1.5em 1em; 
+    margin: 1.5em auto;
     box-sizing: border-box;
 }
 
 #form-gare-elimina legend,
 #form-gare-aggiungi legend {
-    font-size: 1.3em !important; 
+    font-size: 1.3em; 
     margin-bottom: 0.8em;
 }
 
 #form-gare-elimina input[type="text"],
-#form-gare-aggiungi input[type="text"],
-#form-gare-aggiungi input[type="email"],
-#form-gare-aggiungi input[type="password"],
 #form-gare-aggiungi select,
 #form-gare-aggiungi input[type="date"] {
-    font-size: 16px !important;
-    padding: 0.8em !important; 
+    font-size: 16px;
+    padding: 0.8em; 
 }
 
 #form-gare-elimina input[type="date"]::-webkit-calendar-picker-indicator,
 #form-gare-aggiungi input[type="date"]::-webkit-calendar-picker-indicator {
     right: 0.5em; 
 }
-
-#form-gare-elimina input[type="submit"],
-#form-gare-aggiungi input[type="submit"] {
-    width: 100% !important;
-    padding: 1em !important;
-    font-size: 1.1em !important;
-    margin-top: 1em;
-}
-
-.crea-gare-section li,
-.elimina-gare-section li {
-    margin-bottom: 1em !important;
-}
-
 /* =========================
    AZIONI ADMIN - CLASSIFICA
    ========================= */
 
 #form-modifica-punti-pilota {
-    width: 92% !important; 
-    max-width: none !important;
-    padding: 1.5em 1em !important; 
-    margin: 1.5em auto !important;
+    width: 92%; 
+    max-width: none;
+    padding: 1.5em 1em; 
+    margin: 1.5em auto;
     box-sizing: border-box;
 }
 
 #form-modifica-punti-pilota legend {
-    font-size: 1.3em !important; 
+    font-size: 1.3em; 
     margin-bottom: 0.8em;
 }
 
 #form-modifica-punti-pilota select,
 #form-modifica-punti-pilota input[type="number"] {
-    font-size: 16px !important; 
-    padding: 0.8em !important; 
+    font-size: 16px; 
+    padding: 0.8em; 
 }
 
 #form-modifica-punti-pilota input[type="radio"] {
@@ -1291,15 +1210,8 @@ a:focus-visible {
     flex-wrap: wrap;
 }
 
-#form-modifica-punti-pilota input[type="submit"] {
-    width: 100% !important;
-    padding: 1em !important; 
-    font-size: 1.1em !important;
-    margin-top: 1em;
-}
-
 .crea-classifica-section li {
-    margin-bottom: 1em !important;
+    margin-bottom: 1em;
 }
 
 .area_commenti {
