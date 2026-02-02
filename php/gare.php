@@ -57,7 +57,7 @@ if (empty($gare_data)) {
                         <dt>Circuito</dt>
                         <dd>{$g['circuito_nome']}, {$g['circuito_citta']}</dd>
                         <dt>Tipo</dt>
-                        <dd>Circuito permanente</dd>
+                        <dd>{$g['circuito_tipo']}</dd>
                         <dt>1° classificato</dt>
                         <dd>
                             <a href=\"informazioni_pilota.php?id={$g['p1_id']}\" aria-label=\"Profilo di {$g['p1_nome']} {$g['p1_cognome']}\">
