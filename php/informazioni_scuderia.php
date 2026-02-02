@@ -36,7 +36,7 @@ function render_drivers($id, $nome, $cognome, $scuderia, $nazionalita) {
         <li>
             <article class="{$scuderia}-heading">
                 <a href="informazioni_pilota.php?id={$id}">
-                    <img src="{$img_src}" alt="Ritratto di {$display_name}">
+                    <img src="{$img_src}" alt="Ritratto di {$full_name}">
                     <h3>{$display_name}</h3>
                 </a>
             </article>
