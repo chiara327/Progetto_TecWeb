@@ -99,6 +99,7 @@ a:link:after, a:visited:after {
     color: var(--content-text-color);
     border-top: 1pt solid var(--breadcrumb-border-color);
     border-bottom: 1pt solid var(--breadcrumb-border-color);
+    break-after: avoid;
 }
 
 /* =========================
@@ -136,6 +137,9 @@ a:link:after, a:visited:after {
    ========================= */
 #content{
     padding-bottom: 2em;
+    margin-right: 2em;
+    margin-left:2em;
+    max-width: 90%;
 }
 
 #content h2 {
@@ -150,6 +154,10 @@ a:link:after, a:visited:after {
     margin-top: 1em;
 }
 
+#content p {
+    margin-bottom: 1em;
+}
+
 #content img{
     display: none;
 }
@@ -162,6 +170,10 @@ a:link:after, a:visited:after {
     margin-right: 0;
     padding-left: 0.5em;
     font-style: italic;
+}
+
+#content blockquote p{
+    margin-bottom: 0;
 }
 
 /* =========================
@@ -179,10 +191,13 @@ a:link:after, a:visited:after {
 }
 .piloti ul{
     display:flex;
-    flex-wrap: no-wrap;
+    flex-wrap: nowrap;
     justify-content: center;
     gap: 10%;
     list-style: none;
+    padding-top: 1em;
+    padding-right: 0;
+    padding-left: 0;
 }
 
 .piloti li{
@@ -247,13 +262,13 @@ a:link:after, a:visited:after {
    PILOTA/SCUDERIE/GARE DETAIL PAGE
    ========================= */
 #info-piloti, #info-scuderie, #gare {
-    width: 60%;
+    width: 80%;
     margin: 0 auto;
     padding: 2em 1.25em;
 }
 
 #info-piloti section, #info-scuderie section, #gare section {
-    border: 0.15em solid var(--content-text-color);
+    border: 0.1em solid var(--content-text-color);
     border-radius: 0.5em;
     padding: 2em;
     margin-bottom: 2em;
@@ -294,33 +309,15 @@ a:link:after, a:visited:after {
     color: var(--content-text-color);
 }
 
-#info-scuderie section.piloti ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+/* --- I piloti seguono per lo più layout di pagina piloti --- */
 
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1em;
-    justify-content: center;
+#info-scuderie section.piloti article h3{
+    font-size: 1em;
+    text-align: center;
+    border-bottom: 1pt solid var(--content-text-color);
 }
-#info-scuderie section.piloti li {
-    width: 30em;
-    padding: 1em;
-}
+    
 
-#info-scuderie section.piloti article {
-    position: relative;
-    overflow: hidden;
-}
-
-#info-scuderie section.piloti article img {
-    width: 20em;
-    height: auto;
-    object-fit: cover;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
 /* =========================
    COMMENTI GARA PAGE
    ========================= */
