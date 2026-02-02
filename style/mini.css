@@ -64,29 +64,19 @@ body {
     overflow-x: hidden;
 }
 
-main h1, 
-main h2, 
-.title-f1 {
-    display: block !important;
-    width: 100% !important;
-    text-align: center !important;
-    margin: 1.2em 0 !important; 
-
-    /* Risolto il sovraffollamento del testo su mobile */
-    height: auto !important; 
-    line-height: 1.5 !important; 
-    padding: 0.8em 0.4em !important; 
-
-    /* Font size adattato */ 
-    font-size: 1.5rem !important; 
+main .title-f1 {
+    display: block;
+    text-align: center;
+    height: auto; 
+    line-height: 1.5; 
+    padding: 0.8em 0.4em;
+    font-size: 1.5rem; 
     text-transform: uppercase;
-    box-sizing: border-box !important;
-
-    /* Barre Rosse */
-    border-top: 0.12em solid var(--accent-color) !important;
-    border-bottom: 0.12em solid var(--accent-color) !important;
-    border-left: none !important;
-    border-right: none !important;
+    box-sizing: border-box;
+    border-left: none;
+    border-right: none;
+    margin-right: 0;
+    margin-left: 0;
 }
 
 /* =========================
@@ -342,8 +332,8 @@ a:focus-visible {
 
 .social-links a {
     display: flex;
-    justify-content: center !important;
-    align-items: center !important;
+    justify-content: center;
+    align-items: center;
 
     width: 2.5em; 
     height: 2.5em;
@@ -510,6 +500,10 @@ main section h2, article.aboutus h2 {
 /* =========================
    SCUDERIE PAGE
    ========================= */
+
+#scuderie h2 {
+    font-size: 1.5rem;
+}
 
 #scuderie article {
     display: flex;
@@ -807,9 +801,12 @@ main section h2, article.aboutus h2 {
 
 .gp h2 {
     margin: 0;
+    margin-bottom: 1.2em;
+    padding: 0.8em;
     font-size: 1.1em;
-    text-align: left;
+    text-align: center;
     color: var(--accent-color);
+    border-bottom: 0.1em solid var(--accent-color);
 }
 
 .gp > p {
@@ -853,7 +850,7 @@ main section h2, article.aboutus h2 {
 
 .circuiti:hover {
     transform: none;
-    border-color: var(--footer-border-color);
+    border-color: var(--accent-color);
 }
 
 .circuiti img {
@@ -874,6 +871,7 @@ main section h2, article.aboutus h2 {
     text-align: center; 
     font-size: 1.4em;
     padding: 0.5em 0;
+    border-bottom: 0.1em solid var(--accent-color);
 }
 
 .circuiti dl {
@@ -1100,7 +1098,9 @@ a:focus-visible {
 }
 
 #modal-title {
-    font-size: 1.4em !important;
+    font-size: 1.4em;
+    border-top: none;
+    border-bottom: 0.05em solid var(--footer-border-color);
 }
 
 .modal-actions {
@@ -1128,7 +1128,6 @@ a:focus-visible {
 #form-utenti-elimina legend,
 #form-utenti-aggiungi legend {
     font-size: 1.3em;
-    width: auto;
     margin-bottom: 0.8em;
 }
 
