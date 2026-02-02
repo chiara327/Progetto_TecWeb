@@ -315,13 +315,89 @@ a:link:after, a:visited:after {
 }
 
 #info-scuderie section.piloti article img {
-    width: 10em;
-    height: 10em;
+    width: 20em;
+    height: auto;
     object-fit: cover;
     cursor: pointer;
     transition: transform 0.3s ease;
 }
+/* =========================
+   COMMENTI GARA PAGE
+   ========================= */
 
+.area_commenti {
+    max-width: 50em;
+    margin: 2em auto;
+    padding: 1.5em;
+    border: 0.15em solid var(--content-text-color);
+    border-radius: 0.5em;
+}
+
+.gp-stats {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.5em 1.5em;
+    margin: 1.5em 0;
+    padding: 1em 0;
+    border-top: 1px solid var(--footer-border-color);
+    border-bottom: 1px solid var(--footer-border-color);
+}
+
+.gp-stats dt {
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.85em;
+    color: var(--accent-color); 
+    align-self: center;
+}
+
+.gp-stats dd {
+    margin: 0;
+    font-size: 1.1em;
+    font-weight: 600;
+    color: var(--content-text-color);
+}
+
+.podium-summary {
+    display: flex;
+    gap: 0.5em;
+    margin-top: 1.5em;
+    padding: 0;
+    list-style: none; 
+}
+
+.podium-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1em 0.5em;
+    border-radius: 0.2em;
+    border-top: 0.3em solid var(--content-text-color); 
+    transition: transform 0.3s ease;
+}
+.podium-item.gold { border-top-color: #FFD700; }
+.podium-item.silver { border-top-color: #C0C0C0; }
+.podium-item.bronze { border-top-color: #CD7F32; }
+
+.podium-item .rank {
+    font-size: 1.5em;
+    font-weight: 900;
+    margin-bottom: 0.2em;
+    display: block;
+}
+
+.gold .rank { color: #FFD700; }
+.silver .rank { color: #C0C0C0; }
+.bronze .rank { color: #CD7F32; }
+
+.podium-item .driver {
+    font-size: 0.9em;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    color: var(--content-text-color);
+}
 /* =========================
    CLASSIFICA PAGE
    ========================= */
@@ -864,4 +940,50 @@ a:link:after, a:visited:after {
     border: 0.15em solid var(--accent-color);
     border-radius: 50%;
     margin: 0;
+}
+/* =========================
+   ERROR 403 PAGE
+   ========================= */
+#E403 {
+    text-align: center;
+}
+
+#E403 p{
+    padding: 2em;
+}
+
+#E403 img{
+    display: none;
+}
+/* =========================
+   ERROR 404 PAGE
+   ========================= */
+#E404 {
+    text-align: center;
+}
+
+#E404 p{
+    padding: 2em;
+}
+
+#E404 img{
+    display: none;
+}
+/* =========================
+   ERROR 500 PAGE
+   ========================= */
+#E500 {
+    text-align: center;
+}
+
+#E500 p{
+    padding: 2em;
+}
+
+#E500 img{
+    display: none;
+}
+
+#stop, #start{
+    display: none;
 }

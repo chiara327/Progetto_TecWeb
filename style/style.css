@@ -2202,7 +2202,6 @@ label {
     padding: 2em;
     animation: fluttua 3s ease-in-out infinite;
 }
-/*MANCA L'ANIMAZIONE, SE NON RIESCO A FARLA LA TOLGO (-chiara)*/
 
 @keyframes fluttua {
   0%   { transform: translateY(0); opacity: 1; }
