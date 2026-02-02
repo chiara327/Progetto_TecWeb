@@ -58,7 +58,7 @@ section {
     display: none;
 }
 
-/* non serve
+/* non necessario perché abbiamo solo link interni e sono tutti scontati
 a:link:after, a:visited:after {
     content: "[" attr(href) "]";
     font-size: 90%;
@@ -613,22 +613,6 @@ a:link:after, a:visited:after {
     box-sizing: border-box;
 }
 
-#login_form input[type="submit"],
-#signup_form input[type="submit"],
-#modifica-anagrafica input[type="submit"],
-#modifica-username input[type="submit"],
-#modifica-password input[type="submit"] {
-  display: block;
-  width: 100%;
-  padding: 0.8em;
-  font-size: 1em;
-  font-weight: bold;
-  color: var(--accent-color);
-  border: 1pt solid var(--accent-color);
-  border-radius: 0.3em;
-  margin-top: 1em;
-}
-
 
 /* =========================
    AREA RISERVATA PAGE
@@ -714,15 +698,6 @@ a:link:after, a:visited:after {
 
 #modifica-anagrafica legend {
     display: none; 
-}
-
-.area_utente_modifica ul {
-    list-style: none;
-    padding: 0;
-}
-
-.area_utente_modifica li {
-    margin-bottom: 1.2em;
 }
 
 .area_utente_modifica label {

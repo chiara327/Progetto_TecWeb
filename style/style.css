@@ -27,6 +27,11 @@
     /* Magari trovare un rosso diverso */
     --buttons: #A60006;
 
+    --success-color: #4ade80;
+    --error-color: #f87171;
+    --success-border: #15803d;
+    --error-border: #b91c1c;
+
     /*  COLORI DA USARE PER SCUDERIE/PILOTI */
 
     --ferrari-color: #C62000;
@@ -1176,15 +1181,6 @@ th,
     display: none; 
 }
 
-.area_utente_modifica ul {
-    list-style: none;
-    padding: 0;
-}
-
-.area_utente_modifica li {
-    margin-bottom: 1.2em;
-}
-
 .area_utente_modifica label {
     display: block;
     margin-bottom: 0.4em;
@@ -1355,6 +1351,12 @@ th,
     flex-wrap: wrap;
 }
 
+.modal-actions form{
+    margin-left:auto;
+    margin-right:auto;
+    width: 100%;
+}
+
 .btn-secondary {
     background-color: transparent;
     color: var(--content-text-color);
@@ -1478,17 +1480,6 @@ th,
     gap: 1em;
 }
 
-.crea-utente-section ul,
-.elimina-utente-section ul {
-    list-style: none;
-    padding: 0;
-}
-
-.crea-utente-section li,
-.elimina-utente-section li {
-    margin-bottom: 1.2em;
-}
-
 #form-utenti-elimina label,
 #form-utenti-aggiungi label {
     margin-bottom: 0.3em;
@@ -1608,17 +1599,6 @@ th,
     display: flex;
     flex-direction: column;
     gap: 1em;
-}
-
-.crea-gare-section ul,
-.elimina-gare-section ul {
-    list-style: none;
-    padding: 0;
-}
-
-.crea-gare-section li,
-.elimina-gare-section li {
-    margin-bottom: 1.2em;
 }
 
 #form-gare-elimina label,
@@ -2132,7 +2112,7 @@ label {
     text-transform: none;
 }
 
-#info-scuderie section.piloti article.redbull-heading h3 {
+#info-scuderie section.piloti article.redbullracing-heading h3 {
     background-color: var(--redbull-color);
     text-transform: none;
 }
@@ -2386,7 +2366,7 @@ label {
     color: var(--buttons);
     border: 0.15em solid var(--buttons);
     background-color: var(--buttons);
-    color: white;
+    color: var(--content-text-color);
     outline: none;
 }
 
@@ -2400,14 +2380,14 @@ label {
 
 .error-msg {
     background-color: rgba(185, 28, 28, 0.1);
-    color: #f87171;
-    border: 1px solid #b91c1c;
+    color: var(--error-color);
+    border: 1px solid var(--error-border);
 }
 
 .success-msg {
     background-color: rgba(21, 128, 61, 0.1);
-    color: #4ade80;
-    border: 1px solid #15803d;
+    color: var(--success-color);
+    border: 1px solid var(--success-border);
 }
 
 .area_commenti {
@@ -2480,11 +2460,11 @@ label {
 }
 
 .area_commenti p.success {
-    color: #4ade80;
+    color: var(--success-color);
 }
 
 .area_commenti p.error {
-    color: #f87171;
+    color: var(--error-color);
 }
 
 /* =========================

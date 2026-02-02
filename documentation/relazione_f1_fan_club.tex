@@ -185,14 +185,42 @@ Schema relazionale del database:
 \newpage
 
 \section{Realizzazione}
-Per rispettare le regole di copyright tutte le immagini riguardanti piloti, scuderie e gare sono state generate da modelli di intelligenza artificiale, mentre le immagini che riguardano il layout dei tracciati sono state scaricate dal sito \url{https://commons.wikimedia.org/wiki/Main_Page}
-\subsection{Struttura e contenuto}
-Descrizione delle pagine principali del sito e delle loro funzionalità.
+Per rispettare le regole di copyright tutte le immagini riguardanti piloti, scuderie e gare sono state generate da modelli di intelligenza artificiale, 
+mentre le immagini che riguardano il layout dei tracciati sono state scaricate dal sito \url{https://commons.wikimedia.org/wiki/Main_Page}. 
+Abbiamo inserito riferimenti alla città di Padova con un circuito dedicato (\textbf{Piovego Circuit}) e abbiamo creato una scuderia di fantasia, 
+ossia la \textbf{Superstar Racing}. Vengono riportate le attributions per le immagini dei circuiti:
+
+\begin{description}
+    \item[Albert Park Circuit:] AEPA Racing, CC BY-SA 4.0, via Wikimedia Commons 
+    \item[Autodromo Enzo e Dino Ferrari:] Sentoan, CC BY 3.0, via Wikimedia Commons
+    \item[Autodromo Hermanos Rodriguez:] Pitlane02, CC BY-SA 3.0, via Wikimedia Commons
+    \item[Autodromo Jose Carlos Pace:] Will Pittenger, CC BY-SA 3.0, via Wikimedia Commons
+    \item[Autodromo Nazionale di Monza:] Anthony Alessio Tralongo, CC BY-SA 4.0, via Wikimedia Commons
+    \item[Bahrain International Circuit:] User:Will Pittenger, CC BY-SA 3.0, via Wikimedia Commons
+    \item[Baku City Circuit:] HumanBodyPiloter5, CC0, via Wikimedia Commons
+    \item[Circuit de Barcelona-Catalunya:] GabrielStella, CC BY-SA 3.0, via Wikimedia Commons
+    \item[Circuit de Monaco:] Will Pittenger, CC BY-SA 3.0, via Wikimedia Commons
+    \item[Circuit de Spa-Francochamps:] Will Pittenger, CC BY-SA 3.0, via Wikimedia Commons
+    \item[Circuit Gilles-Villeneuve:] Île Notre-Dame (Circuit Gilles Villeneuve).svg: Will Pittenger derivative work: — cBuckley (Talk • Contribs), CC BY-SA 3.0, via Wikimedia Commons
+    \item[Circuit of the Americas:] Gustavo Girardelli Own work. OpenStreetMap contributors, CC BY-SA 2.0, via Wikimedia Commons
+    \item[Circuit Zandvoort:] Anthony Alessio Tralongo, CC BY-SA 4.0, via Wikimedia Commons
+    \item[Hungaroring:] Angelus, CC BY-SA 3.0, via Wikimedia Commons
+    \item[Jeddah Corniche Circuit:] GabrielStella, CC BY-SA 3.0, via Wikimedia Commons
+    \item[Las Vegas Strip Circuit:] Nasho3498, CC BY-SA 4.0, via Wikimedia Commons
+    \item[Lusail International Circuit:] Losail.svg: Will Pittenger derivative work: Gpmat, CC BY-SA 3.0, via Wikimedia Commons
+    \item[Marina Bay Street Circuit:] Cherkash, CC BY-SA 4.0, via Wikimedia Commons
+    \item[Miami International Autodrome:] GabrielStella, CC BY-SA 3.0, via Wikimedia Commons
+    \item[Red Bull Ring:] Circuit Red Bull Ring.svg: Pitlane02, Sentoan, HorsePunchKid, Cs-wolves, RoelTM, Sparkle1 derivative work: Gpmat, CC BY-SA 3.0, via Wikimedia Commons
+    \item[Shanghai International Circuit:] Will Pittenger, CC BY-SA 3.0, via Wikimedia Commons
+    \item[Silverstone Circuit:] AlexJ, CC0, via Wikimedia Commons
+    \item[Suzuka International Racing Course:] Will Pittenger, CC BY-SA 3.0, via Wikimedia Commons
+    \item[Yas Marina Circuit:] Anthony Alessio Tralongo, CC BY-SA 4.0, via Wikimedia Commons
+\end{description}\subsection{Struttura e contenuto}
 \subsubsection{HTML}
+Il sito è stato sviluppato seguendo lo standard  \textbf{HTML5}. Le pagine \textit{.html} contengono tutta la parte di struttura non dinamica, mentre per le parti dinamiche vengono effettuate sostituzioni utilizzando PHP. Per effettuare le sostituzioni delle sezioni dinamiche abbiamo usato dei \textbf{placeholder} tra parentesi quadre. Le sostituzioni vengono effettuate usando la funzione di $str\_replace$ di PHP. In questo modo modifiche ai dati presenti nel database si riflettono in maniera automatica sulla vista web: ad esempio quando un admin modifica il numero di punti di un pilota, magari dopo la sua vittoria in una gara, la pagina \textit{classifica.html} mostrerà i dati aggiornati sia per quanto riguarda la classifica piloti sia per quanto riguarda la classifica costruttori.
 \subsubsection{Popolamento database}
-Per popolare il database abbiamo deciso di farlo manualmente, inserendo i dati tramite comandi SQL e senza quindi generare una grande quantità di dati. Alcuni dei dati inseriti sono dati reali ma ci sono alcune eccezioni inventate per moltre categorie.
-Ad esempio sono presenti alcuni piloti inventati ed una scuderia fittizia. Le immagini dei piloti, delle scuderie e delle gare sono tutte generate tramite strumenti di intelligenza artificiale mentre le immagini dei circuiti sono immagini reali libere dal copyright.
-\subsection{Presentazione}
+Il database è stato popolato manualmente, inserendo i dati tramite comandi SQL e senza quindi generare una grande quantità di dati. La maggior parte dei dati inseriti sono dati reali, ma ci sono alcune eccezioni inventate per molte categorie.
+Ad esempio sono presenti alcuni piloti inventati (i piloti \textbf{Mario Mario} e \textbf{Luigi Mario}) ed una scuderia fittizia (la \textbf{Superstar Racing}).\subsection{Presentazione}
 Descrizione dell'aspetto grafico del sito, del layout e delle scelte di design.
 \subsubsection{CSS}
 \subsubsection{Immagini e icone}
@@ -201,8 +229,22 @@ Descrizione dell'aspetto grafico del sito, del layout e delle scelte di design.
 \subsection{Comportamento}
 Descrizione delle funzionalità interattive del sito.
 \subsection{PHP}
-\subsubsection{JavaScript}
+I file \textit{.php} sono organizzati all'interno dell'omonima cartella, in cui troviamo:
+\begin{itemize}
+    \item il file \textit{db\_connection.php}, che gestisce la connessione al database ed espone tutte le funzioni che servono a recuperare e modificare i dati relativi al db;
+    \item tutti i file \textit{.php} utilizzati per mostrare i contenuti dinamici sulle relative pagine \textit{.html}; Fa eccezione il file \textit{logout.php}, che ha il solo compito di distruggere la sessione e reindirizzare l'utente alla pagina di login quando l'utente esce dal proprio account.
+\end{itemize}
+In caso di errore nell'input delle informazioni nei form, è stato implementato un metodo per il \textbf{ripristino} dell'input basato sull'uso dei placeholder. Vengono inoltre effettuati controlli sulla validità degli input prima di interrogare il database.
+\subsubsection{Javascript}
+Sono stati implementati controlli sugli input \textbf{lato client}, attraverso una serie di funzioni che rispecchiano i controlli effettuati lato server.
+\\
+È stato creato uno script dedicato per la gestione del \textbf{menù mobile}, in modo che venga visualizzato il menù ad hamburger quando si naviga su \textbf{schermi piccoli}. Abbiamo inoltre implementato uno script per gestire il pulsante di "\textbf{torna su}", per facilitare la navigazione all'interno di pagine lunghe.
+\\
+La pagina classifica sfrutta uno script che permette all'utente di cambiare in maniera dinamica la classifica visualizzata selezionando uno dei due pulsanti presenti. Tale script supporta la navigazione via \textbf{mouse}, \textbf{touch} e con \textbf{tastiera}.
+\\
+Infine nell'area utente/admin quando si clicca il pulsante di eliminazione account viene aperto un pop-up che richiede la conferma dell'operazione. Lo script associato gestisce il comportamento nel pop-up: esso viene chiuso se l'utente clicca il pulsante di annullamento o se clicca al di fuori dell'area di contenuto.
 \subsubsection{Validazione dell'Input}
+La validazione degli input è stata effettuata sia lato \textbf{client} sia lato \textbf{server}, attraverso l'utilizzo di espressioni regolari per validarne il contenuto. I rispettivi messaggi di errore che vengono ritornati all'utente sono stati scritti per essere brevi e informativi. 
 \subsubsection{Sicurezza}
 Per quanto riguarda la sicurezza del sito, sono state adottate le diverse precauzioni:
 \begin{itemize}
@@ -210,8 +252,17 @@ Per quanto riguarda la sicurezza del sito, sono state adottate le diverse precau
     \item le \textbf{password} degli utenti presenti nel database sono state cifrate tramite l'algoritmo bcrypt per prevenire accessi non autorizzati in caso di compromissione del database, inoltre gli utenti dovranno avere precauzioni nella scelta della password, infatti dovrà avere almeno 8 caratteri tra cui almeno una lettera maiuscola, una lettera minuscola, un numero e un carattere speciale;
 \end{itemize}
 \subsubsection{Errori di navigazione o del server}
+Il file \textit{.htaccess} permette di gestire gli errori di navigazione e del server. In particolare, le pagine di errore (403, 404, 500) sono state sostituite con delle pagine \textbf{personalizzate}, che includono un messaggio rassicurante per l'utente e istruzioni su cosa fare per tornare alla navigazione. Inoltre se l'utente dovesse aggiungere del testo arbitrario nell'URL verrebbe reindirizzato automaticamente alla pagina di errore 404.
 \subsection{Accessibilità e Usabilità}
-Misure adottate per garantire l'accessibilità (es. contrasto colori, navigazione da tastiera) e l'usabilità (es. layout intuitivo, tempi di caricamento rapidi).
+Le misure adottate per migliorare l'accessibilità del sito, con l'obiettivo di soddisfare la normativa italiana sull'accessibilità nel web (livello AA delle WCAG), sono:
+\begin{itemize}
+    \item le due tabelle presenti sono state rese accessibili tramite l'utilizzo dei tag semantici di struttura, scope per righe e colonne e summary della tabella;
+    \item i form sono stati resi accessibili inserendo, per ogni campo input, il corrispettivo campo label;
+    \item i link visitati e non visitati sono differenziati;
+    \item la gerarchia del sito è ampia e poco profonda;
+    \item i nomi dei piloti e delle scuderie hanno gli span impostati nella lingua corretta;
+    \item nel caso in cui la compilazione di un form sia errata gli input inseriti non vengono persi;
+\end{itemize}
 \subsubsection{Aiuti per lo screen reader}
 Al fine di agevolare le persone con disabilità visive, sono stati adottati i seguenti accorgimenti:
 \begin{itemize}

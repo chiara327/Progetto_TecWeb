@@ -112,6 +112,7 @@ $data_it = date("d/m/Y", strtotime($data_val));
 $nazione = htmlspecialchars($gara_data['circuito_nazione']);
 $anno = date("Y", strtotime($data_val));
 $titolo_gp = $nazione . ' <span lang="en">Grand Prix</span> ' . $anno;
+$titolo_gp_no_span = $nazione . " " .  $anno;
 
 $p1_display = $format_driver($gara_data['p1_nome'], $gara_data['p1_cognome'], $gara_data['p1_nazionalita']);
 $p2_display = $format_driver($gara_data['p2_nome'], $gara_data['p2_cognome'], $gara_data['p2_nazionalita']);
@@ -209,6 +210,7 @@ if (empty($commenti_data)) {
 $html_page = str_replace("[form-commento]", $form_commento, $html_page);
 $html_page = str_replace("[dettagli-gara]", $info_gara_html, $html_page);
 $html_page = str_replace("[titolo-gp]", $titolo_gp, $html_page);
+$html_page = str_replace("[titolo-gp-no-span]", $titolo_gp_no_span, $html_page);
 $html_page = str_replace("[lista-commenti]", $commenti_html, $html_page);
 $html_page = str_replace("[err-eliminazione]", $err_eliminazione, $html_page);
 
