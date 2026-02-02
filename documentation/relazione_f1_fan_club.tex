@@ -227,14 +227,18 @@ Descrizione dell'aspetto grafico del sito, del layout e delle scelte di design.
 \subsubsection{Font}
 \subsubsection{Colori}
 \subsection{Comportamento}
-Descrizione delle funzionalità interattive del sito.
 \subsection{PHP}
 I file \textit{.php} sono organizzati all'interno dell'omonima cartella, in cui troviamo:
 \begin{itemize}
     \item il file \textit{db\_connection.php}, che gestisce la connessione al database ed espone tutte le funzioni che servono a recuperare e modificare i dati relativi al db;
     \item tutti i file \textit{.php} utilizzati per mostrare i contenuti dinamici sulle relative pagine \textit{.html}; Fa eccezione il file \textit{logout.php}, che ha il solo compito di distruggere la sessione e reindirizzare l'utente alla pagina di login quando l'utente esce dal proprio account.
 \end{itemize}
-In caso di errore nell'input delle informazioni nei form, è stato implementato un metodo per il \textbf{ripristino} dell'input basato sull'uso dei placeholder. Vengono inoltre effettuati controlli sulla validità degli input prima di interrogare il database.
+In caso di errore nell'input delle informazioni nei form, è stato implementato un metodo per il \textbf{ripristino} dell'input basato sull'uso dei placeholder. Vengono inoltre effettuati controlli sulla validità degli input prima di interrogare il database. I file \textit{form\_utenti\_admin.php}, \textit{form\_gare\_admin.php}, \textit{form\_classifiche\_admin.php} permettono all'admin di:
+\begin{itemize}
+    \item registrare un nuovo utente, garantendo anche il privilegio di admin, ed eliminare un utente esistente (un admin non può però eliminare un altro admin);
+    \item inserire il risultato di una nuova gara, specificando circuito e primi tre piloti classificati, può inoltre eliminare una gara in base all'ID inserito;
+    \item aumentare o diminuire il numero di punti di un pilota;
+\end{itemize}
 \subsubsection{Javascript}
 Sono stati implementati controlli sugli input \textbf{lato client}, attraverso una serie di funzioni che rispecchiano i controlli effettuati lato server.
 \\
@@ -287,16 +291,15 @@ Fin dall'inizio del progetto abbiamo utilizzato Git per il versionamento del cod
 Questo ci ha permesso di tenere traccia delle modifiche apportate al codice, facilitando la collaborazione e la risoluzione di conflitti.
 Inoltre ci ha permesso di organizzare meglio la struttura delle componenti del sito suddividendo ogni tipo di componente in sottodirectory adeguate. Questo inoltre permette di avere una chiara separazione tra i diversi linguaggi utilizzati (HTML, CSS, JavaScript, PHP) e di mantenere il codice più ordinato e facile da gestire.
 
-\newpage
-
 \section{Test e Validazione}
 Descrizione dei test effettuati per verificare il corretto funzionamento del sito e la conformità ai requisiti iniziali.
 \subsection{Navigabilità ed accessibilità}
 I test sono stati effettuati mediante l'utilizzo di alcuni tool, tra cui citiamo:
 \begin{itemize}
     \item \textbf{Total Validator}: strumento che permette di verificare l'accessibilità del sito web secondo le linee guida WCAG 2.1;
-    \item \textbf{W3C Validator}: strumento che permette di verificare la validità del codice HTML e CSS secondo gli standard del W3C, questo ci ha fornito un esito positivo per l'html e il css;   
-    \item \textbf{Wave powered by WebAIM}: strumento che permette di analizzare l'accessibilità del sito web e di individuare eventuali problemi;
+    \item \textbf{W3C Validator}: strumento che permette di verificare la validità del codice HTML e CSS secondo gli standard del W3C; questo ci ha fornito un esito positivo per l'html e il css;   
+    \item \textbf{WCAG Contrast Checker}: strumento che permette di controllare i rapporti di contrasto tra gli elementi della pagina; ha fornito un esito positivo per quanto riguarda tutti i contrasti all'interno del sito;
+    \item \textbf{Wave powered by WebAIM}: strumento che permette di analizzare l'accessibilità del sito web e di individuare eventuali problemi; il tool non ha rilevato problemi significativi;
     \item \textbf{Lighthouse}: strumento di Google che permette di analizzare le prestazioni, l'accessibilità e le best practice del sito web;
     \item \textbf{Browser diversi}: sono stati effettuati test di navigazione su diversi browser (Brave, Chrome, Firefox, Edge) per verificare la compatibilità e l'usabilità del sito su diverse piattaforme;
     \item \textbf{Dispositivi mobili}: sono stati effettuati test di navigazione su dispositivi mobili (smartphone e tablet) per verificare la responsività e l'usabilità del sito su schermi di diverse dimensioni;
@@ -310,9 +313,7 @@ A seguito dell'utilizzo di Total Validor e W3C Validator sono stati riscontranti
     \item molte pagine presentano errori dovuti all'inserimento di un valore [value], questo è stato fatto per sostiuire il valore tra parentesi quadre tramite php;
 \end{itemize}
 \subsection{Screen reader}
-Sono stati svolti dei test utilizzando screen reader come Silktile per verificare che il sito fosse accessibile anche per utenti con disabilità visive. I test hanno mostrato che il sito è navigabile e che le informazioni sono accessibili tramite gli screen reader. Anche se ci siamo accorti che vengono saltati alcuni tag "\textit{abbr}" nella descrizioni delle tabelle.
-
-\newpage
+Sono stati svolti dei test utilizzando screen reader (come quello integrato con Silktide) per verificare che il sito fosse accessibile anche per utenti con disabilità visive. I test hanno mostrato che il sito è navigabile e che le informazioni sono accessibili tramite gli screen reader. Anche se ci siamo accorti che vengono saltati alcuni tag "\textit{abbr}" nella descrizioni delle tabelle.
 
 \section{Suddivisione del lavoro}
 Abbiamo deciso di dividerci i compiti per garantire una buona organizzazione del lavoro e per sfruttare al meglio le competenze di ogni membro del gruppo garantendo a ciascuno di implementare i diversi aspetti del sito.
@@ -360,8 +361,6 @@ Ogni membro del gruppo ha però collaborato in caso di dubbi o difficoltà duran
     \end{itemize}
     
 \end{itemize}
-
-\newpage
 
 \section{Note}
 
