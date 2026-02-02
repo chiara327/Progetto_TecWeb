@@ -117,7 +117,7 @@ main h2,
     text-indent: -9999em;
     overflow: hidden;
     white-space: nowrap;
-    margin: 0;
+    margin: 0 auto;
 }
 
 h1.hide {
@@ -125,7 +125,8 @@ h1.hide {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    margin: 0 auto;
+    margin: 0;
+    margin-right: auto;
 }
 
 /* =========================
@@ -143,6 +144,7 @@ h1.hide {
     position: relative;
     padding: 6px;
     box-sizing: border-box;
+    margin-left: auto;
 }
 
     
@@ -931,6 +933,10 @@ main section h2, article.aboutus h2 {
    CLASSIFICA PAGE
    ========================= */
 
+/* Tabella verticale solo per telefoni*/
+
+@media screen and (max-width:600px) {
+
 .classifica_piloti thead,
 .classifica_costruttori thead{
     display: none;
@@ -966,6 +972,8 @@ main section h2, article.aboutus h2 {
 .classifica_costruttori tr:first-child,
 .classifica_piloti tr:first-child {
     border-top: 1px solid var(--accent-color);
+}
+
 }
 
 /* ==========================================================
