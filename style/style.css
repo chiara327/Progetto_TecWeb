@@ -1247,6 +1247,15 @@ th,
     margin: 0;
     line-height: 1.5;
     font-style: italic;
+
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+
+    max-width: 100%;
+    
+    line-height: 1.5em;
+    hyphens: auto;
 }
 
 /* --- Bottoni ed Errori --- */

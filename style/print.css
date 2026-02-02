@@ -755,6 +755,15 @@ a:link:after, a:visited:after {
 .comment-content {
     font-size: 12pt;
     font-style: italic;
+
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+
+    max-width: 100%;
+    
+    line-height: 1.5em;
+    hyphens: auto;
 }
 
 /* --- Bottoni --- */
