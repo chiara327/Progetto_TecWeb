@@ -19,7 +19,7 @@ function input_restore() {
     
 // Se esiste sessione login redirect automatico
 session_start();
-if (isset($_SESSION["user"]) && (isset($_SESSION["admin"]))) {
+if (isset($_SESSION["user"])) {
     ($_SESSION["admin"]) ? header("location: area_amministratore.php") : header("location: area_utente.php");
 	exit();
 }

@@ -1092,6 +1092,33 @@ a:focus-visible {
     transform: none;
 }
 
+.commento-card h3 {
+    margin: 0 0 0.3em 0;
+    font-size: 1.1em;
+    color: var(--accent-color);
+}
+
+.comment-date {
+    font-size: 0.85em;
+    color: var(--footer-text-color);
+    margin-bottom: 0.8em;
+}
+
+.comment-content {
+    margin: 0;
+    line-height: 1.5;
+    font-style: italic;
+
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+
+    max-width: 100%;
+    
+    line-height: 1.5em;
+    hyphens: auto;
+}
+
 .modal-content {
     width: 85%;
     padding: 1.5em;
@@ -1300,3 +1327,4 @@ a:focus-visible {
 .validators-group img:hover {
     opacity: 1;
 }
+

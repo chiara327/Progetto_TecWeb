@@ -9,3 +9,4 @@ resources/gare/*.png
 *.synctex.gz
 *.toc
 .vscode/
+.htaccess

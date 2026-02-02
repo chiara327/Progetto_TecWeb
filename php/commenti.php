@@ -57,10 +57,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comment_id'])) {
     if (isset($_SESSION['user'])) {
         $id_da_eliminare = $_POST['comment_id'];
         $utente_attivo = $_SESSION['user'];
+        $admin_bypass = isset($_SESSION['admin']) && $_SESSION['admin'] === true;
 
         try {
             $db_connection = new DBConnection();
-            $risultato_eliminazione = $db_connection->delete_commento($id_da_eliminare, $utente_attivo);
+            $risultato_eliminazione = $db_connection->delete_commento($id_da_eliminare, $utente_attivo, $admin_bypass);
             $db_connection->close_connection();
             
             if ($risultato_eliminazione === true) {
@@ -111,6 +112,7 @@ $data_it = date("d/m/Y", strtotime($data_val));
 $nazione = htmlspecialchars($gara_data['circuito_nazione']);
 $anno = date("Y", strtotime($data_val));
 $titolo_gp = $nazione . ' <span lang="en">Grand Prix</span> ' . $anno;
+$titolo_gp_no_span = $nazione . " " .  $anno;
 
 $p1_display = $format_driver($gara_data['p1_nome'], $gara_data['p1_cognome'], $gara_data['p1_nazionalita']);
 $p2_display = $format_driver($gara_data['p2_nome'], $gara_data['p2_cognome'], $gara_data['p2_nazionalita']);
@@ -180,7 +182,7 @@ if (empty($commenti_data)) {
         $id_commento = $comm['id'];
         $bottone_elimina = "";
 
-        if (isset($_SESSION['user']) && $_SESSION['user'] == $utente) {
+        if ((isset($_SESSION['user']) && $_SESSION['user'] == $utente) || (isset($_SESSION['admin']) && $_SESSION['admin'] === true)) {
             $bottone_elimina = "
                 <form action='commenti.php' method='POST'>
                     <input type='hidden' name='comment_id' value='$id_commento'>
@@ -208,6 +210,7 @@ if (empty($commenti_data)) {
 $html_page = str_replace("[form-commento]", $form_commento, $html_page);
 $html_page = str_replace("[dettagli-gara]", $info_gara_html, $html_page);
 $html_page = str_replace("[titolo-gp]", $titolo_gp, $html_page);
+$html_page = str_replace("[titolo-gp-no-span]", $titolo_gp_no_span, $html_page);
 $html_page = str_replace("[lista-commenti]", $commenti_html, $html_page);
 $html_page = str_replace("[err-eliminazione]", $err_eliminazione, $html_page);
 

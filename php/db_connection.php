@@ -13,10 +13,10 @@ class DBConnection {
         PASS: password nel file .txt del server personale
     */
 
-    private const HOST = "db";
-	private const DB_NAME = "f1_db";
-	private const USER = "root";
-	private const PASSWORD = "root_password";
+    private const HOST = "localhost";
+	private const DB_NAME = "rgrazian";
+	private const USER = "rgrazian";
+	private const PASSWORD = "aeQu2Mah8Ahqu0Ba";
 
     private $connection;
 
@@ -476,6 +476,7 @@ class DBConnection {
                     G.data, 
                     C.nome AS circuito_nome, 
                     C.citta AS circuito_citta,
+                    C.tipo AS circuito_tipo,
                     P1.nome AS p1_nome, P1.cognome AS p1_cognome, P1.id AS p1_id, P1.nazionalita AS p1_nazionalita,
                     P2.nome AS p2_nome, P2.cognome AS p2_cognome, P2.id AS p2_id, P2.nazionalita AS p2_nazionalita,
                     P3.nome AS p3_nome, P3.cognome AS p3_cognome, P3.id AS p3_id, P3.nazionalita AS p3_nazionalita
@@ -743,19 +744,27 @@ class DBConnection {
         return $result;
     }
 
-    public function delete_commento($id_commento, $username) {
-        $query = "DELETE FROM Commento WHERE id = ? AND username = ?";
+    public function delete_commento($id_commento, $username, $admin_bypass) {
+        if ($admin_bypass) {
+            $query = "DELETE FROM Commento WHERE id = ?";
+            $stmt = $this->connection->prepare($query);
+            if ($stmt === false) {
+                return false;
+            }
+            $stmt->bind_param("i", $id_commento);
+            $result = $stmt->execute();
+            $stmt->close();
+            return $result;
+        }
 
+        $query = "DELETE FROM Commento WHERE id = ? AND username = ?";
         $stmt = $this->connection->prepare($query);
         if ($stmt === false) {
             return false;
         }
-
         $stmt->bind_param("is", $id_commento, $username);
-        
         $result = $stmt->execute();
         $stmt->close();
-
         return $result;
     }
 }
