@@ -254,7 +254,15 @@ Per quanto riguarda la sicurezza del sito, sono state adottate le diverse precau
 \subsubsection{Errori di navigazione o del server}
 Il file \textit{.htaccess} permette di gestire gli errori di navigazione e del server. In particolare, le pagine di errore (403, 404, 500) sono state sostituite con delle pagine \textbf{personalizzate}, che includono un messaggio rassicurante per l'utente e istruzioni su cosa fare per tornare alla navigazione. Inoltre se l'utente dovesse aggiungere del testo arbitrario nell'URL verrebbe reindirizzato automaticamente alla pagina di errore 404.
 \subsection{Accessibilità e Usabilità}
-Misure adottate per garantire l'accessibilità (es. contrasto colori, navigazione da tastiera) e l'usabilità (es. layout intuitivo, tempi di caricamento rapidi).
+Le misure adottate per migliorare l'accessibilità del sito, con l'obiettivo di soddisfare la normativa italiana sull'accessibilità nel web (livello AA delle WCAG), sono:
+\begin{itemize}
+    \item le due tabelle presenti sono state rese accessibili tramite l'utilizzo dei tag semantici di struttura, scope per righe e colonne e summary della tabella;
+    \item i form sono stati resi accessibili inserendo, per ogni campo input, il corrispettivo campo label;
+    \item i link visitati e non visitati sono differenziati;
+    \item la gerarchia del sito è ampia e poco profonda;
+    \item i nomi dei piloti e delle scuderie hanno gli span impostati nella lingua corretta;
+    \item nel caso in cui la compilazione di un form sia errata gli input inseriti non vengono persi;
+\end{itemize}
 \subsubsection{Aiuti per lo screen reader}
 Al fine di agevolare le persone con disabilità visive, sono stati adottati i seguenti accorgimenti:
 \begin{itemize}
