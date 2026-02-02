@@ -9,6 +9,7 @@
 \usepackage{booktabs}
 \usepackage{listings} % Per il codice
 \usepackage{fancyhdr}
+\usepackage{hyperref}
 \geometry{
     a4paper,
     margin=2.5cm,
@@ -96,9 +97,9 @@
 % --- Sezioni Contenuto ---
 
 \section{Introduzione}
-La seguente relazione serve ad illustrare la progettazione e lo sviluppo del sito web F1 FAN CLUB da parte di cinque studenti del corso di laurea di Informatica per il corso di Tecnologie Web nell'anno accademico 2025/2026. Il gruppo è formato dai seguenti studenti:
+La presente relazione illustra dettagliatamente le fasi di progettazione e sviluppo del sito web F1 Fan Club, un progetto realizzato da cinque studenti del corso di laurea in Informatica presso l'Università degli Studi di Padova per l'insegnamento di Tecnologie Web durante l'anno accademico 2025/2026.
 
-Il gruppo ha deciso di sviluppare un sito fan club della Formula 1 in cui sono presenti le informazioni relative al mondo delle gare automobilistiche. Il sito è progettato per permettere agli utenti già informati su questa tematica di trovare velocemente le informazioni di cui hanno bisogno e allo stesso tempo permette ai meno esperti di imparare cose nuove relative al mondo della F1.
+L'obiettivo principale del gruppo è stato la creazione di un portale dedicato al mondo della Formula 1 che fungesse sia da risorsa informativa sia da punto di aggregazione per la comunità. Il sito è stato concepito per un'utenza eterogenea, rivolgendosi tanto agli appassionati di lunga data quanto ai neofiti che desiderano approfondire le dinamiche del campionato. All'interno della piattaforma, gli utenti possono consultare i dati salienti della stagione in corso, tra cui le classifiche aggiornate, i risultati dei singoli Gran Premi e schede di approfondimento dedicate ai piloti, alle scuderie e ai circuiti storici del calendario. Oltre alla componente informativa, il progetto pone un forte accento sull'interattività, offrendo agli utenti la possibilità di condividere la propria passione e scambiare opinioni sull'andamento delle gare attraverso un sistema di commenti dedicato.
 
 \section{Analisi dei Requisiti}
 Innanzi a tutto abbiamo analizzato diversi siti web relativi alla Formula 1 per capire quali funzionalità fossero più utili e interessanti per gli utenti. Abbiamo inoltre discusso tra di noi per definire le funzionalità principali del sito e le caratteristiche che volevamo implementare.
@@ -184,7 +185,7 @@ Schema relazionale del database:
 \newpage
 
 \section{Realizzazione}
-Per rispettare le regole di copyright tutte le immagini riguardanti piloti, scuderie e gare sono state generate da modelli di intelligenza artificiale, mentre le immagini che riguardano il layout dei tracciati sono state scaricate dal sito https://commons.wikimedia.org/wiki/Main_Page 
+Per rispettare le regole di copyright tutte le immagini riguardanti piloti, scuderie e gare sono state generate da modelli di intelligenza artificiale, mentre le immagini che riguardano il layout dei tracciati sono state scaricate dal sito \url{https://commons.wikimedia.org/wiki/Main_Page}
 \subsection{Struttura e contenuto}
 Descrizione delle pagine principali del sito e delle loro funzionalità.
 \subsubsection{HTML}
@@ -223,6 +224,13 @@ Al fine di agevolare le persone con disabilità visive, sono stati adottati i se
     \item assicurarsi che tutti gli elementi interattivi siano accessibili tramite tastiera, in modo che gli utenti possano navigare il sito senza l'uso del mouse.
 \end{itemize}
 \subsubsection{Compatibilità}
+Sono state adottate le seguenti misure per garantire la compatibilità del sito su diversi browser e dispositivi:
+\begin{itemize}
+    \item utilizzo di tecnologie web standard come HTML5, CSS3 e JavaScript per garantire la compatibilità con i principali browser web;
+    \item test del sito su diversi browser (Brave, Chrome, Firefox, Edge) per verificare la compatibilità e l'usabilità del sito su diverse piattaforme;
+    \item sostituzione della navbar con un menu ad hamburger su dispositivi mobili per garantire una buona esperienza di navigazione su schermi di piccole dimensioni;
+    \item sono stati utilizzate misure relative "\textit{em}" e strutture come "\textit{flex}" e "\textit{grid}" per garantire la responsività del sito su schermi di diverse dimensioni.
+\end{itemize}
 \subsection{Versionamento del codice}
 Fin dall'inizio del progetto abbiamo utilizzato Git per il versionamento del codice sorgente. Abbiamo creato un repository su GitHub dove ogni membro del gruppo ha potuto caricare le proprie modifiche e collaborare con gli altri membri.
 Questo ci ha permesso di tenere traccia delle modifiche apportate al codice, facilitando la collaborazione e la risoluzione di conflitti.
@@ -239,7 +247,7 @@ I test sono stati effettuati mediante l'utilizzo di alcuni tool, tra cui citiamo
     \item \textbf{W3C Validator}: strumento che permette di verificare la validità del codice HTML e CSS secondo gli standard del W3C, questo ci ha fornito un esito positivo per l'html e il css;   
     \item \textbf{Wave powered by WebAIM}: strumento che permette di analizzare l'accessibilità del sito web e di individuare eventuali problemi;
     \item \textbf{Lighthouse}: strumento di Google che permette di analizzare le prestazioni, l'accessibilità e le best practice del sito web;
-    \item \textbf{Browser diversi}: sono stati effettuati test di navigazione su diversi browser (Chrome, Firefox, Edge) per verificare la compatibilità e l'usabilità del sito su diverse piattaforme;
+    \item \textbf{Browser diversi}: sono stati effettuati test di navigazione su diversi browser (Brave, Chrome, Firefox, Edge) per verificare la compatibilità e l'usabilità del sito su diverse piattaforme;
     \item \textbf{Dispositivi mobili}: sono stati effettuati test di navigazione su dispositivi mobili (smartphone e tablet) per verificare la responsività e l'usabilità del sito su schermi di diverse dimensioni;
     \item \textbf{Navigazione da tastiera}: sono stati effettuati test di navigazione utilizzando solo la tastiera per verificare l'accessibilità del sito per utenti con disabilità motorie.
 \end{itemize}
