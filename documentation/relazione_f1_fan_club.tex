@@ -1,4 +1,4 @@
-\documentclass[12pt,a4paper]{article}
+\documentclass[11pt,a4paper]{article}
 
 % --- Pacchetti Standard ---
 \usepackage[utf8]{inputenc}
@@ -41,40 +41,50 @@
 % --- Frontespizio ---
 \begin{titlepage}
     \centering
-    % LOGO UNIPD
-    \begin{figure}[h]
-        \centering
-        \includegraphics[width=0.25\textwidth]{../resources/logo_unipd.png} % Sostituisci con il nome corretto
-    \end{figure}
     
-    \vspace{0.5cm}
+    % LOGO UNIPD - Inserito direttamente senza ambiente figure
+    \includegraphics[width=0.22\textwidth]{../resources/logo_unipd.png} 
+    
+    \vspace{0.4cm}
     {\Large \textbf{Università degli Studi di Padova}} \\
     {\large Corso di Laurea in Informatica} \\
     
-    \vspace{1.5cm}
+    \vspace{2cm}
     
-    % LOGO PROGETTO
-    \begin{figure}[h]
-        \centering
-        \includegraphics[width=0.4\textwidth]{../resources/logo.jpeg}
-    \end{figure}
+    % LOGO PROGETTO - Inserito direttamente
+    \includegraphics[width=0.35\textwidth]{../resources/logo.jpeg} \\
     
+    \vspace{0.6cm}
     {\Huge \textbf{F1 Fan Club}} \\
-    \vspace{0.5cm}
+    \vspace{0.2cm}
     {\large Relazione per il progetto di Tecnologie Web} \\
     
-    \vfill
-    Sito web: AGGIUNGERE INDIRIZZO WEB\\
-    Mail del referente: riccardo.graziani.1@studenti.unipd.it
-    \vfill
-    \begin{table}[h]
-        \centering
-        \begin{tabular}{lll}
-            \textbf{Tipo di utente} & \textbf{Username} & \textbf{Password} \\ \midrule
-            Utente amministratore     & admin & admin \\
-            Utente semplice      & user & user \\
-        \end{tabular}
-    \end{table}
+    \vspace{2cm}
+
+    % TABELLA STUDENTI - Senza ambiente table
+    \begin{tabular}{lll}
+        \textbf{Nome e Cognome} & \textbf{Matricola} & \textbf{Email (studenti.unipd.it)} \\ \midrule
+        Giuliano Banchieri     & 2101081 & giuliano.banchieri@studenti.unipd.it \\
+        Alessandro Frison      & 2111932 & alessandro.frison.13@studenti.unipd.it \\
+        Riccardo Graziani      & 2101054 & riccardo.graziani.1@studenti.unipd.it \\
+        Chiara Grossele        & 2101063 & chiara.grossele@studenti.unipd.it \\
+        Mattia Oliva Medin     & 2103471 & mattia.olivamedin@studenti.unipd.it \\
+    \end{tabular}
+
+    \vspace{1.5cm}
+    
+    \textbf{Sito web:} \texttt{AGGIUNGERE INDIRIZZO WEB} \\
+    \textbf{Mail del referente:} riccardo.graziani.1@studenti.unipd.it
+    
+    \vspace{1cm}
+
+    % TABELLA CREDENZIALI
+    \begin{tabular}{lll}
+        \textbf{Tipo di utente} & \textbf{Username} & \textbf{Password} \\ \midrule
+        Utente amministratore   & admin & admin \\
+        Utente semplice         & user  & user \\
+    \end{tabular}
+
     \vfill
     {\large Anno Accademico 2025/2026}
 \end{titlepage}
@@ -86,25 +96,9 @@
 % --- Sezioni Contenuto ---
 
 \section{Introduzione}
-Descrizione del progetto "F1 Fan Club". Obiettivi del sito, target di utenza (appassionati di motori) e finalità comunicative.
-
 La seguente relazione serve ad illustrare la progettazione e lo sviluppo del sito web F1 FAN CLUB da parte di cinque studenti del corso di laurea di Informatica per il corso di Tecnologie Web nell'anno accademico 2025/2026. Il gruppo è formato dai seguenti studenti:
 
-\begin{table}[h]
-        \centering
-        \begin{tabular}{lll}
-            \textbf{Nome e Cognome} & \textbf{Matricola} & \textbf{Email (studenti.unipd.it)} \\ \midrule
-            Giuliano Banchieri     & 2101081 & giuliano.banchieri@studenti.unipd.it \\
-            Alessandro Frison      & 2111932 & alessandro.frison.13@studenti.unipd.it \\
-            Riccardo Graziani      & 2101054 & riccardo.graziani.1@studenti.unipd.it \\
-            Chiara Grossele        & 2101063 & chiara.grossele@studenti.unipd.it \\
-            Mattia Oliva Medin     & 2103471 & mattia.olivamedin@studenti.unipd.it \\
-        \end{tabular}
-    \end{table}
-
-Il gruppo ha deciso di sviluppare un sito fan club della Formula 1 in cui sono presenti le informazioni relative al mondo delle gare automobilistiche. Il sito è progettato per permettere agli utenti già informati su questa tematica di trovare velocemente le informazioni di cui hanno bisognro e allo stesso tempo permette ai meno esperti di imparare cose nuove relative al mondo della F1.
-
-\newpage
+Il gruppo ha deciso di sviluppare un sito fan club della Formula 1 in cui sono presenti le informazioni relative al mondo delle gare automobilistiche. Il sito è progettato per permettere agli utenti già informati su questa tematica di trovare velocemente le informazioni di cui hanno bisogno e allo stesso tempo permette ai meno esperti di imparare cose nuove relative al mondo della F1.
 
 \section{Analisi dei Requisiti}
 Innanzi a tutto abbiamo analizzato diversi siti web relativi alla Formula 1 per capire quali funzionalità fossero più utili e interessanti per gli utenti. Abbiamo inoltre discusso tra di noi per definire le funzionalità principali del sito e le caratteristiche che volevamo implementare.
@@ -218,6 +212,16 @@ Per quanto riguarda la sicurezza del sito, sono state adottate le diverse precau
 \subsection{Accessibilità e Usabilità}
 Misure adottate per garantire l'accessibilità (es. contrasto colori, navigazione da tastiera) e l'usabilità (es. layout intuitivo, tempi di caricamento rapidi).
 \subsubsection{Aiuti per lo screen reader}
+Al fine di agevolare le persone con disabilità visive, sono stati adottati i seguenti accorgimenti:
+\begin{itemize}
+    \item utilizzo di tag semantici per strutturare il contenuto delle pagine, come ad esempio "\textit{header}", "\textit{nav}", "\textit{main}", "\textit{section}", "\textit{article}" e "\textit{footer}";
+    \item utilizzo di attributi "\textit{alt}" descrittivi per tutte le immagini presenti nel sito, in modo che lo screen reader possa fornire una descrizione accurata dell'immagine;
+    \item utilizzo di etichette "\textit{label}" per tutti i campi dei form, in modo che lo screen reader possa associare correttamente l'etichetta al campo corrispondente;
+    \item utilizzo di tabelle con intestazioni appropriate per presentare i dati in modo chiaro e comprensibile;
+    \item utilizzo di liste ordinate e non ordinate per presentare elenchi di elementi in modo strutturato;
+    \item utilizzo di attributi "\textit{aria}" per migliorare l'accessibilità delle pagine web, come ad esempio "\textit{aria-label}", "\textit{aria-labelledby}" e "\textit{aria-describedby}";
+    \item assicurarsi che tutti gli elementi interattivi siano accessibili tramite tastiera, in modo che gli utenti possano navigare il sito senza l'uso del mouse.
+\end{itemize}
 \subsubsection{Compatibilità}
 \subsection{Versionamento del codice}
 Fin dall'inizio del progetto abbiamo utilizzato Git per il versionamento del codice sorgente. Abbiamo creato un repository su GitHub dove ogni membro del gruppo ha potuto caricare le proprie modifiche e collaborare con gli altri membri.
@@ -229,6 +233,17 @@ Inoltre ci ha permesso di organizzare meglio la struttura delle componenti del s
 \section{Test e Validazione}
 Descrizione dei test effettuati per verificare il corretto funzionamento del sito e la conformità ai requisiti iniziali.
 \subsection{Navigabilità ed accessibilità}
+I test sono stati effettuati mediante l'utilizzo di alcuni tool, tra cui citiamo:
+\begin{itemize}
+    \item \textbf{Total Validator}: strumento che permette di verificare l'accessibilità del sito web secondo le linee guida WCAG 2.1;
+    \item \textbf{W3C Validator}: strumento che permette di verificare la validità del codice HTML e CSS secondo gli standard del W3C, questo ci ha fornito un esito positivo per l'html e il css;   
+    \item \textbf{Wave powered by WebAIM}: strumento che permette di analizzare l'accessibilità del sito web e di individuare eventuali problemi;
+    \item \textbf{Lighthouse}: strumento di Google che permette di analizzare le prestazioni, l'accessibilità e le best practice del sito web;
+    \item \textbf{Browser diversi}: sono stati effettuati test di navigazione su diversi browser (Chrome, Firefox, Edge) per verificare la compatibilità e l'usabilità del sito su diverse piattaforme;
+    \item \textbf{Dispositivi mobili}: sono stati effettuati test di navigazione su dispositivi mobili (smartphone e tablet) per verificare la responsività e l'usabilità del sito su schermi di diverse dimensioni;
+    \item \textbf{Navigazione da tastiera}: sono stati effettuati test di navigazione utilizzando solo la tastiera per verificare l'accessibilità del sito per utenti con disabilità motorie.
+\end{itemize}
+Tutti i test effettuati hanno dato esito positivo, con alcune segnalazioni di falsi positivi che sono stati analizzati e documentati nella sezione successiva.
 \subsection{Falsi positivi}
 A seguito dell'utilizzo di Total Validor e W3C Validator sono stati riscontranti i seguenti falsi positivi:
 \begin{itemize}
@@ -236,6 +251,7 @@ A seguito dell'utilizzo di Total Validor e W3C Validator sono stati riscontranti
     \item molte pagine presentano errori dovuti all'inserimento di un valore [value], questo è stato fatto per sostiuire il valore tra parentesi quadre tramite php;
 \end{itemize}
 \subsection{Screen reader}
+Sono stati svolti dei test utilizzando screen reader come Silktile per verificare che il sito fosse accessibile anche per utenti con disabilità visive. I test hanno mostrato che il sito è navigabile e che le informazioni sono accessibili tramite gli screen reader. Anche se ci siamo accorti che vengono saltati alcuni tag "\textit{abbr}" nella descrizioni delle tabelle.
 
 \newpage
 

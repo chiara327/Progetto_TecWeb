@@ -264,6 +264,8 @@ h1.hide {
   transition: transform 0.4s ease-out, opacity 0.4s ease-out;
 }
 
+/* @media (prefers-reduced-motion: reduce)*  non serve perchè animazione quasi impercettibile*/
+
 #backToTop.clicked #backToTopIcon {
   transform: translateX(-50px);
   opacity: 0; 
@@ -2204,7 +2206,6 @@ label {
     padding: 2em;
     animation: fluttua 3s ease-in-out infinite;
 }
-/*MANCA L'ANIMAZIONE, SE NON RIESCO A FARLA LA TOLGO (-chiara)*/
 
 @keyframes fluttua {
   0%   { transform: translateY(0); opacity: 1; }
