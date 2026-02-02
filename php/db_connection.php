@@ -13,10 +13,10 @@ class DBConnection {
         PASS: password nel file .txt del server personale
     */
 
-    private const HOST = "db";
-	private const DB_NAME = "f1_db";
-	private const USER = "root";
-	private const PASSWORD = "root_password";
+    private const HOST = "localhost";
+	private const DB_NAME = "rgrazian";
+	private const USER = "rgrazian";
+	private const PASSWORD = "aeQu2Mah8Ahqu0Ba";
 
     private $connection;
 
