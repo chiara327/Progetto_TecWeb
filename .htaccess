@@ -1,0 +1,42 @@
+# ========================
+# CONFIGURAZIONE PROGETTO
+# ========================
+
+# DEFINIZIONE PAGINE DI ERRORE
+# Utilizza le pagine di errore custom
+ErrorDocument 403 /rgrazian/pages/403.html
+ErrorDocument 404 /rgrazian/pages/404.html
+ErrorDocument 500 /rgrazian/pages/500.html
+
+# ATTIVAZIONE MOTORE DI RISCRITTURA
+RewriteEngine On
+# Base folder del progetto per leggere le path nel file
+RewriteBase /rgrazian/
+
+# REWRITING: DA HTML A PHP
+# Se l'utente digita .html il server esegue .php
+
+# Mappatura delle pagine principali
+RewriteRule ^login\.html$ php/login.php [L,R=301]
+RewriteRule ^registrazione\.html$ php/registrazione.php [L,R=301]
+RewriteRule ^piloti\.html$ php/piloti.php [L,R=301]
+RewriteRule ^scuderie\.html$ php/scuderie.php [L,R=301]
+RewriteRule ^circuiti\.html$ php/circuiti.php [L,R=301]
+RewriteRule ^classifica\.html$ php/classifica.php [L,R=301]
+RewriteRule ^gare\.html$ php/gare.php [L,R=301]
+RewriteRule ^commenti\.html$ php/commenti.php [L,R=301]
+
+# Pagine di dettaglio
+RewriteRule ^informazioni_pilota\.html$ php/informazioni_pilota.php [L,R=301]
+RewriteRule ^informazioni_scuderia\.html$ php/informazioni_scuderia.php [L,R=301]
+
+# Aree riservate
+RewriteRule ^area_utente\.html$ php/area_utente.php [L,R=301]
+RewriteRule ^area_amministratore\.html$ php/area_amministratore.php [L,R=301]
+
+# Reindirizzamento della root vuota alla index
+RewriteRule ^$ index.html [L,R=301]
+
+# Se qualcuno aggiunge testo dopo .php o .html, manda al 404
+RewriteRule ^(.*).php/(.*)$ /rgrazian/pages/404.html [L,R=301]
+RewriteRule ^(.*).html/(.*)$ /rgrazian/pages/404.html [L,R=301]

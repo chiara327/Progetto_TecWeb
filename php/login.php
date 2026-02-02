@@ -41,7 +41,7 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
 
             // Utente non trovato
             if (!$result[1]) {
-                $form_errors = $form_errors . "<p>Lo <span lang='en'>username</span> o o la password che hai inserito non sono corretti.</p>";
+                $form_errors = $form_errors . "<p>Lo <span lang='en'>username</span> o la password che hai inserito non sono corretti.</p>";
                 $html_page = input_restore();
                 echo str_replace("[err]", $form_errors, $html_page);
                 exit();
