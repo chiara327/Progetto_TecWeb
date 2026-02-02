@@ -221,14 +221,49 @@ ossia la \textbf{Superstar Racing}. Vengono riportate le attributions per le imm
 Il sito è stato sviluppato seguendo lo standard  \textbf{HTML5}. Le pagine \textit{.html} contengono tutta la parte di struttura non dinamica, mentre per le parti dinamiche vengono effettuate sostituzioni utilizzando PHP. Per effettuare le sostituzioni delle sezioni dinamiche abbiamo usato dei \textbf{placeholder} tra parentesi quadre. Le sostituzioni vengono effettuate usando la funzione di $str\_replace$ di PHP. In questo modo modifiche ai dati presenti nel database si riflettono in maniera automatica sulla vista web: ad esempio quando un admin modifica il numero di punti di un pilota, magari dopo la sua vittoria in una gara, la pagina \textit{classifica.html} mostrerà i dati aggiornati sia per quanto riguarda la classifica piloti sia per quanto riguarda la classifica costruttori.
 \subsubsection{Popolamento database}
 Il database è stato popolato manualmente, inserendo i dati tramite comandi SQL e senza quindi generare una grande quantità di dati. La maggior parte dei dati inseriti sono dati reali, ma ci sono alcune eccezioni inventate per molte categorie.
-Ad esempio sono presenti alcuni piloti inventati (i piloti \textbf{Mario Mario} e \textbf{Luigi Mario}) ed una scuderia fittizia (la \textbf{Superstar Racing}).\subsection{Presentazione}
-Descrizione dell'aspetto grafico del sito, del layout e delle scelte di design.
+Ad esempio sono presenti alcuni piloti inventati (i piloti \textbf{Mario Mario} e \textbf{Luigi Mario}) ed una scuderia fittizia (la \textbf{Superstar Racing}).
+\subsection{Presentazione}
 \subsubsection{CSS}
+Per la parte di presentazione del sito sono stati utilizzati i linguaggi \textbf{CSS2} e \textbf{CSS3} nella loro versione pura. Tutti i file \textit{.css} sono organizzati all'interno della cartella style, in cui troviamo i file:
+\begin{itemize}
+    \item \textit{style.css}, che contiene le regole generali per l'intero sito;
+    \item \textit{mini.css}, che contiene le regole specifiche per la vista mobile del sito (breakpoint a 768px per tablet in orizzontale e dispositivi più piccoli);
+    \item \textit{print.css}, che contiene le regole per la stampa delle pagine del sito.
+\end{itemize}
+Il sito utilizza un layout semplice e pulito, con elementi familiari agli utenti come una barra di navigazione in alto, l'area principale per i contenuti e un footer in basso.
+Grazie alla barra di navigazione è semplice spostarsi tra le varie sezioni del sito, anche grazie alla struttura organizzativa ragionevolmete ampia e poco profonda.
+All'interno del footer sono presenti link ai social, disclaimer e i certificati di accessibilità e validità.
+
+\vspace{0.5cm}
+
+Nella versione mobile la barra di navigazione è sostituita da un menù ad hamburger con cui l'utente sarà probabilmente familiare, le tabelle sono visualizzate verticalmente per facilitarne la lettura su schermi piccoli
+ e le dimensioni dei vari elementi sono ritoccate dove necessario. I pulsanti e i campi dei form sono inoltre sufficientemente grandi da permetterne un facile utilizzo.
+
+\vspace{0.5cm}
+
+Per i layout di stampa abbiamo deciso di mantenere uno stile molto minimale per limitare il più possibile lo spreco di inchiostro e abbiamo quindi rimosso la barra di navigazione, il footer e tutte le immagini decorative, ad eccezione del logo,
+e ci siamo limitati all'uso del nero per il testo e del rosso per alcuni dettagli. Le immagini informative sono state tenute perchè ritenute importanti.
+
 \subsubsection{Immagini e icone}
+Per il sito sono state utilizzate immagini generate tramite AI (Gemini e ChatGpt) per evitare problemi di licenza.
+Il logo è stato creato personalmente dai membri del gruppo ispirandosi al logo ufficiale della Formula 1 e al logo dei T1, una squadra coreana di giocatori professionisti nel mondo di League of Legends.
+Le immagini nel sito possono avere due funzioni: decorativa o di contenuto.
+Le immagini presenti nella home page e nelle varie pagine di errore hanno scopo decorativo in quanto inerenti al tema della formula 1 ma non contengono alcuna informazione precisa.
+Invece le immagini dei piloti, delle scuderie, delle gare e dei circuiti consentono all'utente di acquisire informazioni aggiuntive sull'oggetto della loro ricerca.
+
+\vspace{0.5cm}
+
+Abbiamo fatto attenzione ad utillizzare immagini ottimizzate per il web, in modo da ridurre i tempi di caricamento delle pagine e migliorare l'esperienza utente.
+Per farlo abbiamo utilizzato solamente i formati \textit{.jpg} e \textit{.svg} e immagini di dimensioni inferiori a 1MB.
 \subsubsection{Font}
+Abbiamo deciso di usare dei font senza grazie (sans-serif) all'interno di \textit{style.css} e \textit{mini.css} per garantire una buona leggibilità del testo su schermo e font con grazie (serif) per la stampa.
 \subsubsection{Colori}
+Come colori principali abbiamo scelto dei colori asfalto, il rosso e il bianco per richiamare i colori tipici della Formula 1 e mantenere un contrasto sufficiente affinché il sito rispettasse le normative \textbf{WCAG} per l'accessibilità.
+Lo sfondo principale del sito è di colore grigio scuro, il testo è di colore bianco per garantire un buon contrasto con lo sfondo, mentre le decorazioni e i pulsanti sono di colore rosso per richiamare il colore del logo della Formula 1.
+Come detto precedentemente, la nostra scelta di colori rispetta le linee guida per il livello \textbf{AA} delle \textbf{WCAG}, garantendo un contrasto sufficiente tra il testo (link inclusi) e lo sfondo per facilitare la lettura anche a persone con disabilità visive.
+Inoltre non abbiamo fatto affidamento sul colore per veicolare informazioni importanti. Ad esempio, i link non sono identificati solo dal colore, ma anche dalla sottolineatura, i messaggi di errore/successo sono chiari, non ci sono informazioni trasmesse solo tramite il colore come potrebbero essere dei diagrammi.
 \subsection{Comportamento}
-\subsection{PHP}
+\subsubsection{PHP}
 I file \textit{.php} sono organizzati all'interno dell'omonima cartella, in cui troviamo:
 \begin{itemize}
     \item il file \textit{db\_connection.php}, che gestisce la connessione al database ed espone tutte le funzioni che servono a recuperare e modificare i dati relativi al db;
